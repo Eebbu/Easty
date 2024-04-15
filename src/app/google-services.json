@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "679568634978",
+    "project_id": "comp2100gp-554f2",
+    "storage_bucket": "comp2100gp-554f2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:679568634978:android:7e2eb805c268dda4d98d3b",
+        "android_client_info": {
+          "package_name": "com.example.eatsy"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1MMnW9PDXz4J6zS19hO1Vapl7Wcf5fRw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
