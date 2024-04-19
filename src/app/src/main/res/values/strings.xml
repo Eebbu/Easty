@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Eatsy</string>
+    <string name="title">Title</string>
+    <string name="add_up_to_10_images">Add up to 10 images</string>
+    <string name="description">Description</string>
+    <string name="pick_up_times">Pick-up times</string>
+    <string name="free_food">Free food</string>
+    <string name="quantity">Quantity</string>
+    <string name="e_g_2xtins_of_veg_soup_bb_dec_2023">e.g. 2xtins of veg soup, BB Dec 2023</string>
 </resources>
