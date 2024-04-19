@@ -1,7 +1,6 @@
 package com.example.eatsy;
 
 public class UserInfo {
-
     private String username;
     private String password;
 
@@ -22,7 +21,6 @@ public class UserInfo {
         this.username = username;
 
     }
-
     public void setPassword(String password) {
         this.password = password;
     }

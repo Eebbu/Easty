@@ -6,24 +6,14 @@ public class LoginUser {
     private LoginUser() {
 
     }
-
     public static LoginUser getInstance() {
         if (loginUser == null) {
             System.out.println("User Created");
             loginUser = new LoginUser();
-
         }
-
         else {
             System.out.println("User has already been created");
         }
         return loginUser;
     }
-
-
-
-
-
-
-
 }
