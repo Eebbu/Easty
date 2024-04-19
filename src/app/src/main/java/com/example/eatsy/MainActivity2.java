@@ -30,8 +30,8 @@ public class MainActivity2 extends AppCompatActivity {
                 String email = username.getText().toString();
                 String pswrd = password.getText().toString();
 
-                if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(MainActivity2.this, "Please enter email", Toast.LENGTH_SHORT).show();
+                if (TextUtils.isEmpty(email) && TextUtils.isEmpty(pswrd)) {
+                    Toast.makeText(MainActivity2.this, "Please enter your credentials", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -39,6 +39,27 @@ public class MainActivity2 extends AppCompatActivity {
                     Toast.makeText(MainActivity2.this, "Please enter password", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
+                if (TextUtils.isEmpty(email)) {
+                    Toast.makeText(MainActivity2.this, "Please enter email", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+               if (email.equals("comp2100@anu.edu.au") && pswrd.equals("comp2100")) {
+                   Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
+
+                   startActivity(intent);
+                   Toast.makeText(MainActivity2.this, "Logged in", Toast.LENGTH_SHORT).show();
+               }
+
+               if (email.equals("comp6442@anu.edu.au") && pswrd.equals("comp6442")) {
+                   Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
+
+                   startActivity(intent);
+                   Toast.makeText(MainActivity2.this, "Logged in", Toast.LENGTH_SHORT).show();
+               }
+
+
             }
         });
     }
