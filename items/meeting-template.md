@@ -25,11 +25,13 @@ Stand up Procedure: Decide on what kind of app we want to work on and the detail
 
 
 ## Action Items
-| Task                                   | Assigned To |  Due Date  |
-|:---------------------------------------|:-----------:|:----------:|
-| [Login in　]                               |  [Name 1]   | [Due Date] |
-| [Task 2]                               |  [Name 2]   | [Due Date] |
-| [Task 3]                               |  [Name 3]   | [Due Date] |
+| Task                                   | Assigned To |  Due Date    |
+|:---------------------------------------|:-----------:|:------------:|
+| [Login in + UI design]                 |[Vishakha]   | [23-04-2024] |
+| [DataFiles]                            |[Boxuan Lin] | [26-04-2024] |
+| [DataStream]                           |[Jinyang Zeng]| [29-04-2024]|
+| [Loadshow]                             |[Zihan Yuan] | [01-05-2024] |
+| [Search and fiter]                     |[Lin Xi]     | [05-05-2024] |
 
 
 
@@ -37,7 +39,4 @@ Stand up Procedure: Decide on what kind of app we want to work on and the detail
 The following dictates who will scribe in this and the next meeting.
 | Name |
 | :---: |
-| [Member name] |
-| [Member name] |
-| [Member name] |
-| [Member name] |
+| Lin Xi |
