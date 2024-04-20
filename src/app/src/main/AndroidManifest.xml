@@ -26,7 +26,7 @@
             android:exported="false"
             android:theme="@style/TransparentActivity" />
         <activity
-            android:name=".MainActivity3"
+            android:name=".registerActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity2"
