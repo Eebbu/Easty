@@ -1,5 +1,8 @@
 package com.example.eatsy;
 
+import static android.app.ProgressDialog.show;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,82 +13,74 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.example.eatsy.LoginUser;
+
+
 public class MainActivity2 extends AppCompatActivity {
 
-    EditText username , password;
+    EditText username, password;
     Button loginBtn;
-   // FirebaseAuth firebaseAuth;
+    FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-         loginBtn = findViewById(R.id.login);
-         username = findViewById(R.id.Email);
-         password = findViewById(R.id.user_pass);
-       //  firebaseAuth = FirebaseAuth.getInstance;
+        loginBtn = findViewById(R.id.login);
+        username = findViewById(R.id.Email);
+        password = findViewById(R.id.user_pass);
+        firebaseAuth = FirebaseAuth.getInstance();
+        if (firebaseAuth.getCurrentUser() != null)
+            startActivity(new Intent(getApplicationContext(), MainActivity4.class));
+        loginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String email = username.getText().toString().trim();
+                String pswrd = password.getText().toString().trim();
+                if (email.isEmpty() && pswrd.isEmpty()) {
+                    Toast.makeText(MainActivity2.this, "Please enter your credentials", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
-         loginBtn.setOnClickListener(new View.OnClickListener() {
-                                         @Override
-                                         public void onClick(View v) {
-                                             String email = username.getText().toString();
-                                             String pswrd = password.getText().toString();
+                if (email.isEmpty()) {
+                    Toast.makeText(MainActivity2.this, "Please enter password", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (pswrd.isEmpty()) {
+                    Toast.makeText(MainActivity2.this, "Please enter email", Toast.LENGTH_SHORT).show();
 
-                                             if (TextUtils.isEmpty(email) && TextUtils.isEmpty(pswrd)) {
-                                                 Toast.makeText(MainActivity2.this, "Please enter your credentials", Toast.LENGTH_SHORT).show();
-                                                 return;
-                                             }
+                    return;
+                }
 
-                                             if (TextUtils.isEmpty(pswrd)) {
-                                                 Toast.makeText(MainActivity2.this, "Please enter password", Toast.LENGTH_SHORT).show();
-                                                 return;
-                                             }
 
-                                             if (TextUtils.isEmpty(email)) {
-                                                 Toast.makeText(MainActivity2.this, "Please enter email", Toast.LENGTH_SHORT).show();
-                                                 return;
-                                             }
+                firebaseAuth.signInWithEmailAndPassword(email, pswrd)
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
 
-                                             if (email.equals("comp2100@anu.edu.au") && pswrd.equals("comp2100")) {
-                                                 Intent intent = new Intent(MainActivity2.this, registerActivity.class);
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(MainActivity2.this,
+                                    "Login Successful", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(getApplicationContext(), MainActivity4.class));
+                                } else {
+                                    Toast.makeText(MainActivity2.this,
+                                    "Authentication failed", Toast.LENGTH_SHORT).show();
+                                    LoginUser.getInstance().error(MainActivity2.class, task.getException());
+                                }
+                            }
+                        });
 
-                                                 startActivity(intent);
-                                                 Toast.makeText(MainActivity2.this, "Logged in", Toast.LENGTH_SHORT).show();
-                                             }
 
-                                             if (email.equals("comp6442@anu.edu.au") && pswrd.equals("comp6442")) {
-                                                 Intent intent = new Intent(MainActivity2.this, registerActivity.class);
 
-                                                 startActivity(intent);
-                                                 Toast.makeText(MainActivity2.this, "Logged in", Toast.LENGTH_SHORT).show();
-                                             }
 
-                                         }
+            }});}}
 
-                                     });
-    }
 
-}
 
-//                firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<AuthResult> task) {
-//                        if (task.isSuccessful()) {
-//                            Toast.makeText(MainActivity2.this, "Login Successful", Toast.LENGTH_SHORT).show();
-//                            startActivity(new Intent(getApplicationContext(), MainActivity4.class));
-//                        } else {
-//                            Toast.makeText(MainActivity2.this, "Authentication failed" + task.getException().getMessage, Toast.LENGTH_SHORT).show();
-//                        }
-//
-//                    }
-//                });
-//
-//            }
-//
-//
-//
-//            }
-//        });
-//
-//    }
-//}
+
+

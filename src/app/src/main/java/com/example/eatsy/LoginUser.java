@@ -16,4 +16,14 @@ public class LoginUser {
         }
         return loginUser;
     }
+
+    public void info(Class clsName, String message) {
+        Log.println(Log.INFO, clsName.getSimpleName(), message);
+    }
+
+    public void error(Class clsName, Exception cause) {
+        Log.println(Log.ERROR, clsName.getSimpleName(), Log.getStackTraceString(cause));
+    }
+
+
 }
