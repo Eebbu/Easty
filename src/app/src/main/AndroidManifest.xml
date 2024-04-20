@@ -26,6 +26,7 @@
             android:exported="false" />
         <activity
             android:name=".Addpage"
+            android:theme="@style/TransparentActivity"
             android:exported="false" />
         <activity
             android:name=".registerPage"

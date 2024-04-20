@@ -7,4 +7,7 @@
     <string name="free_food">Free food</string>
     <string name="quantity">Quantity</string>
     <string name="e_g_2xtins_of_veg_soup_bb_dec_2023">e.g. 2xtins of veg soup, BB Dec 2023</string>
+    <string name="address">Address</string>
+    <string name="e_g_before_may_25th_6pm">e.g. Before May 25th, 6pm</string>
+    <string name="e_g_16_northbourn_avenue_act">e.g. 16 Northbourn Avenue, ACT</string>
 </resources>

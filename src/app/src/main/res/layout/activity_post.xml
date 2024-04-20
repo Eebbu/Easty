@@ -152,7 +152,7 @@
             <LinearLayout
                 android:id = "@+id/quantity_linear"
                 android:layout_width="match_parent"
-                android:layout_height="90dp"
+                android:layout_height="120dp"
                 android:orientation="vertical"
                 app:layout_constraintTop_toTopOf = "@+id/description_linear"
                 android:layout_marginTop="20dp">
@@ -169,6 +169,40 @@
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/quantity_linear"
                     app:layout_constraintTop_toTopOf="@+id/quantity_linear" />
+                <LinearLayout
+                    android:id = "@+id/quantityBottonLinear"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toTopOf = "@+id/quantity"
+                    android:layout_marginTop="8dp">
+                    <Button
+                        android:id="@+id/button1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:radius="10dp"
+                        style="@style/NumberButtonStyle"/>
+
+                    <Button
+                        android:id="@+id/button2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2"
+                        android:radius="10dp"
+                        style="@style/NumberButtonStyle"/>
+
+                    <Button
+                        android:id="@+id/button3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3"
+                        android:layout_margin="5dp"
+                        style="@style/NumberButtonStyle"/>
+
+
+                </LinearLayout>
+
 
             </LinearLayout>
 
@@ -177,7 +211,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
                 android:orientation="vertical"
-                app:layout_constraintTop_toTopOf = "@+id/quantity_linear"
+                app:layout_constraintTop_toBottomOf = "@+id/quantity_linear"
                 android:layout_marginTop="20dp">
 
                 <TextView
@@ -198,7 +232,38 @@
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:layout_marginBottom="0dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/pickuptime" />
+                    app:layout_constraintBottom_toBottomOf="@+id/pickuptime_linear"
+                    android:hint = "@string/e_g_before_may_25th_6pm"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id = "@+id/Address_linear"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf = "@+id/quantity_linear"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:id="@+id/Address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+                    android:text="@string/address"
+                    android:fontFamily="cursive"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/Address_linear"
+                    app:layout_constraintTop_toTopOf="@+id/Address_linear" />
+
+                <EditText
+                    android:id="@+id/Address_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="0dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/Address_linear"
+                    android:hint = "@string/e_g_16_northbourn_avenue_act"/>
             </LinearLayout>
 
         </LinearLayout>
