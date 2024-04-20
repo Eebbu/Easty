@@ -22,7 +22,7 @@
             android:name=".LogOutActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity4"
+            android:name=".DashboardActivity"
             android:exported="false" />
         <activity
             android:name=".Addpage"
@@ -31,7 +31,7 @@
             android:name=".registerPage"
             android:exported="false" />
         <activity
-            android:name=".MainActivity2"
+            android:name=".LoginActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
