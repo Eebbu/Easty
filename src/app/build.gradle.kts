@@ -1,7 +1,10 @@
 plugins {
     id("com.android.application")
+    id("com.google.gms.google-services")
     // Add the dependency for the Google services Gradle plugin
-    id("com.google.gms.google-services") version "4.4.1" apply false
+
+
+
 
 }
 
@@ -17,6 +20,7 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
     }
 
     buildTypes {
@@ -35,6 +39,9 @@ android {
 }
 
 dependencies {
+
+
+
     // Import the Firebase BoM
     implementation(platform("com.google.firebase:firebase-bom:32.8.1"))
 
@@ -42,6 +49,7 @@ dependencies {
     // TODO: Add the dependencies for Firebase products you want to use
     // When using the BoM, don't specify versions in Firebase dependencies
     implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-auth")
 
 
     implementation("androidx.appcompat:appcompat:1.6.1")

@@ -17,7 +17,7 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class registerActivity extends AppCompatActivity {
+public class registerPage extends AppCompatActivity {
 
     EditText mEmail , mPassWord, mFullName;
     Button mRegisterBtn;
@@ -30,7 +30,7 @@ public class registerActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
 
-        FirebaseApp.initializeApp(this);
+    FirebaseApp.initializeApp(this);
 
         setContentView(R.layout.registerpage);
 
@@ -42,8 +42,8 @@ public class registerActivity extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
 
         //if(fAuth.getCurrentUser() != null){
-        //  startActivity(new Intent(getApplicationContext(),MainActivity.class));
-        // finish();
+          //  startActivity(new Intent(getApplicationContext(),MainActivity.class));
+           // finish();
 
         //}
 
@@ -53,28 +53,28 @@ public class registerActivity extends AppCompatActivity {
                 String email = mEmail.getText().toString().trim();
                 String password = mPassWord.getText().toString().trim();
 
-                if (TextUtils.isEmpty(email)) {
+                if(TextUtils.isEmpty(email)){
                     mEmail.setError("Email is required!");
                     return;
                 }
-                if (TextUtils.isEmpty(password)) {
+                if(TextUtils.isEmpty(password)){
                     mPassWord.setError("Password is required!");
                     return;
                 }
-                if (password.length() < 6) {
+                if(password.length()<6){
                     mPassWord.setError("Password must longer than 6 characters!");
                     return;
                 }
 
-                fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                fAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>(){
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(registerActivity.this, "Successfully created!", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        if(task.isSuccessful()){
+                            Toast.makeText(registerPage.this,"Successfully created!",Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
                             finish();
-                        } else {
-                            Toast.makeText(registerActivity.this, "Error! Please try again!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }else {
+                            Toast.makeText(registerPage.this,"Error! Please try again!"+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
                             finish();
                         }
                     }
@@ -82,4 +82,7 @@ public class registerActivity extends AppCompatActivity {
 
             }
         });
-    }}
+    }
+
+
+}
