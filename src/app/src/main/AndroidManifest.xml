@@ -19,9 +19,6 @@
             android:name=".MainActivity4"
             android:exported="false" />
         <activity
-            android:name=".MainPage"
-            android:exported="false" />
-        <activity
             android:name=".Addpage"
             android:exported="false" />
         <activity
