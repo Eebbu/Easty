@@ -1,4 +1,4 @@
-# []
+# [Good food, Good life]
 This following is a very simple team meeting template. You should expand it based on the scope and nature of your discussion.
 
 ## Team Meeting [1] - Week [6.5] - [13-4-2024] (start-end time)
