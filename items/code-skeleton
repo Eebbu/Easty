@@ -1,0 +1,22 @@
+1.Register
+*Setting some rules on account name and password for users for the safety.
+*Creating username and password.
+*Click the button and we can move to next page.
+UserInfo class:
+ public UserInfo(String username, String password){
+     //Set username and password
+ }
+
+2.Login
+*Verifying account name and password to ensure user authenticity.
+protected void onCreate(Bundle savedInstanceState){
+    //Login
+}
+3.Post
+*
+
+4.GPS
+
+5.Search
+
+6.
