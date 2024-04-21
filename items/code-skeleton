@@ -8,7 +8,7 @@ public class registerActivity extends AppCompatActivity(){}
 
 2.Login
 *Verifying account name and password to ensure user authenticity.
-*Click the button and we can move to the homepage(mainActivity4).
+*Click the button and we can move to the homepage(DashboardActivity).
 public class LoginUser{}
 
 3. Dashboard page
