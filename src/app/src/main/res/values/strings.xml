@@ -10,4 +10,5 @@
     <string name="address">Address</string>
     <string name="e_g_before_may_25th_6pm">e.g. Before May 25th, 6pm</string>
     <string name="e_g_16_northbourn_avenue_act">e.g. 16 Northbourn Avenue, ACT</string>
+    <string name="e_g_pizza">e.g. Pizza</string>
 </resources>

@@ -6,6 +6,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.widget.NestedScrollView;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -45,21 +46,24 @@ public class Addpage extends AppCompatActivity {
         donate_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(Addpage.this, post_donate.class);
+                startActivity(intent);
             }
         });
         CardView exchange_card = findViewById(R.id.exchangeCard);
         exchange_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(Addpage.this, post_exchange.class);
+                startActivity(intent);
             }
         });
         CardView wanted_card = findViewById(R.id.wantedCard);
         wanted_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(Addpage.this, post_wanted.class);
+                startActivity(intent);
             }
         });
     }

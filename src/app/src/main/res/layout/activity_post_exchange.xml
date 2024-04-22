@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <View
+        android:id="@+id/header_post"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="-110dp"
+        android:background="@drawable/dash_view"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp" />
+    <TextView
+        android:id="@+id/banner_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="15dp"
+        android:text="Exchange"
+        android:fontFamily="cursive"
+        android:textSize="38sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+
+    <ImageButton
+        android:id="@+id/leftArrowButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:scaleType="fitCenter"
+        android:background="?android:attr/selectableItemBackground"
+        android:src="@drawable/leftarrow"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="Go back"/>
+
+    <ScrollView
+        android:id="@+id/Scroll_post"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/header_post"
+        tools:layout_editor_absoluteX="0dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Image Upload Section -->
+            <LinearLayout
+                android:id="@+id/add_pic"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/cameraButton"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/camera"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="50dp"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:contentDescription="Open Album"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_up_to_10_images"
+                    android:fontFamily="cursive"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toEndOf="@id/cameraButton"
+                    app:layout_constraintTop_toTopOf="@id/cameraButton"
+                    app:layout_constraintBottom_toBottomOf="@id/cameraButton"
+                    android:layout_marginStart="20dp"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id = "@+id/title_linear"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toTopOf = "@+id/add_pic"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:id="@+id/Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+                    android:text="@string/title"
+                    android:fontFamily="cursive"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/title_linear"
+                    app:layout_constraintTop_toTopOf="@+id/title_linear" />
+
+                <EditText
+                    android:id="@+id/title_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="0dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/title_linear"
+                    android:hint = "@string/e_g_pizza"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id = "@+id/description_linear"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toTopOf = "@+id/title_linear"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:id="@+id/description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+                    android:text="@string/description"
+                    android:fontFamily="cursive"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/description_linear"
+                    app:layout_constraintTop_toTopOf="@+id/description_linear" />
+
+                <EditText
+                    android:id="@+id/description_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="0dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/dscription_linear"
+                    android:hint = "@string/e_g_2xtins_of_veg_soup_bb_dec_2023"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id = "@+id/want_linear"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toTopOf = "@+id/dscription_linear"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:id="@+id/want"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+                    android:text="Want"
+                    android:fontFamily="cursive"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/want_linear"
+                    app:layout_constraintTop_toTopOf="@+id/want_linear" />
+
+                <EditText
+                    android:id="@+id/want_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="0dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/want_linear"
+                    android:hint = " "/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id = "@+id/quantity_linear"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toTopOf = "@+id/description_linear"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:id="@+id/quantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+                    android:text="@string/quantity"
+                    android:fontFamily="cursive"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/quantity_linear"
+                    app:layout_constraintTop_toTopOf="@+id/quantity_linear" />
+                <LinearLayout
+                    android:id = "@+id/quantityBottonLinear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toTopOf = "@+id/quantity"
+                    android:layout_marginTop="8dp">
+                    <Button
+                        android:id="@+id/button1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/rounded_button" />
+
+                    <Button
+                        android:id="@+id/button2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/rounded_button"/>
+
+                    <Button
+                        android:id="@+id/button3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/rounded_button"/>
+                    <EditText
+                        android:id="@+id/editTextOther"
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:layout_weight="1"
+                        android:hint="Other"
+                        android:textSize="18sp"
+                        android:layout_marginLeft="5dp"
+                        android:padding="10dp"
+                        android:gravity="center_vertical"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id = "@+id/pickuptime_linear"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf = "@+id/quantity_linear"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:id="@+id/pickuptime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+                    android:text="@string/pick_up_times"
+                    android:fontFamily="cursive"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/pickuptime_linear"
+                    app:layout_constraintTop_toTopOf="@+id/pickuptime_linear" />
+
+                <EditText
+                    android:id="@+id/pickuptime_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="0dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/pickuptime_linear"
+                    android:hint = "@string/e_g_before_may_25th_6pm"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id = "@+id/Address_linear"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf = "@+id/quantity_linear"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:id="@+id/Address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+                    android:text="@string/address"
+                    android:fontFamily="cursive"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/Address_linear"
+                    app:layout_constraintTop_toTopOf="@+id/Address_linear" />
+
+                <EditText
+                    android:id="@+id/Address_editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="0dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/Address_linear"
+                    android:hint = "@string/e_g_16_northbourn_avenue_act"/>
+            </LinearLayout>
+            <Button
+                android:id="@+id/button_post"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Post"
+                android:background="@drawable/rounded_button"
+                app:layout_constraintTop_toBottomOf="@+id/Address_linear"
+                android:layout_marginTop="25dp"
+                android:layout_gravity="center_horizontal"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
