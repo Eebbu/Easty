@@ -276,6 +276,43 @@
                     android:layout_marginStart="20dp"/>
 
             </LinearLayout>
+
+
+
+            <LinearLayout
+                android:id = "@+id/fifthpost"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toTopOf = "@+id/first_post"
+                android:layout_marginTop="20dp">
+
+                <ImageButton
+                    android:id="@+id/breakfast"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/cereals"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:contentDescription="Open Album"
+                    />
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fast food"
+
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toEndOf="@id/breakfast"
+                    app:layout_constraintTop_toTopOf="@id/forthpost"
+
+                    android:layout_marginStart="20dp"/>
+
+            </LinearLayout>
         </LinearLayout>
 
 
