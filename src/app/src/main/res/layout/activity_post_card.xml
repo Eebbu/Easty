@@ -12,19 +12,20 @@
         android:background="@drawable/dash_view"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="0dp" />
+
+
     <TextView
         android:id="@+id/banner_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="15dp"
-        android:text="@string/free_food"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="cursive"
+        android:text="username"
         android:textSize="38sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
-
+        app:layout_constraintStart_toEndOf="@+id/userPhoto"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/leftArrowButton"
@@ -39,6 +40,20 @@
         android:layout_marginTop="20dp"
         android:contentDescription="Go back"/>
 
+    <ImageButton
+        android:id="@+id/userPhoto"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="20dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:contentDescription="userPhoto"
+        android:scaleType="fitCenter"
+        android:src="@drawable/baseline_person_24"
+        app:layout_constraintStart_toStartOf="@+id/leftArrowButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
     <ScrollView
         android:id="@+id/Scroll_post"
         android:layout_width="match_parent"
@@ -51,39 +66,26 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="16dp">
 
             <!-- Image Upload Section -->
             <LinearLayout
-                android:id="@+id/add_pic"
+                android:id="@+id/food"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <ImageButton
-                    android:id="@+id/cameraButton"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/camera"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginStart="50dp"
+                    android:id="@+id/food_picture"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
                     android:background="?android:attr/selectableItemBackground"
-                    android:contentDescription="Open Album"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/add_up_to_10_images"
-                    android:fontFamily="cursive"
-                    android:textStyle="bold"
-                    android:textSize="20sp"
-                    app:layout_constraintStart_toEndOf="@id/cameraButton"
-                    app:layout_constraintTop_toTopOf="@id/cameraButton"
-                    app:layout_constraintBottom_toBottomOf="@id/cameraButton"
-                    android:layout_marginStart="20dp"/>
+                    android:contentDescription="picture of food"
+                    android:src="@drawable/burger"
+                    app:layout_constraintStart_toStartOf="parent" />
 
             </LinearLayout>
 
@@ -91,38 +93,30 @@
             <LinearLayout
                 android:id = "@+id/title_linear"
                 android:layout_width="match_parent"
-                android:layout_height="90dp"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
                 app:layout_constraintTop_toTopOf = "@+id/add_pic"
                 android:layout_marginTop="20dp">
 
                 <TextView
-                    android:id="@+id/Title"
+                    android:id="@+id/title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="0dp"
                     android:layout_marginTop="0dp"
-                    android:text="@string/title"
-                    android:fontFamily="cursive"
+                    android:fontFamily="serif-monospace"
+                    android:text="titleOfPost"
                     android:textSize="30sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/title_linear"
                     app:layout_constraintTop_toTopOf="@+id/title_linear" />
-
-                <EditText
-                    android:id="@+id/title_editText"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginBottom="0dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/title_linear"
-                    android:hint = "@string/e_g_pizza"/>
 
             </LinearLayout>
 
             <LinearLayout
                 android:id = "@+id/description_linear"
                 android:layout_width="match_parent"
-                android:layout_height="90dp"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
                 app:layout_constraintTop_toTopOf = "@+id/title_linear"
                 android:layout_marginTop="20dp">
@@ -133,157 +127,48 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="0dp"
                     android:layout_marginTop="0dp"
-                    android:text="@string/description"
-                    android:fontFamily="cursive"
-                    android:textSize="30sp"
-                    android:textStyle="bold"
+                    android:fontFamily="serif-monospace"
+                    android:text="Here is the description of the post \nsinking your teeth into a juicy burger, the bun lightly toasted, the beef patty perfectly seared, topped with melted cheddar, fresh lettuce, ripe tomatoes, and tangy pickles, all held together by a creamy, slightly spicy sauce. It's a mouthwatering experience in every bite."
+                    android:textSize="22sp"
                     app:layout_constraintStart_toStartOf="@+id/description_linear"
                     app:layout_constraintTop_toTopOf="@+id/description_linear" />
 
-                <EditText
-                    android:id="@+id/description_editText"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginBottom="0dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/dscription_linear"
-                    android:hint = "@string/e_g_2xtins_of_veg_soup_bb_dec_2023"/>
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id = "@+id/quantity_linear"
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:orientation="vertical"
-                app:layout_constraintTop_toTopOf = "@+id/description_linear"
-                android:layout_marginTop="20dp">
+                <TextView
+                    android:id="@+id/remainAndMeetTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="10dp"
+                    android:text="2 remain and meet at time"
+                    android:fontFamily="cursive"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="@+id/description_linear"
+                    app:layout_constraintTop_toTopOf="@+id/description_linear" />
 
                 <TextView
-                    android:id="@+id/quantity"
+                    android:id="@+id/meetingAddress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="0dp"
                     android:layout_marginTop="0dp"
-                    android:text="@string/quantity"
+                    android:text="11 harold white ave, coombs, ACT 2611"
                     android:fontFamily="cursive"
-                    android:textSize="30sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@+id/quantity_linear"
-                    app:layout_constraintTop_toTopOf="@+id/quantity_linear" />
-                <LinearLayout
-                    android:id = "@+id/quantityBottonLinear"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintTop_toTopOf = "@+id/quantity"
-                    android:layout_marginTop="8dp">
-                    <Button
-                        android:id="@+id/button1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="1"
-                        android:layout_margin="5dp"
-                        android:background="@drawable/rounded_button" />
-
-                    <Button
-                        android:id="@+id/button2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="2"
-                        android:layout_margin="5dp"
-                        android:background="@drawable/rounded_button"/>
-
-                    <Button
-                        android:id="@+id/button3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="3"
-                        android:layout_margin="5dp"
-                        android:background="@drawable/rounded_button"/>
-                    <EditText
-                        android:id="@+id/editTextOther"
-                        android:layout_width="0dp"
-                        android:layout_height="60dp"
-                        android:layout_weight="1"
-                        android:hint="Other"
-                        android:textSize="18sp"
-                        android:layout_marginLeft="5dp"
-                        android:padding="10dp"
-                        android:gravity="center_vertical"/>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id = "@+id/pickuptime_linear"
-                android:layout_width="match_parent"
-                android:layout_height="90dp"
-                android:orientation="vertical"
-                app:layout_constraintTop_toBottomOf = "@+id/quantity_linear"
-                android:layout_marginTop="20dp">
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="@+id/description_linear"
+                    app:layout_constraintTop_toTopOf="@+id/description_linear" />
 
                 <TextView
-                    android:id="@+id/pickuptime"
+                    android:id="@+id/postTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginTop="0dp"
-                    android:text="@string/pick_up_times"
+                    android:layout_gravity="end"
                     android:fontFamily="cursive"
-                    android:textSize="30sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@+id/pickuptime_linear"
-                    app:layout_constraintTop_toTopOf="@+id/pickuptime_linear" />
+                    android:layout_marginTop="15dp"
+                    android:text="posted in 30 minutes"
+                    android:textSize="15sp" />
 
-                <EditText
-                    android:id="@+id/pickuptime_editText"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginBottom="0dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/pickuptime_linear"
-                    android:hint = "@string/e_g_before_may_25th_6pm"/>
             </LinearLayout>
 
-            <LinearLayout
-                android:id = "@+id/Address_linear"
-                android:layout_width="match_parent"
-                android:layout_height="90dp"
-                android:orientation="vertical"
-                app:layout_constraintTop_toBottomOf = "@+id/quantity_linear"
-                android:layout_marginTop="20dp">
-
-                <TextView
-                    android:id="@+id/Address"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginTop="0dp"
-                    android:text="@string/address"
-                    android:fontFamily="cursive"
-                    android:textSize="30sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@+id/Address_linear"
-                    app:layout_constraintTop_toTopOf="@+id/Address_linear" />
-
-                <EditText
-                    android:id="@+id/Address_editText"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginBottom="0dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/Address_linear"
-                    android:hint = "@string/e_g_16_northbourn_avenue_act"/>
-            </LinearLayout>
-            <Button
-                android:id="@+id/button_post"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Post"
-                android:background="@drawable/rounded_button"
-                app:layout_constraintTop_toBottomOf="@+id/Address_linear"
-                android:layout_marginTop="25dp"
-                android:layout_gravity="center_horizontal"/>
 
         </LinearLayout>
     </ScrollView>
