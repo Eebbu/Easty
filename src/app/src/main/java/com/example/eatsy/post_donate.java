@@ -1,32 +1,43 @@
 package com.example.eatsy;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.database.Cursor;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
+
+import java.io.IOException;
+import java.util.UUID;
+
+
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.appcheck.FirebaseAppCheck;
+import com.google.firebase.appcheck.playintegrity.PlayIntegrityAppCheckProviderFactory;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
 
 public class post_donate extends AppCompatActivity {
-    ArrayList paths = null;
-    ArrayList names= null;
-    List<Map<String, Object>> listItems;
+
+    private static final int PICK_IMAGE_REQUEST = 1;
+    private ImageButton uploadImage;
+    private Uri filePath;
+    private StorageReference storageReference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FirebaseApp.initializeApp(this);
+
+        // Set up Firebase App Check with the Play Integrity provider
+        FirebaseAppCheck.getInstance().installAppCheckProviderFactory(
+                PlayIntegrityAppCheckProviderFactory.getInstance());
+        storageReference = FirebaseStorage.getInstance().getReference();
         setContentView(R.layout.activity_post_donate);
         ImageButton go_back = findViewById(R.id.leftArrowButton);
         go_back.setOnClickListener(new View.OnClickListener() {
@@ -39,36 +50,43 @@ public class post_donate extends AppCompatActivity {
         post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                uploadImage();
             }
         });
-        ImageButton uploadImage = findViewById(R.id.cameraButton);
+        uploadImage = findViewById(R.id.cameraButton);
         uploadImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-//                getImagePath();
+                openGallery();
             }
         });
-
-    }
-    void getImagePath(){
-        Cursor cursor = getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,null,null,null,null);
-        while (cursor.moveToNext()) {
-            @SuppressLint("Range") String name = cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DISPLAY_NAME));
-            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-            String path = cursor.getString(column_index);
-            paths.add(path);
-            names.add(name);
-        }
-        for (int i = 0; i < paths.size(); i++) {
-            Map<String, Object> map = new HashMap<>();
-            map.put("name", paths.get(i));
-            map.put("desc", names.get(i));
-            listItems.add(map);
-        }
     }
     private void openGallery() {
-        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(intent, PICK_IMAGE_REQUEST);
+        Intent galleryIntent = new Intent();
+        galleryIntent.setType("image/*");
+        galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(galleryIntent, "Select Picture"), PICK_IMAGE_REQUEST);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            filePath = data.getData();
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+                uploadImage.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    private void uploadImage() {
+        if (filePath != null) {
+            StorageReference ref = storageReference.child("user_post_img/" + UUID.randomUUID().toString());
+            ref.putFile(filePath);
+            finish();
+        }
     }
 }
