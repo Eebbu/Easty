@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Eatsy"
         tools:targetApi="31">
         <activity
+            android:name=".postCard"
+            android:exported="false" />
+        <activity
             android:name=".search"
             android:exported="false" />
         <activity
