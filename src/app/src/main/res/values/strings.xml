@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Eatsy</string>
     <string name="title">Title</string>
-    <string name="add_up_to_10_images">Add up to 10 images</string>
+    <string name="add_up_to_10_images">Add your pictures</string>
     <string name="description">Description</string>
     <string name="pick_up_times">Pick-up times</string>
     <string name="free_food">Free food</string>
@@ -11,4 +11,5 @@
     <string name="e_g_before_may_25th_6pm">e.g. Before May 25th, 6pm</string>
     <string name="e_g_16_northbourn_avenue_act">e.g. 16 Northbourn Avenue, ACT</string>
     <string name="e_g_pizza">e.g. Pizza</string>
+    <string name="fresh_veges">Fresh Vegetables</string>
 </resources>

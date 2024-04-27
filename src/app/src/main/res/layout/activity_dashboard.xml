@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".DashboardActivity">
 
     <View
@@ -139,13 +140,26 @@
             android:orientation="vertical"
             android:padding="16dp">
 
+            <View
+                android:id="@+id/first_banner"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_marginStart="0dp"
+                android:background="@drawable/banner"
+                />
+
+
             <!-- Image Upload Section -->
             <LinearLayout
                 android:id="@+id/first_post"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:background="#dedfe0"
+                >
+
+
 
                 <ImageButton
                     android:id="@+id/food"
@@ -160,24 +174,42 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Fresh fruits"
+                    android:layout_gravity="top"
+                    android:layout_marginTop="10dp"
 
-                    android:textStyle="bold"
+                    android:layout_marginStart="20dp"
+
+                    android:text="Fresh fruits"
                     android:textSize="20sp"
-                    app:layout_constraintStart_toEndOf="@id/food"
-                    app:layout_constraintTop_toTopOf="@id/first_post"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@id/second_post"
-                    android:layout_marginStart="20dp"/>
+                    app:layout_constraintStart_toEndOf="@id/food"
+                    app:layout_constraintTop_toBottomOf="@id/first_banner" />
 
             </LinearLayout>
+
+
+            <View
+                android:id="@+id/second_banner"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_marginBottom="0dp"
+                android:background="@drawable/banner"
+                app:layout_constraintBottom_toTopOf="@+id/second_post"
+                app:layout_constraintTop_toBottomOf="@+id/first_post"
+                android:layout_marginTop="20dp"
+                />
 
             <LinearLayout
                 android:id = "@+id/second_post"
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
-                android:orientation="vertical"
-                app:layout_constraintTop_toTopOf = "@+id/first_post"
-                android:layout_marginTop="20dp">
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf = "@+id/second_banner"
+                android:background="#dedfe0"
+
+                android:layout_marginTop="0dp">
+
 
                 <ImageButton
                     android:id="@+id/Vegetables"
@@ -186,34 +218,51 @@
                     android:src="@drawable/veges"
                     android:layout_marginStart="0dp"
                     android:layout_marginTop="0dp"
+                    app:layout_constraintTop_toBottomOf="@id/second_banner"
                     android:background="?android:attr/selectableItemBackground"
                     android:contentDescription="Open Album"
                     />
 
 
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Fresh fruits"
 
-                    android:textStyle="bold"
+
+                    android:text="Fresh Vegetables"
                     android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@id/second_post"
+
                     app:layout_constraintStart_toEndOf="@id/Vegetables"
                     app:layout_constraintTop_toTopOf="@id/second_post"
-
-                    android:layout_marginStart="20dp"/>
+                    android:layout_marginStart="20dp"
+                    android:layout_gravity="top"
+                    android:layout_marginTop="10dp"
+                    />
 
             </LinearLayout>
+
+            <View
+                android:id="@+id/third_banner"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_marginBottom="0dp"
+                android:background="@drawable/banner"
+                app:layout_constraintBottom_toTopOf="@+id/third_post"
+                app:layout_constraintTop_toBottomOf="@+id/second_post"
+                android:layout_marginTop="20dp"
+                />
 
 
             <LinearLayout
                 android:id = "@+id/third_post"
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
-                android:orientation="vertical"
-                app:layout_constraintTop_toTopOf = "@+id/first_post"
-                android:layout_marginTop="20dp">
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf = "@+id/third_banner"
+                android:background="#dedfe0"
+                android:layout_marginTop="0dp">
 
                 <ImageButton
                     android:id="@+id/white_beans"
@@ -224,6 +273,7 @@
                     android:layout_marginTop="0dp"
                     android:background="?android:attr/selectableItemBackground"
                     android:contentDescription="Open Album"
+                    app:layout_constraintTop_toBottomOf="@id/third_banner"
                     />
 
 
@@ -232,6 +282,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Fresh beans"
+                    android:layout_gravity="top"
+                    android:layout_marginTop="10dp"
 
                     android:textStyle="bold"
                     android:textSize="20sp"
@@ -242,13 +294,25 @@
 
             </LinearLayout>
 
+            <View
+                android:id="@+id/forth_banner"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_marginBottom="0dp"
+                android:background="@drawable/banner"
+                app:layout_constraintBottom_toTopOf="@+id/forthpost"
+                app:layout_constraintTop_toBottomOf="@+id/third_post"
+                android:layout_marginTop="20dp"
+                />
+
             <LinearLayout
                 android:id = "@+id/forthpost"
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
-                android:orientation="vertical"
-                app:layout_constraintTop_toTopOf = "@+id/first_post"
-                android:layout_marginTop="20dp">
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf = "@+id/forth_banner"
+                android:background="#dedfe0"
+                android:layout_marginTop="0dp">
 
                 <ImageButton
                     android:id="@+id/brgrs"
@@ -267,6 +331,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Fast food"
+                    android:layout_gravity="top"
+                    android:layout_marginTop="10dp"
 
                     android:textStyle="bold"
                     android:textSize="20sp"
@@ -277,15 +343,27 @@
 
             </LinearLayout>
 
+            <View
+                android:id="@+id/fifth_banner"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_marginBottom="0dp"
+                android:background="@drawable/banner"
+                app:layout_constraintBottom_toTopOf="@+id/fifthpost"
+                app:layout_constraintTop_toBottomOf="@+id/forth_post"
+                android:layout_marginTop="20dp"
+                />
+
 
 
             <LinearLayout
                 android:id = "@+id/fifthpost"
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
-                android:orientation="vertical"
-                app:layout_constraintTop_toTopOf = "@+id/first_post"
-                android:layout_marginTop="20dp">
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf = "@+id/fifth_post"
+                android:background="#dedfe0"
+                android:layout_marginTop="0dp">
 
                 <ImageButton
                     android:id="@+id/breakfast"
@@ -303,8 +381,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Fast food"
-
+                    android:text="Healthy cereals"
+                    android:layout_gravity="top"
+                    android:layout_marginTop="10dp"
                     android:textStyle="bold"
                     android:textSize="20sp"
                     app:layout_constraintStart_toEndOf="@id/breakfast"
