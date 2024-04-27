@@ -3,6 +3,7 @@ package com.example.eatsy;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,6 +30,16 @@ public class DashboardActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DashboardActivity.this,Addpage.class);
+                startActivity(intent);
+            }
+        });
+
+
+        ImageButton to_post = findViewById(R.id.food);
+        to_post.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DashboardActivity.this, postCard.class);
                 startActivity(intent);
             }
         });
