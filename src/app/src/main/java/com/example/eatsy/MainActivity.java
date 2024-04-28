@@ -7,7 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 public class MainActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,6 +19,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Button logIn = findViewById(R.id.start);
         Button signUp = findViewById(R.id.sign_up);
+
+
+
+
         logIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
