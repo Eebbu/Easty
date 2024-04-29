@@ -4,17 +4,19 @@ import java.util.ArrayList;
 
 public class userFT {
     private String username;
-    private String password;
     private String userID;
     private String email;
 
     private ArrayList<String> postID;
 
-    public userFT(String username, String userID, String email, ArrayList<String> postID) {
+    private String photoURL ;
+
+    public userFT(String username, String userID, String email, String photoURL,ArrayList<String> postID) {
         this.username = username;
         this.userID = userID;
         this.email = email;
         this.postID = postID;
+        this.photoURL=photoURL;
     }
 
     public String getUsername() {
@@ -34,8 +36,15 @@ public class userFT {
         return email;
     }
 
+    public  String getPhotoURL(){return  photoURL;};
+
     public void setUsername(String username) {
         this.username = username;
+
+    }
+
+    public void photoURL(String photoURL) {
+        this.photoURL = photoURL;
 
     }
 
