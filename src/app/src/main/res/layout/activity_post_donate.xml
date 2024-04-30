@@ -182,29 +182,46 @@
                         app:layout_constraintTop_toTopOf = "@+id/quantity"
                         android:layout_marginTop="8dp"
                         android:minHeight="70dp">
-                        <Button
-                            android:id="@+id/button1"
+                        <RadioGroup
+                            android:id="@+id/radioGroupQuantity"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                        <RadioButton
+                            android:id="@+id/button1"
+                            android:layout_width="90dp"
+                            android:layout_height="60dp"
+                            android:textSize="20dp"
                             android:text="1"
                             android:layout_margin="5dp"
                             android:background="@drawable/rounded_button" />
 
-                        <Button
+                        <RadioButton
                             android:id="@+id/button2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="90dp"
+                            android:layout_height="60dp"
+                            android:textSize="20dp"
                             android:text="2"
                             android:layout_margin="5dp"
                             android:background="@drawable/rounded_button"/>
 
-                        <Button
+                        <RadioButton
                             android:id="@+id/button3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="90dp"
+                            android:layout_height="60dp"
+                            android:textSize="20dp"
                             android:text="3"
                             android:layout_margin="5dp"
                             android:background="@drawable/rounded_button"/>
+                        <RadioButton
+                            android:id="@+id/radioButtonOther"
+                            android:layout_width="90dp"
+                            android:layout_height="60dp"
+                            android:textSize="20dp"
+                            android:text="Other"
+                            android:background="@drawable/rounded_button"
+                            android:layout_margin="5dp"/>
+                        </RadioGroup>
                         <EditText
                             android:id="@+id/editTextOther"
                             android:layout_width="0dp"

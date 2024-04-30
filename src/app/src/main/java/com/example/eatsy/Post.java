@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * which are essential for managing the posts in our APP.
  */
 
-public class Post {
+public abstract class Post {
     private String userID;
     private String userName;
     private String postType;
@@ -16,7 +16,7 @@ public class Post {
     private String postTitle;
     private String postDescription;
 
-    private int quantity;
+    private String quantity;
 
     private String pickUpTimes;
 
@@ -27,20 +27,25 @@ public class Post {
     private ArrayList<String> images;
 
     private String food;
+    private String wantInExchange;
 
-    public  Post(String userID,String userName,String postType,String postTitle,String postDescription, int quantity, String pickUpTimes,String latitude,String longitude,ArrayList<String> images,String food){
-        this.userID = userID;
+//    public  Post(String userID,String userName,String postType,String postTitle,String postDescription, String quantity, String pickUpTimes,String latitude,String longitude,ArrayList<String> images,String food){
+public  Post(String userName,String postType,String postTitle,String postDescription, String quantity,String latitude,String longitude){
+//
+//        this.userID = userID;
         this.userName = userName;
         this.postType = postType;
         this.postTitle = postTitle;
         this.postDescription = postDescription;
         this.quantity = quantity;
-        this.pickUpTimes = pickUpTimes;
+//        this.pickUpTimes = pickUpTimes;
         this.latitude = latitude;
         this.longitude = longitude;
-        this.images = new ArrayList<>(images);
-        this.food = food;
+//        this.images = new ArrayList<>(images);
+//        this.food = food;
     }
+    // Abstract method to save to Firebase
+    public abstract void saveToFirebase();
 
     // Getter methods
     public String getUserID() {
@@ -63,7 +68,7 @@ public class Post {
         return postDescription;
     }
 
-    public int getQuantity() {
+    public String getQuantity() {
         return quantity;
     }
 
@@ -87,50 +92,56 @@ public class Post {
         return food;
     }
 
-    // Setter methods
-    public void setUserID(String userID) {
-        this.userID = userID;
-    }
+//    // Setter methods
+//    public void setUserID(String userID) {
+//        this.userID = userID;
+//    }
+//
+//    public void setUserName(String userName) {
+//        this.userName = userName;
+//    }
+//
+//    public void setPostType(String postType) {
+//        this.postType = postType;
+//    }
+//
+//    public void setPostTitle(String postTitle) {
+//        this.postTitle = postTitle;
+//    }
+//
+//    public void setPostDescription(String postDescription) {
+//        this.postDescription = postDescription;
+//    }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public void setPostType(String postType) {
-        this.postType = postType;
-    }
-
-    public void setPostTitle(String postTitle) {
-        this.postTitle = postTitle;
-    }
-
-    public void setPostDescription(String postDescription) {
-        this.postDescription = postDescription;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
+//    public void setQuantity(String quantity) {
+//        this.quantity = quantity;
+//    }
+//
     public void setPickUpTimes(String pickUpTimes) {
         this.pickUpTimes = pickUpTimes;
     }
-
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
+    public void setWantInExchange(String wantInExchange){
+        this.wantInExchange = wantInExchange;
     }
-
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
+//
+//    public void setLatitude(String latitude) {
+//        this.latitude = latitude;
+//    }
+//
+//    public void setLongitude(String longitude) {
+//        this.longitude = longitude;
+//    }
+//
+//    public void setImages(ArrayList<String> images) {
+//        this.images = new ArrayList<>(images);
+//    }
+    public void addImages(String image) {
+        this.images.add(image);
     }
-
-    public void setImages(ArrayList<String> images) {
-        this.images = new ArrayList<>(images);
-    }
-
-    public void setFood(String food) {
-        this.food = food;
-    }
+//
+//    public void setFood(String food) {
+//        this.food = food;
+//    }
 
 
 }
