@@ -32,13 +32,20 @@ public class post_donate extends AppCompatActivity {
     private ImageButton uploadImage;
     private Uri filePath;
     private StorageReference storageReference;
-    private final ImageButton go_back = findViewById(R.id.leftArrowButton);
-    private final RadioGroup radioGroup = findViewById(R.id.radioGroupQuantity);
-    private final EditText quantityEditText = findViewById(R.id.editTextOther);
-    private final EditText titleEditText = findViewById(R.id.title_editText);
-    private final EditText descriptionEditText = findViewById(R.id.description_editText);
-    private final EditText pickupTimeEditText = findViewById(R.id.pickuptime_editText);
-    private final EditText addressEditText = findViewById(R.id.Address_editText);
+//    private final ImageButton go_back = findViewById(R.id.leftArrowButton);
+//    private final RadioGroup radioGroup = findViewById(R.id.radioGroupQuantity);
+//    private final EditText quantityEditText = findViewById(R.id.editTextOther);
+//    private final EditText titleEditText = findViewById(R.id.title_editText);
+//    private final EditText descriptionEditText = findViewById(R.id.description_editText);
+//    private final EditText pickupTimeEditText = findViewById(R.id.pickuptime_editText);
+//    private final EditText addressEditText = findViewById(R.id.Address_editText);
+    private ImageButton go_back;
+    private RadioGroup radioGroup;
+    private EditText quantityEditText;
+    private EditText titleEditText;
+    private EditText descriptionEditText;
+    private EditText pickupTimeEditText;
+    private EditText addressEditText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,13 +56,13 @@ public class post_donate extends AppCompatActivity {
         FirebaseAppCheck.getInstance().installAppCheckProviderFactory(PlayIntegrityAppCheckProviderFactory.getInstance());
         storageReference = FirebaseStorage.getInstance().getReference();
         setContentView(R.layout.activity_post_donate);
-//        ImageButton go_back = findViewById(R.id.leftArrowButton);
-//        RadioGroup radioGroup = findViewById(R.id.radioGroupQuantity);
-//        final EditText quantityEditText = findViewById(R.id.editTextOther);
-//        EditText titleEditText = findViewById(R.id.title_editText);
-//        EditText descriptionEditText = findViewById(R.id.description_editText);
-//        EditText pickupTimeEditText = findViewById(R.id.pickuptime_editText);
-//        EditText addressEditText = findViewById(R.id.Address_editText);
+        go_back = findViewById(R.id.leftArrowButton);
+        radioGroup = findViewById(R.id.radioGroupQuantity);
+        quantityEditText = findViewById(R.id.editTextOther);
+        titleEditText = findViewById(R.id.title_editText);
+        descriptionEditText = findViewById(R.id.description_editText);
+        pickupTimeEditText = findViewById(R.id.pickuptime_editText);
+        addressEditText = findViewById(R.id.Address_editText);
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
