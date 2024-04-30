@@ -35,8 +35,7 @@ public class post_donate extends AppCompatActivity {
         FirebaseApp.initializeApp(this);
 
         // Set up Firebase App Check with the Play Integrity provider
-        FirebaseAppCheck.getInstance().installAppCheckProviderFactory(
-                PlayIntegrityAppCheckProviderFactory.getInstance());
+        FirebaseAppCheck.getInstance().installAppCheckProviderFactory(PlayIntegrityAppCheckProviderFactory.getInstance());
         storageReference = FirebaseStorage.getInstance().getReference();
         setContentView(R.layout.activity_post_donate);
         ImageButton go_back = findViewById(R.id.leftArrowButton);
@@ -51,12 +50,16 @@ public class post_donate extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 uploadImage();
+                Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
         uploadImage = findViewById(R.id.cameraButton);
         uploadImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 openGallery();
             }
         });
@@ -86,7 +89,6 @@ public class post_donate extends AppCompatActivity {
         if (filePath != null) {
             StorageReference ref = storageReference.child("user_post_img/" + UUID.randomUUID().toString());
             ref.putFile(filePath);
-            finish();
         }
     }
 }
