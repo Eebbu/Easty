@@ -55,121 +55,124 @@
 
 
     <ScrollView
-        android:id="@+id/Scroll_post"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/header_post"
-        tools:layout_editor_absoluteX="0dp"
-        app:layout_constraintBottom_toBottomOf="parent">
-
+            android:id="@+id/Scroll_post"
+            android:layout_width="411dp"
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/header_post">
 
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
 
             <!-- Image Upload Section -->
             <LinearLayout
-                android:id="@+id/food"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                    android:id="@+id/food"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
                 <ImageButton
-                    android:id="@+id/food_picture"
+                        android:id="@+id/food_picture"
+                        android:layout_width="match_parent"
+                        android:layout_height="400dp"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:contentDescription="picture of food"
+                        android:src="@drawable/burger"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                    android:id="@+id/title_linear"
                     android:layout_width="match_parent"
-                    android:layout_height="400dp"
-                    android:background="?android:attr/selectableItemBackground"
-                    android:contentDescription="picture of food"
-                    android:src="@drawable/burger"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id = "@+id/title_linear"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintTop_toTopOf = "@+id/add_pic"
-                android:layout_marginTop="20dp">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toTopOf="@+id/add_pic"
+                    android:layout_marginTop="20dp">
 
                 <TextView
-                    android:id="@+id/title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginTop="0dp"
-                    android:fontFamily="serif-monospace"
-                    android:text="titleOfPost"
-                    android:textSize="30sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@+id/title_linear"
-                    app:layout_constraintTop_toTopOf="@+id/title_linear" />
+                        android:id="@+id/title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="0dp"
+                        android:fontFamily="serif-monospace"
+                        android:text="titleOfPost"
+                        android:textSize="30sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="@+id/title_linear"
+                        app:layout_constraintTop_toTopOf="@+id/title_linear"/>
 
             </LinearLayout>
 
             <LinearLayout
-                android:id = "@+id/description_linear"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintTop_toTopOf = "@+id/title_linear"
-                android:layout_marginTop="20dp">
+                    android:id="@+id/description_linear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toTopOf="@+id/title_linear"
+                    android:layout_marginTop="20dp">
 
                 <TextView
-                    android:id="@+id/description"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginTop="0dp"
-                    android:fontFamily="serif-monospace"
-                    android:text="Here is the description of the post \nsinking your teeth into a juicy burger, the bun lightly toasted, the beef patty perfectly seared, topped with melted cheddar, fresh lettuce, ripe tomatoes, and tangy pickles, all held together by a creamy, slightly spicy sauce. It's a mouthwatering experience in every bite."
-                    android:textSize="22sp"
-                    app:layout_constraintStart_toStartOf="@+id/description_linear"
-                    app:layout_constraintTop_toTopOf="@+id/description_linear" />
+                        android:id="@+id/description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="0dp"
+                        android:fontFamily="serif-monospace"
+                        android:text="Here is the description of the post \nsinking your teeth into a juicy burger, the bun lightly toasted, the beef patty perfectly seared, topped with melted cheddar, fresh lettuce, ripe tomatoes, and tangy pickles, all held together by a creamy, slightly spicy sauce. It's a mouthwatering experience in every bite."
+                        android:textSize="22sp"
+                        app:layout_constraintStart_toStartOf="@+id/description_linear"
+                        app:layout_constraintTop_toTopOf="@+id/description_linear"/>
 
                 <TextView
-                    android:id="@+id/remainAndMeetTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginTop="10dp"
-                    android:text="2 remain and meet at time"
-                    android:fontFamily="cursive"
-                    android:textSize="18sp"
-                    app:layout_constraintStart_toStartOf="@+id/description_linear"
-                    app:layout_constraintTop_toTopOf="@+id/description_linear" />
+                        android:id="@+id/remainAndMeetTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="10dp"
+                        android:text="2 remain and meet at time"
+                        android:fontFamily="cursive"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toStartOf="@+id/description_linear"
+                        app:layout_constraintTop_toTopOf="@+id/description_linear"/>
 
                 <TextView
-                    android:id="@+id/meetingAddress"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginTop="0dp"
-                    android:text="11 harold white ave, coombs, ACT 2611"
-                    android:fontFamily="cursive"
-                    android:textSize="18sp"
-                    app:layout_constraintStart_toStartOf="@+id/description_linear"
-                    app:layout_constraintTop_toTopOf="@+id/description_linear" />
+                        android:id="@+id/meetingAddress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="0dp"
+                        android:text="11 harold white ave, coombs, ACT 2611"
+                        android:fontFamily="cursive"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toStartOf="@+id/description_linear"
+                        app:layout_constraintTop_toTopOf="@+id/description_linear"/>
 
+                <fragment
+                        android:id="@+id/map"
+                        android:name="com.google.android.gms.maps.SupportMapFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="400dp"/>
                 <TextView
-                    android:id="@+id/postTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:fontFamily="cursive"
-                    android:layout_marginTop="15dp"
-                    android:text="posted in 30 minutes"
-                    android:textSize="15sp" />
+                        android:id="@+id/postTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:fontFamily="cursive"
+                        android:layout_marginTop="15dp"
+                        android:text="posted in 30 minutes"
+                        android:textSize="15sp"/>
+
 
             </LinearLayout>
-
-
         </LinearLayout>
     </ScrollView>
 
