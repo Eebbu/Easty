@@ -10,14 +10,14 @@ public class PostDataDownloader {
     /**
      * Downloads post data from a specified Firestore collection and stores it in a ConcurrentHashMap.
      */
-    ConcurrentHashMap<String, PostFT> postHashMap = new ConcurrentHashMap<>();
+
 
     public CompletableFuture<ConcurrentHashMap<String, PostFT>> downloadData(CollectionReference postsCollectionRef) {
         CompletableFuture<ConcurrentHashMap<String, PostFT>> future = new CompletableFuture<>();
 
         postsCollectionRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
-                postHashMap.clear();  // 清除旧的数据
+                ConcurrentHashMap<String, PostFT> postHashMap = new ConcurrentHashMap<>();
                 task.getResult().forEach(document -> {
                     String postID = document.getId();
                     String userID = document.getString("userID");
@@ -42,8 +42,6 @@ public class PostDataDownloader {
         return future;
     }
 
-    public ConcurrentHashMap<String, PostFT> getPostHashMap() {
-        return postHashMap;
-    }
+
 }
 
