@@ -17,11 +17,15 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class postCard extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    private static final LatLng CANBERRA = new LatLng(-35.282001, 149.128998);
+    private LatLng selectedLocation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_card);
+
+        double latitude = getIntent().getDoubleExtra("latitude", -35.282001);
+        double longitude = getIntent().getDoubleExtra("longitude", 149.128998);
+        selectedLocation = new LatLng(latitude, longitude);
 
 
         ImageButton go_back = findViewById(R.id.leftArrowButton);
@@ -40,22 +44,13 @@ public class postCard extends AppCompatActivity implements OnMapReadyCallback {
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(CANBERRA, 11));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(selectedLocation, 11));
         mMap.getUiSettings().setZoomGesturesEnabled(false);
         mMap.getUiSettings().setZoomControlsEnabled(true);
+        mMap.addMarker(new MarkerOptions().position(selectedLocation).title("Selected Location"));
 
         // 设置地图点击事件监听器
-        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
-            @Override
-            public void onMapClick(LatLng latLng) {
-                // 在点击的位置添加标记
-                mMap.clear(); // 清除旧标记
-                mMap.addMarker(new MarkerOptions().position(latLng).title("Selected Location"));
-                // 可以在这里获取选点的经纬度和地址信息，以便将其提交到您的“post”中
-                double latitude = latLng.latitude;
-                double longitude = latLng.longitude;
-            }
-        });
+
     }
 
 }

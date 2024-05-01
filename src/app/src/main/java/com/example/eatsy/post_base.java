@@ -2,8 +2,10 @@ package com.example.eatsy;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.ImageFormat;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
@@ -33,6 +35,7 @@ public abstract class post_base extends AppCompatActivity {
     protected EditText addressEditText;
     protected EditText wantEditText;
     private static final int PICK_IMAGE_REQUEST = 1;
+    private static final int PICK_MAP_REQUEST = 2;
     protected abstract void addPostToFirbase();
     protected abstract boolean validateInputs();
 
@@ -85,6 +88,13 @@ public abstract class post_base extends AppCompatActivity {
                 finish();
             }
         });
+
+        Button choose = findViewById(R.id.confirm_button);
+        choose.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), MapSelection.class);
+            startActivityForResult(intent,PICK_MAP_REQUEST);
+        });
+
         if ((this instanceof post_donate) || this instanceof post_exchange) {
             uploadImage.setOnClickListener(v -> openGallery());
         }
@@ -111,6 +121,18 @@ public abstract class post_base extends AppCompatActivity {
                 uploadImage.setImageBitmap(resizedBitmap);
             } catch (IOException e) {
                 e.printStackTrace();
+            }
+        }
+
+        if (requestCode == PICK_MAP_REQUEST && resultCode == RESULT_OK) {
+            if (data != null) {
+                double[] selectedPoint = data.getDoubleArrayExtra("selectedPoint");
+                double selectedLatitude = selectedPoint[0];
+                double selectedLongitude = selectedPoint[1];
+                String selectedAddress = data.getStringExtra("selectedAddress");
+                addressEditText.setText(selectedAddress);
+
+
             }
         }
     }
