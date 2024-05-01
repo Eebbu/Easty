@@ -1,18 +1,8 @@
 package com.example.eatsy;
 
-import android.net.Uri;
-
-import com.google.firebase.storage.StorageReference;
-
 import java.util.ArrayList;
 
-/**
- * The Post class represents a post in our application.
- * This class includes details such as user identification, post type, and content descriptions,
- * which are essential for managing the posts in our APP.
- */
-
-public abstract class Post {
+public class PostFT {
     private String userID;
     private String userName;
     private String postType;
@@ -28,29 +18,26 @@ public abstract class Post {
 
     private String longitude;
 
-    private ArrayList<String> images = null;
+    private ArrayList<String> images;
 
     private String food;
     private String wantInExchange;
 
 
-//    public  Post(String userID,String userName,String postType,String postTitle,String postDescription, String quantity, String pickUpTimes,String latitude,String longitude,ArrayList<String> images,String food){
-public  Post(String userName,String postType,String postTitle,String postDescription, String quantity,String latitude,String longitude){
-//
-//        this.userID = userID;
+    public  PostFT(String userID,String userName,String postType,String postTitle,String postDescription, String quantity, String pickUpTimes,String latitude,String longitude,ArrayList<String> images){
+
         this.userName = userName;
         this.postType = postType;
         this.postTitle = postTitle;
         this.postDescription = postDescription;
         this.quantity = quantity;
-//        this.pickUpTimes = pickUpTimes;
+        this.pickUpTimes = pickUpTimes;
         this.latitude = latitude;
         this.longitude = longitude;
-//        this.images = new ArrayList<>(images);
-//        this.food = food;
+        this.images = new ArrayList<>(images);
+
     }
-    // Abstract method to save to Firebase
-    public abstract void saveToFirebase();
+
 
     // Getter methods
     public String getUserID() {
@@ -97,7 +84,6 @@ public  Post(String userName,String postType,String postTitle,String postDescrip
         return food;
     }
 
-
 //    // Setter methods
 //    public void setUserID(String userID) {
 //        this.userID = userID;
@@ -119,7 +105,7 @@ public  Post(String userName,String postType,String postTitle,String postDescrip
 //        this.postDescription = postDescription;
 //    }
 
-//    public void setQuantity(String quantity) {
+    //    public void setQuantity(String quantity) {
 //        this.quantity = quantity;
 //    }
 //
@@ -142,16 +128,10 @@ public  Post(String userName,String postType,String postTitle,String postDescrip
 //        this.images = new ArrayList<>(images);
 //    }
     public void addImages(String image) {
-        if(images == null){
-            images = new ArrayList<>();
-            images.add(image);
-        }else
-            this.images.add(image);
+        this.images.add(image);
     }
 //
 //    public void setFood(String food) {
 //        this.food = food;
 //    }
-
-
 }

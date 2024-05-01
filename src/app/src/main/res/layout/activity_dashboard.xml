@@ -20,16 +20,6 @@
         app:layout_constraintVertical_bias="0.0"
         tools:layout_editor_absoluteX="0dp" />
 
-    <View
-        android:id="@+id/bottom_view"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-
-        android:background="@drawable/bt_view"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header_view"
-        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/srch"
@@ -40,9 +30,7 @@
         android:background="@drawable/search_bg"
         android:backgroundTint="#D1CDCD"
         android:ems="10"
-
         android:hint=" Search"
-
         android:inputType="text"
         android:paddingLeft="20dp"
         android:textSize="20sp"
@@ -50,18 +38,50 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/header_view" />
 
-    <TextView
+    <View
+        android:id="@+id/bottom_view"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+
+        android:background="@drawable/bt_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header_view"
+        app:layout_constraintVertical_bias="1.0" />
+
+<!--    <TextView-->
+<!--        android:id="@+id/add_pg"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="4dp"-->
+<!--        android:drawableTop="@drawable/baseline_add_circle_24"-->
+<!--        android:text="ADD"-->
+<!--        android:textColor="@color/black"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/bottom_view"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/bottom_view"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/bottom_view" />-->
+    <LinearLayout
         android:id="@+id/add_pg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:drawableTop="@drawable/baseline_add_circle_24"
-        android:text="  Add"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/bottom_view" />
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="@+id/bottom_view"
+        app:layout_constraintStart_toStartOf="@+id/bottom_view"
+        app:layout_constraintTop_toTopOf="@+id/bottom_view"
+        android:gravity="center_horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_add_circle_24" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ADD"
+            android:textColor="@color/black" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/food2"
@@ -70,6 +90,7 @@
         android:layout_marginTop="120dp"
         android:text="Food"
         android:textSize="30sp"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.09"
         app:layout_constraintStart_toStartOf="parent"
@@ -156,8 +177,7 @@
                 android:layout_height="100dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:background="#dedfe0"
-                >
+                android:background="#dedfe0">
 
 
 
@@ -179,7 +199,7 @@
 
                     android:layout_marginStart="20dp"
 
-                    android:text="Fresh fruits"
+                    android:text="Fruits"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@id/second_post"
@@ -229,7 +249,7 @@
                     android:layout_height="wrap_content"
 
 
-                    android:text="Fresh Vegetables"
+                    android:text="Vegetables"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@id/second_post"
@@ -281,7 +301,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Fresh beans"
+                    android:text="Beans"
                     android:layout_gravity="top"
                     android:layout_marginTop="10dp"
 
@@ -330,7 +350,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Fast food"
+                    android:text="Burgers"
                     android:layout_gravity="top"
                     android:layout_marginTop="10dp"
 
@@ -381,7 +401,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Healthy cereals"
+                    android:text="Cereals"
                     android:layout_gravity="top"
                     android:layout_marginTop="10dp"
                     android:textStyle="bold"

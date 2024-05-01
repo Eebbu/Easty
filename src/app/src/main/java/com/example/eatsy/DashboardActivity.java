@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -25,7 +26,7 @@ public class DashboardActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        TextView addPageTextView = findViewById(R.id.add_pg);
+        LinearLayout addPageTextView = findViewById(R.id.add_pg);
         addPageTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
