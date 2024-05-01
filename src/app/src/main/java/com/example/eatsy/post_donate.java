@@ -9,7 +9,11 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
 
 import java.io.IOException;
@@ -23,70 +27,184 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 
-public class post_donate extends AppCompatActivity {
-
-    private static final int PICK_IMAGE_REQUEST = 1;
-    private ImageButton uploadImage;
-    private Uri filePath;
-    private StorageReference storageReference;
+public class post_donate extends post_base {
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        FirebaseApp.initializeApp(this);
-
-        // Set up Firebase App Check with the Play Integrity provider
-        FirebaseAppCheck.getInstance().installAppCheckProviderFactory(
-                PlayIntegrityAppCheckProviderFactory.getInstance());
-        storageReference = FirebaseStorage.getInstance().getReference();
-        setContentView(R.layout.activity_post_donate);
-        ImageButton go_back = findViewById(R.id.leftArrowButton);
-        go_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-        Button post = findViewById(R.id.button_post);
-        post.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                uploadImage();
-            }
-        });
+    protected int getLayoutResourceId() {
+        return R.layout.activity_post_donate;
+    }
+    @Override
+    protected void setupSpecificViews() {
+        pickupTimeEditText = findViewById(R.id.pickuptime_editText);
         uploadImage = findViewById(R.id.cameraButton);
-        uploadImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openGallery();
-            }
-        });
     }
-    private void openGallery() {
-        Intent galleryIntent = new Intent();
-        galleryIntent.setType("image/*");
-        galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(galleryIntent, "Select Picture"), PICK_IMAGE_REQUEST);
-    }
+
+//    private static final int PICK_IMAGE_REQUEST = 1;
+//    private ImageButton uploadImage;
+//    private Uri filePath;
+//    private StorageReference storageReference;
+//    private RadioGroup radioGroup;
+//    private EditText quantityEditText;
+//    private EditText titleEditText;
+//    private EditText descriptionEditText;
+//    private EditText pickupTimeEditText;
+//    private EditText addressEditText;
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//
+//        FirebaseApp.initializeApp(this);
+//
+//        // Set up Firebase App Check with the Play Integrity provider
+//        FirebaseAppCheck.getInstance().installAppCheckProviderFactory(PlayIntegrityAppCheckProviderFactory.getInstance());
+//        storageReference = FirebaseStorage.getInstance().getReference();
+//        setContentView(R.layout.activity_post_donate);
+//        ImageButton go_back = findViewById(R.id.leftArrowButton);
+//        radioGroup = findViewById(R.id.radioGroupQuantity);
+//        quantityEditText = findViewById(R.id.editTextOther);
+//        titleEditText = findViewById(R.id.title_editText);
+//        descriptionEditText = findViewById(R.id.description_editText);
+//        pickupTimeEditText = findViewById(R.id.pickuptime_editText);
+//        addressEditText = findViewById(R.id.Address_editText);
+//        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(RadioGroup group, int checkedId) {
+//
+//                if (checkedId == R.id.radioButtonOther) {
+//                    quantityEditText.setVisibility(View.VISIBLE);
+//                } else {
+//                    quantityEditText.setVisibility(View.GONE);
+//                }
+//            }
+//        });
+//        go_back.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                finish();
+//            }
+//        });
+//        Button post = findViewById(R.id.button_post);
+//        post.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (validateInputs()) {
+//                    addPostToFirbase();
+//                    Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
+//                    startActivity(intent);
+//                    finish();
+//                }
+//            }
+//        });
+//        uploadImage = findViewById(R.id.cameraButton);
+//        uploadImage.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                openGallery();
+//            }
+//        });
+//    }
+//    protected void openGallery() {
+//        Intent galleryIntent = new Intent();
+//        galleryIntent.setType("image/*");
+//        galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
+//        startActivityForResult(Intent.createChooser(galleryIntent, "Select Picture"), PICK_IMAGE_REQUEST);
+//    }
+
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//
+//        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+//            filePath = data.getData();
+//            try {
+//                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+//                int newDp = (int) (100 * getResources().getDisplayMetrics().density);
+//                Bitmap resizedBitmap = scaleBitmapToMaxSize(bitmap, newDp);
+//                uploadImage.setImageBitmap(resizedBitmap);
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+////    }
+//    private Bitmap scaleBitmapToMaxSize(Bitmap originalBitmap, int maxSizePx) {
+//        if (originalBitmap == null) {
+//            return null;
+//        }
+//
+//        int width = originalBitmap.getWidth();
+//        int height = originalBitmap.getHeight();
+//        float ratio = (float) width / height;
+//
+//        int scaledWidth = maxSizePx;
+//        int scaledHeight = maxSizePx;
+//
+//        if (ratio > 1) {
+//            scaledHeight = (int) (maxSizePx / ratio);
+//        } else {
+//            scaledWidth = (int) (maxSizePx * ratio);
+//        }
+//
+//        return Bitmap.createScaledBitmap(originalBitmap, scaledWidth, scaledHeight, true);
+//    }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            filePath = data.getData();
-            try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
-                uploadImage.setImageBitmap(bitmap);
-            } catch (IOException e) {
-                e.printStackTrace();
+    protected boolean validateInputs() {
+        boolean valid = true;
+        int selectedId = radioGroup.getCheckedRadioButtonId();
+        if (selectedId == -1) {
+            valid = false;
+            Toast.makeText(this, "Please enter a quantity or select a button", Toast.LENGTH_SHORT).show();
+        }else if(selectedId == R.id.radioButtonOther){
+            if (quantityEditText.getText().toString().trim().isEmpty()) {
+                Toast.makeText(this, "Please enter a quantity or select a button", Toast.LENGTH_SHORT).show();
+                valid = false;
             }
         }
-    }
-    private void uploadImage() {
-        if (filePath != null) {
-            StorageReference ref = storageReference.child("user_post_img/" + UUID.randomUUID().toString());
-            ref.putFile(filePath);
-            finish();
+        if (titleEditText.getText().toString().trim().isEmpty()) {
+            titleEditText.setError("Required");
+            valid = false;
         }
+
+        if (pickupTimeEditText.getText().toString().trim().isEmpty()) {
+            pickupTimeEditText.setError("Required");
+            valid = false;
+        }
+
+        if (addressEditText.getText().toString().trim().isEmpty()) {
+            addressEditText.setError("Required");
+            valid = false;
+        }
+
+        if (filePath == null) {
+            Toast.makeText(this, "Please upload an image", Toast.LENGTH_SHORT).show();
+            valid = false;
+        }
+
+        return valid;
     }
+    protected void addPostToFirbase(){
+        String quantity;
+        int selectedId = radioGroup.getCheckedRadioButtonId();
+        if(selectedId == R.id.radioButtonOther){
+            quantity = quantityEditText.getText().toString().trim();
+        }else{
+            RadioButton radioButton = findViewById(selectedId);
+            quantity = radioButton.getText().toString();
+        }
+        String title = titleEditText.getText().toString().trim();
+        String description = "";
+        if (null != descriptionEditText) {
+            description = descriptionEditText.getText().toString().trim();
+        }
+        String image = filePath.toString();
+        String pick_up_times = pickupTimeEditText.getText().toString().trim();
+        //TODO revise these four string
+        String userName = getIntent().getStringExtra("USERNAME");
+        String latitude = "111";
+        String longtitude = "222";
+        StorageReference ref = storageReference.child("user_post_img/" + UUID.randomUUID().toString());
+        factory_donate post = new factory_donate(userName, title, description,
+                quantity, pick_up_times,latitude, longtitude, image,filePath,ref);
+        post.saveToFirebase();
+    }
+
 }
