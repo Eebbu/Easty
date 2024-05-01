@@ -27,12 +27,13 @@ public class UserDataDownloader {
      * Downloads user data from a specified Firestore collection and stores it in a HashMap.
      * Notifies the callback upon successful data retrieval or in case of a failure.
      */
-    ConcurrentHashMap<String, userFT> userHashMap = new ConcurrentHashMap<>();
+
     public CompletableFuture<ConcurrentHashMap<String, userFT>> downloadData(CollectionReference usersCollectionRef) {
         CompletableFuture<ConcurrentHashMap<String, userFT>> future = new CompletableFuture<>();
 
         usersCollectionRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
+                ConcurrentHashMap<String, userFT> userHashMap = new ConcurrentHashMap<>();
                 task.getResult().forEach(document -> {
                     String email = document.getId();
                     String username = document.getString("name");
@@ -51,8 +52,4 @@ public class UserDataDownloader {
     }
 
 
-    public ConcurrentHashMap<String, userFT> getUserHashMap() {
-        return userHashMap;
-
-}
 }

@@ -27,7 +27,8 @@ public class MyApplication extends Application {
 
         // Call the asynchronous method, and handle the returned CompletableFuture
         downloader.downloadData(usersCollectionRef)
-                .thenAccept(data -> {
+                .thenAccept(data ->  {
+                    DataManager.getDataInstance().setUserHashMap(data); // 存储到 DataManager
                     // Success: data received
                     for (Map.Entry<String, userFT> entry : data.entrySet()) {
                         String email = entry.getKey();
@@ -48,7 +49,7 @@ public class MyApplication extends Application {
                 });
         // Download and handle post data
         postDownloader.downloadData(postsCollectionRef)
-                .thenAccept(data -> {
+                .thenAccept(data -> { DataManager.getDataInstance().setPostHashMap(data); // 存储到 DataManager
                     // Success: post data received
                     for (Map.Entry<String, PostFT> entry : data.entrySet()) {
                         String postID = entry.getKey();
