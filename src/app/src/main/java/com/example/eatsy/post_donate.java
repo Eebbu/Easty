@@ -100,6 +100,16 @@ public class post_donate extends AppCompatActivity {
                 openGallery();
             }
         });
+
+        Button confirm = findViewById(R.id.confirm_button);
+        confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    Intent intent = new Intent(getApplicationContext(), MapSelection.class);
+                    startActivity(intent);
+
+            }
+        });
     }
     private void openGallery() {
         Intent galleryIntent = new Intent();

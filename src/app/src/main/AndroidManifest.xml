@@ -18,6 +18,9 @@
             android:theme="@style/Theme.Eatsy"
             tools:targetApi="31">
         <activity
+                android:name=".MapSelection"
+                android:exported="false"/>
+        <activity
                 android:name=".mapSelection"
                 android:exported="false"/>
 
