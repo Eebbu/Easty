@@ -1,5 +1,9 @@
 package com.example.eatsy;
 
+import android.net.Uri;
+
+import com.google.firebase.storage.StorageReference;
+
 import java.util.ArrayList;
 
 /**
@@ -28,6 +32,7 @@ public abstract class Post {
 
     private String food;
     private String wantInExchange;
+
 
 //    public  Post(String userID,String userName,String postType,String postTitle,String postDescription, String quantity, String pickUpTimes,String latitude,String longitude,ArrayList<String> images,String food){
 public  Post(String userName,String postType,String postTitle,String postDescription, String quantity,String latitude,String longitude){
@@ -92,6 +97,7 @@ public  Post(String userName,String postType,String postTitle,String postDescrip
         return food;
     }
 
+
 //    // Setter methods
 //    public void setUserID(String userID) {
 //        this.userID = userID;
@@ -123,7 +129,7 @@ public  Post(String userName,String postType,String postTitle,String postDescrip
     public void setWantInExchange(String wantInExchange){
         this.wantInExchange = wantInExchange;
     }
-//
+    //
 //    public void setLatitude(String latitude) {
 //        this.latitude = latitude;
 //    }
