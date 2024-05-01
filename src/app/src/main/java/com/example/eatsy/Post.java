@@ -24,7 +24,7 @@ public abstract class Post {
 
     private String longitude;
 
-    private ArrayList<String> images;
+    private ArrayList<String> images = null;
 
     private String food;
     private String wantInExchange;
@@ -136,7 +136,11 @@ public  Post(String userName,String postType,String postTitle,String postDescrip
 //        this.images = new ArrayList<>(images);
 //    }
     public void addImages(String image) {
-        this.images.add(image);
+        if(images == null){
+            images = new ArrayList<>();
+            images.add(image);
+        }else
+            this.images.add(image);
     }
 //
 //    public void setFood(String food) {

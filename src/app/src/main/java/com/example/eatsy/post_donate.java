@@ -85,7 +85,7 @@ public class post_donate extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (validateInputs()) {
-                    uploadImage();
+//                    uploadImage();
                     addPostToFirbase();
                     Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
                     startActivity(intent);
@@ -116,17 +116,33 @@ public class post_donate extends AppCompatActivity {
             filePath = data.getData();
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
-                uploadImage.setImageBitmap(bitmap);
+                int newDp = (int) (100 * getResources().getDisplayMetrics().density);
+                Bitmap resizedBitmap = scaleBitmapToMaxSize(bitmap, newDp);
+                uploadImage.setImageBitmap(resizedBitmap);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
-    private void uploadImage() {
-        if (filePath != null) {
-            StorageReference ref = storageReference.child("user_post_img/" + UUID.randomUUID().toString());
-            ref.putFile(filePath);
+    private Bitmap scaleBitmapToMaxSize(Bitmap originalBitmap, int maxSizePx) {
+        if (originalBitmap == null) {
+            return null;
         }
+
+        int width = originalBitmap.getWidth();
+        int height = originalBitmap.getHeight();
+        float ratio = (float) width / height;
+
+        int scaledWidth = maxSizePx;
+        int scaledHeight = maxSizePx;
+
+        if (ratio > 1) {
+            scaledHeight = (int) (maxSizePx / ratio);
+        } else {
+            scaledWidth = (int) (maxSizePx * ratio);
+        }
+
+        return Bitmap.createScaledBitmap(originalBitmap, scaledWidth, scaledHeight, true);
     }
     private boolean validateInputs() {
         boolean valid = true;
@@ -146,11 +162,6 @@ public class post_donate extends AppCompatActivity {
 
         if (descriptionEditText.getText().toString().trim().isEmpty()) {
             descriptionEditText.setError("Required");
-            valid = false;
-        }
-
-        if (quantityEditText.getText().toString().trim().isEmpty()) {
-            quantityEditText.setError("Required");
             valid = false;
         }
 
@@ -178,11 +189,13 @@ public class post_donate extends AppCompatActivity {
         String image = filePath.toString();
         String pick_up_times = pickupTimeEditText.getText().toString().trim();
         //TODO revise these four string
-        String userID = "someUserID";
         String userName = "someUserName";
         String latitude = "111";
         String longtitude = "222";
         factory_donate post = new factory_donate(userName, title, description, quantity, pick_up_times,latitude, longtitude, image);
+        StorageReference ref = storageReference.child("user_post_img/" + UUID.randomUUID().toString());
+        post.setFilePath(filePath);
+        post.setStorageReference(ref);
         post.saveToFirebase();
     }
 
