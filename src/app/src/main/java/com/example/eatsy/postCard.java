@@ -45,11 +45,11 @@ public class postCard extends AppCompatActivity implements OnMapReadyCallback {
         mMap = googleMap;
 
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(selectedLocation, 11));
-        mMap.getUiSettings().setZoomGesturesEnabled(false);
         mMap.getUiSettings().setZoomControlsEnabled(true);
+        mMap.getUiSettings().setScrollGesturesEnabled(false);
+        mMap.getUiSettings().setRotateGesturesEnabled(false);
+        mMap.getUiSettings().setTiltGesturesEnabled(false);
         mMap.addMarker(new MarkerOptions().position(selectedLocation).title("Selected Location"));
-
-        // 设置地图点击事件监听器
 
     }
 
