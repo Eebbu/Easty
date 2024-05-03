@@ -1,49 +1,237 @@
 package com.example.eatsy;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
+import android.view.inputmethod.EditorInfo;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class search extends AppCompatActivity {
+    private ListView mListVie;
+    private List<PostFT> postList = new ArrayList<>();
+
+    private Map<Integer,String> type = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        EdgeToEdge.enable(this);
-//        setContentView(R.layout.activity_search);
-//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-//            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-//            return insets;
-//        });
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_search);
+        setCheckListener();
+        setEditListener();
+        searchAll();
+    }
 
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_search);
 
-            // 获取按钮并设置点击监听器
-           ImageButton returnHome = findViewById(R.id.leftArrowButtonsearch);
-            returnHome.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // 创建返回MainActivity的Intent
-                    Intent intent = new Intent(search.this, DashboardActivity.class);
 
-                    // 设置FLAG_ACTIVITY_CLEAR_TOP，清除MainActivity之上的所有Activity
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+    protected void setCheckListener(){
+        CheckBox checkBox1 = findViewById(R.id.checkBox1);
+        CheckBox checkBox2 = findViewById(R.id.checkBox2);
+        CheckBox checkBox3 = findViewById(R.id.checkBox3);
 
-                    // 启动MainActivity
-                    startActivity(intent);
+        View.OnClickListener checkBoxClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean isChecked1 = checkBox1.isChecked();
+                boolean isChecked2 = checkBox2.isChecked();
+                boolean isChecked3 = checkBox3.isChecked();
+
+                String text1 = checkBox1.getText().toString();
+                String text2 = checkBox2.getText().toString();
+                String text3 = checkBox3.getText().toString();
+
+                // 在这里处理点击事件，并使用 isChecked 和 text 进行相应操作
+                if (isChecked1) {
+                    // CheckBox 1 被选中
+                    type.put(1,"donate");
+                } else {
+                    // CheckBox 1 被取消选中
+                    type.remove(1);
                 }
-            });
+
+                if (isChecked2) {
+                    // CheckBox 2 被选中
+                    type.put(2,"wanted");
+                } else {
+                    // CheckBox 2 被取消选中
+                    type.remove(2);
+                }
+
+                if (isChecked3) {
+                    // CheckBox 3 被选中
+                    type.put(3,"exchange");
+                } else {
+                    // CheckBox 3 被取消选中
+                    type.remove(3);
+                }
+                if(!type.isEmpty()){
+                    searchData();
+                }else{
+                    searchAll();
+                }
+            }
+        };
+        // 为每个 CheckBox 设置相同的点击监听器
+        checkBox1.setOnClickListener(checkBoxClickListener);
+        checkBox2.setOnClickListener(checkBoxClickListener);
+        checkBox3.setOnClickListener(checkBoxClickListener);
+    }
+
+
+    protected void setEditListener(){
+        EditText editText = findViewById(R.id.srch);
+        editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    String searchText = editText.getText().toString().trim();
+                    if(searchText.isEmpty()){
+                        searchAll();
+                    }else{
+                        searchText = searchText.replaceAll("[^a-zA-Z0-9\\s]", "");
+                        String[] tabs = searchText.split(" ");
+                        searchByTest(tabs);
+                    }
+                    return true;
+                }
+                return false;
+            }
+        });
+    }
+
+
+
+    private void searchData(){
+        List<PostFT> resList = new ArrayList<>();
+        CollectionReference postsCollectionRef = FirestoreHelper.getCollectionRef("posts");
+        postsCollectionRef.whereIn("postType", new ArrayList<>(type.values()))
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        task.getResult().forEach(document -> {
+                            String postID = document.getId();
+                            String userID = document.getString("userID");
+                            String userName = document.getString("userName");
+                            String postType = document.getString("postType");
+                            String postTitle = document.getString("postTitle");
+                            String postDescription = document.getString("postDescription");
+                            String quantity = document.getString("quantity");
+                            String pickUpTimes = document.getString("pickUpTimes");
+                            String latitude = document.getString("latitude");
+                            String longitude = document.getString("longitude");
+                            ArrayList<String> images = (ArrayList<String>) document.get("images");
+                            PostFT post = new PostFT(userID, userName, postType, postTitle, postDescription, quantity, pickUpTimes, latitude, longitude, images);
+                            resList.add(post);
+                        });
+                        this.postList = resList;
+                        mListVie = findViewById(R.id.lv);
+                        mListVie.setAdapter(new ListDataAdapter(search.this, this.postList));
+                    }
+                });
+    }
+
+
+
+
+    private void searchAll(){
+        List<PostFT> resList = new ArrayList<>();
+        CollectionReference postsCollectionRef = FirestoreHelper.getCollectionRef("posts");
+        postsCollectionRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                task.getResult().forEach(document -> {
+                    String postID = document.getId();
+                    String userID = document.getString("userID");
+                    String userName = document.getString("userName");
+                    String postType = document.getString("postType");
+                    String postTitle = document.getString("postTitle");
+                    String postDescription = document.getString("postDescription");
+                    String quantity = document.getString("quantity");
+                    String pickUpTimes = document.getString("pickUpTimes");
+                    String latitude = document.getString("latitude");
+                    String longitude = document.getString("longitude");
+                    ArrayList<String> images = (ArrayList<String>) document.get("images");
+                    PostFT post = new PostFT(userID, userName, postType, postTitle, postDescription, quantity, pickUpTimes, latitude, longitude, images);
+                    resList.add(post);
+                });
+                this.postList = resList;
+                mListVie = findViewById(R.id.lv);
+                mListVie.setAdapter(new ListDataAdapter(search.this, this.postList));
+            }
+        });
+    }
+
+
+
+    private void searchByTest(String[] keywords){
+        CollectionReference postsCollectionRef = FirestoreHelper.getCollectionRef("posts");
+
+        HashSet<PostFT> allResults = new HashSet<>();
+        HashMap<PostFT, Integer> resultCountMap = new HashMap<>();
+
+        AtomicInteger completedQueries = new AtomicInteger(); // 已完成的查询数
+
+        for (String keyword : keywords) {
+            postsCollectionRef.whereGreaterThan("postTitle",   keyword)
+                    .whereLessThan("postTitle",keyword+ "\uf8ff")
+                    .get()
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            task.getResult().forEach(document -> {
+                                String postID = document.getId();
+                                String userID = document.getString("userID");
+                                String userName = document.getString("userName");
+                                String postType = document.getString("postType");
+                                String postTitle = document.getString("postTitle");
+                                String postDescription = document.getString("postDescription");
+                                String quantity = document.getString("quantity");
+                                String pickUpTimes = document.getString("pickUpTimes");
+                                String latitude = document.getString("latitude");
+                                String longitude = document.getString("longitude");
+                                ArrayList<String> images = (ArrayList<String>) document.get("images");
+                                PostFT post = new PostFT(userID, userName, postType, postTitle, postDescription, quantity, pickUpTimes, latitude, longitude, images);
+                                int count = resultCountMap.getOrDefault(post, 0);
+                                resultCountMap.put(post, count + 1);
+                                allResults.add(post);
+                            });
+                        } else {
+                            // 处理查询失败
+                            Exception exception = task.getException();
+                            // 处理异常
+                        }
+
+                        completedQueries.getAndIncrement();
+
+                        // 检查是否所有查询都完成
+                        if (completedQueries.get() == keywords.length) {
+                            // 根据出现次数对结果进行排序
+                            ArrayList<PostFT> sortedResults = new ArrayList<>(allResults);
+                            Collections.sort(sortedResults, (post1, post2) ->
+                                    resultCountMap.get(post2).compareTo(resultCountMap.get(post1))
+                            );
+                            // 处理每个查询结果
+                            this.postList = sortedResults;
+                            mListVie = findViewById(R.id.lv);
+                            mListVie.setAdapter(new ListDataAdapter(search.this, this.postList));
+                        }
+                    });
         }
+    }
 
 }
 
