@@ -178,7 +178,7 @@ public class search extends AppCompatActivity {
 
 
 
-    private void searchByTest(String[] keywords){
+    private void searchByTest2(String[] keywords){
         CollectionReference postsCollectionRef = FirestoreHelper.getCollectionRef("posts");
 
         HashSet<PostFT> allResults = new HashSet<>();
@@ -232,6 +232,79 @@ public class search extends AppCompatActivity {
                     });
         }
     }
+
+
+
+    private void searchByTest(String[] keywords) {
+        Trie trie = new Trie();
+        CollectionReference postsCollectionRef = FirestoreHelper.getCollectionRef("posts");
+        HashSet<PostFT> allResults = new HashSet<>();
+        HashMap<PostFT, Integer> resultCountMap = new HashMap<>();
+
+        // 向Trie中插入关键词
+        for (String keyword : keywords) {
+            trie.insert(keyword.toLowerCase());
+        }
+
+        // 遍历关键词数组中的每个关键词
+        // 发起查询
+        postsCollectionRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                // 处理查询结果
+                task.getResult().forEach(document -> {
+                    String postTitle = document.getString("postTitle").toLowerCase();
+                    String[] words = postTitle.split("\\s+"); // 分割标题为单词
+
+                    // 计算标题中每个关键词的出现次数
+                    int count = 0;
+                    for (String word : words) {
+                        word = word.replaceAll("[^a-zA-Z0-9\\s]", "");
+                        if (!word.equals("") &&  trie.searchPrefix(word)) {
+                            count++;
+                        }
+                    }
+
+                    // 如果标题中包含了当前关键词，将文档加入到结果集合中，并增加计数器
+                    if (count > 0) {
+                        String postID = document.getId();
+                        String userID = document.getString("userID");
+                        String userName = document.getString("userName");
+                        String postType = document.getString("postType");
+                        String postDescription = document.getString("postDescription");
+                        String quantity = document.getString("quantity");
+                        String pickUpTimes = document.getString("pickUpTimes");
+                        String latitude = document.getString("latitude");
+                        String longitude = document.getString("longitude");
+                        ArrayList<String> images = (ArrayList<String>) document.get("images");
+                        PostFT post = new PostFT(userID, userName, postType, postTitle, postDescription, quantity, pickUpTimes, latitude, longitude, images);
+
+                        int totalCount = resultCountMap.getOrDefault(post, 0);
+                        resultCountMap.put(post, totalCount + count);
+                        allResults.add(post);
+                    }
+                });
+            } else {
+                // 处理查询失败
+                Exception exception = task.getException();
+                // 处理异常
+            }
+
+            // 增加已完成的查询数量
+
+            // 检查是否所有查询都已完成
+            // 根据出现次数对结果进行排序
+            ArrayList<PostFT> sortedResults = new ArrayList<>(allResults);
+            Collections.sort(sortedResults, (post1, post2) ->
+                    resultCountMap.get(post2).compareTo(resultCountMap.get(post1))
+            );
+            // 处理每个查询结果
+            this.postList = sortedResults;
+            mListVie = findViewById(R.id.lv);
+            mListVie.setAdapter(new ListDataAdapter(search.this, this.postList));
+        });
+    }
+
+
 
 }
 
