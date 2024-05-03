@@ -1,11 +1,15 @@
 package com.example.eatsy;
 
+import android.location.Address;
+import android.location.Geocoder;
 import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
+
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 
@@ -13,19 +17,44 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.squareup.picasso.Picasso;
+
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Locale;
+import java.util.Set;
 
 public class postCard extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private LatLng selectedLocation;
+    private TextView banner_title;
+    private ImageButton food_picture;
+    private TextView title;
+    private TextView description;
+    private TextView remainAndMeetTime;
+    private TextView meetingAddress;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_card);
 
-        double latitude = getIntent().getDoubleExtra("latitude", -35.282001);
-        double longitude = getIntent().getDoubleExtra("longitude", 149.128998);
+        PostFT clickedPost = (PostFT) getIntent().getSerializableExtra("clickedPost");
+        double latitude;
+        double longitude;
+        if (clickedPost.getLatitude()==null){
+            latitude = -35.2809;
+        }else {
+            latitude = Double.parseDouble(clickedPost.getLatitude());
+        }
+        if (clickedPost.getLongitude()==null){
+            longitude = 149.1300;
+        }else {
+            longitude = Double.parseDouble(clickedPost.getLongitude());
+        }
         selectedLocation = new LatLng(latitude, longitude);
+
 
 
         ImageButton go_back = findViewById(R.id.leftArrowButton);
@@ -39,6 +68,47 @@ public class postCard extends AppCompatActivity implements OnMapReadyCallback {
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        banner_title = findViewById(R.id.banner_title);
+        banner_title.setText(clickedPost.getUserName());
+        title = findViewById(R.id.title);
+        title.setText(clickedPost.getPostTitle());
+        description = findViewById(R.id.description);
+        description.setText(clickedPost.getPostDescription());
+
+        Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+
+        List<Address> addresses = null;
+        String addressLine = null;
+        try {
+            addresses = geocoder.getFromLocation(latitude, longitude, 1);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        if (addresses != null && !addresses.isEmpty()) {
+                Address address = addresses.get(0);
+                addressLine = address.getAddressLine(0); // 获取地址
+                // 将地址显示在相应的视图中
+                // 例如：addressTextView.setText(addressLine);
+        }
+
+
+
+        remainAndMeetTime = findViewById(R.id.remainAndMeetTime);
+        remainAndMeetTime.setText(clickedPost.getQuantity() + " remain and meet at");
+
+        meetingAddress = findViewById(R.id.meetingAddress);
+        meetingAddress.setText(addressLine);
+
+        food_picture = findViewById(R.id.food_picture);
+        if (clickedPost.getImages() != null && clickedPost.getImages().size() > 0){
+            Picasso.get()
+                    .load(clickedPost.getImages().get(0)) // 这里假设 PostFT 类中有一个获取图片 URL 的方法
+                    .placeholder(R.drawable.beans) // 可选：设置加载过程中显示的占位图
+                    .into(food_picture);
+        }
+
+
     }
 
     public void onMapReady(GoogleMap googleMap) {
