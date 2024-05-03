@@ -1,8 +1,10 @@
 package com.example.eatsy;
 
 import java.util.ArrayList;
+import java.io.Serializable;
 
-public class PostFT {
+public class PostFT implements Serializable{
+    private static final long serialVersionUID = 1L;
     private String userID;
     private String userName;
     private String postType;

@@ -3,6 +3,7 @@ package com.example.eatsy;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -25,6 +26,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 public class DashboardActivity extends AppCompatActivity {
@@ -73,55 +77,20 @@ public class DashboardActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        adapter.setOnItemClickListener(new PostAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                PostFT clickedPost = posts.get(Integer.toString(position));
+                System.out.println(posts.get(Integer.toString(position)));
+                Intent intent = new Intent(DashboardActivity.this, postCard.class);
+                intent.putExtra("clickedPost",clickedPost);
+                startActivity(intent);
+            }
+        });
     }
 
 
-    public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder> {
 
-        private List<PostFT> posts;
-        private Context context;
 
-        public PostAdapter(Context context, List<PostFT> posts) {
-            this.context = context;
-            this.posts = posts;
-        }
-
-        @NonNull
-        @Override
-        public PostViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_post, parent, false);
-            return new PostViewHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(@NonNull PostViewHolder holder, int position) {
-            PostFT post = posts.get(position);
-            holder.bind(post);
-        }
-
-        @Override
-        public int getItemCount() {
-            return posts.size();
-        }
-
-        public class PostViewHolder extends RecyclerView.ViewHolder {
-
-            private TextView titleTextView;
-            private ImageView imageView;
-            private TextView descriptionTextView;
-
-            public PostViewHolder(@NonNull View itemView) {
-                super(itemView);
-                titleTextView = itemView.findViewById(R.id.titleTextView);
-//                imageView = itemView.findViewById(R.id.imageView);
-                descriptionTextView = itemView.findViewById(R.id.descriptionTextView);
-            }
-
-            public void bind(PostFT post) {
-                titleTextView.setText(post.getPostTitle());
-//                imageView.setImageResource(post.getImages());
-                descriptionTextView.setText(post.getPostDescription());
-            }
-        }
-    }
 }
