@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
         android:layout_marginTop="15dp"
-        android:fontFamily="cursive"
+        android:textColor="@color/black"
         android:text="@string/free_food"
         android:textSize="38sp"
         android:textStyle="bold"
