@@ -18,6 +18,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 
+/**
+ * This activity allows the user to login using username and password implementing singleton pattern and firebase authorization.
+ */
 public class LoginActivity extends AppCompatActivity {
 
     EditText username, password;

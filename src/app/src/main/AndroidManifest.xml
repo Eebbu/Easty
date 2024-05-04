@@ -54,9 +54,7 @@
                 android:name=".Addpage"
                 android:exported="false"
                 android:theme="@style/TransparentActivity"/>
-        <activity
-                android:name=".registerPage"
-                android:exported="false"/>
+
         <activity
                 android:name=".LoginActivity"
                 android:exported="false"/>

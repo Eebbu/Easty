@@ -149,7 +149,7 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        // This back button help us
+        // This back button help us to get back to dashboard.
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -157,6 +157,8 @@ public class ProfileActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        // This button helps the user to set ot change his/her profile picture.
         profileChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -170,6 +172,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
+    // This method fetching the data from the imageUri and uploading the image to the firebase.
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -182,6 +185,9 @@ public class ProfileActivity extends AppCompatActivity {
 
         }
     }
+
+
+    // This method is used to upload image to the firebase.
     private void uploadImageToFirebase(Uri imageUri) {
            // Upload image to firebase storage
        final StorageReference fileRef = storageReference.child("users/" + firebaseAuth.getCurrentUser().getUid()+"/profile.jpg");
@@ -204,7 +210,5 @@ public class ProfileActivity extends AppCompatActivity {
         });
     }
 
-    public void passUserData() {
-        
-    }
+
 }

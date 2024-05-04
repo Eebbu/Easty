@@ -10,6 +10,11 @@ import android.widget.Button;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+
+/**
+ * This is the main page which appears when user opens the app.
+ * It has title of the app and a login button that takes us to the login page.
+ */
 public class MainActivity extends AppCompatActivity {
 
 
@@ -18,11 +23,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button logIn = findViewById(R.id.start);
-        Button signUp = findViewById(R.id.sign_up);
 
 
 
 
+
+        // Login page that takes us to the login page.
         logIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -32,13 +38,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        signUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, registerPage.class);
-                startActivity(intent);
-            }
-        });
+
     }
 
 
