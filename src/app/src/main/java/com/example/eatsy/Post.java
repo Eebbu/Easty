@@ -11,6 +11,9 @@ import java.util.ArrayList;
  * This class includes details such as user identification, post type, and content descriptions,
  * which are essential for managing the posts in our APP.
  */
+/**
+ * @author Zihan Yuan(u7773880) Boxuan Lin(u7705128)
+ */
 
 public abstract class Post {
     private String userID;
@@ -32,10 +35,13 @@ public abstract class Post {
 
     private String food;
     private String wantInExchange;
+    private Uri filePath;
+    private StorageReference storageReference;
 
 
 //    public  Post(String userID,String userName,String postType,String postTitle,String postDescription, String quantity, String pickUpTimes,String latitude,String longitude,ArrayList<String> images,String food){
-public  Post(String userName,String postType,String postTitle,String postDescription, String quantity,String latitude,String longitude){
+// Attributes to store user and post details
+    public  Post(String userName,String postType,String postTitle,String postDescription, String quantity,String latitude,String longitude){
 //
 //        this.userID = userID;
         this.userName = userName;
@@ -52,7 +58,7 @@ public  Post(String userName,String postType,String postTitle,String postDescrip
     // Abstract method to save to Firebase
     public abstract void saveToFirebase();
 
-    // Getter methods
+    // Getter methods for retrieving post information
     public String getUserID() {
         return userID;
     }
@@ -96,9 +102,13 @@ public  Post(String userName,String postType,String postTitle,String postDescrip
     public String getFood() {
         return food;
     }
+    public Uri getFilePath(){return filePath;}
+    //public String getWantInExchange(String wantInExchange){return getWantInExchange;}
+    public StorageReference getStorageReference(){return this.storageReference;}
 
 
 //    // Setter methods
+
 //    public void setUserID(String userID) {
 //        this.userID = userID;
 //    }
@@ -122,12 +132,19 @@ public  Post(String userName,String postType,String postTitle,String postDescrip
 //    public void setQuantity(String quantity) {
 //        this.quantity = quantity;
 //    }
-//
+
+// Methods to modify post details
     public void setPickUpTimes(String pickUpTimes) {
         this.pickUpTimes = pickUpTimes;
     }
     public void setWantInExchange(String wantInExchange){
         this.wantInExchange = wantInExchange;
+    }
+    public void setFilePath(Uri filePath){
+        this.filePath = filePath;
+    }
+    public void setStorageReference(StorageReference storageReference){
+        this.storageReference = storageReference;
     }
     //
 //    public void setLatitude(String latitude) {

@@ -12,20 +12,27 @@ import android.widget.Toast;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.UUID;
-
+/**
+ * Post of wanted page
+ * @author Zihan Yuan(u7773880)
+ */
 public class post_wanted extends post_base {
 
+    // Method to get layout resource ID for wanted posts
     @Override
     protected int getLayoutResourceId() {
         return R.layout.activity_post_wanted;
     }
+    // Setup specific views for wanted post activity
     @Override
     protected void setupSpecificViews() {
     }
+    // Validate inputs for wanted post form
     @Override
     protected boolean validateInputs() {
         boolean valid = true;
         int selectedId = radioGroup.getCheckedRadioButtonId();
+        // Validation for radio group and quantity input
         if (selectedId == -1) {
             valid = false;
             Toast.makeText(this, "Please enter a quantity or select a button", Toast.LENGTH_SHORT).show();
@@ -35,6 +42,7 @@ public class post_wanted extends post_base {
                 valid = false;
             }
         }
+        // Validation for title and address
         if (titleEditText.getText().toString().trim().isEmpty()) {
             titleEditText.setError("Required");
             valid = false;
@@ -46,6 +54,7 @@ public class post_wanted extends post_base {
         }
         return valid;
     }
+    // Add the wanted post to Firebase
     protected void addPostToFirbase(){
         String quantity;
         int selectedId = radioGroup.getCheckedRadioButtonId();

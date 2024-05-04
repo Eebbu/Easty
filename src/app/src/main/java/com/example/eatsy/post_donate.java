@@ -26,18 +26,23 @@ import com.google.firebase.appcheck.playintegrity.PlayIntegrityAppCheckProviderF
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-
+/**
+ * Post of donation page
+ * @author Zihan Yuan(u7773880)
+ */
 public class post_donate extends post_base {
     @Override
+    // Method to get layout resource ID specific to donation posts
     protected int getLayoutResourceId() {
         return R.layout.activity_post_donate;
     }
+    // Setup specific views for donation post activity
     @Override
     protected void setupSpecificViews() {
         pickupTimeEditText = findViewById(R.id.pickuptime_editText);
         uploadImage = findViewById(R.id.cameraButton);
     }
-
+    // Validate inputs for donation post form
     @Override
     protected boolean validateInputs() {
         boolean valid = true;
@@ -73,6 +78,7 @@ public class post_donate extends post_base {
 
         return valid;
     }
+    // Add the donation post to Firebase
     protected void addPostToFirbase(){
         String quantity;
         int selectedId = radioGroup.getCheckedRadioButtonId();

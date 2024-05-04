@@ -12,7 +12,9 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
-
+/** Add page UI
+ * @author Zihan Yuan(u7773880)
+ */
 public class Addpage extends AppCompatActivity {
 
     @SuppressLint("ClickableViewAccessibility")
@@ -46,14 +48,17 @@ public class Addpage extends AppCompatActivity {
         donate_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Start post_donate activity
                 Intent intent = new Intent(Addpage.this, post_donate.class);
                 startActivity(intent);
             }
         });
+        // Setup click listeners for card views to navigate to specific post creation activities
         CardView exchange_card = findViewById(R.id.exchangeCard);
         exchange_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Start post_exchange activity
                 Intent intent = new Intent(Addpage.this, post_exchange.class);
                 startActivity(intent);
             }
@@ -62,6 +67,7 @@ public class Addpage extends AppCompatActivity {
         wanted_card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Start post_wanted activity
                 Intent intent = new Intent(Addpage.this, post_wanted.class);
                 startActivity(intent);
             }

@@ -23,6 +23,7 @@ import com.google.firebase.storage.StorageReference;
 
 import java.io.IOException;
 
+// Protected UI components accessible by child classes
 public abstract class post_base extends AppCompatActivity {
     protected ImageButton uploadImage;
     protected Uri filePath;
@@ -34,8 +35,10 @@ public abstract class post_base extends AppCompatActivity {
     protected EditText pickupTimeEditText;
     protected EditText addressEditText;
     protected EditText wantEditText;
+    // Request codes for intents
     private static final int PICK_IMAGE_REQUEST = 1;
     private static final int PICK_MAP_REQUEST = 2;
+    // Abstract methods to be implemented by child classes for post submission and validation
     protected abstract void addPostToFirbase();
     protected abstract boolean validateInputs();
 
@@ -48,16 +51,16 @@ public abstract class post_base extends AppCompatActivity {
         setupViews();
         setupListeners();
     }
-
+    // Initialize Firebase and related services
     private void initializeFirebase() {
         FirebaseApp.initializeApp(this);
         FirebaseAppCheck.getInstance().installAppCheckProviderFactory(PlayIntegrityAppCheckProviderFactory.getInstance());
         storageReference = FirebaseStorage.getInstance().getReference();
     }
-
+    // Abstract method to get the layout resource ID from child classes
     protected abstract int getLayoutResourceId();
 
-//    protected void setupViews();
+    // Setup common views and listeners for all post types
     private void setupViews() {
         ImageButton go_back = findViewById(R.id.leftArrowButton);
         radioGroup = findViewById(R.id.radioGroupQuantity);
@@ -101,7 +104,7 @@ public abstract class post_base extends AppCompatActivity {
 
     }
 
-
+    // Intent to open gallery and select an image
     protected void openGallery() {
         Intent galleryIntent = new Intent(Intent.ACTION_GET_CONTENT);
         galleryIntent.setType("image/*");
@@ -136,7 +139,7 @@ public abstract class post_base extends AppCompatActivity {
             }
         }
     }
-
+    // Scale bitmap to a maximum size to fit into a specific dimension
     private Bitmap scaleBitmapToMaxSize(Bitmap originalBitmap, int maxSizePx) {
         if (originalBitmap == null) {
             return null;

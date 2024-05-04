@@ -30,7 +30,14 @@ import androidx.recyclerview.widget.RecyclerView;
 //import com.squareup.picasso.Picasso;
 
 import java.util.List;
-
+/**
+ * Functionbilities
+ * 1) UI design(Vishakha Mathur)
+ * 2) link the page to profile(Vishakha Mathur)
+ * 3) link page to search view and addview(Zihan Yuan)
+ * 4) adapter to show poster(Jinyang Zeng)
+ * @author Vishakha Mathur(u7663368) Zihan Yuan(u7773880) Jinyang Zeng(7727175)
+ */
 public class DashboardActivity extends AppCompatActivity {
 
     ConcurrentHashMap<String, PostFT> posts;
