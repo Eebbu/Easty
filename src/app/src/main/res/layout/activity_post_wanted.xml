@@ -19,7 +19,7 @@
         android:layout_marginStart="80dp"
         android:layout_marginTop="15dp"
         android:text="Wanted"
-        android:fontFamily="cursive"
+       android:textColor="@color/black"
         android:textSize="38sp"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
@@ -69,7 +69,7 @@
                     android:layout_marginStart="0dp"
                     android:layout_marginTop="0dp"
                     android:text="@string/title"
-                    android:fontFamily="cursive"
+
                     android:textSize="30sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/title_linear"
@@ -101,7 +101,7 @@
                     android:layout_marginStart="0dp"
                     android:layout_marginTop="0dp"
                     android:text="@string/description"
-                    android:fontFamily="cursive"
+
                     android:textSize="30sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/description_linear"
@@ -133,7 +133,7 @@
                     android:layout_marginStart="0dp"
                     android:layout_marginTop="0dp"
                     android:text="@string/quantity"
-                    android:fontFamily="cursive"
+
                     android:textSize="30sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/quantity_linear"
@@ -222,7 +222,7 @@
                     android:layout_marginStart="0dp"
                     android:layout_marginTop="0dp"
                     android:text="@string/address"
-                    android:fontFamily="cursive"
+
                     android:textSize="30sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/Address_linear"

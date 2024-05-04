@@ -51,6 +51,15 @@
                     android:textColor="@color/black"
                     android:text="there should be some descriptions for this food"/>
 
+            <TextView
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="username"
+                android:textColor="@color/black"
+                android:layout_gravity="bottom"
+                android:textSize="14sp" />
         </LinearLayout>
 
     </LinearLayout>

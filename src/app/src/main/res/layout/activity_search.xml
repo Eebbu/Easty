@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
         android:layout_marginTop="15dp"
-        android:fontFamily="cursive"
+        android:textColor="@color/black"
         android:text="@string/free_food"
         android:textSize="38sp"
         android:textStyle="bold"
@@ -28,7 +28,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/leftArrowButtonsearch"
+        android:id="@+id/leftArrowButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="10dp"

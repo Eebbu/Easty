@@ -12,7 +12,7 @@
     <View
         android:id="@+id/header_view"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="90dp"
         android:background="@drawable/dash_view"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
@@ -43,7 +43,8 @@
         android:layout_marginStart="68dp"
         android:layout_marginBottom="16dp"
         android:text="Profile"
-        android:textSize="25sp"
+        android:textSize="38sp"
+        android:textStyle="bold"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/header_view"
         app:layout_constraintStart_toStartOf="@+id/header_view" />
@@ -91,18 +92,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/header_view"
                 app:srcCompat="@drawable/camera" />
 
-            <ImageView
-                android:id="@+id/Change_profile_pic"
-                android:layout_width="37dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@+id/name_person"
-                app:layout_constraintEnd_toEndOf="@id/Scroll_post"
-                app:layout_constraintHorizontal_bias="0.059"
-                android:layout_marginTop="80dp"
-                app:layout_constraintStart_toEndOf="@+id/profile_pic"
-                app:layout_constraintTop_toBottomOf="@+id/header_view"
-                app:layout_constraintVertical_bias="0.731"
-                app:srcCompat="@drawable/pencil" />
+
         </LinearLayout>
 
 
@@ -114,12 +104,28 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/nameOfperson"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:drawableLeft="@drawable/baseline_person_24"
+                android:text="Name"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                app:layout_constraintBottom_toTopOf="@id/email_on_profile"
+
+
+                />
+
+            <TextView
                 android:id="@+id/name_person"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="120dp"
+                android:layout_marginLeft="50dp"
                 android:text="Name"
                 android:textColor="@color/black"
                 android:textSize="17sp"
@@ -136,12 +142,35 @@
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="22dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                app:srcCompat="@drawable/envelope" />
+
+            <TextView
+                android:id="@+id/emailOfperson"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+
+                android:layout_marginLeft="3dp"
+
+                android:text="Email"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                app:layout_constraintBottom_toTopOf="@id/email_on_profile"
+
+
+                />
+
             <TextView
                 android:id="@+id/email_on_profile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Email"
-                android:layout_marginLeft="120dp"
+                android:layout_marginLeft="50dp"
 
                 android:textColor="@color/black"
                 android:textSize="17sp"/>
@@ -149,10 +178,36 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/changing_profile"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="100dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/Change_profile_pic"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="#F44336"
+                android:layout_marginLeft="85dp"
+
+
+                android:text="Change profile"
+
+
+                android:textColor="@color/white"
+                android:textSize="17sp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
             android:id="@+id/sign_out_layout"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="100dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="0dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -160,15 +215,21 @@
                 android:id="@+id/Signout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sign out"
-                android:layout_marginLeft="250dp"
+                android:layout_gravity="center"
                 android:backgroundTint="#F44336"
+                android:layout_marginLeft="135dp"
+
+                android:text="Sign out"
 
 
-                android:textColor="@color/black"
-                android:textSize="17sp"/>
+                android:textColor="@color/white"
+                android:textSize="17sp" />
 
         </LinearLayout>
+
+
+
+
 
 
 

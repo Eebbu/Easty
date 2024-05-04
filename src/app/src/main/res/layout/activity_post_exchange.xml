@@ -19,7 +19,7 @@
         android:layout_marginStart="80dp"
         android:layout_marginTop="15dp"
         android:text="Exchange"
-        android:fontFamily="cursive"
+        android:textColor="@color/black"
         android:textSize="38sp"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
@@ -77,7 +77,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/add_up_to_10_images"
-                    android:fontFamily="cursive"
+
                     android:textStyle="bold"
                     android:textSize="20sp"
                     app:layout_constraintStart_toEndOf="@id/cameraButton"
@@ -103,7 +103,7 @@
                     android:layout_marginStart="0dp"
                     android:layout_marginTop="0dp"
                     android:text="@string/title"
-                    android:fontFamily="cursive"
+
                     android:textSize="30sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/title_linear"
@@ -135,7 +135,7 @@
                     android:layout_marginStart="0dp"
                     android:layout_marginTop="0dp"
                     android:text="@string/description"
-                    android:fontFamily="cursive"
+
                     android:textSize="30sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/description_linear"
@@ -165,7 +165,7 @@
                     android:layout_marginStart="0dp"
                     android:layout_marginTop="0dp"
                     android:text="Want"
-                    android:fontFamily="cursive"
+
                     android:textSize="30sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/want_linear"
@@ -196,7 +196,7 @@
                     android:layout_marginStart="0dp"
                     android:layout_marginTop="0dp"
                     android:text="@string/quantity"
-                    android:fontFamily="cursive"
+
                     android:textSize="30sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/quantity_linear"
@@ -285,7 +285,7 @@
                     android:layout_marginStart="0dp"
                     android:layout_marginTop="0dp"
                     android:text="@string/pick_up_times"
-                    android:fontFamily="cursive"
+
                     android:textSize="30sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/pickuptime_linear"
@@ -315,7 +315,7 @@
                     android:layout_marginStart="0dp"
                     android:layout_marginTop="0dp"
                     android:text="@string/address"
-                    android:fontFamily="cursive"
+
                     android:textSize="30sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/Address_linear"

@@ -46,7 +46,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     FirebaseFirestore firebaseFirestore;
     ImageView profileImage;
-    ImageView profileChange;
+    Button profileChange;
     StorageReference storageReference;
     StorageReference stRef;
 
@@ -100,6 +100,7 @@ public class ProfileActivity extends AppCompatActivity {
                     if (ds.exists()) {
                         String nameOfPerson = ds.getString("name");
                         String emailOfPerson = ds.getString("email");
+                        Log.d("TAG", "Success!!!!!!!");
                         userName.setText(nameOfPerson);
                         userEmail.setText(emailOfPerson);
                     } else {
@@ -131,7 +132,8 @@ public class ProfileActivity extends AppCompatActivity {
         logOutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
                 startActivity(intent);
                 Toast.makeText(ProfileActivity.this,
                         "You have been signed out", Toast.LENGTH_SHORT).show();
@@ -190,5 +192,9 @@ public class ProfileActivity extends AppCompatActivity {
                 Toast.makeText(ProfileActivity.this, "Upload failed", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void passUserData() {
+        
     }
 }
