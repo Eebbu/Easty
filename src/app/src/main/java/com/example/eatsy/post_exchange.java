@@ -8,50 +8,7 @@ import com.google.firebase.storage.StorageReference;
 import java.util.UUID;
 
 public class post_exchange extends post_base {
-//    private static final int PICK_IMAGE_REQUEST = 1;
-//    private ImageButton uploadImage;
-//    private Uri filePath;
-//    private StorageReference storageReference;
-//    private RadioGroup radioGroup;
-//    private EditText quantityEditText;
-//    private EditText titleEditText;
-//    private EditText descriptionEditText;
-//    private EditText pickupTimeEditText;
-//    private EditText addressEditText;
-//    private EditText WantEditText;
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_post_exchange);
-//        FirebaseApp.initializeApp(this);
-//
-//        // Set up Firebase App Check with the Play Integrity provider
-//        FirebaseAppCheck.getInstance().installAppCheckProviderFactory(PlayIntegrityAppCheckProviderFactory.getInstance());
-//        storageReference = FirebaseStorage.getInstance().getReference();
-//        setContentView(R.layout.activity_post_donate);
-//        ImageButton go_back = findViewById(R.id.leftArrowButton);
-//        radioGroup = findViewById(R.id.radioGroupQuantity);
-//        quantityEditText = findViewById(R.id.editTextOther);
-//        titleEditText = findViewById(R.id.title_editText);
-//        descriptionEditText = findViewById(R.id.description_editText);
-//        pickupTimeEditText = findViewById(R.id.pickuptime_editText);
-//        addressEditText = findViewById(R.id.Address_editText);
-//        WantEditText = findViewById(R.id.want_editText);
-//        go_back.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                finish();
-//            }
-//        });
-//        Button post = findViewById(R.id.button_post);
-//        post.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
-//    }
+
     @Override
     protected int getLayoutResourceId() {
         return R.layout.activity_post_exchange;

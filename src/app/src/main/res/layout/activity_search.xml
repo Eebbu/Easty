@@ -28,7 +28,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/leftArrowButtonsearch"
+        android:id="@+id/leftArrowButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="10dp"

@@ -21,22 +21,22 @@
         tools:layout_editor_absoluteX="0dp" />
 
 
-    <EditText
-        android:id="@+id/srch"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="4dp"
+<!--    <EditText-->
+<!--        android:id="@+id/srch"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:layout_marginTop="4dp"-->
 
-        android:background="@drawable/search_bg"
-        android:backgroundTint="#D1CDCD"
-        android:ems="10"
-        android:hint=" Search"
-        android:inputType="text"
-        android:paddingLeft="20dp"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/filter"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header_view" />
+<!--        android:background="@drawable/search_bg"-->
+<!--        android:backgroundTint="#D1CDCD"-->
+<!--        android:ems="10"-->
+<!--        android:hint=" Search"-->
+<!--        android:inputType="text"-->
+<!--        android:paddingLeft="20dp"-->
+<!--        android:textSize="20sp"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/filter"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/header_view" />-->
 
     <View
         android:id="@+id/bottom_view"
@@ -89,6 +89,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="120dp"
         android:text="Food"
+        android:textColor="@color/black"
         android:textSize="30sp"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
@@ -96,37 +97,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="19dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/srch"
-        app:layout_constraintHorizontal_bias="0.951"
-        app:layout_constraintStart_toStartOf="@+id/srch"
-        app:layout_constraintTop_toBottomOf="@+id/header_view"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/search" />
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView3"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="19dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/srch"-->
+<!--        app:layout_constraintHorizontal_bias="0.951"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/srch"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/header_view"-->
+<!--        app:layout_constraintVertical_bias="0.099"-->
+<!--        app:srcCompat="@drawable/search" />-->
 
-    <TextView
-        android:id="@+id/filter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="108dp"
-        android:drawableTop="@drawable/baseline_format_list_bulleted_24"
-        android:text="Filter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.952"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/search_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        app:srcCompat="@drawable/searchblack"
+        app:layout_constraintBottom_toBottomOf="@+id/header_view"
+        app:layout_constraintStart_toStartOf="@id/profile"
+        app:layout_constraintEnd_toEndOf="@id/profile"
+        app:layout_constraintTop_toBottomOf="@+id/profile"/>
 
     <ImageView
         android:id="@+id/profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/filter"
+        app:layout_constraintBottom_toTopOf="@+id/search_button"
 
         app:layout_constraintEnd_toEndOf="@+id/header_view"
         app:layout_constraintTop_toTopOf="parent"
@@ -139,7 +139,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
         android:text="Profile"
-        app:layout_constraintBottom_toTopOf="@+id/filter"
+        app:layout_constraintBottom_toTopOf="@+id/search_button"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profile"
@@ -149,7 +149,7 @@
         android:id="@+id/scroll_post"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/srch"
+        app:layout_constraintTop_toBottomOf="@id/header_view"
         tools:layout_editor_absoluteX="0dp"
         app:layout_constraintBottom_toTopOf="@id/bottom_view"
         app:layout_constraintEnd_toEndOf="parent"

@@ -27,7 +27,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.squareup.picasso.Picasso;
+//import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -50,6 +50,15 @@ public class DashboardActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         adapter = new PostAdapter(this, new ArrayList<>(posts.values()));
         recyclerView.setAdapter(adapter);
+        ImageView searchButton = findViewById(R.id.search_button);
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), search.class);
+                startActivity(intent);
+//                finish();
+            }
+        });
 
         EdgeToEdge.enable(this);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
