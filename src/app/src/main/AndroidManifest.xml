@@ -46,9 +46,7 @@
         <activity
                 android:name=".ProfileActivity"
                 android:exported="false"/>
-        <activity
-                android:name=".LogOutActivity"
-                android:exported="false"/>
+
         <activity
                 android:name=".DashboardActivity"
                 android:exported="false"/>

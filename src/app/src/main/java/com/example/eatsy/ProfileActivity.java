@@ -38,6 +38,11 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+/**
+ * This is the profile activity that has function of setting and changing the profile picture,
+ * displaying name and email of the user and a sign out button that helps the user to sign out from the app.
+ */
+
 public class ProfileActivity extends AppCompatActivity {
 
     TextView userName, userEmail;
@@ -72,7 +77,7 @@ public class ProfileActivity extends AppCompatActivity {
 
 
 
-
+// Setting the variables
         logOutBtn = findViewById(R.id.Signout);
         userName = findViewById(R.id.name_person);
         userEmail = findViewById(R.id.email_on_profile);
@@ -92,6 +97,8 @@ public class ProfileActivity extends AppCompatActivity {
         backButton = findViewById(back_btn);
         profileImage = findViewById(R.id.profile_pic);
         profileChange = findViewById(R.id.Change_profile_pic);
+
+        // Displaying user data such as name and email on the profile page.
 
         if (user != null) {
             firebaseFirestore.collection("users").document(user.getUid()).get().addOnCompleteListener(task -> {
@@ -127,19 +134,22 @@ public class ProfileActivity extends AppCompatActivity {
 
 
 
-
+// This onClickListener help the user to log out from the app and closes all the other activities running behind.
 
         logOutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
                 startActivity(intent);
                 Toast.makeText(ProfileActivity.this,
                         "You have been signed out", Toast.LENGTH_SHORT).show();
             }
         });
 
+        // This back button help us
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
