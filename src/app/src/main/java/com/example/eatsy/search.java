@@ -39,7 +39,6 @@ public class search extends AppCompatActivity {
     }
 
 
-
     protected void setCheckListener(){
         CheckBox checkBox1 = findViewById(R.id.checkBox1);
         CheckBox checkBox2 = findViewById(R.id.checkBox2);
