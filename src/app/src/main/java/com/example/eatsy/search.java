@@ -24,7 +24,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
-
+/*This class is for searching and filtering.
+        It is used to process user input,
+        search data,
+        and display search results on the interface.
+ */
 public class search extends AppCompatActivity {
     private ListView mListVie;
     private List<PostFT> postList = new ArrayList<>();
@@ -32,6 +36,12 @@ public class search extends AppCompatActivity {
     private Map<Integer,String> type = new HashMap<>();
 
     @Override
+/*
+    When the user clicks the back button
+    (go_back),
+    it ends the current activity
+    and returns to DashboardActivity
+ */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
@@ -49,7 +59,16 @@ public class search extends AppCompatActivity {
         searchAll();
     }
 
+/*
+    Three checkboxes (checkBox1, checkBox2, checkBox3) are provided,
+    allowing users to filter posts based on different types
+    (e.g. "Donate", "Need", "Exchange").
+    Based on the checkboxes selected by the user,
+    update a type map that stores the selected types
+    and call the searchData method to filter posts based on these types,
+    or call the searchAll method to display all posts if no checkboxes are selected.
 
+ */
 
     protected void setCheckListener(){
         CheckBox checkBox1 = findViewById(R.id.checkBox1);
@@ -67,28 +86,28 @@ public class search extends AppCompatActivity {
                 String text2 = checkBox2.getText().toString();
                 String text3 = checkBox3.getText().toString();
 
-                // 在这里处理点击事件，并使用 isChecked 和 text 进行相应操作
+                // Handle the click event here and use isChecked and text to act accordingly
                 if (isChecked1) {
-                    // CheckBox 1 被选中
+                    // CheckBox 1 is selected
                     type.put(1,"donate");
                 } else {
-                    // CheckBox 1 被取消选中
+                    // CheckBox 1 is cancelled
                     type.remove(1);
                 }
 
                 if (isChecked2) {
-                    // CheckBox 2 被选中
+                    // CheckBox 2 is selected
                     type.put(2,"wanted");
                 } else {
-                    // CheckBox 2 被取消选中
+                    // CheckBox 2 cancelled
                     type.remove(2);
                 }
 
                 if (isChecked3) {
-                    // CheckBox 3 被选中
+                    // CheckBox 3 is selected
                     type.put(3,"exchange");
                 } else {
-                    // CheckBox 3 被取消选中
+                    // CheckBox 3 cancelled
                     type.remove(3);
                 }
                 if(!type.isEmpty()){
@@ -98,13 +117,21 @@ public class search extends AppCompatActivity {
                 }
             }
         };
-        // 为每个 CheckBox 设置相同的点击监听器
+        // Set the same click listener for each CheckBox
         checkBox1.setOnClickListener(checkBoxClickListener);
         checkBox2.setOnClickListener(checkBoxClickListener);
         checkBox3.setOnClickListener(checkBoxClickListener);
     }
 
-
+    /*
+        Through a text input box (editText),
+        the user can enter search keywords.
+        Text searches are handled via the setEditListener method,
+        which sanitizes the user input,
+        removes non-alphanumeric characters,
+        and splits the text by spaces to obtain an array of keywords.
+        Call the searchByTest method to search based on the keyword array.
+     */
     protected void setEditListener(){
         EditText editText = findViewById(R.id.srch);
         editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -127,7 +154,9 @@ public class search extends AppCompatActivity {
     }
 
 
-
+    /*
+        Filter posts based on the type selected by the user via checkbox.
+     */
     private void searchData(){
         List<PostFT> resList = new ArrayList<>();
         CollectionReference postsCollectionRef = FirestoreHelper.getCollectionRef("posts");
@@ -159,7 +188,9 @@ public class search extends AppCompatActivity {
 
 
 
-
+/*
+    Show all posts without any filters.
+ */
     private void searchAll(){
         List<PostFT> resList = new ArrayList<>();
         CollectionReference postsCollectionRef = FirestoreHelper.getCollectionRef("posts");
@@ -188,85 +219,32 @@ public class search extends AppCompatActivity {
     }
 
 
-
-    private void searchByTest2(String[] keywords){
-        CollectionReference postsCollectionRef = FirestoreHelper.getCollectionRef("posts");
-
-        HashSet<PostFT> allResults = new HashSet<>();
-        HashMap<PostFT, Integer> resultCountMap = new HashMap<>();
-
-        AtomicInteger completedQueries = new AtomicInteger(); // 已完成的查询数
-
-        for (String keyword : keywords) {
-            postsCollectionRef.whereGreaterThan("postTitle",   keyword)
-                    .whereLessThan("postTitle",keyword+ "\uf8ff")
-                    .get()
-                    .addOnCompleteListener(task -> {
-                        if (task.isSuccessful()) {
-                            task.getResult().forEach(document -> {
-                                String postID = document.getId();
-                                String userID = document.getString("userID");
-                                String userName = document.getString("userName");
-                                String postType = document.getString("postType");
-                                String postTitle = document.getString("postTitle");
-                                String postDescription = document.getString("postDescription");
-                                String quantity = document.getString("quantity");
-                                String pickUpTimes = document.getString("pickUpTimes");
-                                String latitude = document.getString("latitude");
-                                String longitude = document.getString("longitude");
-                                ArrayList<String> images = (ArrayList<String>) document.get("images");
-                                PostFT post = new PostFT(userID, userName, postType, postTitle, postDescription, quantity, pickUpTimes, latitude, longitude, images);
-                                int count = resultCountMap.getOrDefault(post, 0);
-                                resultCountMap.put(post, count + 1);
-                                allResults.add(post);
-                            });
-                        } else {
-                            // 处理查询失败
-                            Exception exception = task.getException();
-                            // 处理异常
-                        }
-
-                        completedQueries.getAndIncrement();
-
-                        // 检查是否所有查询都完成
-                        if (completedQueries.get() == keywords.length) {
-                            // 根据出现次数对结果进行排序
-                            ArrayList<PostFT> sortedResults = new ArrayList<>(allResults);
-                            Collections.sort(sortedResults, (post1, post2) ->
-                                    resultCountMap.get(post2).compareTo(resultCountMap.get(post1))
-                            );
-                            // 处理每个查询结果
-                            this.postList = sortedResults;
-                            mListVie = findViewById(R.id.lv);
-                            mListVie.setAdapter(new ListDataAdapter(search.this, this.postList));
-                        }
-                    });
-        }
-    }
-
-
-
-    private void searchByTest(String[] keywords) {
+/*
+    Search posts based on keywords entered by the user.
+    It uses a custom Trie data structure to match keyword prefixes
+    and counts the number of matching keywords in each post title for sorting and display.
+ */
+     private void searchByTest(String[] keywords) {
         Trie trie = new Trie();
         CollectionReference postsCollectionRef = FirestoreHelper.getCollectionRef("posts");
         HashSet<PostFT> allResults = new HashSet<>();
         HashMap<PostFT, Integer> resultCountMap = new HashMap<>();
 
-        // 向Trie中插入关键词
+        // Insert keywords into Trie
         for (String keyword : keywords) {
             trie.insert(keyword.toLowerCase());
         }
 
-        // 遍历关键词数组中的每个关键词
-        // 发起查询
+        // Iterate through each keyword in the keyword array
+        // Initiate query
         postsCollectionRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
-                // 处理查询结果
+                // Processing the results of query
                 task.getResult().forEach(document -> {
                     String postTitle = document.getString("postTitle").toLowerCase();
-                    String[] words = postTitle.split("\\s+"); // 分割标题为单词
+                    String[] words = postTitle.split("\\s+"); // Split title into words
 
-                    // 计算标题中每个关键词的出现次数
+                    // Count the occurrences of each keyword in the title
                     int count = 0;
                     for (String word : words) {
                         word = word.replaceAll("[^a-zA-Z0-9\\s]", "");
@@ -275,7 +253,8 @@ public class search extends AppCompatActivity {
                         }
                     }
 
-                    // 如果标题中包含了当前关键词，将文档加入到结果集合中，并增加计数器
+                    // If the title contains the current keyword,
+                    // add the document to the result set and increment the counter
                     if (count > 0) {
                         String postID = document.getId();
                         String userID = document.getString("userID");
@@ -295,20 +274,19 @@ public class search extends AppCompatActivity {
                     }
                 });
             } else {
-                // 处理查询失败
+                // Processing query failed
                 Exception exception = task.getException();
-                // 处理异常
+                // Handle exceptions
             }
 
-            // 增加已完成的查询数量
-
-            // 检查是否所有查询都已完成
-            // 根据出现次数对结果进行排序
+            // Increase the number of completed queries
+            // Check if all queries have completed
+            // Sort the results according to the number of occurrences
             ArrayList<PostFT> sortedResults = new ArrayList<>(allResults);
             Collections.sort(sortedResults, (post1, post2) ->
                     resultCountMap.get(post2).compareTo(resultCountMap.get(post1))
             );
-            // 处理每个查询结果
+            // Process each query result
             this.postList = sortedResults;
             mListVie = findViewById(R.id.lv);
             mListVie.setAdapter(new ListDataAdapter(search.this, this.postList));
