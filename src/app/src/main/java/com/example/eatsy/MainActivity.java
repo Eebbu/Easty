@@ -11,9 +11,10 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 
-/**
+/** Functionality
  * This is the main page which appears when user opens the app.
  * It has title of the app and a login button that takes us to the login page.
+ * @author Vishakha Mathur(u7663368)
  */
 public class MainActivity extends AppCompatActivity {
 

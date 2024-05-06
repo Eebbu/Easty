@@ -38,9 +38,10 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
-/**
+/**Functionality
  * This is the profile activity that has function of setting and changing the profile picture,
  * displaying name and email of the user and a sign out button that helps the user to sign out from the app.
+ * @author Vishakha Mathur(u7663368)
  */
 
 public class ProfileActivity extends AppCompatActivity {
