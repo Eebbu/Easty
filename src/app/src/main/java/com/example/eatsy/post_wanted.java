@@ -72,8 +72,8 @@ public class post_wanted extends post_base {
         //TODO revise these four string
 //        String userName = "someUserName";
         String userName = getIntent().getStringExtra("USERNAME");
-        String latitude = "111";
-        String longtitude = "222";
+        String latitude = selectedLatitude;
+        String longtitude = selectedLongitude;
         factory_wanted post = new factory_wanted(userName, title, description, quantity, latitude, longtitude);
         post.saveToFirebase();
     }

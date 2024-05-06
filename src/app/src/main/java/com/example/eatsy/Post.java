@@ -3,6 +3,7 @@ package com.example.eatsy;
 import android.net.Uri;
 
 import com.google.firebase.storage.StorageReference;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 import java.io.Serializable;
@@ -18,15 +19,22 @@ import java.io.Serializable;
 
 public class Post implements Serializable{
     private static final long serialVersionUID = 1L;
+
+    @SerializedName("userid")
     private String userID;
+    @SerializedName("username")
     private String userName;
+    @SerializedName("post_type")
     private String postType;
 
+    @SerializedName("post_title")
     private String postTitle;
+    @SerializedName("post_description")
     private String postDescription;
 
     private String quantity;
 
+    @SerializedName("pick_up_times")
     private String pickUpTimes;
 
     private String latitude;
@@ -59,7 +67,7 @@ public class Post implements Serializable{
     }
 
     public  Post(String userID,String userName,String postType,String postTitle,String postDescription, String quantity, String pickUpTimes,String latitude,String longitude,ArrayList<String> images){
-
+        this.userID = userID;
         this.userName = userName;
         this.postType = postType;
         this.postTitle = postTitle;
