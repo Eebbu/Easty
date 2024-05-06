@@ -43,4 +43,30 @@
     <string name="e_g_pizza">e.g. Pizza</string>
     <string name="fresh_veges">Fresh Vegetables</string>
     <string name="describe_your_need">Describe your need</string>
+    <string name="title_postcard"> Username </string>
+    <string name="post_title"> TitleOfPost </string>
+    <string name="post_description">Here is the description of the post
+    \nsinking your teeth into a juicy burger, the bun lightly toasted,
+    the beef patty perfectly seared, topped with melted cheddar, fresh lettuce,
+    ripe tomatoes, and tangy pickles, all held together by a creamy, slightly spicy sauce.
+        It's a mouthwatering experience in every bite.</string>
+    <string name="remain_time"> 2 remain and meet at time </string>
+    <string name="address_post">11 harold white ave, coombs, ACT 2611</string>
+    <string name="timeOfPost"> posted in 30 minutes </string>
+    <string name="radiobtn1"> 1 </string>
+    <string name="radiobtn2"> 2 </string>
+    <string name="radiobtn3"> 3 </string>
+    <string name="radiobtn4"> Other </string>
+    <string name="other_postDonate">Other </string>
+    <string name="choosebtn"> choose </string>
+    <string name="post_btn"> Post </string>
+    <string name="cont_descri"> Go back </string>
+    <string name="cameraImage"> Open Album </string>
+    <string name="exch_want"> Want </string>
+    <string name="eg_want"> eg: Canned tomatoes</string>
+    <string name="three_eggs_wanted"> Three eggs </string>
+    <string name="address_wanted"> Turner, ACT </string>
+
+
+
 </resources>
