@@ -86,8 +86,8 @@ public class post_exchange extends post_base {
         //TODO revise these four string
 //        String userName = "someUserName";
         String userName = getIntent().getStringExtra("USERNAME");
-        String latitude = "111";
-        String longtitude = "222";
+        String latitude = selectedLatitude;
+        String longtitude = selectedLongitude;
         StorageReference ref = storageReference.child("user_post_img/" + UUID.randomUUID().toString());
         factory_exchange post = new factory_exchange(userName, title, description,want, quantity,
                                         pick_up_times,latitude, longtitude, image,filePath,ref);

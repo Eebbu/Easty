@@ -16,6 +16,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -40,7 +41,8 @@ import java.util.List;
  */
 public class DashboardActivity extends AppCompatActivity {
 
-    ConcurrentHashMap<String, Post> posts;
+//    ConcurrentHashMap<String, Post> posts;
+    HashMap<String, Post> posts;
     private RecyclerView recyclerView;
     private PostAdapter adapter;
 
@@ -49,7 +51,8 @@ public class DashboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-        posts = DataManager.getDataInstance().getPostHashMap();
+//        posts = DataManager.getDataInstance().getPostHashMap();
+        posts = ImportDataFromLocalJson.read(getApplicationContext());
 
         recyclerView = findViewById(R.id.recyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
