@@ -5,6 +5,7 @@ import android.net.Uri;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
+import java.io.Serializable;
 
 /**
  * The Post class represents a post in our application.
@@ -15,7 +16,8 @@ import java.util.ArrayList;
  * @author Zihan Yuan(u7773880) Boxuan Lin(u7705128)
  */
 
-public abstract class Post {
+public class Post implements Serializable{
+    private static final long serialVersionUID = 1L;
     private String userID;
     private String userName;
     private String postType;
@@ -55,8 +57,22 @@ public abstract class Post {
 //        this.images = new ArrayList<>(images);
 //        this.food = food;
     }
+
+    public  Post(String userID,String userName,String postType,String postTitle,String postDescription, String quantity, String pickUpTimes,String latitude,String longitude,ArrayList<String> images){
+
+        this.userName = userName;
+        this.postType = postType;
+        this.postTitle = postTitle;
+        this.postDescription = postDescription;
+        this.quantity = quantity;
+        this.pickUpTimes = pickUpTimes;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.images = new ArrayList<>(images);
+
+    }
     // Abstract method to save to Firebase
-    public abstract void saveToFirebase();
+    public void saveToFirebase(){};
 
     // Getter methods for retrieving post information
     public String getUserID() {
