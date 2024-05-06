@@ -40,7 +40,7 @@ import java.util.List;
  */
 public class DashboardActivity extends AppCompatActivity {
 
-    ConcurrentHashMap<String, PostFT> posts;
+    ConcurrentHashMap<String, Post> posts;
     private RecyclerView recyclerView;
     private PostAdapter adapter;
 
@@ -97,7 +97,7 @@ public class DashboardActivity extends AppCompatActivity {
         adapter.setOnItemClickListener(new PostAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                PostFT clickedPost = posts.get(Integer.toString(position));
+                Post clickedPost = posts.get(Integer.toString(position));
                 System.out.println(posts.get(Integer.toString(position)));
                 Intent intent = new Intent(DashboardActivity.this, postCard.class);
                 intent.putExtra("clickedPost",clickedPost);

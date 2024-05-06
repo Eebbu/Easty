@@ -5,7 +5,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class DataManager {
     private static final DataManager instance = new DataManager();
     private ConcurrentHashMap<String, userFT> userHashMap = new ConcurrentHashMap<>();
-    private ConcurrentHashMap<String, PostFT> postHashMap = new ConcurrentHashMap<>();
+    private ConcurrentHashMap<String, Post> postHashMap = new ConcurrentHashMap<>();
 
     private DataManager() {}
 
@@ -21,11 +21,11 @@ public class DataManager {
         return userHashMap;
     }
 
-    public void setPostHashMap(ConcurrentHashMap<String, PostFT> hashMap) {
+    public void setPostHashMap(ConcurrentHashMap<String, Post> hashMap) {
         this.postHashMap = hashMap;
     }
 
-    public ConcurrentHashMap<String, PostFT> getPostHashMap() {
+    public ConcurrentHashMap<String, Post> getPostHashMap() {
         return postHashMap;
     }
 }

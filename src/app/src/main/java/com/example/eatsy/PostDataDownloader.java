@@ -12,12 +12,12 @@ public class PostDataDownloader {
      */
 
 
-    public CompletableFuture<ConcurrentHashMap<String, PostFT>> downloadData(CollectionReference postsCollectionRef) {
-        CompletableFuture<ConcurrentHashMap<String, PostFT>> future = new CompletableFuture<>();
+    public CompletableFuture<ConcurrentHashMap<String, Post>> downloadData(CollectionReference postsCollectionRef) {
+        CompletableFuture<ConcurrentHashMap<String, Post>> future = new CompletableFuture<>();
 
         postsCollectionRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
-                ConcurrentHashMap<String, PostFT> postHashMap = new ConcurrentHashMap<>();
+                ConcurrentHashMap<String, Post> postHashMap = new ConcurrentHashMap<>();
                 task.getResult().forEach(document -> {
                     String postID = document.getId();
                     String userID = document.getString("userID");
@@ -30,7 +30,7 @@ public class PostDataDownloader {
                     String latitude = document.getString("latitude");
                     String longitude = document.getString("longitude");
                     ArrayList<String> images = (ArrayList<String>) document.get("images");
-                    PostFT post = new PostFT(userID, userName, postType, postTitle, postDescription, quantity, pickUpTimes, latitude, longitude, images);
+                    Post post = new Post(userID, userName, postType, postTitle, postDescription, quantity, pickUpTimes, latitude, longitude, images);
                     postHashMap.put(postID, post);
                 });
                 future.complete(postHashMap);
