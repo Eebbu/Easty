@@ -35,6 +35,9 @@ public abstract class post_base extends AppCompatActivity {
     protected EditText pickupTimeEditText;
     protected EditText addressEditText;
     protected EditText wantEditText;
+    protected String selectedLatitude;
+    protected String selectedLongitude;
+
     // Request codes for intents
     private static final int PICK_IMAGE_REQUEST = 1;
     private static final int PICK_MAP_REQUEST = 2;
@@ -130,8 +133,8 @@ public abstract class post_base extends AppCompatActivity {
         if (requestCode == PICK_MAP_REQUEST && resultCode == RESULT_OK) {
             if (data != null) {
                 double[] selectedPoint = data.getDoubleArrayExtra("selectedPoint");
-                double selectedLatitude = selectedPoint[0];
-                double selectedLongitude = selectedPoint[1];
+                selectedLatitude = String.valueOf(selectedPoint[0]);
+                selectedLongitude = String.valueOf(selectedPoint[1]);
                 String selectedAddress = data.getStringExtra("selectedAddress");
                 addressEditText.setText(selectedAddress);
 

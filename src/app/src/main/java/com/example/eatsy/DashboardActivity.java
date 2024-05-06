@@ -16,6 +16,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -40,7 +41,8 @@ import java.util.List;
  */
 public class DashboardActivity extends AppCompatActivity {
 
-    ConcurrentHashMap<String, PostFT> posts;
+//    ConcurrentHashMap<String, Post> posts;
+    HashMap<String, Post> posts;
     private RecyclerView recyclerView;
     private PostAdapter adapter;
 
@@ -49,7 +51,8 @@ public class DashboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-        posts = DataManager.getDataInstance().getPostHashMap();
+//        posts = DataManager.getDataInstance().getPostHashMap();
+        posts = ImportDataFromLocalJson.read(getApplicationContext());
 
         recyclerView = findViewById(R.id.recyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -97,7 +100,7 @@ public class DashboardActivity extends AppCompatActivity {
         adapter.setOnItemClickListener(new PostAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                PostFT clickedPost = posts.get(Integer.toString(position));
+                Post clickedPost = posts.get(Integer.toString(position));
                 System.out.println(posts.get(Integer.toString(position)));
                 Intent intent = new Intent(DashboardActivity.this, postCard.class);
                 intent.putExtra("clickedPost",clickedPost);

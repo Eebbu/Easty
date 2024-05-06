@@ -14,9 +14,9 @@ import java.util.List;
 
 public class ListDataAdapter extends BaseAdapter {
     private Context mContext;
-    private List<PostFT> postList;
+    private List<Post> postList;
 
-    public ListDataAdapter(Context context, List<PostFT> postList) {
+    public ListDataAdapter(Context context, List<Post> postList) {
         mContext = context;
         this.postList = postList;
     }
@@ -46,7 +46,7 @@ public class ListDataAdapter extends BaseAdapter {
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
-        PostFT partBean = postList.get(i);
+        Post partBean = postList.get(i);
         if(partBean.getImages()!=null && !partBean.getImages().isEmpty()){
             String imagePath = partBean.getImages().get(0);
             Picasso.get().load(imagePath).into(viewHolder.food);

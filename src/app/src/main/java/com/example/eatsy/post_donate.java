@@ -97,8 +97,9 @@ public class post_donate extends post_base {
         String pick_up_times = pickupTimeEditText.getText().toString().trim();
         //TODO revise these four string
         String userName = getIntent().getStringExtra("USERNAME");
-        String latitude = "111";
-        String longtitude = "222";
+
+        String latitude = selectedLatitude;
+        String longtitude = selectedLongitude;
         StorageReference ref = storageReference.child("user_post_img/" + UUID.randomUUID().toString());
         factory_donate post = new factory_donate(userName, title, description,
                 quantity, pick_up_times,latitude, longtitude, image,filePath,ref);

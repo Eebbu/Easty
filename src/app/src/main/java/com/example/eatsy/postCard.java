@@ -40,7 +40,7 @@ public class postCard extends AppCompatActivity implements OnMapReadyCallback {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_card);
 
-        PostFT clickedPost = (PostFT) getIntent().getSerializableExtra("clickedPost");
+        Post clickedPost = (Post) getIntent().getSerializableExtra("clickedPost");
         double latitude;
         double longitude;
         if (clickedPost.getLatitude()==null){

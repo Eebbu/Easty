@@ -16,11 +16,11 @@ import java.util.List;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder> {
 
-    private List<PostFT> posts;
+    private List<Post> posts;
     private Context context;
     private OnItemClickListener onItemClickListener; // 点击事件监听器
 
-    public PostAdapter(Context context, List<PostFT> posts) {
+    public PostAdapter(Context context, List<Post> posts) {
         this.context = context;
         this.posts = posts;
     }
@@ -39,7 +39,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull PostViewHolder holder, int position) {
-        PostFT post = posts.get(position);
+        Post post = posts.get(position);
         holder.bind(post);
     }
 
@@ -76,7 +76,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             });
         }
 
-        public void bind(PostFT post) {
+        public void bind(Post post) {
             titleTextView.setText(post.getPostTitle());
             if (post.getImages() != null && post.getImages().size() > 0){
                 Picasso.get()
