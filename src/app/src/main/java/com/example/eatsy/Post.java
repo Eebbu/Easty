@@ -86,6 +86,7 @@ public abstract class Post {
     public String getPickUpTimes() {
         return pickUpTimes;
     }
+    public String getWantInExchange(){ return wantInExchange;}
 
     public String getLatitude() {
         return latitude;
