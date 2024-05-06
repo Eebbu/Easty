@@ -20,8 +20,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
-        android:fontFamily="cursive"
-        android:text="username"
+        android:textColor="@color/black"
+
+        android:text="Username"
         android:textSize="38sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/userPhoto"
@@ -105,8 +106,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="0dp"
                         android:layout_marginTop="0dp"
-                        android:fontFamily="serif-monospace"
-                        android:text="titleOfPost"
+
+                        android:text="TitleOfPost"
                         android:textSize="30sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="@+id/title_linear"
@@ -128,7 +129,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="0dp"
                         android:layout_marginTop="0dp"
-                        android:fontFamily="serif-monospace"
+
                         android:text="Here is the description of the post \nsinking your teeth into a juicy burger, the bun lightly toasted, the beef patty perfectly seared, topped with melted cheddar, fresh lettuce, ripe tomatoes, and tangy pickles, all held together by a creamy, slightly spicy sauce. It's a mouthwatering experience in every bite."
                         android:textSize="22sp"
                         app:layout_constraintStart_toStartOf="@+id/description_linear"
@@ -141,7 +142,7 @@
                         android:layout_marginStart="0dp"
                         android:layout_marginTop="10dp"
                         android:text="2 remain and meet at time"
-                        android:fontFamily="cursive"
+
                         android:textSize="18sp"
                         app:layout_constraintStart_toStartOf="@+id/description_linear"
                         app:layout_constraintTop_toTopOf="@+id/description_linear"/>
@@ -153,7 +154,7 @@
                         android:layout_marginStart="0dp"
                         android:layout_marginTop="0dp"
                         android:text="11 harold white ave, coombs, ACT 2611"
-                        android:fontFamily="cursive"
+
                         android:textSize="18sp"
                         app:layout_constraintStart_toStartOf="@+id/description_linear"
                         app:layout_constraintTop_toTopOf="@+id/description_linear"/>
@@ -168,7 +169,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
-                        android:fontFamily="cursive"
+
                         android:layout_marginTop="15dp"
                         android:text="posted in 30 minutes"
                         android:textSize="15sp"/>

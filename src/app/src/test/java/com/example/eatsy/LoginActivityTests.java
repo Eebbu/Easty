@@ -4,16 +4,14 @@ package com.example.eatsy;
 import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertSame;
 
-import androidx.test.ext.junit.runners.AndroidJUnit4;
-
-import com.google.common.base.Verify;
-
-import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@RunWith(AndroidJUnit4.class)
-public class LoginActivityTest {
+
+
+
+public class LoginActivityTests {
+
 
     @Test(timeout = 1000)
     public void sameInstanceTest() {
@@ -57,12 +55,4 @@ public class LoginActivityTest {
 
 
     }
-
-
-
-
-
-
-
-
 }
