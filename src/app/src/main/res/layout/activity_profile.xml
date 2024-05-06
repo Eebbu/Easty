@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="68dp"
         android:layout_marginBottom="16dp"
-        android:text="Profile"
+        android:text="@string/profile_header"
         android:textSize="38sp"
         android:textStyle="bold"
         android:textColor="@color/black"
@@ -111,7 +111,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
                 android:drawableLeft="@drawable/baseline_person_24"
-                android:text="Name"
+                android:text="@string/nameOnProfile"
                 android:textColor="@color/black"
                 android:textSize="17sp"
                 app:layout_constraintBottom_toTopOf="@id/email_on_profile"
@@ -126,7 +126,7 @@
 
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="50dp"
-                android:text="Name"
+                android:text="@string/nameToDisplay"
                 android:textColor="@color/black"
                 android:textSize="17sp"
                 app:layout_constraintBottom_toTopOf="@id/email_on_profile"
@@ -157,7 +157,7 @@
 
                 android:layout_marginLeft="3dp"
 
-                android:text="Email"
+                android:text="@string/emailOnProfile"
                 android:textColor="@color/black"
                 android:textSize="17sp"
                 app:layout_constraintBottom_toTopOf="@id/email_on_profile"
@@ -169,7 +169,7 @@
                 android:id="@+id/email_on_profile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Email"
+                android:text="@string/emailToDisplay"
                 android:layout_marginLeft="50dp"
 
                 android:textColor="@color/black"
@@ -194,7 +194,7 @@
                 android:layout_marginLeft="85dp"
 
 
-                android:text="Change profile"
+                android:text="@string/change_pic"
 
 
                 android:textColor="@color/white"
@@ -219,7 +219,7 @@
                 android:backgroundTint="#F44336"
                 android:layout_marginLeft="135dp"
 
-                android:text="Sign out"
+                android:text="@string/log_Out"
 
 
                 android:textColor="@color/white"
