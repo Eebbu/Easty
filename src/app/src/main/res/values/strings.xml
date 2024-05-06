@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">Eatsy</string>
+    <string name="app_name">EATSY</string>
     <string name="title">Title</string>
+    <string name="Log_in"> Log in</string>
     <string name="add_up_to_10_images">Add your pictures</string>
     <string name="description">Description</string>
     <string name="pick_up_times">Pick-up times</string>
