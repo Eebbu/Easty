@@ -33,7 +33,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 /**
- * Functionbilities
+ * Functionilities
  * 1) UI design(Vishakha Mathur)
  * 2) link the page to profile(Vishakha Mathur)
  * 3) link page to search view and addview(Zihan Yuan)

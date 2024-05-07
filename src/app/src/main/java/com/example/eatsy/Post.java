@@ -131,6 +131,7 @@ public class Post implements Serializable{
     public String getPickUpTimes() {
         return pickUpTimes;
     }
+    public String getWantInExchange(){ return wantInExchange;}
 
     public String getLatitude() {
         return this.Address.latitude;

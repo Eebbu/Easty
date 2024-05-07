@@ -22,7 +22,7 @@
         android:layout_marginTop="20dp"
         android:textColor="@color/black"
 
-        android:text="Username"
+        android:text="@string/title_postcard"
         android:textSize="38sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/userPhoto"
@@ -107,7 +107,7 @@
                         android:layout_marginStart="0dp"
                         android:layout_marginTop="0dp"
 
-                        android:text="TitleOfPost"
+                        android:text="@string/post_title"
                         android:textSize="30sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="@+id/title_linear"
@@ -130,7 +130,7 @@
                         android:layout_marginStart="0dp"
                         android:layout_marginTop="0dp"
 
-                        android:text="Here is the description of the post \nsinking your teeth into a juicy burger, the bun lightly toasted, the beef patty perfectly seared, topped with melted cheddar, fresh lettuce, ripe tomatoes, and tangy pickles, all held together by a creamy, slightly spicy sauce. It's a mouthwatering experience in every bite."
+                        android:text="@string/post_description"
                         android:textSize="22sp"
                         app:layout_constraintStart_toStartOf="@+id/description_linear"
                         app:layout_constraintTop_toTopOf="@+id/description_linear"/>
@@ -141,7 +141,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="0dp"
                         android:layout_marginTop="10dp"
-                        android:text="2 remain and meet at time"
+                        android:text="@string/remain_time"
 
                         android:textSize="18sp"
                         app:layout_constraintStart_toStartOf="@+id/description_linear"
@@ -153,7 +153,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="0dp"
                         android:layout_marginTop="0dp"
-                        android:text="11 harold white ave, coombs, ACT 2611"
+                        android:text="@string/address_post"
 
                         android:textSize="18sp"
                         app:layout_constraintStart_toStartOf="@+id/description_linear"
@@ -171,7 +171,7 @@
                         android:layout_gravity="end"
 
                         android:layout_marginTop="15dp"
-                        android:text="posted in 30 minutes"
+                        android:text="@string/timeOfPost"
                         android:textSize="15sp"/>
 
 

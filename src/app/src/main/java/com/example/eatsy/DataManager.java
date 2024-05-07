@@ -1,6 +1,7 @@
 package com.example.eatsy;
 
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class DataManager {
     private static final DataManager instance = new DataManager();
@@ -27,5 +28,20 @@ public class DataManager {
 
     public ConcurrentHashMap<String, Post> getPostHashMap() {
         return postHashMap;
+    }
+
+    /**
+     * 生成基于时间戳的唯一 ID
+     * @return 返回基于时间戳和随机数的唯一 ID
+     */
+    public static String generateTimestampBasedId() {
+        long timestamp = System.currentTimeMillis(); // 获取当前时间戳
+        int randomNum = ThreadLocalRandom.current().nextInt(100, 1000); // 生成一个100到999之间的随机数
+        return timestamp + "" + randomNum; // 将时间戳和随机数拼接成字符串
+    }
+
+    public String searchUserName(String userInfo){
+        return userHashMap.get(userInfo).getUsername();
+
     }
 }

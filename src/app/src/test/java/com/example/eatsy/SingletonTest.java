@@ -5,12 +5,9 @@ import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertSame;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
 
-
-
-public class LoginActivityTests {
+public class SingletonTest {
 
 
     @Test(timeout = 1000)

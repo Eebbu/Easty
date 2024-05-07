@@ -1,8 +1,9 @@
 package com.example.eatsy;
 import android.util.Log;
 
-/**
+/**Functionality
  * This is the java class creating singleton patter for LoginActivity.
+ * @author Vishakha Mathur(u7663368)
  */
 public class LoginUser {
     private static LoginUser loginUser = null;

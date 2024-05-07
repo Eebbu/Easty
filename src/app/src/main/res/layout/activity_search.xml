@@ -49,7 +49,7 @@
         android:background="@drawable/search_bg"
         android:backgroundTint="#D1CDCD"
         android:ems="10"
-        android:hint=" Search"
+        android:hint="@string/search_page"
         android:inputType="text"
         android:paddingLeft="20dp"
         android:textSize="20sp"
@@ -96,7 +96,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="21dp"
-                android:text="FREE" />
+                android:text="@string/free_search" />
 
             <Space
                 android:layout_width="32dp"
@@ -107,7 +107,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="21dp"
-                android:text="BUY" />
+                android:text="@string/buy_search" />
 
             <Space
                 android:layout_width="32dp"
@@ -118,7 +118,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="21dp"
-                android:text="EXCHANGE" />
+                android:text="@string/exchange_search" />
         </LinearLayout>
     </LinearLayout>
 
