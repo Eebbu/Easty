@@ -33,7 +33,7 @@ public class factory_donate extends Post{
     public void saveToFirebase() {
         //.....
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        FirebaseFirestore db = FirebaseFirestore.getInstance(); // // Get Firestore instance
+        FirebaseFirestore db = FirebaseFirestore.getInstance();  // Get Firestore instance
         Uri filePath = this.getFilePath();
         StorageReference storageReference = getStorageReference();
         if (filePath != null) {

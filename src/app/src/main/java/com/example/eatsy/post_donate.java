@@ -23,6 +23,8 @@ import java.util.UUID;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.appcheck.FirebaseAppCheck;
 import com.google.firebase.appcheck.playintegrity.PlayIntegrityAppCheckProviderFactory;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -97,7 +99,9 @@ public class post_donate extends post_base {
         String image = filePath.toString();
         String pick_up_times = pickupTimeEditText.getText().toString().trim();
         //TODO revise these four string
-        String userName = getIntent().getStringExtra("USERNAME");
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String userEmail = user.getEmail(); // Get current user's email address
+        String userName = DataManager.getDataInstance().searchUserName(userEmail);
 
         String latitude = selectedLatitude;
         String longtitude = selectedLongitude;
