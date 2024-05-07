@@ -32,18 +32,18 @@ public class factory_donate extends Post{
     @Override
     public void saveToFirebase() {
         //.....
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();  // 获取当前用户
-        FirebaseFirestore db = FirebaseFirestore.getInstance(); // 获取 Firestore 实例
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseFirestore db = FirebaseFirestore.getInstance(); // // Get Firestore instance
         Uri filePath = this.getFilePath();
         StorageReference storageReference = getStorageReference();
         if (filePath != null) {
-            String userEmail = user.getEmail(); // 获取当前用户的邮箱地址
-            String newPostId = DataManager.generateTimestampBasedId(); //生成基于时间戳的ID
+            String userEmail = user.getEmail(); // Get current user's email address
+            String newPostId = DataManager.generateTimestampBasedId(); // Generate ID based on timestamp
             storageReference.putFile(filePath).addOnSuccessListener(taskSnapshot -> {
                 taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(uri -> {
                     Map<String, Object> postMap = new HashMap<>();
-                    postMap.put("userName", this.getUserName());
-                    postMap.put("userEmail", userEmail);
+                    postMap.put("userName", DataManager.getDataInstance().searchUserName(userEmail));
+                    postMap.put("userID", userEmail);
                     postMap.put("postType", this.getPostType());
                     postMap.put("postTitle", this.getPostTitle());
                     postMap.put("postDescription", this.getPostDescription());
@@ -52,11 +52,11 @@ public class factory_donate extends Post{
                     postMap.put("longitude", this.getLongitude());
                     postMap.put("pickUpTimes", this.getPickUpTimes());
                     postMap.put("imageURL", uri.toString());
-                    // 保存帖子数据到 Firestore 并使用新生成的 post ID
+                    // Save post data to Firestore using the newly generated post ID
                     db.collection("posts").document(newPostId).set(postMap)
                             .addOnSuccessListener(aVoid -> {
                                 System.out.println("Post data successfully saved!");
-                                // 更新用户的帖子列表
+                                // Update user's post list
                                 DocumentReference userRef = db.collection("users").document(userEmail);
                                 userRef.update("postid", FieldValue.arrayUnion(newPostId))
                                         .addOnSuccessListener(aVoid1 -> System.out.println("Post ID added to user profile"))
