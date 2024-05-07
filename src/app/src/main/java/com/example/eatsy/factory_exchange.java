@@ -30,5 +30,6 @@ public class factory_exchange extends Post{
         if (filePath != null) {
             storageReference.putFile(filePath);//save image to firebase
         }
+        super.saveToFirebase();
     }
 }

@@ -25,7 +25,6 @@ public class ImportDataFromLocalJson {
                 sb.append(line);
             }
             reader.close();
-            System.out.println("error");
 
 
             Gson gson = new Gson();

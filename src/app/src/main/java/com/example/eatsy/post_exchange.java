@@ -53,8 +53,8 @@ public class post_exchange extends post_base {
             valid = false;
         }
 
-        if (addressEditText.getText().toString().trim().isEmpty()) {
-            addressEditText.setError("Required");
+        if (addressText.getText().toString().trim().isEmpty()) {
+            addressText.setError("Required");
             valid = false;
         }
 

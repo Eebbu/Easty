@@ -37,9 +37,9 @@ public class Post implements Serializable{
     @SerializedName("pick_up_times")
     private String pickUpTimes;
 
-    private String latitude;
+    private Address Address;
 
-    private String longitude;
+
 
     private ArrayList<String> images = null;
 
@@ -47,6 +47,19 @@ public class Post implements Serializable{
     private String wantInExchange;
     private Uri filePath;
     private StorageReference storageReference;
+
+    public static class Address implements Serializable {
+        @SerializedName("latitude")
+        private String latitude;
+
+        @SerializedName("longitude")
+        private String longitude;
+
+        public Address(String latitude,String longitude){
+            this.latitude = latitude;
+            this.longitude = longitude;
+        }
+    }
 
 
 //    public  Post(String userID,String userName,String postType,String postTitle,String postDescription, String quantity, String pickUpTimes,String latitude,String longitude,ArrayList<String> images,String food){
@@ -60,8 +73,7 @@ public class Post implements Serializable{
         this.postDescription = postDescription;
         this.quantity = quantity;
 //        this.pickUpTimes = pickUpTimes;
-        this.latitude = latitude;
-        this.longitude = longitude;
+        this.Address = new Address(latitude,longitude);
 //        this.images = new ArrayList<>(images);
 //        this.food = food;
     }
@@ -74,13 +86,22 @@ public class Post implements Serializable{
         this.postDescription = postDescription;
         this.quantity = quantity;
         this.pickUpTimes = pickUpTimes;
-        this.latitude = latitude;
-        this.longitude = longitude;
+        this.Address = new Address(latitude,longitude);
         this.images = new ArrayList<>(images);
 
     }
     // Abstract method to save to Firebase
-    public void saveToFirebase(){};
+    public void saveToFirebase(){
+        System.out.println("username" + userName);
+        System.out.println("userID"+ userID);
+        System.out.println("quantity" + quantity);
+        System.out.println("postType" + postType);
+        System.out.println("postTitle" + postTitle);
+        System.out.println("Des "+postDescription);
+        System.out.println(getLongitude());
+        System.out.println(getLatitude());
+        System.out.println(images);
+    };
 
     // Getter methods for retrieving post information
     public String getUserID() {
@@ -112,11 +133,11 @@ public class Post implements Serializable{
     }
 
     public String getLatitude() {
-        return latitude;
+        return this.Address.latitude;
     }
 
     public String getLongitude() {
-        return longitude;
+        return this.Address.longitude;
     }
 
     public ArrayList<String> getImages() {

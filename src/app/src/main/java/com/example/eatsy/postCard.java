@@ -106,6 +106,10 @@ public class postCard extends AppCompatActivity implements OnMapReadyCallback {
                     .load(clickedPost.getImages().get(0)) // 这里假设 PostFT 类中有一个获取图片 URL 的方法
                     .placeholder(R.drawable.beans) // 可选：设置加载过程中显示的占位图
                     .into(food_picture);
+        }else{
+            Picasso.get()
+                    .load(R.drawable.foodwant) // 加载特定图片的资源ID
+                    .into(food_picture);
         }
 
 

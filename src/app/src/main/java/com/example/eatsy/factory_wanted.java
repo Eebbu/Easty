@@ -8,6 +8,6 @@ public class factory_wanted extends Post{
     }
     @Override
     public void saveToFirebase() {
-        //.....
+        super.saveToFirebase();
     }
 }

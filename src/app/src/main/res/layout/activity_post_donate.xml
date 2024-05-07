@@ -291,13 +291,13 @@
                     app:layout_constraintStart_toStartOf="@+id/Address_linear"
                     app:layout_constraintTop_toTopOf="@+id/Address_linear" />
 
-                <EditText
+                <TextView
                     android:id="@+id/Address_editText"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:layout_marginBottom="0dp"
                     app:layout_constraintBottom_toBottomOf="@+id/Address_linear"
-                    android:hint = "@string/e_g_16_northbourn_avenue_act"/>
+                    android:hint = "@string/select_by_botton_below"/>
                 <Button
                         android:id="@+id/confirm_button"
                         android:text="choose"
