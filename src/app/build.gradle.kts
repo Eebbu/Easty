@@ -68,4 +68,6 @@ dependencies {
     testImplementation ("org.robolectric:robolectric:4.6.1")
     testImplementation ("org.mockito:mockito-core:3.11.2")
 
+    implementation("com.google.code.gson:gson:2.8.8")
+
 }
