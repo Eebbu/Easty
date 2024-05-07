@@ -2,16 +2,15 @@ package com.example.eatsy;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.ImageFormat;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -33,7 +32,7 @@ public abstract class post_base extends AppCompatActivity {
     protected EditText titleEditText;
     protected EditText descriptionEditText;
     protected EditText pickupTimeEditText;
-    protected EditText addressEditText;
+    protected TextView addressText;
     protected EditText wantEditText;
     protected String selectedLatitude;
     protected String selectedLongitude;
@@ -70,7 +69,7 @@ public abstract class post_base extends AppCompatActivity {
         quantityEditText = findViewById(R.id.editTextOther);
         titleEditText = findViewById(R.id.title_editText);
         descriptionEditText = findViewById(R.id.description_editText);
-        addressEditText = findViewById(R.id.Address_editText);
+        addressText = findViewById(R.id.Address_editText);
         setupSpecificViews();
         go_back.setOnClickListener(v -> finish());
     }
@@ -136,7 +135,7 @@ public abstract class post_base extends AppCompatActivity {
                 selectedLatitude = String.valueOf(selectedPoint[0]);
                 selectedLongitude = String.valueOf(selectedPoint[1]);
                 String selectedAddress = data.getStringExtra("selectedAddress");
-                addressEditText.setText(selectedAddress);
+                addressText.setText(selectedAddress);
 
 
             }

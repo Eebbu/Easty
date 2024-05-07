@@ -73,6 +73,7 @@ public class factory_donate extends Post{
         } else {
             System.err.println("File path is null or user is not logged in");
         }
+        super.saveToFirebase();
     }
             }
 

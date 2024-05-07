@@ -11,5 +11,6 @@ public class factory_wanted extends Post{
     public void saveToFirebase() {
         //.....
 
+        super.saveToFirebase();
     }
 }

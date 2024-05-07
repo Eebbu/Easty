@@ -16,6 +16,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
 import android.content.Context;
@@ -43,6 +44,7 @@ public class DashboardActivity extends AppCompatActivity {
 
 //    ConcurrentHashMap<String, Post> posts;
     HashMap<String, Post> posts;
+    ArrayList<Post> postsToShow = new ArrayList<>();
     private RecyclerView recyclerView;
     private PostAdapter adapter;
 
@@ -58,7 +60,13 @@ public class DashboardActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new PostAdapter(this, new ArrayList<>(posts.values()));
+
+        for (int i = posts.size()-1; i >0 ; i--) {
+            postsToShow.add(posts.get(i+""));
+        }
+
+
+        adapter = new PostAdapter(this, postsToShow);
         recyclerView.setAdapter(adapter);
         ImageView searchButton = findViewById(R.id.search_button);
         searchButton.setOnClickListener(new View.OnClickListener() {
@@ -100,8 +108,7 @@ public class DashboardActivity extends AppCompatActivity {
         adapter.setOnItemClickListener(new PostAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                Post clickedPost = posts.get(Integer.toString(position));
-                System.out.println(posts.get(Integer.toString(position)));
+                Post clickedPost = postsToShow.get(position);
                 Intent intent = new Intent(DashboardActivity.this, postCard.class);
                 intent.putExtra("clickedPost",clickedPost);
                 startActivity(intent);

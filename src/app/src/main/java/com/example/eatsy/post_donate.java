@@ -1,22 +1,9 @@
 package com.example.eatsy;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.Bundle;
-import android.provider.MediaStore;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 
-import java.io.IOException;
 import java.util.UUID;
 
 
@@ -69,8 +56,8 @@ public class post_donate extends post_base {
             valid = false;
         }
 
-        if (addressEditText.getText().toString().trim().isEmpty()) {
-            addressEditText.setError("Required");
+        if (addressText.getText().toString().trim().isEmpty()) {
+            addressText.setError("Required");
             valid = false;
         }
 

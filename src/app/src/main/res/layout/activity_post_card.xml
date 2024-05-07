@@ -83,9 +83,9 @@
                 <ImageButton
                     android:id="@+id/food_picture"
                     android:layout_width="match_parent"
-                    android:layout_height="400dp"
+                    android:layout_height="340dp"
+                    android:scaleType="fitXY"
                     android:background="?android:attr/selectableItemBackground"
-                    android:contentDescription="picture of food"
                     android:src="@drawable/burger"
                     app:layout_constraintStart_toStartOf="parent"/>
 

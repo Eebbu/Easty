@@ -1,17 +1,8 @@
 package com.example.eatsy;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-import com.google.firebase.storage.StorageReference;
-
-import java.util.UUID;
 /**
  * Post of wanted page
  * @author Zihan Yuan(u7773880)
@@ -47,9 +38,8 @@ public class post_wanted extends post_base {
             titleEditText.setError("Required");
             valid = false;
         }
-
-        if (addressEditText.getText().toString().trim().isEmpty()) {
-            addressEditText.setError("Required");
+        if (addressText.getText().toString().trim().isEmpty()) {
+            addressText.setError("Required");
             valid = false;
         }
         return valid;
