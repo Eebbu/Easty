@@ -40,4 +40,8 @@ public class DataManager {
         return timestamp + "" + randomNum; // 将时间戳和随机数拼接成字符串
     }
 
+    public String searchUserName(String userInfo){
+        return userHashMap.get(userInfo).getEmail();
+
+    }
 }
