@@ -41,7 +41,7 @@ public class DataManager {
     }
 
     public String searchUserName(String userInfo){
-        return userHashMap.get(userInfo).getEmail();
+        return userHashMap.get(userInfo).getUsername();
 
     }
 }

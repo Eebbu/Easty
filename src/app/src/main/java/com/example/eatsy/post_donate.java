@@ -29,6 +29,7 @@ import com.google.firebase.storage.StorageReference;
 /**
  * Post of donation page
  * @author Zihan Yuan(u7773880)
+ * @author Boxuan Lin(u7705128)
  */
 public class post_donate extends post_base {
     @Override
