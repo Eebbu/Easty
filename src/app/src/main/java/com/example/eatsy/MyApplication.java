@@ -28,7 +28,9 @@ public class MyApplication extends Application {
         // Call the asynchronous method, and handle the returned CompletableFuture
         downloader.downloadData(usersCollectionRef)
                 .thenAccept(data ->  {
+
                     DataManager.getDataInstance().setUserHashMap(data); // store data to DataManager
+                    System.out.println("success!!!!!!!");
 
                 });
         // Download and handle post data
