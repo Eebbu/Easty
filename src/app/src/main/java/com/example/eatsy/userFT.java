@@ -16,7 +16,7 @@ public class userFT {
         this.userID = userID;
         this.email = email;
         this.postID = postID;
-        this.photoURL=photoURL;
+        this.photoURL = photoURL;
     }
 
     public String getUsername() {
