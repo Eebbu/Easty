@@ -29,7 +29,7 @@ public class PostDetailActivity extends AppCompatActivity {
         if (intent != null) {
             int id = intent.getIntExtra("postId",0);
             // get post
-            PostFT postFT = StorageList.mapList.get(String.valueOf(id));
+            Post postFT = StorageList.mapList.get(String.valueOf(id));
 
             //picture
             ImageButton foodIdTextView = findViewById(R.id.food_img);
