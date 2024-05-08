@@ -81,6 +81,7 @@ public class ProfileActivity extends AppCompatActivity {
 // Setting the variables
         logOutBtn = findViewById(R.id.Signout);
         userName = findViewById(R.id.name_person);
+
         userEmail = findViewById(R.id.email_on_profile);
         firebaseFirestore = FirebaseFirestore.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
@@ -102,25 +103,31 @@ public class ProfileActivity extends AppCompatActivity {
         // Displaying user data such as name and email on the profile page.
 
         if (user != null) {
-            firebaseFirestore.collection("users").document(user.getUid()).get().addOnCompleteListener(task -> {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot ds = task.getResult();
-                    if (ds.exists()) {
-                        String nameOfPerson = ds.getString("name");
-                        String emailOfPerson = ds.getString("email");
-                        Log.d("TAG", "Success!!!!!!!");
-                        userName.setText(nameOfPerson);
-                        userEmail.setText(emailOfPerson);
-                    } else {
-                        Log.d("TAG", "No such document");
-                    }
-                }
+            String emailOfPerson = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+            String nameOfPerson = DashboardActivity.users.get(emailOfPerson).getUsername();
+            userName.setText(nameOfPerson);
+            userEmail.setText(emailOfPerson);
 
-                    else {
-                        Log.d("TAG", "get failed with", task.getException());
-                    }
-
-            });
+//            firebaseFirestore.collection("users").document(user.getUid()).get().addOnCompleteListener(task -> {
+//                if (task.isSuccessful()) {
+//                    DocumentSnapshot ds = task.getResult();
+//                    if (ds.exists()) {
+//                        System.out.println("11");
+//                        String emailOfPerson = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+//                        String nameOfPerson = DashboardActivity.users.get(emailOfPerson).getUsername();
+//                        Log.d("TAG", "Success!!!!!!!");
+//                        userName.setText(nameOfPerson);
+//                        userEmail.setText(emailOfPerson);
+//                    } else {
+//                        Log.d("TAG", "No such document");
+//                    }
+//                }
+//
+//                    else {
+//                        Log.d("TAG", "get failed with", task.getException());
+//                    }
+//
+//            });
         }
 
 //        DocumentReference documentReference = firebaseFirestore.collection("users").document(userID);
