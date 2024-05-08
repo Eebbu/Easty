@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class search extends AppCompatActivity {
     private ListView mListVie;
-    private List<Post> postList = new ArrayList<>();
+    private List<PostFT> postList = new ArrayList<>();
 
     private Map<Integer,String> type = new HashMap<>();
 
@@ -158,77 +159,37 @@ public class search extends AppCompatActivity {
         Filter posts based on the type selected by the user via checkbox.
      */
     private void searchData(){
-        List<Post> resList = new ArrayList<>();
-        CollectionReference postsCollectionRef = FirestoreHelper.getCollectionRef("posts");
-        postsCollectionRef.whereIn("postType", new ArrayList<>(type.values()))
-                .get()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        task.getResult().forEach(document -> {
-                            String postID = document.getId();
-                            String userID = document.getString("userID");
-                            String userName = document.getString("userName");
-                            String postType = document.getString("postType");
-                            String postTitle = document.getString("postTitle");
-                            String postDescription = document.getString("postDescription");
-                            String quantity = document.getString("quantity");
-                            String pickUpTimes = document.getString("pickUpTimes");
-                            String latitude = document.getString("latitude");
-                            String longitude = document.getString("longitude");
-                            ArrayList<String> images = (ArrayList<String>) document.get("images");
-                            Post post = new Post(userID, userName, postType, postTitle, postDescription, quantity, pickUpTimes, latitude, longitude, images);
-                            resList.add(post);
-                        });
-                        this.postList = resList;
-                        mListVie = findViewById(R.id.lv);
-                        mListVie.setAdapter(new ListDataAdapter(search.this, this.postList));
-                    }
-                });
-    }
-
-
-
-/*
-    Show all posts without any filters.
- */
-    private void searchAll(){
-        List<Post> resList = new ArrayList<>();
-        CollectionReference postsCollectionRef = FirestoreHelper.getCollectionRef("posts");
-        postsCollectionRef.get().addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                task.getResult().forEach(document -> {
-                    String postID = document.getId();
-                    String userID = document.getString("userID");
-                    String userName = document.getString("userName");
-                    String postType = document.getString("postType");
-                    String postTitle = document.getString("postTitle");
-                    String postDescription = document.getString("postDescription");
-                    String quantity = document.getString("quantity");
-                    String pickUpTimes = document.getString("pickUpTimes");
-                    String latitude = document.getString("latitude");
-                    String longitude = document.getString("longitude");
-                    ArrayList<String> images = (ArrayList<String>) document.get("images");
-                    Post post = new Post(userID, userName, postType, postTitle, postDescription, quantity, pickUpTimes, latitude, longitude, images);
-                    resList.add(post);
-                });
-                this.postList = resList;
-                mListVie = findViewById(R.id.lv);
-                mListVie.setAdapter(new ListDataAdapter(search.this, this.postList));
+        List<PostFT> resList = new ArrayList<>();
+        this.postList.forEach(document -> {
+            if(!this.type.isEmpty() && this.type.containsValue(document.getPostType())){
+                resList.add(document);
             }
         });
+        mListVie = findViewById(R.id.lv);
+        mListVie.setAdapter(new ListDataAdapter(search.this, resList));
     }
 
 
-/*
-    Search posts based on keywords entered by the user.
-    It uses a custom Trie data structure to match keyword prefixes
-    and counts the number of matching keywords in each post title for sorting and display.
- */
-     private void searchByTest(String[] keywords) {
+
+    /*
+        Show all posts without any filters.
+     */
+    private void searchAll(){
+        mListVie = findViewById(R.id.lv);
+        mListVie.setAdapter(new ListDataAdapter(search.this, StorageList.postList));
+    }
+
+
+    /*
+        Search posts based on keywords entered by the user.
+        It uses a custom Trie data structure to match keyword prefixes
+        and counts the number of matching keywords in each post title for sorting and display.
+     */
+    private void searchByTest(String[] keywords) {
         Trie trie = new Trie();
         CollectionReference postsCollectionRef = FirestoreHelper.getCollectionRef("posts");
-        HashSet<Post> allResults = new HashSet<>();
-        HashMap<Post, Integer> resultCountMap = new HashMap<>();
+        HashSet<PostFT> allResults = new HashSet<>();
+        HashMap<PostFT, Integer> resultCountMap = new HashMap<>();
 
         // Insert keywords into Trie
         for (String keyword : keywords) {
@@ -237,62 +198,36 @@ public class search extends AppCompatActivity {
 
         // Iterate through each keyword in the keyword array
         // Initiate query
-        postsCollectionRef.get().addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                // Processing the results of query
-                task.getResult().forEach(document -> {
-                    String postTitle = document.getString("postTitle").toLowerCase();
-                    String[] words = postTitle.split("\\s+"); // Split title into words
-
-                    // Count the occurrences of each keyword in the title
-                    int count = 0;
-                    for (String word : words) {
-                        word = word.replaceAll("[^a-zA-Z0-9\\s]", "");
-                        if (!word.equals("") &&  trie.searchPrefix(word)) {
-                            count++;
-                        }
-                    }
-
-                    // If the title contains the current keyword,
-                    // add the document to the result set and increment the counter
-                    if (count > 0) {
-                        String postID = document.getId();
-                        String userID = document.getString("userID");
-                        String userName = document.getString("userName");
-                        String postType = document.getString("postType");
-                        String postDescription = document.getString("postDescription");
-                        String quantity = document.getString("quantity");
-                        String pickUpTimes = document.getString("pickUpTimes");
-                        String latitude = document.getString("latitude");
-                        String longitude = document.getString("longitude");
-                        ArrayList<String> images = (ArrayList<String>) document.get("images");
-                        Post post = new Post(userID, userName, postType, postTitle, postDescription, quantity, pickUpTimes, latitude, longitude, images);
-
-                        int totalCount = resultCountMap.getOrDefault(post, 0);
-                        resultCountMap.put(post, totalCount + count);
-                        allResults.add(post);
-                    }
-                });
-            } else {
-                // Processing query failed
-                Exception exception = task.getException();
-                // Handle exceptions
+        // Processing the results of query
+        this.postList.forEach(document -> {
+            String postTitle = document.getPostTitle().toLowerCase();
+            String[] words = postTitle.split("\\s+"); // Split title into words
+            // Count the occurrences of each keyword in the title
+            int count = 0;
+            for (String word : words) {
+                word = word.replaceAll("[^a-zA-Z0-9\\s]", "");
+                if (!word.equals("") &&  trie.searchPrefix(word)) {
+                    count++;
+                }
             }
-
-            // Increase the number of completed queries
-            // Check if all queries have completed
-            // Sort the results according to the number of occurrences
-            ArrayList<Post> sortedResults = new ArrayList<>(allResults);
-            Collections.sort(sortedResults, (post1, post2) ->
-                    resultCountMap.get(post2).compareTo(resultCountMap.get(post1))
-            );
-            // Process each query result
-            this.postList = sortedResults;
-            mListVie = findViewById(R.id.lv);
-            mListVie.setAdapter(new ListDataAdapter(search.this, this.postList));
+            // If the title contains the current keyword,
+            // add the document to the result set and increment the counter
+            if (count > 0) {
+                int totalCount = resultCountMap.getOrDefault(document, 0);
+                resultCountMap.put(document, totalCount + count);
+                allResults.add(document);
+            }
         });
+        // Increase the number of completed queries
+        // Check if all queries have completed
+        // Sort the results according to the number of occurrences
+        ArrayList<PostFT> sortedResults = new ArrayList<>(allResults);
+        Collections.sort(sortedResults, (post1, post2) ->
+                resultCountMap.get(post2).compareTo(resultCountMap.get(post1))
+        );
+        mListVie = findViewById(R.id.lv);
+        mListVie.setAdapter(new ListDataAdapter(search.this, sortedResults));
     }
-
 
 
 }
