@@ -32,7 +32,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class search extends AppCompatActivity {
     private ListView mListVie;
-    private List<PostFT> postList = new ArrayList<>();
+    private List<Post> postList = new ArrayList<>();
 
     private Map<Integer,String> type = new HashMap<>();
 
@@ -159,7 +159,7 @@ public class search extends AppCompatActivity {
         Filter posts based on the type selected by the user via checkbox.
      */
     private void searchData(){
-        List<PostFT> resList = new ArrayList<>();
+        List<Post> resList = new ArrayList<>();
         this.postList.forEach(document -> {
             if(!this.type.isEmpty() && this.type.containsValue(document.getPostType())){
                 resList.add(document);
@@ -188,8 +188,8 @@ public class search extends AppCompatActivity {
     private void searchByTest(String[] keywords) {
         Trie trie = new Trie();
         CollectionReference postsCollectionRef = FirestoreHelper.getCollectionRef("posts");
-        HashSet<PostFT> allResults = new HashSet<>();
-        HashMap<PostFT, Integer> resultCountMap = new HashMap<>();
+        HashSet<Post> allResults = new HashSet<>();
+        HashMap<Post, Integer> resultCountMap = new HashMap<>();
 
         // Insert keywords into Trie
         for (String keyword : keywords) {
@@ -221,7 +221,7 @@ public class search extends AppCompatActivity {
         // Increase the number of completed queries
         // Check if all queries have completed
         // Sort the results according to the number of occurrences
-        ArrayList<PostFT> sortedResults = new ArrayList<>(allResults);
+        ArrayList<Post> sortedResults = new ArrayList<>(allResults);
         Collections.sort(sortedResults, (post1, post2) ->
                 resultCountMap.get(post2).compareTo(resultCountMap.get(post1))
         );

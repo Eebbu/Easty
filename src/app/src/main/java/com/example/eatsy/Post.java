@@ -19,7 +19,7 @@ import java.io.Serializable;
 
 public class Post implements Serializable{
     private static final long serialVersionUID = 1L;
-
+    private String id;
     @SerializedName("userid")
     private String userID;
     @SerializedName("username")
@@ -47,6 +47,9 @@ public class Post implements Serializable{
     private String wantInExchange;
     private Uri filePath;
     private StorageReference storageReference;
+
+    public Post(String id, String userID, String userName, String postType, String postTitle, String postDescription, String quantity, String pickUpTimes, String latitude, String longitude, ArrayList<String> images, String food) {
+    }
 
     public static class Address implements Serializable {
         @SerializedName("latitude")
@@ -77,8 +80,21 @@ public class Post implements Serializable{
 //        this.images = new ArrayList<>(images);
 //        this.food = food;
     }
+    public Post(String id, String userID, String userName, String postType, String postTitle, String postDescription, String quantity, String pickUpTimes, String latitude, String longitude, ArrayList<String> images) {
+        this.id = id;
+        this.userID = userID;
+        this.userName = userName;
+        this.postType = postType;
+        this.postTitle = postTitle;
+        this.postDescription = postDescription;
+        this.quantity = quantity;
+        this.pickUpTimes = pickUpTimes;
+        this.Address = new Address(latitude,longitude);
+        this.images = new ArrayList<>(images);
 
+    }
     public  Post(String userID,String userName,String postType,String postTitle,String postDescription, String quantity, String pickUpTimes,String latitude,String longitude,ArrayList<String> images){
+
         this.userID = userID;
         this.userName = userName;
         this.postType = postType;
@@ -104,6 +120,7 @@ public class Post implements Serializable{
     };
 
     // Getter methods for retrieving post information
+    public String getId(){return id;}
     public String getUserID() {
         return userID;
     }
