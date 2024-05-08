@@ -96,7 +96,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="21dp"
-                android:text="FREE" />
+                android:text="Donate" />
 
             <Space
                 android:layout_width="32dp"
@@ -107,7 +107,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="21dp"
-                android:text="BUY" />
+                android:text="Wanted" />
 
             <Space
                 android:layout_width="32dp"
@@ -118,7 +118,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="21dp"
-                android:text="EXCHANGE" />
+                android:text="Exchange" />
         </LinearLayout>
     </LinearLayout>
 
