@@ -43,7 +43,8 @@ import java.util.List;
 public class DashboardActivity extends AppCompatActivity {
 
 //    ConcurrentHashMap<String, Post> posts;
-    HashMap<String, Post> posts;
+    static HashMap<String, Post> posts;
+    static HashMap<String, userFT> users;
     ArrayList<Post> postsToShow = new ArrayList<>();
     private RecyclerView recyclerView;
     private PostAdapter adapter;
@@ -53,8 +54,14 @@ public class DashboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-//        posts = DataManager.getDataInstance().getPostHashMap();
-        posts = ImportDataFromLocalJson.read(getApplicationContext());
+        if (posts == null){
+            posts = ImportDataFromLocalJson.read(getApplicationContext());
+        }
+
+        if (users == null){
+            users = ImportDataFromLocalJson.readUser(getApplicationContext());
+        }
+
 
         recyclerView = findViewById(R.id.recyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);

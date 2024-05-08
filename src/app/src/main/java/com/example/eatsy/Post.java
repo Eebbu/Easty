@@ -2,6 +2,8 @@ package com.example.eatsy;
 
 import android.net.Uri;
 
+import androidx.annotation.NonNull;
+
 import com.google.firebase.storage.StorageReference;
 import com.google.gson.annotations.SerializedName;
 
@@ -217,4 +219,21 @@ public class Post implements Serializable{
 //    }
 
 
+    @NonNull
+    @Override
+    public String toString() {
+        System.out.println("userid= " + userID);
+        System.out.println("username= " + userName);
+        System.out.println("post_type= " + postType);
+        System.out.println("post_title= " + postTitle);
+        System.out.println("post_description= " + postDescription);
+        System.out.println("quantity= " + quantity);
+        System.out.println("pick_up_times= " + pickUpTimes);
+        System.out.println("pick_up_times= " + pickUpTimes);
+        System.out.println("latitude= " + Address.latitude);
+        System.out.println("longitude= " + Address.longitude);
+        System.out.println("images= " + images.get(0));
+        System.out.println("food= " + food);
+        return super.toString();
+    }
 }
