@@ -1,0 +1,4 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@android:color/transparent" /> <!-- 背景颜色透明 -->
+    <stroke android:color="#fcba03" android:width="2dp" /> <!-- 黑色边框 -->
+</shape>

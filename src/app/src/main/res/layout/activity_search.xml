@@ -49,7 +49,7 @@
         android:background="@drawable/search_bg"
         android:backgroundTint="#D1CDCD"
         android:ems="10"
-        android:hint="@string/search_page"
+        android:hint=" Search"
         android:inputType="text"
         android:paddingLeft="20dp"
         android:textSize="20sp"
@@ -96,7 +96,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="21dp"
-                android:text="@string/free_search" />
+                android:text="FREE" />
 
             <Space
                 android:layout_width="32dp"
@@ -107,7 +107,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="21dp"
-                android:text="@string/buy_search" />
+                android:text="BUY" />
 
             <Space
                 android:layout_width="32dp"
@@ -118,14 +118,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="21dp"
-                android:text="@string/exchange_search" />
+                android:text="EXCHANGE" />
         </LinearLayout>
     </LinearLayout>
 
     <View
         android:id="@+id/bottom_view"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="20dp"
         android:background="@drawable/bt_view"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -162,7 +162,7 @@
         <ListView
             android:id="@+id/lv"
             android:layout_width="match_parent"
-            android:layout_height="380dp"/>
+            android:layout_height="466dp"/>
 
 
         <!--            &lt;!&ndash; Image Upload Section &ndash;&gt;-->
