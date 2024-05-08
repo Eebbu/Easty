@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class PostDataDownloader {
     /**
      * Downloads post data from a specified Firestore collection and stores it in a ConcurrentHashMap.
-     * Attempts to fetch data from local cache if online fetching fails or if the device is offline.
+     * Utilizes Firestore's automatic cache management to handle offline data loading when necessary.
      */
     public CompletableFuture<ConcurrentHashMap<String, Post>> downloadData(CollectionReference postsCollectionRef) {
         CompletableFuture<ConcurrentHashMap<String, Post>> future = new CompletableFuture<>();
@@ -22,16 +22,7 @@ public class PostDataDownloader {
                 populateHashMapFromQuerySnapshot(task.getResult(), postHashMap);
                 future.complete(postHashMap);
             } else {
-                // Attempt to load from local cache if the online fetch fails
-                postsCollectionRef.get().addOnCompleteListener(taskFromCache -> {
-                    if (taskFromCache.isSuccessful()) {
-                        ConcurrentHashMap<String, Post> postHashMap = new ConcurrentHashMap<>();
-                        populateHashMapFromQuerySnapshot(taskFromCache.getResult(), postHashMap);
-                        future.complete(postHashMap);
-                    } else {
-                        future.completeExceptionally(task.getException());
-                    }
-                });
+                future.completeExceptionally(task.getException());
             }
         });
 
@@ -56,5 +47,6 @@ public class PostDataDownloader {
         });
     }
 }
+
 
 

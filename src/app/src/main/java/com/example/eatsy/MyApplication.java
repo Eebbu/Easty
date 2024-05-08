@@ -30,7 +30,8 @@ public class MyApplication extends Application {
                 .thenAccept(data ->  {
 
                     DataManager.getDataInstance().setUserHashMap(data); // store data to DataManager
-                    System.out.println("success!!!!!!!");
+                    System.out.println("Downloaded Post Data:");
+                    data.forEach((key, value) -> System.out.println("Key: " + key + ", Value: " + value));
 
                 });
         // Download and handle post data

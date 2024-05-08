@@ -23,9 +23,8 @@ import java.util.concurrent.ConcurrentHashMap;
  * Attempts to fetch data from local cache if online fetching fails or if the device is offline.
  */
 public class UserDataDownloader {
-
     /**
-     * Downloads user data from a specified Firestore collection and stores it in a HashMap.
+     * Downloads user data from a specified Firestore collection and stores it in a ConcurrentHashMap.
      * Notifies the callback upon successful data retrieval or in case of a failure.
      */
 
@@ -47,23 +46,8 @@ public class UserDataDownloader {
                     }
                     future.complete(userHashMap);
                 } else {
-                    // Attempt to retrieve data from cache if network call fails
-                    usersCollectionRef.get().addOnCompleteListener(taskFromCache -> {
-                        if (taskFromCache.isSuccessful()) {
-                            ConcurrentHashMap<String, userFT> userHashMap = new ConcurrentHashMap<>();
-                            for (QueryDocumentSnapshot document : taskFromCache.getResult()) {
-                                String email = document.getId();
-                                String username = document.getString("name");
-                                String photoURL = document.getString("photo_url");
-                                ArrayList<String> postid = (ArrayList<String>) document.get("postid");
-                                userFT user = new userFT(username, email, email, photoURL, postid);
-                                userHashMap.put(email, user);
-                            }
-                            future.complete(userHashMap);
-                        } else {
-                            future.completeExceptionally(task.getException());
-                        }
-                    });
+                    // Firestore will automatically attempt to use cache if network request fails
+                    future.completeExceptionally(task.getException());
                 }
             }
         });
@@ -71,4 +55,5 @@ public class UserDataDownloader {
         return future;
     }
 }
+
 
