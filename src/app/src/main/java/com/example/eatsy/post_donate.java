@@ -88,14 +88,17 @@ public class post_donate extends post_base {
         //TODO revise these four string
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String userEmail = user.getEmail(); // Get current user's email address
-        String userName = DataManager.getDataInstance().searchUserName(userEmail);
+        userFT currentUser = DashboardActivity.users.get(userEmail);
+        String userName = currentUser.getUsername();
 
         String latitude = selectedLatitude;
         String longtitude = selectedLongitude;
         StorageReference ref = storageReference.child("user_post_img/" + UUID.randomUUID().toString());
         factory_donate post = new factory_donate(userName, title, description,
                 quantity, pick_up_times,latitude, longtitude, image,filePath,ref);
-        post.saveToFirebase();
+
+        System.out.println(post);
+//        post.saveToFirebase();
     }
 
 }

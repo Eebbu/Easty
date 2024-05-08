@@ -36,4 +36,29 @@ public class ImportDataFromLocalJson {
         }
         return null;
     }
+
+    public static HashMap<String, userFT> readUser(Context context) {
+        System.out.println("new reader lists is created.");
+
+        try {
+            InputStream inputStream = context.getResources().openRawResource(R.raw.users_without_password);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+            StringBuilder sb = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                sb.append(line);
+            }
+            reader.close();
+
+
+            Gson gson = new Gson();
+            Type type = new TypeToken<HashMap<String, userFT>>(){}.getType();
+            HashMap<String, userFT> userMap = gson.fromJson(sb.toString(), type);
+            return userMap;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }
