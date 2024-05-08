@@ -44,8 +44,8 @@ public class PostDetailActivity extends AppCompatActivity {
             TextView titleView = findViewById(R.id.food_title);
             titleView.setText(postFT.getPostTitle());
 
-            TextView foodView = findViewById(R.id.food_value);
-            foodView.setText(postFT.getFood());
+//            TextView foodView = findViewById(R.id.food_value);
+//            foodView.setText(postFT.getFood());
 
             TextView typeView = findViewById(R.id.type_value);
             typeView.setText(postFT.getPostType());

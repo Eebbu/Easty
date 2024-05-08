@@ -43,7 +43,7 @@ The key area(s) of responsibilities for each member
 | u7727175 |  Jinyang Zeng   |GPS function and DataStream —— Load data and update. |
 | u7777752 |     Lin Xi      |UI design (Search page), Tokenizer, Parser, Data Structure (Hashmap, Trie, Arraylist), Data Fetching, Searching and filtering), Testing (Search), Design Patterns (Adapter) |
 | u7773880 |   Zihan Yuan    |Add Activity, Post activity(post_donate, post_exchange, post_wanted), page redirection, two factory design patterns, Data Stream(get images from album and upload image to Firebase)|
-| u770518  |   Boxuan Lin    ||
+| u7705128 |   Boxuan Lin    ||
 
 
 ## Summary of Individual Contributions
@@ -91,34 +91,45 @@ Note that the core criteria of contribution is based on `code contribution` (the
 *PetBook is a social media application specifically targetting pet owners... it provides... certified practitioners, such as veterians are indicated by a label next to their profile...*
 ### Add page
 Add page with a transparancy background. Users can chosse three types of post.
-
-![img.png](addpage.png)
+<div align="center">
+    <img src="addpage.png" alt="Add page">
+</div>
 ### Post pages
 Post have three different type: donate, exchange and wanted. In the donate and exchange page.
 1. Donate Page
-   •	Purpose: Allows users to create posts where they offer items as donation.
-   •	Photo Selection: Users are required to select photos from their album. This provides a clear idea of the item being donated.
-   •	Form Details: Users fill out a form including the item's title, description, quantity, pickup time, and pickup location.
-   •	Post Submission: Once the form is validated, the donation details are added to Firebase, making the post accessible to other users.
+   - Purpose: Allows users to create posts where they offer items as donation.
+   - Photo Selection: Users are required to select photos from their album. This provides a clear idea of the item being donated.
+   - Form Details: Users fill out a form including the item's title, description, quantity, pickup time, and pickup location.
+   - Post Submission: Once the form is validated, the donation details are added to Firebase, making the post accessible to other users.
+<div align="center">
+    <img src="postdonate.png" alt="Post donate page">
+</div>
+
 2. Exchange Page
-   •	Purpose: Designed for users who want to exchange items with others.
-   •	Photo Selection: Similar to the donation page, users must upload photos of the items they wish to exchange.
-   •	Form Details: Users provide specifics such as the item's title, description, and the type of item they are willing to receive in exchange.
-   •	Post Submission: The validated exchange details are submitted to Firebase, making the post available to other users.
+   - Purpose: Designed for users who want to exchange items with others.
+   - Photo Selection: Similar to the donation page, users must upload photos of the items they wish to exchange.
+   - Form Details: Users provide specifics such as the item's title, description, and the type of item they are willing to receive in exchange.
+   - Post Submission: The validated exchange details are submitted to Firebase, making the post available to other users.
+<div align="center">
+    <img src="postexchangepage.png" alt="Post exchange page">
+</div>
+
 3. Wanted Page
-   •	Purpose: Allows users to post about items they want. This could be a request for donations or an expression of interest in exchanging for items.
-   •	No Photo Requirement: Unlike the other pages, the wanted page does not require users to upload photos.
-   •	Form Details: Users provide specifics including a description, the desired quantity, and the preferred pickup location.
-   •	Post Submission: The validated request is then added to Firebase, where it can be viewed by other users.
-   Post pages share a common theme of promoting community sharing and exchange, and we use Firebase to manage data storage and retrieval effectively.
+   - Purpose: Allows users to post about items they want. This could be a request for donations or an expression of interest in exchanging for items.
+   - No Photo Requirement: Unlike the other pages, the wanted page does not require users to upload photos.
+   - Form Details: Users provide specifics including a description, the desired quantity, and the preferred pickup location.
+   - Post Submission: The validated request is then added to Firebase, where it can be viewed by other users.
+
+<div align="center">
+    <img src="postwantedpage.png" alt="Post wanted page">
+</div>
+
+Post pages share a common theme of promoting community sharing and exchange, and we use Firebase to manage data storage and retrieval effectively.
+
+   
 
 
-Figure 2 Post-donate page
-![img_1.png](postdonate.png)
-Figure 3 Post-exchange page
-![img_2.png](postexchangepage.png)
-Figure 4 Post-wanted page
-![img_3.png](postwantedpage.png)
+
 ### Application Use Cases and or Examples
 
 *[Provide use cases and examples of people using your application. Who are the target users of your application? How do the users use your application?]*
@@ -152,8 +163,6 @@ Figure 4 Post-wanted page
 ### Application UML
 
 ![img_4.png](uml_draft.png)
-*[Replace the above with a class diagram. You can look at how we have linked an image here as an example of how you can do it too.]*
-
 <hr>
 
 ## Code Design and Decisions
@@ -201,9 +210,15 @@ Here is a partial (short) example for the subsection `Data Structures`:*
    * *Code Locations: defined in [Class X, methods Z, Y](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and [class AnotherClass, lines l1-l2](url); processed using [dataStructureHandlerMethod](url) and ...
    * *Reasons:*
       * ...
-1. Factory – post
-      We have three types of posts: Donate, Exchange and Wanted. Each type has specific functionalities. The factory pattern can be used to create an interface for creating instances of these different posts and uploading these posts’ details. By using this, we simplify the way to handle post creation and uploading posts.
+1. Factory – post 
+
+    **Objective**: used for obtaining content from user input and convert it into a post class.
+    
+    **Code Locations**: defined in [Class Post](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/Post.java?ref_type=heads),[Class factory_donate](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/post_donate.java?ref_type=heads),[Class factory_exchange](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/factory_exchange.java?ref_type=heads) and [Class factory_wanted](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/factory_wanted.java?ref_type=heads).
+    
+    **Reasons**: We have three types of posts: Donate, Exchange and Wanted. Each type has specific functionalities. The factory pattern can be used to create an interface for creating instances of these different posts and uploading these posts’ details. By using this, we simplify the way to handle post creation and uploading posts.
 2. Factory – render scene
+    
 3. Singleton Design Pattern: We implemented singleton design pattern in the LoginUser class because there is only one instance of LoginUser required. This class is used for user information and error messages that can be helpful to debug and check errors.
 
 <hr>
@@ -336,11 +351,11 @@ Data Profile(easy):
 * Your meetings should also have a reasonable date spanning across Week 6 to 11.*
 
 
-- *[Team Meeting 1](meeting-template.md)*
-- ...
-- ...
-- [Team Meeting 4](link_to_md_file.md)
-- ... (Add any descriptions if needed) ...
+- [Team Meeting 1](Meeting-No1.md)
+- [Team Meeting 2](Meeting-No2.md)
+- [Team Meeting 3](Meeting-No3.md)
+- [Team Meeting 4](Meeting-No4.md)
+- [Team Meeting 5](Meeting-No5.md)
 
 <hr>
 
