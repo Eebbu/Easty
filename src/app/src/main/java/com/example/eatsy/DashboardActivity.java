@@ -45,7 +45,7 @@ public class DashboardActivity extends AppCompatActivity {
 //    ConcurrentHashMap<String, Post> posts;
     static HashMap<String, Post> posts;
     static HashMap<String, userFT> users;
-    ArrayList<Post> postsToShow = new ArrayList<>();
+    static ArrayList<Post> postsToShow = new ArrayList<>();
     private RecyclerView recyclerView;
     private PostAdapter adapter;
 
@@ -68,10 +68,20 @@ public class DashboardActivity extends AppCompatActivity {
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
 
-        for (int i = posts.size()-1; i >0 ; i--) {
-            postsToShow.add(posts.get(i+""));
+//        for (Post post: posts.values()){
+//            postsToShow.add(post);
+//        }
+
+        ArrayList<String> indexInStrings = new ArrayList<>(posts.keySet());
+        Collections.sort(indexInStrings);
+
+        if (postsToShow.size() == 0){
+            for (int i = 0; i < posts.size()  ; i++) {
+                postsToShow.add(posts.get(indexInStrings.get(i)));
+            }
         }
 
+        System.out.println(postsToShow.size());
 
         adapter = new PostAdapter(this, postsToShow);
         recyclerView.setAdapter(adapter);
