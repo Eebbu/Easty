@@ -69,36 +69,7 @@ public class post_donate extends post_base {
         return valid;
     }
     // Add the donation post to Firebase
-    protected void addPostToFirbase(){
-        String quantity;
-        int selectedId = radioGroup.getCheckedRadioButtonId();
-        if(selectedId == R.id.radioButtonOther){
-            quantity = quantityEditText.getText().toString().trim();
-        }else{
-            RadioButton radioButton = findViewById(selectedId);
-            quantity = radioButton.getText().toString();
-        }
-        String title = titleEditText.getText().toString().trim();
-        String description = "";
-        if (null != descriptionEditText) {
-            description = descriptionEditText.getText().toString().trim();
-        }
-        String image = filePath.toString();
-        String pick_up_times = pickupTimeEditText.getText().toString().trim();
-        //TODO revise these four string
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String userEmail = user.getEmail(); // Get current user's email address
-        userFT currentUser = DashboardActivity.users.get(userEmail);
-        String userName = currentUser.getUsername();
 
-        String latitude = selectedLatitude;
-        String longtitude = selectedLongitude;
-        StorageReference ref = storageReference.child("user_post_img/" + UUID.randomUUID().toString());
-        factory_donate post = new factory_donate(userName, title, description,
-                quantity, pick_up_times,latitude, longtitude, image,filePath,ref);
-
-        System.out.println(post);
-//        post.saveToFirebase();
-    }
+//
 
 }

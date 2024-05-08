@@ -4,11 +4,18 @@ import android.net.Uri;
 
 import androidx.annotation.NonNull;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.StorageReference;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * The Post class represents a post in our application.
@@ -41,11 +48,7 @@ public class Post implements Serializable{
 
     private Address Address;
 
-
-
     private ArrayList<String> images = null;
-
-    private String food;
     private String wantInExchange;
     private Uri filePath;
     private StorageReference storageReference;
@@ -71,16 +74,15 @@ public class Post implements Serializable{
 // Attributes to store user and post details
     public  Post(String userName,String postType,String postTitle,String postDescription, String quantity,String latitude,String longitude){
 //
-//        this.userID = userID;
+        this.userID = FirebaseAuth.getInstance().getCurrentUser().getEmail();
         this.userName = userName;
         this.postType = postType;
         this.postTitle = postTitle;
         this.postDescription = postDescription;
         this.quantity = quantity;
-//        this.pickUpTimes = pickUpTimes;
         this.Address = new Address(latitude,longitude);
-//        this.images = new ArrayList<>(images);
-//        this.food = food;
+        this.wantInExchange = "";
+        this.images = new ArrayList<>();
     }
     public Post(String id, String userID, String userName, String postType, String postTitle, String postDescription, String quantity, String pickUpTimes, String latitude, String longitude, ArrayList<String> images) {
         this.id = id;
@@ -110,16 +112,48 @@ public class Post implements Serializable{
     }
     // Abstract method to save to Firebase
     public void saveToFirebase(){
-        System.out.println("username" + userName);
-        System.out.println("userID"+ userID);
-        System.out.println("quantity" + quantity);
-        System.out.println("postType" + postType);
-        System.out.println("postTitle" + postTitle);
-        System.out.println("Des "+postDescription);
-        System.out.println(getLongitude());
-        System.out.println(getLatitude());
-        System.out.println(images);
-    };
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();  // Get Firestore instance
+        Uri filePath = this.getFilePath();
+        StorageReference storageReference = getStorageReference();
+        if (filePath != null) {
+            String userEmail = user.getEmail(); // Get current user's email address
+            String newPostId = DataManager.generateTimestampBasedId(); // Generate ID based on timestamp
+            storageReference.putFile(filePath).addOnSuccessListener(taskSnapshot -> {
+                taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(uri -> {
+                    Map<String, Object> postMap = new HashMap<>();
+                    postMap.put("userName", DashboardActivity.users.get(userEmail));
+                    postMap.put("userID", userEmail);
+                    postMap.put("postType", this.getPostType());
+                    postMap.put("postTitle", this.getPostTitle());
+                    postMap.put("postDescription", this.getPostDescription());
+                    postMap.put("quantity", this.getQuantity());
+                    postMap.put("latitude", this.getLatitude());
+                    postMap.put("longitude", this.getLongitude());
+                    postMap.put("pickUpTimes", this.getPickUpTimes());
+                    postMap.put("imageURL", uri.toString());
+                    // Save post data to Firestore using the newly generated post ID
+                    db.collection("posts").document(newPostId).set(postMap)
+                            .addOnSuccessListener(aVoid -> {
+                                System.out.println("Post data successfully saved!");
+                                // Update user's post list
+                                DocumentReference userRef = db.collection("users").document(userEmail);
+                                userRef.update("postid", FieldValue.arrayUnion(newPostId))
+                                        .addOnSuccessListener(aVoid1 -> System.out.println("Post ID added to user profile"))
+                                        .addOnFailureListener(e -> System.err.println("Failed to add post ID to user profile: " + e.getMessage()));
+                            }).addOnFailureListener(e -> {
+                                System.err.println("Error saving post data: " + e.getMessage());
+                            });
+                }).addOnFailureListener(e -> {
+                    System.err.println("Error getting file URL: " + e.getMessage());
+                });
+            }).addOnFailureListener(e -> {
+                System.err.println("Error uploading file: " + e.getMessage());
+            });
+        } else {
+            System.err.println("File path is null or user is not logged in");
+        }
+    }
 
     // Getter methods for retrieving post information
     public String getId(){return id;}
@@ -164,9 +198,6 @@ public class Post implements Serializable{
         return new ArrayList<>(images);
     }
 
-    public String getFood() {
-        return food;
-    }
     public Uri getFilePath(){return filePath;}
     //public String getWantInExchange(String wantInExchange){return getWantInExchange;}
     public StorageReference getStorageReference(){return this.storageReference;}
@@ -246,11 +277,14 @@ public class Post implements Serializable{
         System.out.println("post_description= " + postDescription);
         System.out.println("quantity= " + quantity);
         System.out.println("pick_up_times= " + pickUpTimes);
-        System.out.println("pick_up_times= " + pickUpTimes);
-        System.out.println("latitude= " + Address.latitude);
+        System.out.println("lattitude= " + Address.latitude);
         System.out.println("longitude= " + Address.longitude);
-        System.out.println("images= " + images.get(0));
-        System.out.println("food= " + food);
+        if (images.size() == 0){
+            System.out.println("images = ");
+        }else{
+            System.out.println("images= " + images.get(0));
+        }
+        System.out.println("wantInExchange= " + wantInExchange);
         return super.toString();
     }
 }

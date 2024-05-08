@@ -44,27 +44,4 @@ public class post_wanted extends post_base {
         }
         return valid;
     }
-    // Add the wanted post to Firebase
-    protected void addPostToFirbase(){
-        String quantity;
-        int selectedId = radioGroup.getCheckedRadioButtonId();
-        if(selectedId == R.id.radioButtonOther){
-            quantity = quantityEditText.getText().toString().trim();
-        }else{
-            RadioButton radioButton = findViewById(selectedId);
-            quantity = radioButton.getText().toString();
-        }
-        String title = titleEditText.getText().toString().trim();
-        String description = "";
-        if (null != descriptionEditText) {
-            description = descriptionEditText.getText().toString().trim();
-        }
-        //TODO revise these four string
-//        String userName = "someUserName";
-        String userName = getIntent().getStringExtra("USERNAME");
-        String latitude = selectedLatitude;
-        String longtitude = selectedLongitude;
-        factory_wanted post = new factory_wanted(userName, title, description, quantity, latitude, longtitude);
-        post.saveToFirebase();
-    }
 }

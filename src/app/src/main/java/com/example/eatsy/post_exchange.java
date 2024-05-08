@@ -65,33 +65,5 @@ public class post_exchange extends post_base {
 
         return valid;
     }
-    // Add the exchange post to Firebase
-    protected void addPostToFirbase(){
-        String quantity;
-        int selectedId = radioGroup.getCheckedRadioButtonId();
-        if(selectedId == R.id.radioButtonOther){
-            quantity = quantityEditText.getText().toString().trim();
-        }else{
-            RadioButton radioButton = findViewById(selectedId);
-            quantity = radioButton.getText().toString();
-        }
-        String title = titleEditText.getText().toString().trim();
-        String description = "";
-        if (null != descriptionEditText) {
-            description = descriptionEditText.getText().toString().trim();
-        }
-        String image = filePath.toString();
-        String pick_up_times = pickupTimeEditText.getText().toString().trim();
-        String want = wantEditText.getText().toString().trim();
-        //TODO revise these four string
-//        String userName = "someUserName";
-        String userName = getIntent().getStringExtra("USERNAME");
-        String latitude = selectedLatitude;
-        String longtitude = selectedLongitude;
-        StorageReference ref = storageReference.child("user_post_img/" + UUID.randomUUID().toString());
-        factory_exchange post = new factory_exchange(userName, title, description,want, quantity,
-                                        pick_up_times,latitude, longtitude, image,filePath,ref);
-        post.saveToFirebase();
-    }
 
 }
