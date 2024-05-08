@@ -103,18 +103,17 @@ public class ProfileActivity extends AppCompatActivity {
         // Displaying user data such as name and email on the profile page.
 
         if (user != null) {
+
             String emailOfPerson = FirebaseAuth.getInstance().getCurrentUser().getEmail();
             String nameOfPerson = DashboardActivity.users.get(emailOfPerson).getUsername();
             userName.setText(nameOfPerson);
             userEmail.setText(emailOfPerson);
-
 //            firebaseFirestore.collection("users").document(user.getUid()).get().addOnCompleteListener(task -> {
 //                if (task.isSuccessful()) {
 //                    DocumentSnapshot ds = task.getResult();
 //                    if (ds.exists()) {
-//                        System.out.println("11");
-//                        String emailOfPerson = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-//                        String nameOfPerson = DashboardActivity.users.get(emailOfPerson).getUsername();
+//                        String nameOfPerson = ds.getString("name");
+//                        String emailOfPerson = ds.getString("email");
 //                        Log.d("TAG", "Success!!!!!!!");
 //                        userName.setText(nameOfPerson);
 //                        userEmail.setText(emailOfPerson);
