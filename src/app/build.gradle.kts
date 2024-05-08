@@ -67,6 +67,9 @@ dependencies {
     implementation ("com.squareup.picasso:picasso:2.71828")
     testImplementation ("org.robolectric:robolectric:4.6.1")
     testImplementation ("org.mockito:mockito-core:3.11.2")
+    implementation("com.google.code.gson:gson:2.8.8")
+
+
 
     implementation("com.google.code.gson:gson:2.8.8")
 
