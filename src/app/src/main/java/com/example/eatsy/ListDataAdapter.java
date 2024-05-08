@@ -1,6 +1,7 @@
 package com.example.eatsy;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,9 +15,9 @@ import java.util.List;
 
 public class ListDataAdapter extends BaseAdapter {
     private Context mContext;
-    private List<Post> postList;
+    private List<PostFT> postList;
 
-    public ListDataAdapter(Context context, List<Post> postList) {
+    public ListDataAdapter(Context context, List<PostFT> postList) {
         mContext = context;
         this.postList = postList;
     }
@@ -46,7 +47,7 @@ public class ListDataAdapter extends BaseAdapter {
         } else {
             viewHolder = (ViewHolder) view.getTag();
         }
-        Post partBean = postList.get(i);
+        PostFT partBean = postList.get(i);
         if(partBean.getImages()!=null && !partBean.getImages().isEmpty()){
             String imagePath = partBean.getImages().get(0);
             Picasso.get().load(imagePath).into(viewHolder.food);
@@ -54,6 +55,19 @@ public class ListDataAdapter extends BaseAdapter {
             viewHolder.food.setBackground(Drawable.createFromPath("?android:attr/selectableItemBackground"));
         }
         viewHolder.postTitle.setText(partBean.getPostTitle());
+        // 设置点击事件
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 获取postId
+                String postId = partBean.getId();
+                // 创建Intent并传递postId
+                Intent intent = new Intent(mContext, PostDetailActivity.class);
+                intent.putExtra("postId", Integer.parseInt(postId));
+                mContext.startActivity(intent);
+            }
+        });
+
         return view;
     }
 

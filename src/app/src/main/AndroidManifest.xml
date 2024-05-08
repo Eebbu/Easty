@@ -38,6 +38,9 @@
                 android:name=".post_wanted"
                 android:exported="false"/>
         <activity
+            android:name=".PostDetailActivity"
+            android:exported="true"/>
+        <activity
                 android:name=".post_donate"
                 android:exported="false"/>
         <activity

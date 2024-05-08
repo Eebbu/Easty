@@ -27,7 +27,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
+//init post data
+        StorageList.initPostData();
 
         // Login page that takes us to the login page.
         logIn.setOnClickListener(new View.OnClickListener() {
