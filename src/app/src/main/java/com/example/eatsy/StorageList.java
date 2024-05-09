@@ -3,6 +3,7 @@ package com.example.eatsy;
 import com.google.firebase.firestore.CollectionReference;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,7 +32,6 @@ public class StorageList {
                     String latitude = document.getString("latitude");
                     String longitude = document.getString("longitude");
                     ArrayList<String> images = (ArrayList<String>) document.get("images");
-                    String food = document.getString("food");
                     Post post = new Post(id,userID, userName, postType, postTitle, postDescription, quantity, pickUpTimes, latitude, longitude, images);
                     resList.add(post);
                     mapList.put(id,post);
@@ -39,5 +39,21 @@ public class StorageList {
                 postList = resList;
             }
         });
+    }
+
+
+    public static void initLocalData(){
+        convertDataId();
+        Collection<Post> values = mapList.values();
+        postList = new ArrayList<>(values);
+    }
+
+    public static void convertDataId(){
+        for (String s : mapList.keySet()) {
+            Post post = mapList.get(s);
+            if(post!=null){
+                post.setId(s);
+            }
+        }
     }
 }

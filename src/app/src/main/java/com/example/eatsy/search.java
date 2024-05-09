@@ -160,7 +160,7 @@ public class search extends AppCompatActivity {
      */
     private void searchData(){
         List<Post> resList = new ArrayList<>();
-        this.postList.forEach(document -> {
+        StorageList.postList.forEach(document -> {
             if(!this.type.isEmpty() && this.type.containsValue(document.getPostType())){
                 resList.add(document);
             }
@@ -187,7 +187,6 @@ public class search extends AppCompatActivity {
      */
     private void searchByTest(String[] keywords) {
         Trie trie = new Trie();
-        CollectionReference postsCollectionRef = FirestoreHelper.getCollectionRef("posts");
         HashSet<Post> allResults = new HashSet<>();
         HashMap<Post, Integer> resultCountMap = new HashMap<>();
 
@@ -199,7 +198,7 @@ public class search extends AppCompatActivity {
         // Iterate through each keyword in the keyword array
         // Initiate query
         // Processing the results of query
-        this.postList.forEach(document -> {
+        StorageList.postList.forEach(document -> {
             String postTitle = document.getPostTitle().toLowerCase();
             String[] words = postTitle.split("\\s+"); // Split title into words
             // Count the occurrences of each keyword in the title
