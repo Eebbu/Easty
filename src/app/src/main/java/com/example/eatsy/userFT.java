@@ -1,12 +1,17 @@
 package com.example.eatsy;
 
+import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class userFT {
+public class userFT  implements Serializable {
+    @SerializedName("name")
     private String username;
     private String userID;
     private String email;
 
+    @SerializedName("postid")
     private ArrayList<String> postID;
 
     private String photoURL ;
@@ -16,7 +21,7 @@ public class userFT {
         this.userID = userID;
         this.email = email;
         this.postID = postID;
-        this.photoURL=photoURL;
+        this.photoURL = photoURL;
     }
 
     public String getUsername() {
