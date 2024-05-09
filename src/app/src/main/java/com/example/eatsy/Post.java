@@ -119,6 +119,7 @@ public class Post implements Serializable{
         if (filePath != null) {
             String userEmail = user.getEmail(); // Get current user's email address
             String newPostId = DataManager.generateTimestampBasedId(); // Generate ID based on timestamp
+            //这里：使用了一个addOnSuccessListener的监听器，确保只有在storageReference.putFile(filePath)（即生成URL后才上传到firestore）
             storageReference.putFile(filePath).addOnSuccessListener(taskSnapshot -> {
                 taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(uri -> {
                     Map<String, Object> postMap = new HashMap<>();
