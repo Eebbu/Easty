@@ -77,8 +77,11 @@ public class ListDataAdapter extends BaseAdapter {
         ImageButton food;
         TextView postTitle;
 
+        View lineBar;
+
         ViewHolder(View view) {
             this.mView = view;
+            this.lineBar = (View)view.findViewById(R.id.lineBar);
             this.food = (ImageButton)view.findViewById(R.id.food);
             this.postTitle = (TextView) view.findViewById(R.id.postTitle);
         }

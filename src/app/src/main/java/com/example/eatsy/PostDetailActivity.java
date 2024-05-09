@@ -29,12 +29,12 @@ public class PostDetailActivity extends AppCompatActivity {
         if (intent != null) {
             int id = intent.getIntExtra("postId",0);
             // get post
-            Post postFT = StorageList.mapList.get(String.valueOf(id));
+            Post post = StorageList.mapList.get(String.valueOf(id));
 
             //picture
             ImageButton foodIdTextView = findViewById(R.id.food_img);
-            if(postFT.getImages()!=null && !postFT.getImages().isEmpty()){
-                String imagePath = postFT.getImages().get(0);
+            if(post.getImages()!=null && !post.getImages().isEmpty()){
+                String imagePath = post.getImages().get(0);
                 Picasso.get().load(imagePath).into(foodIdTextView);
             }else{
                 Picasso.get().load("@drawable/fruit").into(foodIdTextView);
@@ -42,32 +42,30 @@ public class PostDetailActivity extends AppCompatActivity {
 
             //value
             TextView titleView = findViewById(R.id.food_title);
-            titleView.setText(postFT.getPostTitle());
+            titleView.setText(post.getPostTitle());
 
-            TextView foodView = findViewById(R.id.food_value);
-            foodView.setText(postFT.getFood());
 
             TextView typeView = findViewById(R.id.type_value);
-            typeView.setText(postFT.getPostType());
+            typeView.setText(post.getPostType());
 
             TextView quantityView = findViewById(R.id.quantity_value);
-            quantityView.setText(postFT.getQuantity());
+            quantityView.setText(post.getQuantity());
 
             TextView userIdView = findViewById(R.id.user_id_value);
-            userIdView.setText(postFT.getUserID());
+            userIdView.setText(post.getUserID());
 
 
             TextView userNameView = findViewById(R.id.user_name_value);
-            userNameView.setText(postFT.getUserName());
+            userNameView.setText(post.getUserName());
 
             TextView timeView = findViewById(R.id.time_id_value);
-            timeView.setText(postFT.getPickUpTimes());
+            timeView.setText(post.getPickUpTimes());
 
             TextView addressView = findViewById(R.id.address_id_value);
-            addressView.setText(postFT.getLatitude()+","+postFT.getLongitude());
+            addressView.setText(post.getLatitude()+","+post.getLongitude());
 
             TextView descView = findViewById(R.id.description_value);
-            descView.setText(postFT.getPostDescription());
+            descView.setText(post.getPostDescription());
         }
     }
 }

@@ -99,8 +99,8 @@
                 android:text="Donate" />
 
             <Space
-                android:layout_width="32dp"
-                android:layout_height="32dp" />
+                android:layout_width="22dp"
+                android:layout_height="22dp" />
 
             <CheckBox
                 android:id="@+id/checkBox2"
@@ -110,8 +110,8 @@
                 android:text="Wanted" />
 
             <Space
-                android:layout_width="32dp"
-                android:layout_height="32dp" />
+                android:layout_width="22dp"
+                android:layout_height="22dp" />
 
             <CheckBox
                 android:id="@+id/checkBox3"
@@ -152,13 +152,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:orientation="vertical"
         android:padding="16dp">
-        <View
-            android:id="@+id/first_banner"
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:layout_marginStart="0dp"
-            android:background="@drawable/banner"
-            />
+
         <ListView
             android:id="@+id/lv"
             android:layout_width="match_parent"

@@ -2,6 +2,8 @@ package com.example.eatsy;
 
 import android.net.Uri;
 
+import androidx.annotation.NonNull;
+
 import com.google.firebase.storage.StorageReference;
 import com.google.gson.annotations.SerializedName;
 
@@ -65,7 +67,7 @@ public class Post implements Serializable{
     }
 
 
-//    public  Post(String userID,String userName,String postType,String postTitle,String postDescription, String quantity, String pickUpTimes,String latitude,String longitude,ArrayList<String> images,String food){
+    //    public  Post(String userID,String userName,String postType,String postTitle,String postDescription, String quantity, String pickUpTimes,String latitude,String longitude,ArrayList<String> images,String food){
 // Attributes to store user and post details
     public  Post(String userName,String postType,String postTitle,String postDescription, String quantity,String latitude,String longitude){
 //
@@ -121,6 +123,8 @@ public class Post implements Serializable{
 
     // Getter methods for retrieving post information
     public String getId(){return id;}
+
+    public void setId(String id){this.id = id;}
     public String getUserID() {
         return userID;
     }
@@ -196,7 +200,7 @@ public class Post implements Serializable{
 //        this.quantity = quantity;
 //    }
 
-// Methods to modify post details
+    // Methods to modify post details
     public void setPickUpTimes(String pickUpTimes) {
         this.pickUpTimes = pickUpTimes;
     }
@@ -234,4 +238,21 @@ public class Post implements Serializable{
 //    }
 
 
+//    @NonNull
+//    @Override
+//    public String toString() {
+//        System.out.println("userid= " + userID);
+//        System.out.println("username= " + userName);
+//        System.out.println("post_type= " + postType);
+//        System.out.println("post_title= " + postTitle);
+//        System.out.println("post_description= " + postDescription);
+//        System.out.println("quantity= " + quantity);
+//        System.out.println("pick_up_times= " + pickUpTimes);
+//        System.out.println("pick_up_times= " + pickUpTimes);
+//        System.out.println("latitude= " + Address.latitude);
+//        System.out.println("longitude= " + Address.longitude);
+//        System.out.println("images= " + images.get(0));
+//        System.out.println("food= " + food);
+//        return super.toString();
+//    }
 }
