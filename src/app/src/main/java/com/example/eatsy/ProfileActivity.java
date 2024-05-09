@@ -104,10 +104,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         if (user != null) {
 
-            String emailOfPerson = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-            String nameOfPerson = DashboardActivity.users.get(emailOfPerson).getUsername();
-            userName.setText(nameOfPerson);
-            userEmail.setText(emailOfPerson);
+
 //            firebaseFirestore.collection("users").document(user.getUid()).get().addOnCompleteListener(task -> {
 //                if (task.isSuccessful()) {
 //                    DocumentSnapshot ds = task.getResult();

@@ -37,12 +37,12 @@ Note that you should have removed ALL TEMPLATE/INSTRUCTION textes in your submis
 ## Team Members and Roles
 The key area(s) of responsibilities for each member
 
-| UID      |      Name       |                                                                                                                                                                                                                  Role |
-|:---------|:---------------:|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| u7663368 | Vishakha Mathur |Login Activity, LoginUser (singleton pattern), Profile Activity and UI design(main page, login page, dashboard, deprofile page), uploading images on profile page from phone to firebase, singleton design pattern test |
-| u7727175 |  Jinyang Zeng   |GPS function and DataStream —— Load data and update. |
-| u7777752 |     Lin Xi      |UI design (Search page), Tokenizer, Parser, Data Structure (Hashmap, Trie, Arraylist), Data Fetching, Searching and filtering), Testing (Search), Design Patterns (Adapter) |
-| u7773880 |   Zihan Yuan    |Add Activity, Post activity(post_donate, post_exchange, post_wanted), page redirection, two factory design patterns, Data Stream(get images from album and upload image to Firebase)|
+| UID      |      Name       |                                                                                                                                                                                                                                Role |
+|:---------|:---------------:|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| u7663368 | Vishakha Mathur | MainActivity, Login Activity, LoginUser (singleton pattern), Profile Activity and UI design(main page, login page, dashboard, profile page), uploading images on profile page from phone to firebase, singleton design pattern test |
+| u7727175 |  Jinyang Zeng   |                                                                                                                                                                                GPS function and DataStream —— Load data and update. |
+| u7777752 |     Lin Xi      |                                                         UI design (Search page), Tokenizer, Parser, Data Structure (Hashmap, Trie, Arraylist), Data Fetching, Searching and filtering), Testing (Search), Design Patterns (Adapter) |
+| u7773880 |   Zihan Yuan    |                                                Add Activity, Post activity(post_donate, post_exchange, post_wanted), page redirection, two factory design patterns, Data Stream(get images from album and upload image to Firebase) |
 | u7705128 |   Boxuan Lin    ||
 
 
@@ -79,6 +79,12 @@ Note that the core criteria of contribution is based on `code contribution` (the
 
 2. **UID2, Name2**  I have xx% contribution, as follows: <br>
   - ...
+3. **U7663368, Vishakha Mathur** I have 20% contribution, as follows: <br>
+  - **Code Contribution in the final App**
+    - Login feature - class LoginActivity: [LoginActivity.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/LoginActivity.java).
+    - Data Profile(displaying user details, uploading images to the firebase) - class ProfileAcitvity: [ProfileActivity.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/ProfileActivity.java).
+    - Singleton Design Pattern - class LoginUser: []
+
 
 
 
@@ -219,8 +225,10 @@ Here is a partial (short) example for the subsection `Data Structures`:*
     **Reasons**: We have three types of posts: Donate, Exchange and Wanted. Each type has specific functionalities. The factory pattern can be used to create an interface for creating instances of these different posts and uploading these posts’ details. By using this, we simplify the way to handle post creation and uploading posts.
 2. Factory – render scene
     
-3. Singleton Design Pattern: We implemented singleton design pattern in the LoginUser class because there is only one instance of LoginUser required. This class is used for user information and error messages that can be helpful to debug and check errors.
-
+3. Singleton Design Pattern: 
+    **Objective** : We implemented singleton design pattern in the LoginUser class because there is only one instance of LoginUser required. 
+    **Code Locations**: defined in [Class LoginUser, method getInstance, info and error](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/LoginUser.java?ref_type=heads#L8-34).
+    **Reasons** : This class is used for user information and error messages that can be helpful to debug and check errors.
 <hr>
 
 ### Parser
