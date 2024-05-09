@@ -231,6 +231,7 @@ public class Post implements Serializable{
 //    }
 
 // Methods to modify post details
+    public void setId(String id){this.id = id;}
     public void setPickUpTimes(String pickUpTimes) {
         this.pickUpTimes = pickUpTimes;
     }
