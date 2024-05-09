@@ -83,7 +83,14 @@ Note that the core criteria of contribution is based on `code contribution` (the
   - **Code Contribution in the final App**
     - Login feature - class LoginActivity: [LoginActivity.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/LoginActivity.java).
     - Data Profile(displaying user details, uploading images to the firebase) - class ProfileAcitvity: [ProfileActivity.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/ProfileActivity.java).
-    - Singleton Design Pattern - class LoginUser: []
+    - Singleton Design Pattern - class LoginUser: [LoginUser.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/LoginUser.java#L8-34), [getInstance(), info(), error()](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/LoginUser.java?ref_type=heads#L14).
+    - Other contribution: [MainActivity class](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/MainActivity.java?ref_type=heads), [DashboardActivity class](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/DashboardActivity.java?ref_type=heads),
+      UI design of [activity_main.xml](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/layout/activity_main.xml), [activity_login.xml](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/layout/activity_login.xml),
+      [activity_dashboard.xml](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/layout/activity_dashboard.xml), [activity_profile.xml](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/layout/activity_dashboard.xml).
+    **Code and App Design**
+    - Singleton Design Pattern.
+    - ScrollView, LinearLayout, Picasso, pictures and icons. 
+    
 
 
 
@@ -261,9 +268,9 @@ Production Rules:
 *List all features you have completed in their separate categories with their featureId. THe features must be one of the basic/custom features, or an approved feature from Voice Four Feature.*
 
 ### Basic Features
-1. [LogIn]. Description of the feature ... (easy)
-   * Code: [Class X, methods Z, Y](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and Class Y, ...
-   * Description of feature: ... <br>
+1. [LogIn]. 	Created an activity for login feature and used firebase authentication to help user log in. (easy)
+   * Code: [Class LoginActivity, methods X, Y](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/LoginActivity.java#L25-85) and Class LoginUser
+   * Implemented a singlton design pattern in LoginUser java class to ensure that only one instance of LoginUser required.<br>
    * Description of your implementation: ... <br>
 
 2. [DataFiles]. Description  ... ... (...)
@@ -277,7 +284,7 @@ Production Rules:
 Feature Category: Privacy <br>
 1. [Privacy-Request]. Description of the feature  (easy)
    * Code: [Class X, methods Z, Y](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and Class Y, ...
-   * Description of your implementation: ... <br>
+   *  <br>
      <br>
 
 2. [Privacy-Block]. Description ... ... (medium)
@@ -289,18 +296,20 @@ Feature Category: Firebase Integration <br>
    * Code: [Class X, entire file](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and Class Y, ...
    * [Class B](../src/path/to/class/file.java#L30-85): methods A, B, C, lines of code: 30 to 85
    * Description of your implementation: ... <br>
+4. [Data-Profile] Created a ProfileActivity that displays name and email addresses of the user(easy).
+   * Code: [Class ProfileActivity, methods onActivityResult(), uploadImageToFirebase(), showing userdetails](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blame/main/src/app/src/main/java/com/example/eatsy/ProfileActivity.java?ref_type=heads#L47-220).
+   * Description of the code.
 
 <hr>
-Login(easy): 
-1.	Created a LoginActivity and used firebase authentication to help user log in.
-2.	Implemented a singlton design pattern in LoginUser java class to ensure that only one instance of LoginUser required.  
+
+  
 [DataFiles] Boxuan Lin created a dataset with more than 2600 post data instances, covering all types of posts. All of the data was formatted in JSON and uploaded to Firestore for persistence.
-2.Custom features:
-//TODO: Write your own customer features
+
+
 [FB-Auth] (By Boxuan Lin) We use Firebase to implement the User Authentication/Authorisation of our app. User account data is stored on Google servers instead of locally, and is processed by Google, ensuring security.
 [FB-Persist] (By Boxuan Lin) We used Firebase’s Firestore, a real-time, scalable database that stores data in collections and documents. We use it to persist the post data and user’s profile data for a well synchronization function.  For big files like photos, we store them in Cloud Storage for Firebase for its high scalability and simplified file upload and download capabilities.
 Data Profile(easy):
-      1. Created a ProfileActivity that displays name and email addresses of the user.
+      1. 
     2. It also gives the user an option to upload and change profile picture via media gallery to the firebase.
  3. There is sign out button that allows user to sign out from the app. 
 
@@ -312,6 +321,7 @@ Data Profile(easy):
 - State that "Suprised feature is not implemented" otherwise.
   //TODO: Write your own surprise features
   Code smell:
+- Classes were given meaning names like LoginActivity, DashboardActivity, since earlier they were named as MainActivity 3 and MainActivity 4.
 <br> <hr>
 
 ## Summary of Known Errors and Bugs
@@ -344,7 +354,11 @@ Data Profile(easy):
    - *Code coverage: ...*
    - *Types of tests created and descriptions: ...*
 
-2. xxx
+2. Tests for Singleton Design Pattern 
+   - Code: [SingletonTest Class, entire file](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/test/java/com/example/eatsy/SingletonTest.java?ref_type=heads#L14-55).
+   - *Number of test cases: 3*
+   - Code coverage: Login feature of the app.
+   - Test for same instance, 
 
 ...
 
