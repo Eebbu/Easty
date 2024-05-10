@@ -31,13 +31,13 @@ public class DataManager {
     }
 
     /**
-     * 生成基于时间戳的唯一 ID
-     * @return 返回基于时间戳和随机数的唯一 ID
+     * Generate unique ID based on timestamp
+     *  @return Returns a unique ID based on timestamp and random number
      */
     public static String generateTimestampBasedId() {
-        long timestamp = System.currentTimeMillis(); // 获取当前时间戳
-        int randomNum = ThreadLocalRandom.current().nextInt(100, 1000); // 生成一个100到999之间的随机数
-        return timestamp + "" + randomNum; // 将时间戳和随机数拼接成字符串
+        long timestamp = System.currentTimeMillis(); // Get current timestamp
+        int randomNum = ThreadLocalRandom.current().nextInt(100, 1000); // Generate a random number between 100 and 999
+        return timestamp + "" + randomNum; // Concatenate timestamp and random number into string
     }
 
     public String searchUserName(String userInfo){
