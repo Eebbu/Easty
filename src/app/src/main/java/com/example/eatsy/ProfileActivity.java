@@ -1,6 +1,6 @@
 package com.example.eatsy;
 
-import static com.example.eatsy.R.id.Signout;
+
 import static com.example.eatsy.R.id.back_btn;
 
 import android.annotation.SuppressLint;
@@ -9,33 +9,21 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.activity.EdgeToEdge;
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
 /**Functionality
@@ -87,12 +75,7 @@ public class ProfileActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         storageReference = FirebaseStorage.getInstance().getReference();
         stRef = storageReference.child("users/" + firebaseAuth.getCurrentUser().getUid()+"/profile.jpg");
-        stRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                Picasso.get().load(uri).into(profileImage);
-            }
-        });
+        stRef.getDownloadUrl().addOnSuccessListener(uri -> Picasso.get().load(uri).into(profileImage));
 
 
         userID = firebaseAuth.getCurrentUser().getUid();
@@ -108,71 +91,35 @@ public class ProfileActivity extends AppCompatActivity {
             user_Name.setText(nameOfPerson);
             user_Email.setText(emailOfPerson);
 
-
-//            firebaseFirestore.collection("users").document(user.getUid()).get().addOnCompleteListener(task -> {
-//                if (task.isSuccessful()) {
-//                    DocumentSnapshot ds = task.getResult();
-//                    if (ds.exists()) {
-//                        String nameOfPerson = ds.getString("name");
-//                        String emailOfPerson = ds.getString("email");
-//                        Log.d("TAG", "Success!!!!!!!");
-//                        userName.setText(nameOfPerson);
-//                        userEmail.setText(emailOfPerson);
-//                    } else {
-//                        Log.d("TAG", "No such document");
-//                    }
-//                }
-//
-//                    else {
-//                        Log.d("TAG", "get failed with", task.getException());
-//                    }
-//
-//            });
         }
 
-//        DocumentReference documentReference = firebaseFirestore.collection("users").document(userID);
-//        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
-//            @Override
-//            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-//                userName.setText(value.getString("name"));
-//                userEmail.setText(value.getString("email"));
-//            }
-//        });
+
 
 
 
 
 // This onClickListener help the user to log out from the app and closes all the other activities running behind.
 
-        logOutBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        logOutBtn.setOnClickListener(v -> {
+            FirebaseAuth.getInstance().signOut();
+            Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
-                startActivity(intent);
-                Toast.makeText(ProfileActivity.this,
-                        "You have been signed out", Toast.LENGTH_SHORT).show();
-            }
+            startActivity(intent);
+            Toast.makeText(ProfileActivity.this,
+                    "You have been signed out", Toast.LENGTH_SHORT).show();
         });
 
         // This back button help us to get back to dashboard.
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ProfileActivity.this, DashboardActivity.class);
-                startActivity(intent);
-            }
+        backButton.setOnClickListener(v -> {
+            Intent intent = new Intent(ProfileActivity.this, DashboardActivity.class);
+            startActivity(intent);
         });
 
         // This button helps the user to set ot change his/her profile picture.
-        profileChange.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-               startActivityForResult(galleryIntent, 1000);
-            }
+        profileChange.setOnClickListener(v -> {
+            Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+           startActivityForResult(galleryIntent, 1000);
         });
 
 
@@ -187,7 +134,6 @@ public class ProfileActivity extends AppCompatActivity {
         if(requestCode == 1000) {
             if (resultCode == Activity.RESULT_OK){
                 Uri imageUri = data.getData();
-              //  profileImage.setImageURI(imageUri);
                 uploadImageToFirebase(imageUri);
             }
 
@@ -199,23 +145,7 @@ public class ProfileActivity extends AppCompatActivity {
     private void uploadImageToFirebase(Uri imageUri) {
            // Upload image to firebase storage
        final StorageReference fileRef = storageReference.child("users/" + firebaseAuth.getCurrentUser().getUid()+"/profile.jpg");
-        fileRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-            fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                @Override
-                public void onSuccess(Uri uri) {
-                    Picasso.get().load(uri).into(profileImage);
-                }
-            });
-
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(ProfileActivity.this, "Upload failed", Toast.LENGTH_SHORT).show();
-            }
-        });
+        fileRef.putFile(imageUri).addOnSuccessListener(taskSnapshot -> fileRef.getDownloadUrl().addOnSuccessListener(uri -> Picasso.get().load(uri).into(profileImage))).addOnFailureListener(e -> Toast.makeText(ProfileActivity.this, "Upload failed", Toast.LENGTH_SHORT).show());
     }
 
 

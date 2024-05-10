@@ -2,7 +2,6 @@ package com.example.eatsy;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -17,13 +16,10 @@ public class PostDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
         ImageButton go_back = findViewById(R.id.leftArrowButton);
-        go_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), search.class);
-                startActivity(intent);
-                finish();
-            }
+        go_back.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), search.class);
+            startActivity(intent);
+            finish();
         });
         Intent intent = getIntent();
         if (intent != null) {

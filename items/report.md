@@ -40,7 +40,7 @@ The key area(s) of responsibilities for each member
 | UID      |      Name       |                                                                                                                                                                                                                                Role |
 |:---------|:---------------:|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | u7663368 | Vishakha Mathur | MainActivity, Login Activity, LoginUser (singleton pattern), Profile Activity and UI design(main page, login page, dashboard, profile page), uploading images on profile page from phone to firebase, singleton design pattern test |
-| u7727175 |  Jinyang Zeng   |                                                                                                                                                                                GPS function and DataStream —— Load data and update. |
+| u7727175 |  Jinyang Zeng   |                                                                                         GPS，choose location function, DataStream-Load data，show data in dashboard, and Load data from local json，Generate post data from user input|
 | u7777752 |     Lin Xi      |                                                         UI design (Search page), Tokenizer, Parser, Data Structure (Hashmap, Trie, Arraylist), Data Fetching, Searching and filtering), Testing (Search), Design Patterns (Adapter) |
 | u7773880 |   Zihan Yuan    |                                                Add Activity, Post activity(post_donate, post_exchange, post_wanted), page redirection, two factory design patterns, Data Stream(get images from album and upload image to Firebase) |
 | u7705128 |   Boxuan Lin    |                                                                         Create 2600+ post instances and 2500 user accounts, storing all of the data in Firebase. Providing methods for downloading and updating data from Firebase. |
@@ -86,13 +86,21 @@ Note that the core criteria of contribution is based on `code contribution` (the
     - Singleton Design Pattern - class LoginUser: [LoginUser.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/LoginUser.java#L8-34), [getInstance(), info(), error()](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/LoginUser.java?ref_type=heads#L14).
     - Other contribution: [MainActivity class](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/MainActivity.java?ref_type=heads), [DashboardActivity class](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/DashboardActivity.java?ref_type=heads),
       UI design of [activity_main.xml](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/layout/activity_main.xml), [activity_login.xml](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/layout/activity_login.xml),
-      [activity_dashboard.xml](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/layout/activity_dashboard.xml), [activity_profile.xml](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/layout/activity_dashboard.xml).
+      [activity_dashboard.xml](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/layout/activity_dashboard.xml), [activity_profile.xml](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/layout/activity_dashboard.xml)
     **Code and App Design**
     - Singleton Design Pattern.
     - ScrollView, LinearLayout, Picasso, pictures and icons. 
-    
 
-
+4. **U7727175, Jinyang Zeng**  I have 20% contribution, as follows: <br>
+- **Code Contribution in the final App**
+  - Data Stream feature - class DashboardActivity: [DashboardActivity.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/DashboardActivity.java), class PostAdapter: [PostAdapter.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/PostAdapter.java), function [addPostToFirbase()](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/post_base.java?ref_type=heads#L48-115)
+  - GPS feature - class postCard: [postCard.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/postCard.java), class MapSelection:[MapSelection.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/MapSelection.java)
+  - Other contribution: [ImportDataFromLocalJson.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/ImportDataFromLocalJson.java),  [Dashboard.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/DashboardActivity.java) 
+  - UI design of [activity_map_selection.xml](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/layout/activity_map_selection.xml), [activity_post_card.xml](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/layout/activity_post_card.xml), [item_post.xml](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/layout/item_post.xml)
+  - 
+    **Code and App Design**
+  - Singleton Design Pattern.
+  - ScrollView, LinearLayout, Picasso, pictures and icons.
 
 
 ## Application Description

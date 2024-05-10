@@ -1,19 +1,7 @@
 package com.example.eatsy;
 
-import android.widget.RadioButton;
 import android.widget.Toast;
 
-
-import java.util.UUID;
-
-
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.appcheck.FirebaseAppCheck;
-import com.google.firebase.appcheck.playintegrity.PlayIntegrityAppCheckProviderFactory;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 /**
  * Post of donation page

@@ -1,17 +1,8 @@
 package com.example.eatsy;
 
 import android.net.Uri;
-
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FieldValue;
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.StorageReference;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
 /**
  * @author Zihan Yuan(u7773880) Boxuan Lin(u7705128)
  */

@@ -1,11 +1,7 @@
 package com.example.eatsy;
 
-import android.widget.RadioButton;
 import android.widget.Toast;
 
-import com.google.firebase.storage.StorageReference;
-
-import java.util.UUID;
 /**
  * Post of exchange page
  * @author Zihan Yuan(u7773880)

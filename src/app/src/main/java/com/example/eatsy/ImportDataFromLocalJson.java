@@ -6,7 +6,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -29,8 +28,7 @@ public class ImportDataFromLocalJson {
 
             Gson gson = new Gson();
             Type type = new TypeToken<HashMap<String, Post>>(){}.getType();
-            HashMap<String, Post> postMap = gson.fromJson(sb.toString(), type);
-            return postMap;
+            return gson.fromJson(sb.toString(), type);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -53,8 +51,7 @@ public class ImportDataFromLocalJson {
 
             Gson gson = new Gson();
             Type type = new TypeToken<HashMap<String, userFT>>(){}.getType();
-            HashMap<String, userFT> userMap = gson.fromJson(sb.toString(), type);
-            return userMap;
+            return gson.fromJson(sb.toString(), type);
         } catch (IOException e) {
             e.printStackTrace();
         }

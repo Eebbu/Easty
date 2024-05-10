@@ -2,7 +2,6 @@ package com.example.eatsy;
 
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CompletableFuture;
@@ -10,8 +9,8 @@ import java.util.ArrayList;
 
 public class PostDataDownloader {
     /**
-     * Downloads post data from a specified Firestore collection and stores it in a ConcurrentHashMap.
-     * Utilizes Firestore's automatic cache management to handle offline data loading when necessary.
+     * Downloads post data from a specified FireStore collection and stores it in a ConcurrentHashMap.
+     * Utilizes FireStore's automatic cache management to handle offline data loading when necessary.
      */
     public CompletableFuture<ConcurrentHashMap<String, Post>> downloadData(CollectionReference postsCollectionRef) {
         CompletableFuture<ConcurrentHashMap<String, Post>> future = new CompletableFuture<>();

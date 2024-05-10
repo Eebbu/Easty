@@ -2,11 +2,11 @@ package com.example.eatsy;
 
 import android.location.Address;
 import android.location.Geocoder;
-import android.util.Log;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -20,21 +20,18 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
-import java.util.Set;
+/**
+ * Functionalities
+ * 1) An activity to show selected post from dashboard.(Jinyang Zeng)
+ * @author Jinyang Zeng(7727175)
+ */
 
 public class postCard extends AppCompatActivity implements OnMapReadyCallback {
 
-    private GoogleMap mMap;
     private LatLng selectedLocation;
-    private TextView banner_title;
-    private ImageButton food_picture;
-    private TextView title;
-    private TextView description;
-    private TextView remainAndMeetTime;
-    private TextView meetingAddress;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,27 +55,22 @@ public class postCard extends AppCompatActivity implements OnMapReadyCallback {
 
 
         ImageButton go_back = findViewById(R.id.leftArrowButton);
-        go_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        go_back.setOnClickListener(v -> finish());
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        banner_title = findViewById(R.id.banner_title);
+        TextView banner_title = findViewById(R.id.banner_title);
         banner_title.setText(clickedPost.getUserName());
-        title = findViewById(R.id.title);
+        TextView title = findViewById(R.id.title);
         title.setText(clickedPost.getPostTitle());
-        description = findViewById(R.id.description);
+        TextView description = findViewById(R.id.description);
         description.setText(clickedPost.getPostDescription());
 
         Geocoder geocoder = new Geocoder(this, Locale.getDefault());
 
-        List<Address> addresses = null;
+        List<Address> addresses;
         String addressLine = null;
         try {
             addresses = geocoder.getFromLocation(latitude, longitude, 1);
@@ -87,43 +79,39 @@ public class postCard extends AppCompatActivity implements OnMapReadyCallback {
         }
         if (addresses != null && !addresses.isEmpty()) {
                 Address address = addresses.get(0);
-                addressLine = address.getAddressLine(0); // 获取地址
-                // 将地址显示在相应的视图中
-                // 例如：addressTextView.setText(addressLine);
+                addressLine = address.getAddressLine(0);
         }
 
 
-
-        remainAndMeetTime = findViewById(R.id.remainAndMeetTime);
+        TextView remainAndMeetTime = findViewById(R.id.remainAndMeetTime);
         remainAndMeetTime.setText(clickedPost.getQuantity() + " remain and meet at");
 
-        meetingAddress = findViewById(R.id.meetingAddress);
+        TextView meetingAddress = findViewById(R.id.meetingAddress);
         meetingAddress.setText(addressLine);
 
-        food_picture = findViewById(R.id.food_picture);
+        ImageButton food_picture = findViewById(R.id.food_picture);
         if (clickedPost.getImages() != null && clickedPost.getImages().size() > 0){
             Picasso.get()
-                    .load(clickedPost.getImages().get(0)) // 这里假设 PostFT 类中有一个获取图片 URL 的方法
-                    .placeholder(R.drawable.beans) // 可选：设置加载过程中显示的占位图
+                    .load(clickedPost.getImages().get(0))
+                    .placeholder(R.drawable.beans)
                     .into(food_picture);
         }else{
             Picasso.get()
-                    .load(R.drawable.foodwant) // 加载特定图片的资源ID
+                    .load(R.drawable.foodwant)
                     .into(food_picture);
         }
 
 
     }
 
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
+    public void onMapReady(@NonNull GoogleMap googleMap) {
 
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(selectedLocation, 11));
-        mMap.getUiSettings().setZoomControlsEnabled(true);
-        mMap.getUiSettings().setScrollGesturesEnabled(false);
-        mMap.getUiSettings().setRotateGesturesEnabled(false);
-        mMap.getUiSettings().setTiltGesturesEnabled(false);
-        mMap.addMarker(new MarkerOptions().position(selectedLocation).title("Selected Location"));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(selectedLocation, 11));
+        googleMap.getUiSettings().setZoomControlsEnabled(true);
+        googleMap.getUiSettings().setScrollGesturesEnabled(false);
+        googleMap.getUiSettings().setRotateGesturesEnabled(false);
+        googleMap.getUiSettings().setTiltGesturesEnabled(false);
+        googleMap.addMarker(new MarkerOptions().position(selectedLocation).title("Selected Location"));
 
     }
 

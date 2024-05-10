@@ -22,14 +22,4 @@ public class factory_exchange extends Post{
         this.setFilePath(filePath);// Set the file path for the image
         this.setStorageReference(storageReference);// Set the storage reference for Firebase
     }
-    @Override
-    public void saveToFirebase() {
-        //.....
-        Uri filePath = this.getFilePath();
-        StorageReference storageReference = getStorageReference();
-        if (filePath != null) {
-            storageReference.putFile(filePath);//save image to firebase
-        }
-        super.saveToFirebase();
-    }
 }

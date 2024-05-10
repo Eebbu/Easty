@@ -13,18 +13,12 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QuerySnapshot;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
 /*This class is for searching and filtering.
         It is used to process user input,
         search data,
@@ -32,7 +26,6 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class search extends AppCompatActivity {
     private ListView mListVie;
-    private List<Post> postList = new ArrayList<>();
 
     private Map<Integer,String> type = new HashMap<>();
 
@@ -47,13 +40,10 @@ public class search extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         ImageButton go_back = findViewById(R.id.leftArrowButton);
-        go_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        go_back.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
+            startActivity(intent);
+            finish();
         });
         setCheckListener();
         setEditListener();

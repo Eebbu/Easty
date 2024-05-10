@@ -1,6 +1,5 @@
 package com.example.eatsy;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,19 +12,22 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+/**
+ * Functionalities
+ * 1) adapter to show poster(Jinyang Zeng)
+ * @author Jinyang Zeng(7727175)
+ */
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder> {
 
-    private List<Post> posts;
-    private Context context;
-    private OnItemClickListener onItemClickListener; // 点击事件监听器
+    private final List<Post> posts;
+    private OnItemClickListener onItemClickListener;
 
-    public PostAdapter(Context context, List<Post> posts) {
-        this.context = context;
+    public PostAdapter(List<Post> posts) {
         this.posts = posts;
     }
 
-    // 设置点击事件监听器
+
     public void setOnItemClickListener(OnItemClickListener listener) {
         this.onItemClickListener = listener;
     }
@@ -50,10 +52,10 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
     public class PostViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView titleTextView;
-        private ImageView imageView;
-        private TextView descriptionTextView;
-        private TextView usernameTextView;
+        private final TextView titleTextView;
+        private final ImageView imageView;
+        private final TextView descriptionTextView;
+        private final TextView usernameTextView;
 
         public PostViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -62,15 +64,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             descriptionTextView = itemView.findViewById(R.id.descriptionTextView);
             usernameTextView = itemView.findViewById(R.id.username);
 
-            // 在构造函数中为 itemView 设置点击事件监听器
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (onItemClickListener != null) {
-                        int position = getAdapterPosition();
-                        if (position != RecyclerView.NO_POSITION) {
-                            onItemClickListener.onItemClick(position);
-                        }
+
+            itemView.setOnClickListener(v -> {
+                if (onItemClickListener != null) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        onItemClickListener.onItemClick(position);
                     }
                 }
             });
@@ -80,12 +79,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             titleTextView.setText(post.getPostTitle());
             if (post.getImages() != null && post.getImages().size() > 0){
                 Picasso.get()
-                        .load(post.getImages().get(0)) // 这里假设 PostFT 类中有一个获取图片 URL 的方法
-                        .placeholder(R.drawable.baseline_find_replace_24) // 可选：设置加载过程中显示的占位图
+                        .load(post.getImages().get(0))
+                        .placeholder(R.drawable.baseline_find_replace_24)
                         .into(imageView);
             }else{
                 Picasso.get()
-                        .load(R.drawable.foodwant) // 加载特定图片的资源ID
+                        .load(R.drawable.foodwant)
                         .into(imageView);
             }
             descriptionTextView.setText(post.getPostDescription());
@@ -93,7 +92,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         }
     }
 
-    // 内部接口，用于处理点击事件
     public interface OnItemClickListener {
         void onItemClick(int position);
     }

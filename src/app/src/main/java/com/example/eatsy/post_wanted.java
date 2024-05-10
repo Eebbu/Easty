@@ -1,6 +1,5 @@
 package com.example.eatsy;
 
-import android.widget.RadioButton;
 import android.widget.Toast;
 
 /**
