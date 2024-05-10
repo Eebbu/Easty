@@ -86,6 +86,7 @@ public class ProfileActivity extends AppCompatActivity {
         firebaseFirestore = FirebaseFirestore.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
         storageReference = FirebaseStorage.getInstance().getReference();
+        // Creating a folder 'users' which contains profile page of different users.
         stRef = storageReference.child("users/" + firebaseAuth.getCurrentUser().getUid()+"/profile.jpg");
         stRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
@@ -104,6 +105,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         if (user != null) {
             String emailOfPerson = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+            // Fetching the email from firebase and username from the hashmap using email as the key of the current user.
             String nameOfPerson = DashboardActivity.users.get(emailOfPerson).getUsername();
             user_Name.setText(nameOfPerson);
             user_Email.setText(emailOfPerson);

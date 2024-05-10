@@ -8,13 +8,25 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * This class is for loading data
+ *     One is loading data from our real-time firebase.
+ *     This is for formal presentation
+ *     One is loading data from local json.
+ *     This is for testing.
+ *     Author:Lin Xi(u7777752)
+ */
 public class StorageList {
 
 
     public static List<Post> postList = new ArrayList<>();
 
     public static Map<String,Post> mapList = new HashMap<>();
-
+    /**
+        Upload data from realtime-firebase
+        This is for formal presentation
+        Author:Lin Xi(u7777752)
+     **/
     public static void initPostData(){
         List<Post> resList = new ArrayList<>();
         CollectionReference postsCollectionRef = FirestoreHelper.getCollectionRef("posts");
@@ -41,7 +53,11 @@ public class StorageList {
         });
     }
 
-
+    /**
+     * Upload data from local json.
+     * This is for testing.
+     * Author:Lin Xi(u7777752)
+     **/
     public static void initLocalData(){
         convertDataId();
         Collection<Post> values = mapList.values();
