@@ -104,32 +104,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
                 <TextView
-                    android:id="@+id/food_id"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="15dp"
-                    android:textColor="@color/orange"
-                    android:text="Food："
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-                <TextView
-                    android:id="@+id/food_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="15dp"
-                    android:textColor="@color/black"
-                    android:text="@string/food_detail"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp">
-                <TextView
                     android:id="@+id/type_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

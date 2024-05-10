@@ -65,10 +65,11 @@ public class MapSelection extends AppCompatActivity implements OnMapReadyCallbac
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
             public void onMapClick(LatLng latLng) {
-                // 在点击的位置添加标记
-                mMap.clear(); // 清除旧标记
+                // Add a marker at the clicked location
+                mMap.clear(); // Clear old marks
                 mMap.addMarker(new MarkerOptions().position(latLng).title("Selected Location"));
-                // 可以在这里获取选点的经纬度和地址信息，以便将其提交到您的“post”中
+                // Get the latitude, longitude and address information of chosen point here
+                // And submit it to "post"
                 selectedLatitude = latLng.latitude;
                 selectedLongitude = latLng.longitude;
                 getAddress(selectedLatitude,selectedLongitude);
@@ -83,7 +84,7 @@ public class MapSelection extends AppCompatActivity implements OnMapReadyCallbac
             if (addresses != null && addresses.size() > 0) {
                 Set<String> addressSet = new HashSet<>();
                 for (Address addr : addresses) {
-                    addressSet.add(addr.getAddressLine(0)); // 添加地址信息到Set
+                    addressSet.add(addr.getAddressLine(0)); // Add address information to Set
                 }
 
                 List<String> addressList = new ArrayList<>(addressSet);

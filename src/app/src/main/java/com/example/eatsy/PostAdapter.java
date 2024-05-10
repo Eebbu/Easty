@@ -18,14 +18,14 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
     private List<Post> posts;
     private Context context;
-    private OnItemClickListener onItemClickListener; // 点击事件监听器
+    private OnItemClickListener onItemClickListener; // Click event listener
 
     public PostAdapter(Context context, List<Post> posts) {
         this.context = context;
         this.posts = posts;
     }
 
-    // 设置点击事件监听器
+    // Set up click event listener
     public void setOnItemClickListener(OnItemClickListener listener) {
         this.onItemClickListener = listener;
     }
@@ -62,7 +62,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             descriptionTextView = itemView.findViewById(R.id.descriptionTextView);
             usernameTextView = itemView.findViewById(R.id.username);
 
-            // 在构造函数中为 itemView 设置点击事件监听器
+            // Set a click event listener for itemView in the constructor
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -80,12 +80,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             titleTextView.setText(post.getPostTitle());
             if (post.getImages() != null && post.getImages().size() > 0){
                 Picasso.get()
-                        .load(post.getImages().get(0)) // 这里假设 PostFT 类中有一个获取图片 URL 的方法
-                        .placeholder(R.drawable.baseline_find_replace_24) // 可选：设置加载过程中显示的占位图
+                        .load(post.getImages().get(0))
+                        .placeholder(R.drawable.baseline_find_replace_24)
                         .into(imageView);
             }else{
                 Picasso.get()
-                        .load(R.drawable.foodwant) // 加载特定图片的资源ID
+                        .load(R.drawable.foodwant) // Load the resource ID of a specific image
                         .into(imageView);
             }
             descriptionTextView.setText(post.getPostDescription());
@@ -93,7 +93,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         }
     }
 
-    // 内部接口，用于处理点击事件
+    // Internal interface for handling click events
     public interface OnItemClickListener {
         void onItemClick(int position);
     }

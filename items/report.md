@@ -43,7 +43,7 @@ The key area(s) of responsibilities for each member
 | u7727175 |  Jinyang Zeng   |                                                                                                                                                                                GPS function and DataStream —— Load data and update. |
 | u7777752 |     Lin Xi      |                                                         UI design (Search page), Tokenizer, Parser, Data Structure (Hashmap, Trie, Arraylist), Data Fetching, Searching and filtering), Testing (Search), Design Patterns (Adapter) |
 | u7773880 |   Zihan Yuan    |                                                Add Activity, Post activity(post_donate, post_exchange, post_wanted), page redirection, two factory design patterns, Data Stream(get images from album and upload image to Firebase) |
-| u7705128 |   Boxuan Lin    ||
+| u7705128 |   Boxuan Lin    |                                                                         Create 2600+ post instances and 2500 user accounts, storing all of the data in Firebase. Providing methods for downloading and updating data from Firebase. |
 
 
 ## Summary of Individual Contributions

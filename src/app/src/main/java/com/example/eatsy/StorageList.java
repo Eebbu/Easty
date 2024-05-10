@@ -3,17 +3,30 @@ package com.example.eatsy;
 import com.google.firebase.firestore.CollectionReference;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * This class is for loading data
+ *     One is loading data from our real-time firebase.
+ *     This is for formal presentation
+ *     One is loading data from local json.
+ *     This is for testing.
+ *     Author:Lin Xi(u7777752)
+ */
 public class StorageList {
 
 
     public static List<Post> postList = new ArrayList<>();
 
     public static Map<String,Post> mapList = new HashMap<>();
-
+    /**
+        Upload data from realtime-firebase
+        This is for formal presentation
+        Author:Lin Xi(u7777752)
+     **/
     public static void initPostData(){
         List<Post> resList = new ArrayList<>();
         CollectionReference postsCollectionRef = FirestoreHelper.getCollectionRef("posts");
@@ -31,7 +44,6 @@ public class StorageList {
                     String latitude = document.getString("latitude");
                     String longitude = document.getString("longitude");
                     ArrayList<String> images = (ArrayList<String>) document.get("images");
-                    String food = document.getString("food");
                     Post post = new Post(id,userID, userName, postType, postTitle, postDescription, quantity, pickUpTimes, latitude, longitude, images);
                     resList.add(post);
                     mapList.put(id,post);
@@ -39,5 +51,25 @@ public class StorageList {
                 postList = resList;
             }
         });
+    }
+
+    /**
+     * Upload data from local json.
+     * This is for testing.
+     * Author:Lin Xi(u7777752)
+     **/
+    public static void initLocalData(){
+        convertDataId();
+        Collection<Post> values = mapList.values();
+        postList = new ArrayList<>(values);
+    }
+
+    public static void convertDataId(){
+        for (String s : mapList.keySet()) {
+            Post post = mapList.get(s);
+            if(post!=null){
+                post.setId(s);
+            }
+        }
     }
 }

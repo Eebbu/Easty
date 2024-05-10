@@ -28,12 +28,15 @@ public class MyApplication extends Application {
         // Call the asynchronous method, and handle the returned CompletableFuture
         downloader.downloadData(usersCollectionRef)
                 .thenAccept(data ->  {
+
                     DataManager.getDataInstance().setUserHashMap(data); // store data to DataManager
+                    System.out.println("Downloaded Post Data:");
+                    data.forEach((key, value) -> System.out.println("Key: " + key + ", Value: " + value));
 
                 });
         // Download and handle post data
         postDownloader.downloadData(postsCollectionRef)
-                .thenAccept(data -> { DataManager.getDataInstance().setPostHashMap(data); // 存储到 DataManager
+                .thenAccept(data -> { DataManager.getDataInstance().setPostHashMap(data); // Store to DataManager
                     // Success: post data received
                 })
                 .exceptionally(ex -> {

@@ -1,9 +1,9 @@
 package com.example.eatsy;
-    /*
-        A Trie class is defined to implement a Trie
-        (dictionary tree) data structure,
-        specifically used to efficiently manage and query string data.
-     */
+/*
+    A Trie class is defined to implement a Trie
+    (dictionary tree) data structure,
+    specifically used to efficiently manage and query string data.
+ */
 class Trie {
     TrieNode root;
     /*
@@ -28,7 +28,7 @@ class Trie {
         until all characters of the word have been processed.
         Mark the node of the last character of the word as the end of a word.
      */
-     public void insert(String word) {
+    public void insert(String word) {
         TrieNode current = root;
         for (char ch : word.toCharArray()) {
             int index = ch - 'a';
@@ -65,7 +65,7 @@ class Trie {
             }
             current = current.children[index];
         }
-        return true;
+        return current.isEndOfWord;
     }
 }
 

@@ -87,9 +87,9 @@ public class postCard extends AppCompatActivity implements OnMapReadyCallback {
         }
         if (addresses != null && !addresses.isEmpty()) {
                 Address address = addresses.get(0);
-                addressLine = address.getAddressLine(0); // 获取地址
-                // 将地址显示在相应的视图中
-                // 例如：addressTextView.setText(addressLine);
+                addressLine = address.getAddressLine(0); // Get address
+                // Display address in the related map
+
         }
 
 
@@ -103,12 +103,12 @@ public class postCard extends AppCompatActivity implements OnMapReadyCallback {
         food_picture = findViewById(R.id.food_picture);
         if (clickedPost.getImages() != null && clickedPost.getImages().size() > 0){
             Picasso.get()
-                    .load(clickedPost.getImages().get(0)) // 这里假设 PostFT 类中有一个获取图片 URL 的方法
-                    .placeholder(R.drawable.beans) // 可选：设置加载过程中显示的占位图
+                    .load(clickedPost.getImages().get(0))
+                    .placeholder(R.drawable.beans)
                     .into(food_picture);
         }else{
             Picasso.get()
-                    .load(R.drawable.foodwant) // 加载特定图片的资源ID
+                    .load(R.drawable.foodwant) // Load the resource ID of a specific image
                     .into(food_picture);
         }
 

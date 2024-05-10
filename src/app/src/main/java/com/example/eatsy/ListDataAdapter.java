@@ -13,6 +13,10 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+/**
+ * Custom adapter
+ * Author: Lin Xi
+ */
 public class ListDataAdapter extends BaseAdapter {
     private Context mContext;
     private List<Post> postList;
@@ -55,13 +59,13 @@ public class ListDataAdapter extends BaseAdapter {
             viewHolder.food.setBackground(Drawable.createFromPath("?android:attr/selectableItemBackground"));
         }
         viewHolder.postTitle.setText(partBean.getPostTitle());
-        // 设置点击事件
+        // Set click event
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // 获取postId
+                // Getting postId
                 String postId = partBean.getId();
-                // 创建Intent并传递postId
+                // Create Intent and transfer postId
                 Intent intent = new Intent(mContext, PostDetailActivity.class);
                 intent.putExtra("postId", Integer.parseInt(postId));
                 mContext.startActivity(intent);
@@ -77,8 +81,11 @@ public class ListDataAdapter extends BaseAdapter {
         ImageButton food;
         TextView postTitle;
 
+        View lineBar;
+
         ViewHolder(View view) {
             this.mView = view;
+            this.lineBar = (View)view.findViewById(R.id.lineBar);
             this.food = (ImageButton)view.findViewById(R.id.food);
             this.postTitle = (TextView) view.findViewById(R.id.postTitle);
         }
