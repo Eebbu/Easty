@@ -8,7 +8,7 @@ public class FirestoreHelper {
     private static  CollectionReference collectionRef = db.collection("your_collection_name");
 
     private FirestoreHelper() {
-        // 私有构造函数，防止外部实例化
+        // Private constructor to prevent external instantiation
     }
 
     public static FirebaseFirestore getFirestore() {
