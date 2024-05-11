@@ -41,7 +41,7 @@ public class userFT  implements Serializable {
         return email;
     }
 
-    public  String getPhotoURL(){return  photoURL;};
+    public  String getPhotoURL(){return  photoURL;}
 
     public void setUsername(String username) {
         this.username = username;

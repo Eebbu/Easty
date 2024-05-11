@@ -34,7 +34,6 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class Search extends AppCompatActivity {
     private ListView mListVie;
-    private List<Post> postList = new ArrayList<>();
 
     private Map<Integer,String> type = new HashMap<>();
 
@@ -49,13 +48,10 @@ public class Search extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         ImageButton go_back = findViewById(R.id.leftArrowButton);
-        go_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        go_back.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
+            startActivity(intent);
+            finish();
         });
         setCheckListener();
         setEditListener();

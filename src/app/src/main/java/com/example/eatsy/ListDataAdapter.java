@@ -18,8 +18,8 @@ import java.util.List;
  * Author: Lin Xi
  */
 public class ListDataAdapter extends BaseAdapter {
-    private Context mContext;
-    private List<Post> postList;
+    private final Context mContext;
+    private final List<Post> postList;
 
     public ListDataAdapter(Context context, List<Post> postList) {
         mContext = context;
@@ -60,16 +60,13 @@ public class ListDataAdapter extends BaseAdapter {
         }
         viewHolder.postTitle.setText(partBean.getPostTitle());
         // Set click event
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Getting postId
-                String postId = partBean.getId();
-                // Create Intent and transfer postId
-                Intent intent = new Intent(mContext, PostDetailActivity.class);
-                intent.putExtra("postId", Integer.parseInt(postId));
-                mContext.startActivity(intent);
-            }
+        view.setOnClickListener(v -> {
+            // Getting postId
+            String postId = partBean.getId();
+            // Create Intent and transfer postId
+            Intent intent = new Intent(mContext, PostDetailActivity.class);
+            intent.putExtra("postId", Integer.parseInt(postId));
+            mContext.startActivity(intent);
         });
 
         return view;
@@ -85,9 +82,9 @@ public class ListDataAdapter extends BaseAdapter {
 
         ViewHolder(View view) {
             this.mView = view;
-            this.lineBar = (View)view.findViewById(R.id.lineBar);
-            this.food = (ImageButton)view.findViewById(R.id.food);
-            this.postTitle = (TextView) view.findViewById(R.id.postTitle);
+            this.lineBar = view.findViewById(R.id.lineBar);
+            this.food = view.findViewById(R.id.food);
+            this.postTitle = view.findViewById(R.id.postTitle);
         }
     }
 }

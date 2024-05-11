@@ -24,7 +24,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.io.IOException;
-import java.util.UUID;
 
 // Protected UI components accessible by child classes
 public abstract class Post_base extends AppCompatActivity {
@@ -45,9 +44,8 @@ public abstract class Post_base extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1;
     private static final int PICK_MAP_REQUEST = 2;
     // Abstract methods to be implemented by child classes for post submission and validation
-    protected Post addPostToFirbase(){
+    protected Post addPostToFirebase(){
 
-        //username
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String userName = DashboardActivity.users.get(user.getEmail()).getUsername();
 
@@ -73,8 +71,6 @@ public abstract class Post_base extends AppCompatActivity {
         }
 
 
-        //TODO revise these four string
-
         String latitude = selectedLatitude;
         String longitude = selectedLongitude;
 
@@ -86,29 +82,28 @@ public abstract class Post_base extends AppCompatActivity {
         }
 
 
-
         String pick_up_times = "";
         if (null != pickupTimeEditText) {
             pick_up_times = pickupTimeEditText.getText().toString().trim();
         }
 
+
         String image = filePath.toString();
-        StorageReference ref = storageReference.child("user_post_img/" + UUID.randomUUID().toString());
 
         if (this.getClass() == Post_donate.class) {
             Factory_donate post = new Factory_donate(userName, postTitle, description,
-                    quantity, pick_up_times, latitude, longitude, image, filePath, ref);
+                    quantity, pick_up_times, latitude, longitude, image, filePath.toString());
             System.out.println(post);
             DashboardActivity.postsToShow.add(0,post);
             return post;
         }
 
 
-        String wantInExchange = "";
+        String wantInExchange;
         wantInExchange = wantEditText.getText().toString().trim();
 
         Factory_exchange post = new Factory_exchange(userName,postTitle,description,
-                wantInExchange,quantity,pick_up_times,latitude,longitude,image,filePath,ref);
+                wantInExchange,quantity,pick_up_times,latitude,longitude,image,filePath.toString());
         System.out.println(post);
         DashboardActivity.postsToShow.add(0,post);
         return post;
@@ -158,7 +153,8 @@ public abstract class Post_base extends AppCompatActivity {
         Button post = findViewById(R.id.button_post);
         post.setOnClickListener(v -> {
             if (validateInputs()) {
-                addPostToFirbase();
+                Post newPost = addPostToFirebase();
+                FireStoreHelper.createAndPost(newPost);
                 Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
                 startActivity(intent);
                 finish();
@@ -203,6 +199,7 @@ public abstract class Post_base extends AppCompatActivity {
         if (requestCode == PICK_MAP_REQUEST && resultCode == RESULT_OK) {
             if (data != null) {
                 double[] selectedPoint = data.getDoubleArrayExtra("selectedPoint");
+                assert selectedPoint != null;
                 selectedLatitude = String.valueOf(selectedPoint[0]);
                 selectedLongitude = String.valueOf(selectedPoint[1]);
                 String selectedAddress = data.getStringExtra("selectedAddress");

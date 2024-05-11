@@ -1,28 +1,18 @@
 package com.example.eatsy;
 
-import android.net.Uri;
-
 import androidx.annotation.NonNull;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FieldValue;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.storage.StorageReference;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
+
 
 /**
  * The Post class represents a post in our application.
  * This class includes details such as user identification, post type, and content descriptions,
  * which are essential for managing the posts in our APP.
- */
-/**
  * @author Zihan Yuan(u7773880) Boxuan Lin(u7705128)
  */
 
@@ -41,20 +31,16 @@ public class Post implements Serializable{
     @SerializedName("post_description")
     private String postDescription;
 
-    private String quantity;
+    private final String quantity;
 
     @SerializedName("pick_up_times")
     private String pickUpTimes;
 
-    private Address Address;
+    private final Address Address;
 
-    private ArrayList<String> images = null;
+    private ArrayList<String> images;
     private String wantInExchange;
-    private Uri filePath;
-    private StorageReference storageReference;
-
-    public Post(String id, String userID, String userName, String postType, String postTitle, String postDescription, String quantity, String pickUpTimes, String latitude, String longitude, ArrayList<String> images, String food) {
-    }
+    private String filePath;
 
     public static class Address implements Serializable {
         @SerializedName("latitude")
@@ -70,8 +56,7 @@ public class Post implements Serializable{
     }
 
 
-//    public  Post(String userID,String userName,String postType,String postTitle,String postDescription, String quantity, String pickUpTimes,String latitude,String longitude,ArrayList<String> images,String food){
-// Attributes to store user and post details
+
     public  Post(String userName,String postType,String postTitle,String postDescription, String quantity,String latitude,String longitude){
 //
         this.userID = FirebaseAuth.getInstance().getCurrentUser().getEmail();
@@ -110,51 +95,7 @@ public class Post implements Serializable{
         this.images = new ArrayList<>(images);
 
     }
-    // Abstract method to save to Firebase
-    public void saveToFirebase(){
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        FirebaseFirestore db = FirebaseFirestore.getInstance();  // Get Firestore instance
-        Uri filePath = this.getFilePath();
-        StorageReference storageReference = getStorageReference();
-        if (filePath != null) {
-            String userEmail = user.getEmail(); // Get current user's email address
-            String newPostId = DataManager.generateTimestampBasedId(); // Generate ID based on timestamp
-            //这里：使用了一个addOnSuccessListener的监听器，确保只有在storageReference.putFile(filePath)（即生成URL后才上传到firestore）
-            storageReference.putFile(filePath).addOnSuccessListener(taskSnapshot -> {
-                taskSnapshot.getStorage().getDownloadUrl().addOnSuccessListener(uri -> {
-                    Map<String, Object> postMap = new HashMap<>();
-                    postMap.put("userName", DashboardActivity.users.get(userEmail));
-                    postMap.put("userID", userEmail);
-                    postMap.put("postType", this.getPostType());
-                    postMap.put("postTitle", this.getPostTitle());
-                    postMap.put("postDescription", this.getPostDescription());
-                    postMap.put("quantity", this.getQuantity());
-                    postMap.put("latitude", this.getLatitude());
-                    postMap.put("longitude", this.getLongitude());
-                    postMap.put("pickUpTimes", this.getPickUpTimes());
-                    postMap.put("imageURL", uri.toString());
-                    // Save post data to Firestore using the newly generated post ID
-                    db.collection("posts").document(newPostId).set(postMap)
-                            .addOnSuccessListener(aVoid -> {
-                                System.out.println("Post data successfully saved!");
-                                // Update user's post list
-                                DocumentReference userRef = db.collection("users").document(userEmail);
-                                userRef.update("postid", FieldValue.arrayUnion(newPostId))
-                                        .addOnSuccessListener(aVoid1 -> System.out.println("Post ID added to user profile"))
-                                        .addOnFailureListener(e -> System.err.println("Failed to add post ID to user profile: " + e.getMessage()));
-                            }).addOnFailureListener(e -> {
-                                System.err.println("Error saving post data: " + e.getMessage());
-                            });
-                }).addOnFailureListener(e -> {
-                    System.err.println("Error getting file URL: " + e.getMessage());
-                });
-            }).addOnFailureListener(e -> {
-                System.err.println("Error uploading file: " + e.getMessage());
-            });
-        } else {
-            System.err.println("File path is null or user is not logged in");
-        }
-    }
+
 
     // Getter methods for retrieving post information
     public String getId(){return id;}
@@ -199,38 +140,9 @@ public class Post implements Serializable{
         return new ArrayList<>(images);
     }
 
-    public Uri getFilePath(){return filePath;}
+    public String getFilePath(){return filePath;}
     //public String getWantInExchange(String wantInExchange){return getWantInExchange;}
-    public StorageReference getStorageReference(){return this.storageReference;}
 
-
-//    // Setter methods
-
-//    public void setUserID(String userID) {
-//        this.userID = userID;
-//    }
-//
-//    public void setUserName(String userName) {
-//        this.userName = userName;
-//    }
-//
-//    public void setPostType(String postType) {
-//        this.postType = postType;
-//    }
-//
-//    public void setPostTitle(String postTitle) {
-//        this.postTitle = postTitle;
-//    }
-//
-//    public void setPostDescription(String postDescription) {
-//        this.postDescription = postDescription;
-//    }
-
-//    public void setQuantity(String quantity) {
-//        this.quantity = quantity;
-//    }
-
-// Methods to modify post details
     public void setId(String id){this.id = id;}
     public void setPickUpTimes(String pickUpTimes) {
         this.pickUpTimes = pickUpTimes;
@@ -238,24 +150,10 @@ public class Post implements Serializable{
     public void setWantInExchange(String wantInExchange){
         this.wantInExchange = wantInExchange;
     }
-    public void setFilePath(Uri filePath){
+    public void setFilePath(String filePath){
         this.filePath = filePath;
     }
-    public void setStorageReference(StorageReference storageReference){
-        this.storageReference = storageReference;
-    }
-    //
-//    public void setLatitude(String latitude) {
-//        this.latitude = latitude;
-//    }
-//
-//    public void setLongitude(String longitude) {
-//        this.longitude = longitude;
-//    }
-//
-//    public void setImages(ArrayList<String> images) {
-//        this.images = new ArrayList<>(images);
-//    }
+
     public void addImages(String image) {
         if(images == null){
             images = new ArrayList<>();
@@ -263,10 +161,10 @@ public class Post implements Serializable{
         }else
             this.images.add(image);
     }
-//
-//    public void setFood(String food) {
-//        this.food = food;
-//    }
+
+    public void setImages(String image) {
+        images.set(0,image);
+    }
 
 
     @NonNull
@@ -279,7 +177,7 @@ public class Post implements Serializable{
         System.out.println("post_description= " + postDescription);
         System.out.println("quantity= " + quantity);
         System.out.println("pick_up_times= " + pickUpTimes);
-        System.out.println("lattitude= " + Address.latitude);
+        System.out.println("latitude= " + Address.latitude);
         System.out.println("longitude= " + Address.longitude);
         if (images.size() == 0){
             System.out.println("images = ");

@@ -46,11 +46,7 @@ public class DataManager {
     public static String generateTimestampBasedId() {
         long timestamp = System.currentTimeMillis(); // Get current timestamp
         int randomNum = ThreadLocalRandom.current().nextInt(100, 1000); // Generate a random number between 100 and 999
-        return timestamp + "" + randomNum; // Concatenate timestamp and random number into string
+        return timestamp + String.valueOf(randomNum); // Concatenate timestamp and random number into string
     }
 
-    public String searchUserName(String userInfo){
-        return userHashMap.get(userInfo).getUsername();
-
-    }
 }

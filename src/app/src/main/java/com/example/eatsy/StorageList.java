@@ -32,7 +32,7 @@ public class StorageList {
      **/
     public static void initPostData(){
         List<Post> resList = new ArrayList<>();
-        CollectionReference postsCollectionRef = FirestoreHelper.getCollectionRef("posts");
+        CollectionReference postsCollectionRef = FireStoreHelper.getCollectionRef("posts");
         postsCollectionRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 task.getResult().forEach(document -> {

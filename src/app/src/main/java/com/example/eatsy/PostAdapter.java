@@ -1,6 +1,5 @@
 package com.example.eatsy;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,15 +12,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+/**
+ * Functionalities
+ * 1) adapter to show poster(Jinyang Zeng)
+ * @author Jinyang Zeng(7727175)
+ */
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder> {
 
-    private List<Post> posts;
-    private Context context;
+    private final List<Post> posts;
     private OnItemClickListener onItemClickListener; // Click event listener
 
-    public PostAdapter(Context context, List<Post> posts) {
-        this.context = context;
+    public PostAdapter(List<Post> posts) {
         this.posts = posts;
     }
 
@@ -50,10 +52,10 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
     public class PostViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView titleTextView;
-        private ImageView imageView;
-        private TextView descriptionTextView;
-        private TextView usernameTextView;
+        private final TextView titleTextView;
+        private final ImageView imageView;
+        private final TextView descriptionTextView;
+        private final TextView usernameTextView;
 
         public PostViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -63,14 +65,11 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             usernameTextView = itemView.findViewById(R.id.username);
 
             // Set a click event listener for itemView in the constructor
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (onItemClickListener != null) {
-                        int position = getAdapterPosition();
-                        if (position != RecyclerView.NO_POSITION) {
-                            onItemClickListener.onItemClick(position);
-                        }
+            itemView.setOnClickListener(v -> {
+                if (onItemClickListener != null) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        onItemClickListener.onItemClick(position);
                     }
                 }
             });

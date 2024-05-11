@@ -1,14 +1,9 @@
 package com.example.eatsy;
 
 import android.app.Application;
-import android.util.Log;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class MyApplication extends Application {
 
@@ -18,11 +13,11 @@ public class MyApplication extends Application {
         super.onCreate();
         FirebaseApp.initializeApp(this);
 
-        CollectionReference usersCollectionRef = FirestoreHelper.getCollectionRef("users");
+        CollectionReference usersCollectionRef = FireStoreHelper.getCollectionRef("users");
         UserDataDownloader downloader = new UserDataDownloader();
 
         // Get the posts collection reference
-        CollectionReference postsCollectionRef = FirestoreHelper.getCollectionRef("posts");
+        CollectionReference postsCollectionRef = FireStoreHelper.getCollectionRef("posts");
         PostDataDownloader postDownloader = new PostDataDownloader();
 
         // Call the asynchronous method, and handle the returned CompletableFuture

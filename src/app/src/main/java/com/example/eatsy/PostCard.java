@@ -3,10 +3,10 @@ package com.example.eatsy;
 import android.location.Address;
 import android.location.Geocoder;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -22,17 +22,16 @@ import com.squareup.picasso.Picasso;
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
+/**
+ * Functionalities
+ * 1) An activity to show selected post from dashboard.(Jinyang Zeng)
+ * @author Jinyang Zeng(7727175)
+ */
 
 public class PostCard extends AppCompatActivity implements OnMapReadyCallback {
 
-    private GoogleMap mMap;
     private LatLng selectedLocation;
-    private TextView banner_title;
-    private ImageButton food_picture;
-    private TextView title;
-    private TextView description;
-    private TextView remainAndMeetTime;
-    private TextView meetingAddress;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,27 +55,22 @@ public class PostCard extends AppCompatActivity implements OnMapReadyCallback {
 
 
         ImageButton go_back = findViewById(R.id.leftArrowButton);
-        go_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        go_back.setOnClickListener(v -> finish());
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        banner_title = findViewById(R.id.banner_title);
+        TextView banner_title = findViewById(R.id.banner_title);
         banner_title.setText(clickedPost.getUserName());
-        title = findViewById(R.id.title);
+        TextView title = findViewById(R.id.title);
         title.setText(clickedPost.getPostTitle());
-        description = findViewById(R.id.description);
+        TextView description = findViewById(R.id.description);
         description.setText(clickedPost.getPostDescription());
 
         Geocoder geocoder = new Geocoder(this, Locale.getDefault());
 
-        List<Address> addresses = null;
+        List<Address> addresses;
         String addressLine = null;
         try {
             addresses = geocoder.getFromLocation(latitude, longitude, 1);
@@ -91,14 +85,13 @@ public class PostCard extends AppCompatActivity implements OnMapReadyCallback {
         }
 
 
-
-        remainAndMeetTime = findViewById(R.id.remainAndMeetTime);
+        TextView remainAndMeetTime = findViewById(R.id.remainAndMeetTime);
         remainAndMeetTime.setText(clickedPost.getQuantity() + " remain and meet at");
 
-        meetingAddress = findViewById(R.id.meetingAddress);
+        TextView meetingAddress = findViewById(R.id.meetingAddress);
         meetingAddress.setText(addressLine);
 
-        food_picture = findViewById(R.id.food_picture);
+        ImageButton food_picture = findViewById(R.id.food_picture);
         if (clickedPost.getImages() != null && clickedPost.getImages().size() > 0){
             Picasso.get()
                     .load(clickedPost.getImages().get(0))
@@ -106,22 +99,21 @@ public class PostCard extends AppCompatActivity implements OnMapReadyCallback {
                     .into(food_picture);
         }else{
             Picasso.get()
-                    .load(R.drawable.foodwant) // Load the resource ID of a specific image
+                    .load(R.drawable.foodwant)
                     .into(food_picture);
         }
 
 
     }
 
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
+    public void onMapReady(@NonNull GoogleMap googleMap) {
 
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(selectedLocation, 11));
-        mMap.getUiSettings().setZoomControlsEnabled(true);
-        mMap.getUiSettings().setScrollGesturesEnabled(false);
-        mMap.getUiSettings().setRotateGesturesEnabled(false);
-        mMap.getUiSettings().setTiltGesturesEnabled(false);
-        mMap.addMarker(new MarkerOptions().position(selectedLocation).title("Selected Location"));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(selectedLocation, 11));
+        googleMap.getUiSettings().setZoomControlsEnabled(true);
+        googleMap.getUiSettings().setScrollGesturesEnabled(false);
+        googleMap.getUiSettings().setRotateGesturesEnabled(false);
+        googleMap.getUiSettings().setTiltGesturesEnabled(false);
+        googleMap.addMarker(new MarkerOptions().position(selectedLocation).title("Selected Location"));
 
     }
 

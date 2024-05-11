@@ -17,13 +17,10 @@ public class PostDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_detail);
         ImageButton go_back = findViewById(R.id.leftArrowButton);
-        go_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Search.class);
-                startActivity(intent);
-                finish();
-            }
+        go_back.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), Search.class);
+            startActivity(intent);
+            finish();
         });
         Intent intent = getIntent();
         if (intent != null) {
