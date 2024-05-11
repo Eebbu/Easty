@@ -17,13 +17,11 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+
 /**
  * The Post class represents a post in our application.
  * This class includes details such as user identification, post type, and content descriptions,
  * which are essential for managing the posts in our APP.
- */
-
-/**
  * @author Zihan Yuan(u7773880) Boxuan Lin(u7705128)
  */
 
@@ -42,14 +40,14 @@ public class Post implements Serializable{
     @SerializedName("post_description")
     private String postDescription;
 
-    private String quantity;
+    private final String quantity;
 
     @SerializedName("pick_up_times")
     private String pickUpTimes;
 
-    private Address Address;
+    private final Address Address;
 
-    private ArrayList<String> images = null;
+    private ArrayList<String> images;
     private String wantInExchange;
     private Uri filePath;
     private StorageReference storageReference;

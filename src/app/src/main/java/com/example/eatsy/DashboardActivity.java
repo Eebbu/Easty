@@ -2,8 +2,6 @@ package com.example.eatsy;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -12,13 +10,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 
 /**
@@ -35,9 +32,6 @@ public class DashboardActivity extends AppCompatActivity {
     static HashMap<String, Post> posts;
     static HashMap<String, userFT> users;
     static ArrayList<Post> postsToShow = new ArrayList<>();
-    private RecyclerView recyclerView;
-    private PostAdapter adapter;
-
 
 
     @Override
@@ -55,7 +49,7 @@ public class DashboardActivity extends AppCompatActivity {
         }
 
 
-        recyclerView = findViewById(R.id.recyclerView);
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
@@ -70,16 +64,13 @@ public class DashboardActivity extends AppCompatActivity {
 
         System.out.println(postsToShow.size());
 
-        adapter = new PostAdapter(postsToShow);
+        PostAdapter adapter = new PostAdapter(postsToShow);
         recyclerView.setAdapter(adapter);
         ImageView searchButton = findViewById(R.id.search_button);
-        searchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Search.class);
-                startActivity(intent);
+        searchButton.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), Search.class);
+            startActivity(intent);
 //                finish();
-            }
         });
 
         EdgeToEdge.enable(this);
@@ -89,33 +80,24 @@ public class DashboardActivity extends AppCompatActivity {
             return insets;
         });
         LinearLayout addPageTextView = findViewById(R.id.add_pg);
-        addPageTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(DashboardActivity.this,Addpage.class);
-                startActivity(intent);
-            }
+        addPageTextView.setOnClickListener(v -> {
+            Intent intent = new Intent(DashboardActivity.this,AddPage.class);
+            startActivity(intent);
         });
 
 
 
         ImageView person = findViewById(R.id.profile);
-        person.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(DashboardActivity.this, ProfileActivity.class);
-                startActivity(intent);
-            }
+        person.setOnClickListener(v -> {
+            Intent intent = new Intent(DashboardActivity.this, ProfileActivity.class);
+            startActivity(intent);
         });
 
-        adapter.setOnItemClickListener(new PostAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(int position) {
-                Post clickedPost = postsToShow.get(position);
-                Intent intent = new Intent(DashboardActivity.this, PostCard.class);
-                intent.putExtra("clickedPost",clickedPost);
-                startActivity(intent);
-            }
+        adapter.setOnItemClickListener(position -> {
+            Post clickedPost = postsToShow.get(position);
+            Intent intent = new Intent(DashboardActivity.this, PostCard.class);
+            intent.putExtra("clickedPost",clickedPost);
+            startActivity(intent);
         });
     }
 

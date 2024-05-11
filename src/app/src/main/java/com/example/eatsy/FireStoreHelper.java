@@ -11,9 +11,6 @@ public class FireStoreHelper {
         // Private constructor to prevent external instantiation
     }
 
-    public static FirebaseFirestore getFirestore() {
-        return db;
-    }
 
     public static CollectionReference getCollectionRef(String collectionName) {
         if (collectionRef == null || !collectionRef.getId().equals(collectionName)) {
