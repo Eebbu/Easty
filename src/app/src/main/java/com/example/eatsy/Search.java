@@ -32,7 +32,7 @@ import java.util.concurrent.atomic.AtomicInteger;
         search data,
         and display search results on the interface.
  */
-public class search extends AppCompatActivity {
+public class Search extends AppCompatActivity {
     private ListView mListVie;
     private List<Post> postList = new ArrayList<>();
 
@@ -147,7 +147,7 @@ public class search extends AppCompatActivity {
                     }else{
                         Test.Node node = matchToken(searchText);
                         if (node==null) {
-                            Toast.makeText(search.this, "Please enter only English letters", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Search.this, "Please enter only English letters", Toast.LENGTH_SHORT).show();
                         }else{
                             //searchText = searchText.replaceAll("[^a-zA-Z0-9\\s]", "");
                             searchByTest(node.toArray().toArray(new String[0]));
@@ -192,7 +192,7 @@ public class search extends AppCompatActivity {
             }
         });
         mListVie = findViewById(R.id.lv);
-        mListVie.setAdapter(new ListDataAdapter(search.this, resList));
+        mListVie.setAdapter(new ListDataAdapter(Search.this, resList));
     }
 
 
@@ -207,7 +207,7 @@ public class search extends AppCompatActivity {
         for (AVLTreeNode avlTreeNode : avlTreeNodes) {
             list.add((Post)avlTreeNode.data);
         }
-        mListVie.setAdapter(new ListDataAdapter(search.this,list));
+        mListVie.setAdapter(new ListDataAdapter(Search.this,list));
     }
 
 
@@ -256,7 +256,7 @@ public class search extends AppCompatActivity {
                 resultCountMap.get(post2).compareTo(resultCountMap.get(post1))
         );
         mListVie = findViewById(R.id.lv);
-        mListVie.setAdapter(new ListDataAdapter(search.this, sortedResults));
+        mListVie.setAdapter(new ListDataAdapter(Search.this, sortedResults));
     }
 
 

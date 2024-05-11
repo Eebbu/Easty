@@ -93,86 +93,86 @@
 
 
             <LinearLayout
-                    android:id="@+id/title_linear"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintTop_toTopOf="@+id/add_pic"
-                    android:layout_marginTop="20dp">
+                android:id="@+id/title_linear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintTop_toTopOf="@+id/add_pic"
+                android:layout_marginTop="20dp">
 
                 <TextView
-                        android:id="@+id/title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="0dp"
-                        android:layout_marginTop="0dp"
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
 
-                        android:text="@string/post_title"
-                        android:textSize="30sp"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="@+id/title_linear"
-                        app:layout_constraintTop_toTopOf="@+id/title_linear"/>
+                    android:text="@string/post_title"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/title_linear"
+                    app:layout_constraintTop_toTopOf="@+id/title_linear"/>
 
             </LinearLayout>
 
             <LinearLayout
-                    android:id="@+id/description_linear"
-                    android:layout_width="match_parent"
+                android:id="@+id/description_linear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintTop_toTopOf="@+id/title_linear"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:id="@+id/description"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintTop_toTopOf="@+id/title_linear"
-                    android:layout_marginTop="20dp">
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+
+                    android:text="@string/post_description"
+                    android:textSize="22sp"
+                    app:layout_constraintStart_toStartOf="@+id/description_linear"
+                    app:layout_constraintTop_toTopOf="@+id/description_linear"/>
 
                 <TextView
-                        android:id="@+id/description"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="0dp"
-                        android:layout_marginTop="0dp"
+                    android:id="@+id/remainAndMeetTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/remain_time"
 
-                        android:text="@string/post_description"
-                        android:textSize="22sp"
-                        app:layout_constraintStart_toStartOf="@+id/description_linear"
-                        app:layout_constraintTop_toTopOf="@+id/description_linear"/>
-
-                <TextView
-                        android:id="@+id/remainAndMeetTime"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="0dp"
-                        android:layout_marginTop="10dp"
-                        android:text="@string/remain_time"
-
-                        android:textSize="18sp"
-                        app:layout_constraintStart_toStartOf="@+id/description_linear"
-                        app:layout_constraintTop_toTopOf="@+id/description_linear"/>
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="@+id/description_linear"
+                    app:layout_constraintTop_toTopOf="@+id/description_linear"/>
 
                 <TextView
-                        android:id="@+id/meetingAddress"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="0dp"
-                        android:layout_marginTop="0dp"
-                        android:text="@string/address_post"
+                    android:id="@+id/meetingAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+                    android:text="@string/address_post"
 
-                        android:textSize="18sp"
-                        app:layout_constraintStart_toStartOf="@+id/description_linear"
-                        app:layout_constraintTop_toTopOf="@+id/description_linear"/>
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="@+id/description_linear"
+                    app:layout_constraintTop_toTopOf="@+id/description_linear"/>
 
                 <fragment
-                        android:id="@+id/map"
-                        android:name="com.google.android.gms.maps.SupportMapFragment"
-                        android:layout_width="match_parent"
-                        android:layout_height="120dp"/>
+                    android:id="@+id/map"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"/>
                 <TextView
-                        android:id="@+id/postTime"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="end"
+                    android:id="@+id/postTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
 
-                        android:layout_marginTop="15dp"
-                        android:text="@string/timeOfPost"
-                        android:textSize="15sp"/>
+                    android:layout_marginTop="15dp"
+                    android:text="@string/timeOfPost"
+                    android:textSize="15sp"/>
 
 
             </LinearLayout>
