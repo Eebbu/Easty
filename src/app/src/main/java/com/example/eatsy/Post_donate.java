@@ -1,26 +1,13 @@
 package com.example.eatsy;
 
-import android.widget.RadioButton;
 import android.widget.Toast;
-
-
-import java.util.UUID;
-
-
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.appcheck.FirebaseAppCheck;
-import com.google.firebase.appcheck.playintegrity.PlayIntegrityAppCheckProviderFactory;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 /**
  * Post of donation page
  * @author Zihan Yuan(u7773880)
  * @author Boxuan Lin(u7705128)
  */
-public class post_donate extends post_base {
+public class Post_donate extends Post_base {
     @Override
     // Method to get layout resource ID specific to donation posts
     protected int getLayoutResourceId() {

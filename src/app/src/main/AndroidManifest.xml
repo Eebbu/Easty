@@ -20,31 +20,28 @@
         <activity
                 android:name=".MapSelection"
                 android:exported="false"/>
-        <activity
-                android:name=".mapSelection"
-                android:exported="false"/>
 
         <meta-data
                 android:name="com.google.android.geo.API_KEY"
                 android:value="AIzaSyCrZQZDCNIEjK8Sqi-bpHQ4BzsXFyUpQi0"/>
 
         <activity
-                android:name=".postCard"
+                android:name=".PostCard"
                 android:exported="false"/>
         <activity
-                android:name=".search"
+                android:name=".Search"
                 android:exported="true"/>
         <activity
-                android:name=".post_wanted"
+                android:name=".Post_wanted"
                 android:exported="false"/>
         <activity
             android:name=".PostDetailActivity"
             android:exported="true"/>
         <activity
-                android:name=".post_donate"
+                android:name=".Post_donate"
                 android:exported="false"/>
         <activity
-                android:name=".post_exchange"
+                android:name=".Post_exchange"
                 android:exported="false"/>
         <activity
                 android:name=".ProfileActivity"

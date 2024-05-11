@@ -20,7 +20,7 @@ public class PostDetailActivity extends AppCompatActivity {
         go_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), search.class);
+                Intent intent = new Intent(getApplicationContext(), Search.class);
                 startActivity(intent);
                 finish();
             }

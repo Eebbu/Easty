@@ -2,7 +2,7 @@ package com.example.eatsy;
 
 import android.location.Address;
 import android.location.Geocoder;
-import android.util.Log;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -20,12 +20,10 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
-import java.util.Set;
 
-public class postCard extends AppCompatActivity implements OnMapReadyCallback {
+public class PostCard extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private LatLng selectedLocation;

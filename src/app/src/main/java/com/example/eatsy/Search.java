@@ -13,24 +13,19 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QuerySnapshot;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
+
 /*This class is for searching and filtering.
         It is used to process user input,
         search data,
         and display search results on the interface.
  */
-public class search extends AppCompatActivity {
+public class Search extends AppCompatActivity {
     private ListView mListVie;
     private List<Post> postList = new ArrayList<>();
 
@@ -166,7 +161,7 @@ public class search extends AppCompatActivity {
             }
         });
         mListVie = findViewById(R.id.lv);
-        mListVie.setAdapter(new ListDataAdapter(search.this, resList));
+        mListVie.setAdapter(new ListDataAdapter(Search.this, resList));
     }
 
 
@@ -176,7 +171,7 @@ public class search extends AppCompatActivity {
      */
     private void searchAll(){
         mListVie = findViewById(R.id.lv);
-        mListVie.setAdapter(new ListDataAdapter(search.this, StorageList.postList));
+        mListVie.setAdapter(new ListDataAdapter(Search.this, StorageList.postList));
     }
 
 
@@ -225,7 +220,7 @@ public class search extends AppCompatActivity {
                 resultCountMap.get(post2).compareTo(resultCountMap.get(post1))
         );
         mListVie = findViewById(R.id.lv);
-        mListVie.setAdapter(new ListDataAdapter(search.this, sortedResults));
+        mListVie.setAdapter(new ListDataAdapter(Search.this, sortedResults));
     }
 
 

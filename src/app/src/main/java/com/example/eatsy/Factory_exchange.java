@@ -7,12 +7,12 @@ import com.google.firebase.storage.StorageReference;
 /**
  * @author Zihan Yuan(u7773880)
  */
-public class factory_exchange extends Post{
+public class Factory_exchange extends Post{
     private Uri filePath;// URI for the image file
 //    private StorageReference storageReference;// Reference to Firebase Storage
     // Constructor for factory_exchange
-    factory_exchange(String userName,String postTitle,String postDescription,String wantInExchange,String quantity,
-                     String pickUpTimes,String latitude,String longitude, String image,Uri filePath,
+    Factory_exchange(String userName, String postTitle, String postDescription, String wantInExchange, String quantity,
+                     String pickUpTimes, String latitude, String longitude, String image, Uri filePath,
                      StorageReference storageReference){
         // Call to the superclass (Post) constructor
         super(userName,"exchange",postTitle,postDescription,quantity,latitude,longitude);

@@ -3,11 +3,8 @@ package com.example.eatsy;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,20 +15,12 @@ import androidx.core.view.WindowInsetsCompat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.concurrent.ConcurrentHashMap;
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import androidx.annotation.NonNull;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 //import com.squareup.picasso.Picasso;
 
-import java.util.List;
 /**
  * Functionilities
  * 1) UI design(Vishakha Mathur)
@@ -89,7 +78,7 @@ public class DashboardActivity extends AppCompatActivity {
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), search.class);
+                Intent intent = new Intent(getApplicationContext(), Search.class);
                 startActivity(intent);
 //                finish();
             }
@@ -126,7 +115,7 @@ public class DashboardActivity extends AppCompatActivity {
             @Override
             public void onItemClick(int position) {
                 Post clickedPost = postsToShow.get(position);
-                Intent intent = new Intent(DashboardActivity.this, postCard.class);
+                Intent intent = new Intent(DashboardActivity.this, PostCard.class);
                 intent.putExtra("clickedPost",clickedPost);
                 startActivity(intent);
             }
