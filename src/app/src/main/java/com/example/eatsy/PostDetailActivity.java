@@ -15,7 +15,7 @@ public class PostDetailActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
+        setContentView(R.layout.activity_post_detail);
         ImageButton go_back = findViewById(R.id.leftArrowButton);
         go_back.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), Search.class);
@@ -29,7 +29,7 @@ public class PostDetailActivity extends AppCompatActivity {
             Post post = StorageList.mapList.get(String.valueOf(id));
 
             //picture
-            ImageButton foodIdTextView = findViewById(R.id.food_img);
+            ImageButton foodIdTextView = findViewById(R.id.food_picture);
             if(post.getImages()!=null && !post.getImages().isEmpty()){
                 String imagePath = post.getImages().get(0);
                 Picasso.get().load(imagePath).into(foodIdTextView);
@@ -38,30 +38,24 @@ public class PostDetailActivity extends AppCompatActivity {
             }
 
             //value
-            TextView titleView = findViewById(R.id.food_title);
+            TextView titleView = findViewById(R.id.title);
             titleView.setText(post.getPostTitle());
 
 
-            TextView typeView = findViewById(R.id.type_value);
-            typeView.setText(post.getPostType());
+            TextView quantityView = findViewById(R.id.banner_title);
+            quantityView.setText(post.getUserName());
 
-            TextView quantityView = findViewById(R.id.quantity_value);
-            quantityView.setText(post.getQuantity());
-
-            TextView userIdView = findViewById(R.id.user_id_value);
-            userIdView.setText(post.getUserID());
+            TextView userIdView = findViewById(R.id.remainAndMeetTime);
+            userIdView.setText("UserID："+post.getUserID()+"UserName："+post.getUserName());
 
 
-            TextView userNameView = findViewById(R.id.user_name_value);
-            userNameView.setText(post.getUserName());
-
-            TextView timeView = findViewById(R.id.time_id_value);
+            TextView timeView = findViewById(R.id.postTime);
             timeView.setText(post.getPickUpTimes());
 
-            TextView addressView = findViewById(R.id.address_id_value);
-            addressView.setText(post.getLatitude()+","+post.getLongitude());
+            TextView addressView = findViewById(R.id.meetingAddress);
+            addressView.setText("Address："+post.getLatitude()+","+post.getLongitude());
 
-            TextView descView = findViewById(R.id.description_value);
+            TextView descView = findViewById(R.id.description);
             descView.setText(post.getPostDescription());
         }
     }

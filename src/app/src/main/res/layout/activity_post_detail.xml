@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <View
+        android:id="@+id/header_post"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="-110dp"
+        android:background="@drawable/dash_view"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp" />
+
+
+    <TextView
+        android:id="@+id/banner_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/black"
+
+        android:text="@string/title_postcard"
+        android:textSize="38sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/userPhoto"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/leftArrowButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:scaleType="fitCenter"
+        android:background="?android:attr/selectableItemBackground"
+        android:src="@drawable/leftarrow"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="Go back"/>
+
+    <ImageButton
+        android:id="@+id/userPhoto"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="20dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:contentDescription="userPhoto"
+        android:scaleType="fitCenter"
+        android:src="@drawable/baseline_person_24"
+        app:layout_constraintStart_toStartOf="@+id/leftArrowButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ScrollView
+        android:id="@+id/Scroll_post"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header_post"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="0dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Image Upload Section -->
+            <LinearLayout
+                android:id="@+id/food"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/food_picture"
+                    android:layout_width="match_parent"
+                    android:layout_height="340dp"
+                    android:scaleType="fitXY"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:src="@drawable/burger"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/title_linear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintTop_toTopOf="@+id/add_pic"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+
+                    android:text="@string/post_title"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/title_linear"
+                    app:layout_constraintTop_toTopOf="@+id/title_linear"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/description_linear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintTop_toTopOf="@+id/title_linear"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:id="@+id/description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+
+                    android:text="@string/post_description"
+                    android:textSize="22sp"
+                    app:layout_constraintStart_toStartOf="@+id/description_linear"
+                    app:layout_constraintTop_toTopOf="@+id/description_linear"/>
+
+                <TextView
+                    android:id="@+id/remainAndMeetTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/remain_time"
+
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="@+id/description_linear"
+                    app:layout_constraintTop_toTopOf="@+id/description_linear"/>
+
+                <TextView
+                    android:id="@+id/meetingAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+                    android:text="@string/address_post"
+
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="@+id/description_linear"
+                    app:layout_constraintTop_toTopOf="@+id/description_linear"/>
+
+                <fragment
+                    android:id="@+id/map"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"/>
+                <TextView
+                    android:id="@+id/postTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+
+                    android:layout_marginTop="15dp"
+                    android:text="@string/timeOfPost"
+                    android:textSize="15sp"/>
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

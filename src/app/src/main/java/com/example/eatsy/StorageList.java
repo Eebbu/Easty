@@ -22,10 +22,13 @@ public class StorageList {
     public static List<Post> postList = new ArrayList<>();
 
     public static Map<String,Post> mapList = new HashMap<>();
+
+    public static AVLTree avlTree = new AVLTree();
+
     /**
-        Upload data from realtime-firebase
-        This is for formal presentation
-        Author:Lin Xi(u7777752)
+     Upload data from realtime-firebase
+     This is for formal presentation
+     Author:Lin Xi(u7777752)
      **/
     public static void initPostData(){
         List<Post> resList = new ArrayList<>();
@@ -62,6 +65,7 @@ public class StorageList {
         convertDataId();
         Collection<Post> values = mapList.values();
         postList = new ArrayList<>(values);
+        avlTree.buildTree(postList.toArray());
     }
 
     public static void convertDataId(){
