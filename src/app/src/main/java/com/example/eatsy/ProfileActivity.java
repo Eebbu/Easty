@@ -57,7 +57,7 @@ public class ProfileActivity extends AppCompatActivity {
     StorageReference stRef;
 
 
-    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    FirebaseUser user;
 
 
     String userID;
@@ -76,9 +76,9 @@ public class ProfileActivity extends AppCompatActivity {
             return insets;
         });
 
+        user = FirebaseAuth.getInstance().getCurrentUser();
 
-
-// Setting the variables
+        // Setting the variables
         logOutBtn = findViewById(R.id.Signout);
         user_Name = findViewById(R.id.name_person);
 

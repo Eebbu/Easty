@@ -14,7 +14,7 @@ public class FactoryTest {
     public void testDonateConstructor() {
         Uri uriPath = null;
         StorageReference ref = null;
-        factory_donate donatePost = new factory_donate("John Doe", "Food Donation", "Canned Beans",
+        Factory_donate donatePost = new Factory_donate("John Doe", "Food Donation", "Canned Beans",
                 "100 cans", "9AM-5PM", "34.0522", "-118.2437", "image1.jpg", uriPath, ref);
         assertEquals("donate",donatePost.getPostType());
         assertEquals("John Doe", donatePost.getUserName());
@@ -29,7 +29,7 @@ public class FactoryTest {
     public void testExchangeConstructor() {
         Uri uriPath = null;
         StorageReference ref = null;
-        factory_exchange exchangePost = new factory_exchange("Jane Smith", "Book Exchange", "Old Novels",
+        Factory_exchange exchangePost = new Factory_exchange("Jane Smith", "Book Exchange", "Old Novels",
                 "Books for children", "50 books","3pm May 25th","51.5074", "-0.1278", "image2.jpg", uriPath, ref);
         assertEquals("exchange",exchangePost.getPostType());
         assertEquals("Jane Smith", exchangePost.getUserName());
@@ -43,8 +43,8 @@ public class FactoryTest {
     }
 
     @Test
-    public void testWantedConstructor() {
-        factory_wanted wantedPost = new factory_wanted("Alice Johnson", "Wanted: Office Chair", "Looking for an ergonomic office chair in good condition", "1", "45.4215", "-75.6972");
+  public void testWantedConstructor() {
+        Factory_wanted wantedPost = new Factory_wanted("Alice Johnson", "Wanted: Office Chair", "Looking for an ergonomic office chair in good condition", "1", "45.4215", "-75.6972");
         assertEquals("wanted",wantedPost.getPostType());
         assertEquals("Alice Johnson", wantedPost.getUserName());
         assertEquals("wanted", wantedPost.getPostType());  // Assuming 'wanted' is automatically set by the constructor.

@@ -27,7 +27,7 @@ import java.io.IOException;
 import java.util.UUID;
 
 // Protected UI components accessible by child classes
-public abstract class post_base extends AppCompatActivity {
+public abstract class Post_base extends AppCompatActivity {
     protected ImageButton uploadImage;
     protected Uri filePath;
     protected StorageReference storageReference;
@@ -78,8 +78,8 @@ public abstract class post_base extends AppCompatActivity {
         String latitude = selectedLatitude;
         String longitude = selectedLongitude;
 
-        if (this.getClass() == post_wanted.class){
-            factory_wanted post = new factory_wanted(userName,postTitle,description,quantity,latitude,longitude);
+        if (this.getClass() == Post_wanted.class){
+            Factory_wanted post = new Factory_wanted(userName,postTitle,description,quantity,latitude,longitude);
             System.out.println(post);
             DashboardActivity.postsToShow.add(0,post);
             return post;
@@ -95,8 +95,8 @@ public abstract class post_base extends AppCompatActivity {
         String image = filePath.toString();
         StorageReference ref = storageReference.child("user_post_img/" + UUID.randomUUID().toString());
 
-        if (this.getClass() == post_donate.class) {
-            factory_donate post = new factory_donate(userName, postTitle, description,
+        if (this.getClass() == Post_donate.class) {
+            Factory_donate post = new Factory_donate(userName, postTitle, description,
                     quantity, pick_up_times, latitude, longitude, image, filePath, ref);
             System.out.println(post);
             DashboardActivity.postsToShow.add(0,post);
@@ -107,7 +107,7 @@ public abstract class post_base extends AppCompatActivity {
         String wantInExchange = "";
         wantInExchange = wantEditText.getText().toString().trim();
 
-        factory_exchange post = new factory_exchange(userName,postTitle,description,
+        Factory_exchange post = new Factory_exchange(userName,postTitle,description,
                 wantInExchange,quantity,pick_up_times,latitude,longitude,image,filePath,ref);
         System.out.println(post);
         DashboardActivity.postsToShow.add(0,post);
@@ -118,7 +118,7 @@ public abstract class post_base extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(this instanceof post_donate || this instanceof post_exchange)
+        if(this instanceof Post_donate || this instanceof Post_exchange)
             initializeFirebase();
         setContentView(getLayoutResourceId());
         setupViews();
@@ -171,7 +171,7 @@ public abstract class post_base extends AppCompatActivity {
             startActivityForResult(intent,PICK_MAP_REQUEST);
         });
 
-        if ((this instanceof post_donate) || this instanceof post_exchange) {
+        if ((this instanceof Post_donate) || this instanceof Post_exchange) {
             uploadImage.setOnClickListener(v -> openGallery());
         }
 
