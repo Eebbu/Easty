@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,6 +20,7 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -143,15 +145,39 @@ public class search extends AppCompatActivity {
                     if(searchText.isEmpty()){
                         searchAll();
                     }else{
-                        searchText = searchText.replaceAll("[^a-zA-Z0-9\\s]", "");
-                        String[] tabs = searchText.split(" ");
-                        searchByTest(tabs);
+                        Test.Node node = matchToken(searchText);
+                        if (node==null) {
+                            Toast.makeText(search.this, "Please enter only English letters", Toast.LENGTH_SHORT).show();
+                        }else{
+                            //searchText = searchText.replaceAll("[^a-zA-Z0-9\\s]", "");
+                            searchByTest(node.toArray().toArray(new String[0]));
+                        }
                     }
                     return true;
                 }
                 return false;
             }
         });
+    }
+
+    private Test.Node matchToken(String searchTest){
+        List<Test.Token> tokens = new ArrayList<>();
+        String[] s1 = searchTest.split(" ");
+        for (int i=0;i<s1.length;i++) {
+            tokens.add(new Test.Token(s1[i]));
+            if(i!=s1.length-1){
+                tokens.add(new Test.Token(" "));
+            }
+        }
+        // parse token
+        Test.Parser parser = new Test.Parser(tokens);
+        try {
+
+            Test.Node rootNode = parser.parseExp();
+            return rootNode;
+        } catch (Test.IllegalProductionException e) {
+            return null;
+        }
     }
 
 
@@ -176,7 +202,12 @@ public class search extends AppCompatActivity {
      */
     private void searchAll(){
         mListVie = findViewById(R.id.lv);
-        mListVie.setAdapter(new ListDataAdapter(search.this, StorageList.postList));
+        List<Post> list = new ArrayList<>();
+        List<AVLTreeNode> avlTreeNodes = StorageList.avlTree.traverseTree();
+        for (AVLTreeNode avlTreeNode : avlTreeNodes) {
+            list.add((Post)avlTreeNode.data);
+        }
+        mListVie.setAdapter(new ListDataAdapter(search.this,list));
     }
 
 
