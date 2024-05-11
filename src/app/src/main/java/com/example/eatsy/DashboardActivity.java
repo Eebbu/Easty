@@ -3,6 +3,7 @@ package com.example.eatsy;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -38,10 +39,14 @@ public class DashboardActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private PostAdapter adapter;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+
+
 
         if (posts == null){
             posts = ImportDataFromLocalJson.read(getApplicationContext());
@@ -102,6 +107,8 @@ public class DashboardActivity extends AppCompatActivity {
 
 
 
+
+
         ImageView person = findViewById(R.id.profile);
         person.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,6 +128,7 @@ public class DashboardActivity extends AppCompatActivity {
             }
         });
     }
+
 
 
 
