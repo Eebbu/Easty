@@ -6,10 +6,10 @@ import com.google.firebase.storage.StorageReference;
 /**
  * @author Zihan Yuan(u7773880) Boxuan Lin(u7705128)
  */
-public class factory_donate extends Post{
+public class Factory_donate extends Post{
     // Constructor for factory_donate
-    factory_donate(String userName,String postTitle,String postDescription, String quantity,
-                   String pickUpTimes,String latitude,String longitude, String image,Uri filePath,
+    Factory_donate(String userName, String postTitle, String postDescription, String quantity,
+                   String pickUpTimes, String latitude, String longitude, String image, Uri filePath,
                    StorageReference storageReference){
         // Call to the superclass (Post) constructor
         super(userName,"donate",postTitle,postDescription,quantity,latitude,longitude);

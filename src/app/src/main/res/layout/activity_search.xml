@@ -79,47 +79,50 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/header_post_search"
-        tools:context=".search">
+        tools:context=".Search">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp">
         </LinearLayout>
-
-        <LinearLayout
+        <HorizontalScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
-            android:orientation="horizontal">
-            <CheckBox
-                android:id="@+id/checkBox1"
-                android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="21dp"
-                android:text="Donate" />
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/checkBox1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="21dp"
+                    android:text="Donate" />
 
-            <Space
-                android:layout_width="22dp"
-                android:layout_height="22dp" />
+                <Space
+                    android:layout_width="22dp"
+                    android:layout_height="22dp" />
 
-            <CheckBox
-                android:id="@+id/checkBox2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="21dp"
-                android:text="Wanted" />
+                <CheckBox
+                    android:id="@+id/checkBox2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="21dp"
+                    android:text="Wanted" />
 
-            <Space
-                android:layout_width="22dp"
-                android:layout_height="22dp" />
+                <Space
+                    android:layout_width="22dp"
+                    android:layout_height="22dp" />
 
-            <CheckBox
-                android:id="@+id/checkBox3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="21dp"
-                android:text="Exchange" />
-        </LinearLayout>
+                <CheckBox
+                    android:id="@+id/checkBox3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="21dp"
+                    android:text="Exchange" />
+            </LinearLayout>
+        </HorizontalScrollView>
     </LinearLayout>
 
     <View
@@ -156,7 +159,7 @@
         <ListView
             android:id="@+id/lv"
             android:layout_width="match_parent"
-            android:layout_height="466dp"/>
+            android:layout_height="match_parent"/>
 
 
         <!--            &lt;!&ndash; Image Upload Section &ndash;&gt;-->

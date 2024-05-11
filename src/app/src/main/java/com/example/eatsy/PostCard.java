@@ -28,7 +28,7 @@ import java.util.Locale;
  * @author Jinyang Zeng(7727175)
  */
 
-public class postCard extends AppCompatActivity implements OnMapReadyCallback {
+public class PostCard extends AppCompatActivity implements OnMapReadyCallback {
 
     private LatLng selectedLocation;
 
@@ -79,7 +79,9 @@ public class postCard extends AppCompatActivity implements OnMapReadyCallback {
         }
         if (addresses != null && !addresses.isEmpty()) {
                 Address address = addresses.get(0);
-                addressLine = address.getAddressLine(0);
+                addressLine = address.getAddressLine(0); // Get address
+                // Display address in the related map
+
         }
 
 

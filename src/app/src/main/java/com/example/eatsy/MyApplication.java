@@ -31,7 +31,7 @@ public class MyApplication extends Application {
                 });
         // Download and handle post data
         postDownloader.downloadData(postsCollectionRef)
-                .thenAccept(data -> { DataManager.getDataInstance().setPostHashMap(data); // 存储到 DataManager
+                .thenAccept(data -> { DataManager.getDataInstance().setPostHashMap(data); // Store to DataManager
                     // Success: post data received
                 })
                 .exceptionally(ex -> {

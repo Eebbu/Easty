@@ -45,7 +45,7 @@ public class ProfileActivity extends AppCompatActivity {
     StorageReference stRef;
 
 
-    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    FirebaseUser user;
 
 
     String userID;
@@ -64,9 +64,9 @@ public class ProfileActivity extends AppCompatActivity {
             return insets;
         });
 
+        user = FirebaseAuth.getInstance().getCurrentUser();
 
-
-// Setting the variables
+        // Setting the variables
         logOutBtn = findViewById(R.id.Signout);
         user_Name = findViewById(R.id.name_person);
 
@@ -74,6 +74,7 @@ public class ProfileActivity extends AppCompatActivity {
         firebaseFirestore = FirebaseFirestore.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
         storageReference = FirebaseStorage.getInstance().getReference();
+        // Creating a folder 'users' which contains profile page of different users.
         stRef = storageReference.child("users/" + firebaseAuth.getCurrentUser().getUid()+"/profile.jpg");
         stRef.getDownloadUrl().addOnSuccessListener(uri -> Picasso.get().load(uri).into(profileImage));
 
@@ -87,6 +88,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         if (user != null) {
             String emailOfPerson = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+            // Fetching the email from firebase and username from the hashmap using email as the key of the current user.
             String nameOfPerson = DashboardActivity.users.get(emailOfPerson).getUsername();
             user_Name.setText(nameOfPerson);
             user_Email.setText(emailOfPerson);

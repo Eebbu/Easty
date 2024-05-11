@@ -21,13 +21,13 @@ import java.util.List;
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder> {
 
     private final List<Post> posts;
-    private OnItemClickListener onItemClickListener;
+    private OnItemClickListener onItemClickListener; // Click event listener
 
     public PostAdapter(List<Post> posts) {
         this.posts = posts;
     }
 
-
+    // Set up click event listener
     public void setOnItemClickListener(OnItemClickListener listener) {
         this.onItemClickListener = listener;
     }
@@ -64,12 +64,15 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             descriptionTextView = itemView.findViewById(R.id.descriptionTextView);
             usernameTextView = itemView.findViewById(R.id.username);
 
-
-            itemView.setOnClickListener(v -> {
-                if (onItemClickListener != null) {
-                    int position = getAdapterPosition();
-                    if (position != RecyclerView.NO_POSITION) {
-                        onItemClickListener.onItemClick(position);
+            // Set a click event listener for itemView in the constructor
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (onItemClickListener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            onItemClickListener.onItemClick(position);
+                        }
                     }
                 }
             });
@@ -84,7 +87,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
                         .into(imageView);
             }else{
                 Picasso.get()
-                        .load(R.drawable.foodwant)
+                        .load(R.drawable.foodwant) // Load the resource ID of a specific image
                         .into(imageView);
             }
             descriptionTextView.setText(post.getPostDescription());
@@ -92,6 +95,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         }
     }
 
+    // Internal interface for handling click events
     public interface OnItemClickListener {
         void onItemClick(int position);
     }
