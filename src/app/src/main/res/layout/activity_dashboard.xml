@@ -168,10 +168,15 @@
 
     </ScrollView>
 
-
-
-
-
+    <Button
+        android:id="@+id/Data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="chart"
+        app:layout_constraintBottom_toBottomOf="@+id/header_view"
+        app:layout_constraintEnd_toStartOf="@+id/search_button"
+        app:layout_constraintStart_toEndOf="@+id/food2"
+        app:layout_constraintTop_toTopOf="@+id/header_view" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
