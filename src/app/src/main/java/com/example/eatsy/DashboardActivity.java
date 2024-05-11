@@ -34,7 +34,7 @@ public class DashboardActivity extends AppCompatActivity {
     static HashMap<String, Post> posts;
     static HashMap<String, userFT> users;
     static ArrayList<Post> postsToShow = new ArrayList<>();
-    private Handler handler;
+    private static Handler handler;
 
 
     @Override
@@ -75,7 +75,10 @@ public class DashboardActivity extends AppCompatActivity {
 //                finish();
         });
 
-        handler = new Handler();
+        if(handler ==null){
+            handler = new Handler();
+        }
+
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
@@ -88,7 +91,7 @@ public class DashboardActivity extends AppCompatActivity {
                 showToast();
 
 
-                int nextRefreshTime = new Random().nextInt(7) + 4;
+                int nextRefreshTime = new Random().nextInt(7) + 10;
                 handler.postDelayed(this, nextRefreshTime * 1000);
             }
         };

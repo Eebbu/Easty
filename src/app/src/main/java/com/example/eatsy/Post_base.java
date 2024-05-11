@@ -155,8 +155,6 @@ public abstract class Post_base extends AppCompatActivity {
             if (validateInputs()) {
                 Post newPost = addPostToFirebase();
                 FireStoreHelper.createAndPost(newPost);
-                Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
-                startActivity(intent);
                 finish();
             }
         });
