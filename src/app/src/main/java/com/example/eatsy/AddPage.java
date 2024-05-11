@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import android.view.View;
 
 /** Add page UI
  * @author Zihan Yuan(u7773880)
@@ -46,6 +45,7 @@ public class AddPage extends AppCompatActivity {
             // Start post_donate activity
             Intent intent = new Intent(AddPage.this, Post_donate.class);
             startActivity(intent);
+            finish();
         });
         // Setup click listeners for card views to navigate to specific post creation activities
         CardView exchange_card = findViewById(R.id.exchangeCard);
@@ -53,12 +53,14 @@ public class AddPage extends AppCompatActivity {
             // Start post_exchange activity
             Intent intent = new Intent(AddPage.this, Post_exchange.class);
             startActivity(intent);
+            finish();
         });
         CardView wanted_card = findViewById(R.id.wantedCard);
         wanted_card.setOnClickListener(v -> {
             // Start post_wanted activity
             Intent intent = new Intent(AddPage.this, Post_wanted.class);
             startActivity(intent);
+            finish();
         });
     }
 
