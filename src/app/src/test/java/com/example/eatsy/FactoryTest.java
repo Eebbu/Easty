@@ -1,21 +1,16 @@
 package com.example.eatsy;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
-import android.net.Uri;
-
-import com.google.firebase.storage.StorageReference;
+import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
 
 public class FactoryTest {
     @Test
     public void testDonateConstructor() {
-        Uri uriPath = null;
-        StorageReference ref = null;
+        String uriPath = null;
         Factory_donate donatePost = new Factory_donate("John Doe", "Food Donation", "Canned Beans",
-                "100 cans", "9AM-5PM", "34.0522", "-118.2437", "image1.jpg", uriPath, ref);
+                "100 cans", "9AM-5PM", "34.0522", "-118.2437", "image1.jpg",uriPath);
         assertEquals("donate",donatePost.getPostType());
         assertEquals("John Doe", donatePost.getUserName());
         assertEquals("Food Donation", donatePost.getPostTitle());
@@ -27,10 +22,9 @@ public class FactoryTest {
     }
     @Test
     public void testExchangeConstructor() {
-        Uri uriPath = null;
-        StorageReference ref = null;
+        String  uriPath = null;
         Factory_exchange exchangePost = new Factory_exchange("Jane Smith", "Book Exchange", "Old Novels",
-                "Books for children", "50 books","3pm May 25th","51.5074", "-0.1278", "image2.jpg", uriPath, ref);
+                "Books for children", "50 books","3pm May 25th","51.5074", "-0.1278", "image2.jpg",uriPath);
         assertEquals("exchange",exchangePost.getPostType());
         assertEquals("Jane Smith", exchangePost.getUserName());
         assertEquals("Book Exchange", exchangePost.getPostTitle());
@@ -53,7 +47,6 @@ public class FactoryTest {
         assertEquals("1", wantedPost.getQuantity());
         assertEquals("45.4215", wantedPost.getLatitude());
         assertEquals("-75.6972", wantedPost.getLongitude());
-        assertEquals(null,wantedPost.getPickUpTimes());
-        assertEquals(null,wantedPost.getStorageReference());
+        assertNull(wantedPost.getPickUpTimes());
     }
 }

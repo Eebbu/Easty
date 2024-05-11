@@ -2,10 +2,11 @@ package com.example.eatsy;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Random;
 
 
 /**
@@ -32,6 +34,7 @@ public class DashboardActivity extends AppCompatActivity {
     static HashMap<String, Post> posts;
     static HashMap<String, userFT> users;
     static ArrayList<Post> postsToShow = new ArrayList<>();
+    private Handler handler;
 
 
     @Override
@@ -62,7 +65,6 @@ public class DashboardActivity extends AppCompatActivity {
             }
         }
 
-        System.out.println(postsToShow.size());
 
         PostAdapter adapter = new PostAdapter(postsToShow);
         recyclerView.setAdapter(adapter);
@@ -73,7 +75,26 @@ public class DashboardActivity extends AppCompatActivity {
 //                finish();
         });
 
-        EdgeToEdge.enable(this);
+        handler = new Handler();
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+
+                String randomKey = indexInStrings.get(new Random().nextInt(indexInStrings.size()));
+                Post post = posts.get(randomKey);
+
+                postsToShow.add(0, post);
+                adapter.notifyDataSetChanged();
+                showToast();
+
+
+                int nextRefreshTime = new Random().nextInt(7) + 4;
+                handler.postDelayed(this, nextRefreshTime * 1000);
+            }
+        };
+
+        handler.postDelayed(runnable, 5000);
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -99,6 +120,9 @@ public class DashboardActivity extends AppCompatActivity {
             intent.putExtra("clickedPost",clickedPost);
             startActivity(intent);
         });
+    }
+    private void showToast() {
+        Toast.makeText(this, "new post", Toast.LENGTH_SHORT).show();
     }
 
 }

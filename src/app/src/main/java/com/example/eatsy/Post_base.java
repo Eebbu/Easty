@@ -24,7 +24,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.io.IOException;
-import java.util.UUID;
 
 // Protected UI components accessible by child classes
 public abstract class Post_base extends AppCompatActivity {
@@ -90,11 +89,10 @@ public abstract class Post_base extends AppCompatActivity {
 
 
         String image = filePath.toString();
-        StorageReference ref = storageReference.child("user_post_img/" + UUID.randomUUID().toString());
 
         if (this.getClass() == Post_donate.class) {
             Factory_donate post = new Factory_donate(userName, postTitle, description,
-                    quantity, pick_up_times, latitude, longitude, image, filePath, ref);
+                    quantity, pick_up_times, latitude, longitude, image, filePath.toString());
             System.out.println(post);
             DashboardActivity.postsToShow.add(0,post);
             return post;
@@ -105,7 +103,7 @@ public abstract class Post_base extends AppCompatActivity {
         wantInExchange = wantEditText.getText().toString().trim();
 
         Factory_exchange post = new Factory_exchange(userName,postTitle,description,
-                wantInExchange,quantity,pick_up_times,latitude,longitude,image,filePath,ref);
+                wantInExchange,quantity,pick_up_times,latitude,longitude,image,filePath.toString());
         System.out.println(post);
         DashboardActivity.postsToShow.add(0,post);
         return post;
@@ -155,7 +153,8 @@ public abstract class Post_base extends AppCompatActivity {
         Button post = findViewById(R.id.button_post);
         post.setOnClickListener(v -> {
             if (validateInputs()) {
-                addPostToFirebase();
+                Post newPost = addPostToFirebase();
+                FireStoreHelper.createAndPost(newPost);
                 Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
                 startActivity(intent);
                 finish();
