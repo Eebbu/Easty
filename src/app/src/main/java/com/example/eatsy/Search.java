@@ -32,7 +32,8 @@ import java.util.concurrent.atomic.AtomicInteger;
         search data,
         and display search results on the interface.
  */
-public class Search extends AppCompatActivity {
+public class
+Search extends AppCompatActivity {
     private ListView mListVie;
 
     private Map<Integer,String> type = new HashMap<>();
