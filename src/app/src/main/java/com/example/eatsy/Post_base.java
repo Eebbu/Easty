@@ -78,6 +78,7 @@ public abstract class Post_base extends AppCompatActivity {
             Factory_wanted post = new Factory_wanted(userName,postTitle,description,quantity,latitude,longitude);
             System.out.println(post);
             DashboardActivity.postsToShow.add(0,post);
+            DashboardActivity.adapter.notifyDataSetChanged();
             return post;
         }
 
@@ -95,6 +96,7 @@ public abstract class Post_base extends AppCompatActivity {
                     quantity, pick_up_times, latitude, longitude, image, filePath.toString());
             System.out.println(post);
             DashboardActivity.postsToShow.add(0,post);
+            DashboardActivity.adapter.notifyDataSetChanged();
             return post;
         }
 
@@ -106,6 +108,7 @@ public abstract class Post_base extends AppCompatActivity {
                 wantInExchange,quantity,pick_up_times,latitude,longitude,image,filePath.toString());
         System.out.println(post);
         DashboardActivity.postsToShow.add(0,post);
+        DashboardActivity.adapter.notifyDataSetChanged();
         return post;
     }
     protected abstract boolean validateInputs();

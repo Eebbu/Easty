@@ -35,6 +35,9 @@ public class DashboardActivity extends AppCompatActivity {
     static HashMap<String, userFT> users;
     static ArrayList<Post> postsToShow = new ArrayList<>();
     private static Handler handler;
+    private static Runnable runnable;
+
+    public static PostAdapter adapter;
 
 
     @Override
@@ -66,35 +69,36 @@ public class DashboardActivity extends AppCompatActivity {
         }
 
 
-        PostAdapter adapter = new PostAdapter(postsToShow);
+        adapter = new PostAdapter(postsToShow);
         recyclerView.setAdapter(adapter);
         ImageView searchButton = findViewById(R.id.search_button);
         searchButton.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), Search.class);
             startActivity(intent);
-//                finish();
         });
 
         if(handler ==null){
             handler = new Handler();
         }
+        if(runnable ==null){
+            runnable = new Runnable() {
+                @Override
+                public void run() {
 
-        Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
+                    String randomKey = indexInStrings.get(new Random().nextInt(150));
+                    Post post = posts.get(randomKey);
 
-                String randomKey = indexInStrings.get(new Random().nextInt(indexInStrings.size()));
-                Post post = posts.get(randomKey);
-
-                postsToShow.add(0, post);
-                adapter.notifyDataSetChanged();
-                showToast();
+                    postsToShow.add(0, post);
+                    adapter.notifyDataSetChanged();
+                    showToast();
 
 
-                int nextRefreshTime = new Random().nextInt(7) + 10;
-                handler.postDelayed(this, nextRefreshTime * 1000);
-            }
-        };
+                    int nextRefreshTime = new Random().nextInt(7) + 14;
+                    handler.postDelayed(this, nextRefreshTime * 1000);
+                }
+            };
+        }
+
 
         handler.postDelayed(runnable, 5000);
 
