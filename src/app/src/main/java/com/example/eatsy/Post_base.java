@@ -76,8 +76,8 @@ public abstract class Post_base extends AppCompatActivity {
 
         if (this.getClass() == Post_wanted.class){
             Factory_wanted post = new Factory_wanted(userName,postTitle,description,quantity,latitude,longitude);
-            System.out.println(post);
             DashboardActivity.postsToShow.add(0,post);
+            DashboardActivity.adapter.notifyDataSetChanged();
             return post;
         }
 
@@ -93,8 +93,8 @@ public abstract class Post_base extends AppCompatActivity {
         if (this.getClass() == Post_donate.class) {
             Factory_donate post = new Factory_donate(userName, postTitle, description,
                     quantity, pick_up_times, latitude, longitude, image, filePath.toString());
-            System.out.println(post);
             DashboardActivity.postsToShow.add(0,post);
+            DashboardActivity.adapter.notifyDataSetChanged();
             return post;
         }
 
@@ -104,8 +104,8 @@ public abstract class Post_base extends AppCompatActivity {
 
         Factory_exchange post = new Factory_exchange(userName,postTitle,description,
                 wantInExchange,quantity,pick_up_times,latitude,longitude,image,filePath.toString());
-        System.out.println(post);
         DashboardActivity.postsToShow.add(0,post);
+        DashboardActivity.adapter.notifyDataSetChanged();
         return post;
     }
     protected abstract boolean validateInputs();
