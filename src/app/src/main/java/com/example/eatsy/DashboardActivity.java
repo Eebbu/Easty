@@ -85,7 +85,7 @@ public class DashboardActivity extends AppCompatActivity {
                 @Override
                 public void run() {
 
-                    String randomKey = indexInStrings.get(new Random().nextInt(150));
+                    String randomKey = String.valueOf(new Random().nextInt(200) + 1);
                     Post post = posts.get(randomKey);
 
                     postsToShow.add(0, post);
