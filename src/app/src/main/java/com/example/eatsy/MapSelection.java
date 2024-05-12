@@ -65,7 +65,7 @@ public class MapSelection extends AppCompatActivity implements OnMapReadyCallbac
     private void getAddress(double latitude, double longitude) {
         Geocoder geocoder = new Geocoder(this, Locale.getDefault());
         try {
-            List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 5);
+            List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 10);
             if (addresses != null && addresses.size() > 0) {
                 Set<String> addressSet = new HashSet<>();
                 for (Address address : addresses) {
