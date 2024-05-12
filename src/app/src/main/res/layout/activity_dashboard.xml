@@ -11,10 +11,9 @@
     <View
         android:id="@+id/header_view"
         android:layout_width="match_parent"
-        android:layout_height="160dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="-110dp"
         android:background="@drawable/dash_view"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
@@ -87,15 +86,14 @@
         android:id="@+id/food2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        android:text="@string/food_dashboard"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="15dp"
+        android:text="@string/free_food"
         android:textColor="@color/black"
-        android:textSize="30sp"
-        android:gravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.09"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="38sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
 <!--    <ImageView-->
 <!--        android:id="@+id/imageView3"-->
@@ -114,23 +112,20 @@
         android:id="@+id/search_button"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="@id/header_view"
         app:srcCompat="@drawable/searchblack"
-        app:layout_constraintBottom_toBottomOf="@+id/header_view"
-        app:layout_constraintStart_toStartOf="@id/profile"
-        app:layout_constraintEnd_toEndOf="@id/profile"
-        app:layout_constraintTop_toBottomOf="@+id/profile"/>
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toStartOf="@id/profile"/>
 
     <ImageView
         android:id="@+id/profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/search_button"
-
         app:layout_constraintEnd_toEndOf="@+id/header_view"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.227"
+        android:layout_marginTop="5dp"
         app:srcCompat="@drawable/profile" />
 
     <TextView
@@ -139,8 +134,6 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
         android:text="@string/profile_dashboard"
-        app:layout_constraintBottom_toTopOf="@+id/search_button"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profile"
         app:layout_constraintVertical_bias="0.138" />
