@@ -5,7 +5,7 @@
     android:id="@+id/Constriant_add"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Addpage">
+    tools:context=".AddPage">
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/Scroll"
