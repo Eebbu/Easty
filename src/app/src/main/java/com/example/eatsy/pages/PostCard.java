@@ -1,4 +1,4 @@
-package com.example.eatsy;
+package com.example.eatsy.pages;
 
 import android.location.Address;
 import android.location.Geocoder;
@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.eatsy.Post;
+import com.example.eatsy.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 
@@ -29,13 +31,16 @@ import java.util.Locale;
  */
 
 public class PostCard extends AppCompatActivity implements OnMapReadyCallback {
-
     private LatLng selectedLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_card);
+
+        //go back.
+        ImageButton go_back = findViewById(R.id.leftArrowButton);
+        go_back.setOnClickListener(v -> finish());
 
         Post clickedPost = (Post) getIntent().getSerializableExtra("clickedPost");
         double latitude;
@@ -52,24 +57,21 @@ public class PostCard extends AppCompatActivity implements OnMapReadyCallback {
         }
         selectedLocation = new LatLng(latitude, longitude);
 
-
-
-        ImageButton go_back = findViewById(R.id.leftArrowButton);
-        go_back.setOnClickListener(v -> finish());
-
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+        //set page appearance
         TextView banner_title = findViewById(R.id.banner_title);
         banner_title.setText(clickedPost.getUserName());
+
         TextView title = findViewById(R.id.title);
         title.setText(clickedPost.getPostTitle());
+
         TextView description = findViewById(R.id.description);
         description.setText(clickedPost.getPostDescription());
 
         Geocoder geocoder = new Geocoder(this, Locale.getDefault());
-
         List<Address> addresses;
         String addressLine = null;
         try {
@@ -81,7 +83,6 @@ public class PostCard extends AppCompatActivity implements OnMapReadyCallback {
                 Address address = addresses.get(0);
                 addressLine = address.getAddressLine(0); // Get address
                 // Display address in the related map
-
         }
 
 

@@ -30,8 +30,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.not;
 
+import com.example.eatsy.pages.MapSelection;
 import com.example.eatsy.pages.Post_donate;
 import com.example.eatsy.pages.Post_exchange;
 

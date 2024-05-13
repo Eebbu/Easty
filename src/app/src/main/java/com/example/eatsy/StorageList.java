@@ -1,5 +1,6 @@
 package com.example.eatsy;
 
+import com.example.eatsy.datamanagement.FireStoreHelper;
 import com.google.firebase.firestore.CollectionReference;
 
 import java.util.ArrayList;

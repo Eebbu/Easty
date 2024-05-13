@@ -9,6 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.eatsy.pages.DashboardActivity;
+import com.example.eatsy.pages.PostCard;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -64,8 +66,8 @@ public class ListDataAdapter extends BaseAdapter {
             // Getting postId
             String postId = partBean.getId();
             // Create Intent and transfer postId
-            Intent intent = new Intent(mContext, PostDetailActivity.class);
-            intent.putExtra("postId", Integer.parseInt(postId));
+            Intent intent = new Intent(mContext, PostCard.class);
+            intent.putExtra("clickedPost", DashboardActivity.posts.get(String.valueOf(postId)));
             mContext.startActivity(intent);
         });
 
