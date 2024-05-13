@@ -1,4 +1,7 @@
-package com.example.eatsy;
+package com.example.eatsy.datamanagement;
+
+import com.example.eatsy.Post;
+import com.example.eatsy.userFT;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ThreadLocalRandom;

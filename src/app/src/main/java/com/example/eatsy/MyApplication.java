@@ -2,6 +2,7 @@ package com.example.eatsy;
 
 import android.app.Application;
 
+import com.example.eatsy.datamanagement.DataManager;
 import com.example.eatsy.datamanagement.PostDataDownloader;
 import com.example.eatsy.datamanagement.UserDataDownloader;
 import com.google.firebase.FirebaseApp;

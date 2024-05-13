@@ -2,6 +2,7 @@ package com.example.eatsy;
 
 import android.net.Uri;
 
+import com.example.eatsy.datamanagement.DataManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
