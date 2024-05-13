@@ -118,8 +118,13 @@ Note that the core criteria of contribution is based on `code contribution` (the
   - UI-Test: [PostdonateUITest.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/androidTest/java/com/example/eatsy/PostdonateUITest.java?ref_type=heads), [PostexchangeUITest](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/androidTest/java/com/example/eatsy/PostexchangeUITest.java?ref_type=heads), [PostwantedUITest](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/androidTest/java/com/example/eatsy/PostwantedUITest.java?ref_type=heads).
   - Design Pattern: factory design patter: [Post_base.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/Post_base.java), 
 [Factory_donate.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/Factory_donate.java)
-, [Factory_exchange.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/Factory_exchange.java), [Factory_wanted.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/Factory_wanted.java)
-  - UI design: [activity_addpage.xml](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/layout/activity_addpage.xml), [activity_post_donate.xml](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/layout/activity_post_donate.xml),
+, [Factory_exchange.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/Factory_exchange.java)
+, [Factory_wanted.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/Factory_wanted.java)
+, [Post_donate](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/Post_donate.java)
+, [Post_exchange](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/Post_exchange.java)
+, [Post_wanted](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/Post_wanted.java)
+  - UI design: [activity_addpage.xml](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/layout/activity_addpage.xml)
+, [activity_post_donate.xml](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/layout/activity_post_donate.xml),
 , [activity_post_exchange.xml](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/layout/activity_post_exchange.xml), [activity_post_wanted.xml](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/layout/activity_post_wanted.xml)
   - Other contribution: [Addpage.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/AddPage.java), 
 [Post.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/Post.java)
@@ -362,17 +367,27 @@ Here is a partial (short) example for the subsection `Data Structures`:*
       * ...
 1. Factory – post 
 
-    **Objective**: used for obtaining content from user input and convert it into a post class.
+    * **Objective**: used for obtaining content from user input and convert it into a post class.
     
-    **Code Locations**: defined in [Class Post](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/Post.java?ref_type=heads),[Class factory_donate](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/post_donate.java?ref_type=heads),[Class factory_exchange](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/factory_exchange.java?ref_type=heads) and [Class factory_wanted](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/factory_wanted.java?ref_type=heads).
+    * **Code Locations**: defined in [Class Post](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/Post.java?ref_type=heads),[Class factory_donate](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/post_donate.java?ref_type=heads),[Class factory_exchange](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/factory_exchange.java?ref_type=heads) and [Class factory_wanted](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/factory_wanted.java?ref_type=heads).
     
-    **Reasons**: We have three types of posts: Donate, Exchange and Wanted. Each type has specific functionalities. The factory pattern can be used to create an interface for creating instances of these different posts and uploading these posts’ details. By using this, we simplify the way to handle post creation and uploading posts.
+    * **Reasons**: We have three types of posts: Donate, Exchange and Wanted. Each type has specific functionalities. The factory pattern can be used to create an interface for creating instances of these different posts and uploading these posts’ details. By using this, we simplify the way to handle post creation and uploading posts.
 2. Factory – render scene
-    
+
+    * **Objective**: The main goal is to centralize common functionalities such as setting up views, validating inputs, set up listeners and configuring scenes across different types of posts. This centralization reduced code duplication and improved maintainability.
+
+    * **Code Locations**: Base class: [Post_base.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/Post_base.java)
+, and subclass: [Post_donate](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/Post_donate.java)
+   , [Post_exchange](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/Post_exchange.java)
+   , [Post_wanted](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/Post_wanted.java)  
+   
+    * **Reasons**:  By centralizing common functionalities in the base class, there is a significant reduction in code duplication across subclasses.
+ When changes are required, such as modifying how listeners are set, these can be made in one place, especially setting of post pages are very similar.
+
 3. Singleton Design Pattern: 
-    **Objective** : We implemented singleton design pattern in the LoginUser class because there is only one instance of LoginUser required. 
-    **Code Locations**: defined in [Class LoginUser, method getInstance, info and error](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/LoginUser.java?ref_type=heads#L8-34).
-    **Reasons** : This class is used for user information and error messages that can be helpful to debug and check errors.
+    * **Objective** : We implemented singleton design pattern in the LoginUser class because there is only one instance of LoginUser required. 
+    * **Code Locations**: defined in [Class LoginUser, method getInstance, info and error](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/LoginUser.java?ref_type=heads#L8-34).
+    * **Reasons** : This class is used for user information and error messages that can be helpful to debug and check errors.
 <hr>
 
 ### Parser
@@ -414,29 +429,38 @@ Production Rules:
    * Code to the Data File [users_interaction.json](link-to-file), [search-queries.xml](link-to-file), ...
    * Link to the Firebase repo: ...
 
-3. ...
+3. [LoadShowData]
    <br>
+4. [DataStream]
+   <br>
+5. [Search]
 
 ### Custom Features
-Feature Category: Privacy <br>
-1. [Privacy-Request]. Description of the feature  (easy)
-   * Code: [Class X, methods Z, Y](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and Class Y, ...
-   *  <br>
-     <br>
-
-2. [Privacy-Block]. Description ... ... (medium)
-   ... ...
-   <br><br>
-
 Feature Category: Firebase Integration <br>
-3. [FB-Auth] Description of the feature (easy)
+1. [FB-Auth] Description of the feature (easy)
    * Code: [Class X, entire file](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and Class Y, ...
    * [Class B](../src/path/to/class/file.java#L30-85): methods A, B, C, lines of code: 30 to 85
    * Description of your implementation: ... <br>
-4. [Data-Profile] Created a ProfileActivity that displays name and email addresses of the user(easy).
+2. [Data-Profile] Created a ProfileActivity that displays name and email addresses of the user(easy).
    * Code: [Class ProfileActivity, methods onActivityResult(), uploadImageToFirebase(), showing userdetails](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blame/main/src/app/src/main/java/com/example/eatsy/ProfileActivity.java?ref_type=heads#L47-220).
    * Description of the code.
 
+Feature Category: Search-related features <br>
+
+Feature Category: UI Design and Testing <br>
+3. [UI-Layout] Incorporate suitable layout adjustments in the UI components for portrait and landscape
+   layout variants, as well as different screen sizes. (easy)
+    * Code: [all of xml files](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/tree/main/src/app/src/main/res/layout?ref_type=heads)
+    * Description of your implementation: set appropriate constraints to all components to fit for portrait and landscape
+      layout variants, and different screen sizes
+4. [UI-Test] Complete UI tests using espresso (not covered in lectures/labs) of reasonable quality and
+   coverage of the App. (hard)
+    * Code: [all of UI Test files](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/tree/main/src/app/src/androidTest/java/com/example/eatsy?ref_type=heads)
+    * Description of your implementation: UI tests are implemented using Espresso and JUnit to ensure functionality and user across various activities. 
+Each test corresponds to different aspects of the app, such as adding pages, managing dashboards, user authentication and posts. 
+These tests are designed for enhancing usability, and ensuring user experiences across pages.
+
+Feature Category: Greater Data Usage, Handling and Sophistication <br>
 <hr>
 
   
@@ -453,13 +477,15 @@ Data Profile(easy):
 
 
 ### Surprise Features
+1. Classes were given meaning names like LoginActivity, DashboardActivity, since earlier they were named as MainActivity 3 and MainActivity 4.
+2. On April 22 and 27, three post pages were completed, as documented in Git commits SHA 1c750dd020486de45f2d71d651badedf155ed79c and 7ff755054cffd14a9f85094c56854b77540ebf31.
+ The layout of these three posts was very similar, especially the donate and exchange pages, including nearly identical scenes, UI components and listeners.
+ This resulted in a significant amount of code duplication. Subsequently, on May 1st, Git commit SHA ea0f48b72edbbfc472b0a74f6aa94d1ccebdc8ac added [Post_base.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/Post_base.java?ref_type=heads),
+which integrates the methods in these pages into a single base class. This refactoring improved the code by reducing redundancy and improving maintainability.
+3. 
+4. 
+- <br> <hr>
 
-- If implemented, explain how your solution addresses the task (any detail requirements will be released with the surprise feature specifications).
-- State that "Suprised feature is not implemented" otherwise.
-  //TODO: Write your own surprise features
-  Code smell:
-- Classes were given meaning names like LoginActivity, DashboardActivity, since earlier they were named as MainActivity 3 and MainActivity 4.
-<br> <hr>
 
 ## Summary of Known Errors and Bugs
 
@@ -473,9 +499,9 @@ Data Profile(easy):
    - ...
 
 2. *Bug 2:*
-3. ...
-
-<br> <hr>
+   - Error encountered in all pages containing the method 'FirebaseAuth.getInstance().getCurrentUser().getEmail()' during UI tests. This issue arises because the 'getCurrentUser()' method returns null when pages are run individually in testing.
+Despite I attempted to resolve this using Mockito and Mockito-inline, the problem persists.
+     <br> <hr>
 
 
 ## Testing Summary
@@ -497,8 +523,21 @@ Data Profile(easy):
    - Code coverage: Login feature of the app.
    - Test for same instance, 
 
-...
-
+3. Tests for factory design pattern
+   - Code: [FactoryTest.java, entire file](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/test/java/com/example/eatsy/FactoryTest.java?ref_type=heads).
+   - Number of test cases: 2
+   - Code coverage: Coverage of all possible paths and conditions in the factory methods
+   - Types of tests created and descriptions: The tests primarily focus on object construction correctness, ensuring that the factory methods create objects based on input parameters.
+4. Tests for UI design(Post pages)
+   - Code: [PostdonateUITest.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/androidTest/java/com/example/eatsy/PostdonateUITest.java?ref_type=heads),
+[PostexchangeUITest.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/androidTest/java/com/example/eatsy/PostexchangeUITest.java?ref_type=heads) and 
+[PostwantedUITest.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/androidTest/java/com/example/eatsy/PostwantedUITest.java?ref_type=heads)
+   - Number of test cases: 18
+   - Code coverage: Tests interactions with UI components
+   - Types of tests created and descriptions: 
+     - Visibility and changes of UI components. 
+     - Intent firing and activity lifecycle management. 
+     - Input validations and response actions.
 <br> <hr>
 
 
@@ -515,14 +554,12 @@ Data Profile(easy):
 - [Team Meeting 3](Meeting-No3.md)
 - [Team Meeting 4](Meeting-No4.md)
 - [Team Meeting 5](Meeting-No5.md)
+- [Team Meeting 6](Meeting-No6.md)
 
 <hr>
 
 ### Conflict Resolution Protocol
-*[Write a well defined protocol your team can use to handle conflicts. That is, if your group has problems, what is the procedure for reaching consensus or solving a problem?
-(If you choose to make this an external document, link to it here)]*
-
-This shall include an agreed procedure for situations including (but not limited to):
-- e.g., if a member fails to meet the initial plan and/or deadlines
-- e.g., if your group has issues, how will your group reach consensus or solve the problem?
-- e.g., if a member gets sick, what is the solution? Alternatively, what is your plan to mitigate the impact of unforeseen incidents for this 6-to-8-week project? 
+1. Form a culture of openness and transparency, encouraging team members to voice their thought.
+2. Out team votes on the ideas. When conflicts happens, we cast a vote. Then the idea with the majority vote is selected.
+3. Holding regular Saturday meetings to keep everyone aligned and address any occurred issues or adjustments needed in future plans.
+4. When it comes to managing conflicts in code, we review the conflicting codes together and decide on the best resolution.
