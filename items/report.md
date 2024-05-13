@@ -40,10 +40,10 @@ The key area(s) of responsibilities for each member
 | UID      |      Name       |                                                                                                                                                                                                                                Role |
 |:---------|:---------------:|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | u7663368 | Vishakha Mathur | MainActivity, Login Activity, LoginUser (singleton pattern), Profile Activity and UI design(main page, login page, dashboard, profile page), uploading images on profile page from phone to firebase, singleton design pattern test |
-| u7727175 |  Jinyang Zeng   |                                                                                         GPS，choose location function, DataStream-Load data，show data in dashboard, and Load data from local json，Generate post data from user input|
-| u7777752 |     Lin Xi      |UI design (Search page and Search_detailed page), Tokenizer, Parser, Data Structure (Hashmap, AVLTree, Arraylist, Hashset, Trie), Data Fetching, Searching and filtering, Testing (Search), Design Patterns (Adapter, Observer) |
-| u7773880 |   Zihan Yuan    |                                                Add Activity, Post activity(post_donate, post_exchange, post_wanted), page redirection, two factory design patterns, Data Stream(get images from album and upload image to Firebase) |
-| u7705128 |   Boxuan Lin    |                                                                         Create 2600+ post instances and 2500 user accounts, storing all of the data in Firebase. Providing methods for downloading and updating data from Firebase. |
+| u7727175 |  Jinyang Zeng    |GPS，choose location function, DataStream-Load data，show data in dashboard, and Load data from local json，Generate post data from user input|
+| u7777752 |     Lin Xi      |UI design (Search page and Search_detailed page), Tokenizer, Parser, Data Structure (Hashmap, AVLTree, Arraylist, Hashset, Trie), Data Fetching, Searching and filtering, Testing (Search), Design Patterns (Adapter, Builder) |
+| u7773880 |   Zihan Yuan    |Add Activity, Post activity(post_donate, post_exchange, post_wanted), page redirection, two factory design patterns, Data Stream(get images from album and upload image to Firebase) |
+| u7705128 |   Boxuan Lin     |Create 2600+ post instances and 2500 user accounts, storing all of the data in Firebase. Providing methods for downloading and updating data from Firebase. |
 
 
 ## Summary of Individual Contributions
@@ -76,6 +76,14 @@ Note that the core criteria of contribution is based on `code contribution` (the
   - **Others**: (only if significant and significantly different from an "average contribution") 
     - [Report Writing?] [Slides preparation?]*
     - [You are welcome to provide anything that you consider as a contribution to the project or team.] e.g., APK, setups, firebase* <br><br>
+1. **U7777752, Lin Xi** I have 20% contribution, as follows:<br>
+**Code Contribution in the final App**
+   - Search feature(medium) - class Search:[Search.java](url) 
+   - Search filter(easy) - class Search:[Search.java](url) - class activity_search:[activity_search.xml](url)
+   - Data fetching - class StorageList:[StorageList.java](url)
+   - Store data in AVLTree - class AVLTree:[AVLTree.java](url) - class AVLTreeNode:[AVLTreeNode.java](url)
+   - Adapter pattern - class ListDataAdapter:[ListDataAdapter.java](url)
+   - Display data - class PostDetailActivity:[PostDetailActivity.java](url) -class activity_post_detail:[activity_post_detail.aml](url) 
 
 2. **U7705128, Boxuan Lin**  I have 20% contribution, as follows: <br>
   - **Code Contribution in the final App**
