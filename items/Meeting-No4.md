@@ -1,7 +1,7 @@
 # [Good food, Good life]
 This following is a very simple team meeting template. You should expand it based on the scope and nature of your discussion.
 
-## Team Meeting [3] - Week [9] - [04-05-2024] (start-end time)
+## Team Meeting [4] - Week [9] - [04-05-2024] (start-end time)
 **Absent: 
 <br>
 **Lead/scribe: Lin Xi 
