@@ -14,6 +14,8 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.eatsy.pages.AddPage;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -109,7 +111,7 @@ public class DashboardActivity extends AppCompatActivity {
         });
         LinearLayout addPageTextView = findViewById(R.id.add_pg);
         addPageTextView.setOnClickListener(v -> {
-            Intent intent = new Intent(DashboardActivity.this,AddPage.class);
+            Intent intent = new Intent(DashboardActivity.this, AddPage.class);
             startActivity(intent);
         });
 

@@ -1,30 +1,31 @@
-package com.example.eatsy;
+package com.example.eatsy.pages;
 
 import android.widget.Toast;
 
+import com.example.eatsy.Post_base;
+import com.example.eatsy.R;
 
 /**
- * Post of donation page
+ * Post of wanted page
  * @author Zihan Yuan(u7773880)
- * @author Boxuan Lin(u7705128)
  */
-public class Post_donate extends Post_base {
+public class Post_wanted extends Post_base {
+
+    // Method to get layout resource ID for wanted posts
     @Override
-    // Method to get layout resource ID specific to donation posts
     protected int getLayoutResourceId() {
-        return R.layout.activity_post_donate;
+        return R.layout.activity_post_wanted;
     }
-    // Setup specific views for donation post activity
+    // Setup specific views for wanted post activity
     @Override
     protected void setupSpecificViews() {
-        pickupTimeEditText = findViewById(R.id.pickuptime_editText);
-        uploadImage = findViewById(R.id.cameraButton);
     }
-    // Validate inputs for donation post form
+    // Validate inputs for wanted post form
     @Override
     protected boolean validateInputs() {
         boolean valid = true;
         int selectedId = radioGroup.getCheckedRadioButtonId();
+        // Validation for radio group and quantity input
         if (selectedId == -1) {
             valid = false;
             Toast.makeText(this, "Please enter a quantity or select a button", Toast.LENGTH_SHORT).show();
@@ -34,30 +35,15 @@ public class Post_donate extends Post_base {
                 valid = false;
             }
         }
+        // Validation for title and address
         if (titleEditText.getText().toString().trim().isEmpty()) {
             titleEditText.setError("Required");
             valid = false;
         }
-
-        if (pickupTimeEditText.getText().toString().trim().isEmpty()) {
-            pickupTimeEditText.setError("Required");
-            valid = false;
-        }
-
         if (addressText.getText().toString().trim().isEmpty()) {
             addressText.setError("Required");
             valid = false;
         }
-
-        if (filePath == null) {
-            Toast.makeText(this, "Please upload an image", Toast.LENGTH_SHORT).show();
-            valid = false;
-        }
-
         return valid;
     }
-    // Add the donation post to Firebase
-
-//
-
 }

@@ -1,4 +1,4 @@
-package com.example.eatsy;
+package com.example.eatsy.pages;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
@@ -7,6 +7,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.eatsy.DashboardActivity;
+import com.example.eatsy.LoginUser;
+import com.example.eatsy.R;
 import com.google.firebase.auth.FirebaseAuth;
 
 
