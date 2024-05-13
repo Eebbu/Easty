@@ -22,13 +22,13 @@
 ## Team Members and Roles
 The key area(s) of responsibilities for each member
 
-| UID      |      Name       |                                                                                                                                                                                                                                Role |
-|:---------|:---------------:|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| u7663368 | Vishakha Mathur | MainActivity, Login Activity, LoginUser (singleton pattern), Profile Activity and UI design(main page, login page, dashboard, profile page), uploading images on profile page from phone to firebase, singleton design pattern test |
-| u7727175 |  Jinyang Zeng    |                                                 DataStream, MapSelection activity(GPS) and its UI design, Load show data in dashboard and detailed post page，postcard activity and its UI design，Generate post data from user input |
-| u7777752 |     Lin Xi      |      UI design (Search page and Search_detailed page), Tokenizer, Parser, Data Structure (Hashmap, AVLTree, Arraylist, Hashset, Trie), Data Fetching, Searching and filtering, Testing (Search), Design Patterns (Adapter, Builder) |
-| u7773880 |   Zihan Yuan    |                        Add Activity, Post activity(post_donate, post_exchange, post_wanted), page redirection, two factory design patterns, Data Stream(get images from album and upload image to Firebase), UI layout and UI test. |
-| u7705128 |   Boxuan Lin     |                                                                         Create 2600+ post instances and 2500 user accounts, storing all of the data in Firebase. Providing methods for downloading and updating data from Firebase. |
+| UID      |      Name       |                                                                                                                                                                                                                                            Role |
+|:---------|:---------------:|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| u7663368 | Vishakha Mathur | MainActivity, Login Activity, LoginUser (singleton pattern), Profile Activity and UI design and testing(main page, login page, dashboard, profile page), uploading images on profile page from phone to firebase, singleton design pattern test |
+| u7727175 |  Jinyang Zeng    |                                                             DataStream, MapSelection activity(GPS) and its UI design, Load show data in dashboard and detailed post page，postcard activity and its UI design，Generate post data from user input |
+| u7777752 |     Lin Xi      |                  UI design (Search page and Search_detailed page), Tokenizer, Parser, Data Structure (Hashmap, AVLTree, Arraylist, Hashset, Trie), Data Fetching, Searching and filtering, Testing (Search), Design Patterns (Adapter, Builder) |
+| u7773880 |   Zihan Yuan    |                                    Add Activity, Post activity(post_donate, post_exchange, post_wanted), page redirection, two factory design patterns, Data Stream(get images from album and upload image to Firebase), UI layout and UI test. |
+| u7705128 |   Boxuan Lin     |                                                                                     Create 2600+ post instances and 2500 user accounts, storing all of the data in Firebase. Providing methods for downloading and updating data from Firebase. |
 
 
 ## Summary of Individual Contributions
@@ -81,7 +81,13 @@ Note that the core criteria of contribution is based on `code contribution` (the
     - Singleton Design Pattern - class LoginUser: [LoginUser.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/LoginUser.java#L8-34), [getInstance(), info(), error()](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/LoginUser.java?ref_type=heads#L14).
     - Other contribution: [MainActivity class](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/MainActivity.java?ref_type=heads), [DashboardActivity class](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/DashboardActivity.java?ref_type=heads),
       UI design of [activity_main.xml](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/layout/activity_main.xml), [activity_login.xml](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/layout/activity_login.xml),
-      [activity_dashboard.xml](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/layout/activity_dashboard.xml), [activity_profile.xml](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/layout/activity_dashboard.xml)
+      [activity_dashboard.xml](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/layout/activity_dashboard.xml), [activity_profile.xml](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/layout/activity_dashboard.xml).
+      
+    - UI Testing: [MainActivityUITest.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/androidTest/java/com/example/eatsy/MainActivityUITest.java?ref_type=heads),
+      [LoginActivityUITest.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/androidTest/java/com/example/eatsy/LoginActivityUITest.java?ref_type=heads),
+      [DashBoardActivityUITests.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/androidTest/java/com/example/eatsy/DashBoardActivityUITests.java?ref_type=heads),
+      [AddPageUITest.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/androidTest/java/com/example/eatsy/AddPageUITest.java?ref_type=heads).
+    
     **Code and App Design**
     - Singleton Design Pattern.
     - ScrollView, LinearLayout, Picasso, pictures and icons. 
@@ -121,8 +127,35 @@ Note that the core criteria of contribution is based on `code contribution` (the
 
 *Here is a pet specific application example*
 EATSY is a platform where people can donate, exchange, ask for food ensuring responsible consumption and support the people who are in need. It focuses on the UN sustainable goal of zero hunger and responsible consumption and production.
+
+### Main Page
+
+This is the main page that appears when we start the app. The button takes us to the lgoin page. 
+<div align="center"> <img src="mainPage.png" alt="Main page"> </div>
+
+### Login Page
+
+On this page, user is asked to fill his credentials login the app. 
+
+<div align="center">
+<img src="loginPage.png" alt="Login Page"> 
+
+</div>
+
+
+### DashBoard Page
+On this page, a user can see all sorts of posts. It can also take you to profile page. The add 
+button opens 'Add page' where user can post something. It has a search icon brings the search page on click.
+
+
+### Profile Page
+This page displays the user details such as user's name and password. It also allows the user to manage his profile picture and sign out from the app. 
+<div align="center">
+   <img src="profile.png" alt="Profile page">
+</div>
+
 ### Add page
-Add page with a transparancy background. Users can chosse three types of post.
+Add page with a transparancy background. Users can choose three types of post.
 <div align="center">
     <img src="addpage.png" alt="Add page">
 </div>
