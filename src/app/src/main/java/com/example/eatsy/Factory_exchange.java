@@ -1,9 +1,11 @@
 package com.example.eatsy;
 
+import com.example.eatsy.Post;
+
 /**
  * @author Zihan Yuan(u7773880)
  */
-public class Factory_exchange extends Post{
+public class Factory_exchange extends Post {
     // Constructor for factory_exchange
     Factory_exchange(String userName, String postTitle, String postDescription, String wantInExchange, String quantity,
                      String pickUpTimes, String latitude, String longitude, String image, String filePath){

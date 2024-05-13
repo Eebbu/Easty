@@ -1,43 +1,41 @@
-package com.example.eatsy;
+package com.example.eatsy.pages;
 
 import android.widget.Toast;
 
+import com.example.eatsy.Post_base;
+import com.example.eatsy.R;
+
+
 /**
- * Post of exchange page
+ * Post of donation page
  * @author Zihan Yuan(u7773880)
+ * @author Boxuan Lin(u7705128)
  */
-public class Post_exchange extends Post_base {
-    // Method to get layout resource ID for exchange posts
+public class Post_donate extends Post_base {
     @Override
+    // Method to get layout resource ID specific to donation posts
     protected int getLayoutResourceId() {
-        return R.layout.activity_post_exchange;
+        return R.layout.activity_post_donate;
     }
-    // Setup specific views for exchange post activity
+    // Setup specific views for donation post activity
     @Override
     protected void setupSpecificViews() {
         pickupTimeEditText = findViewById(R.id.pickuptime_editText);
         uploadImage = findViewById(R.id.cameraButton);
-        wantEditText = findViewById(R.id.want_editText);
     }
-    // Validate inputs for exchange post form
+    // Validate inputs for donation post form
     @Override
     protected boolean validateInputs() {
         boolean valid = true;
         int selectedId = radioGroup.getCheckedRadioButtonId();
-        // Validation for want input, title, pick-up times, address, and image upload
         if (selectedId == -1) {
-            Toast.makeText(this, "Please enter a quantity or select a button", Toast.LENGTH_SHORT).show();
             valid = false;
+            Toast.makeText(this, "Please enter a quantity or select a button", Toast.LENGTH_SHORT).show();
         }else if(selectedId == R.id.radioButtonOther){
             if (quantityEditText.getText().toString().trim().isEmpty()) {
                 Toast.makeText(this, "Please enter a quantity or select a button", Toast.LENGTH_SHORT).show();
                 valid = false;
             }
-        }
-        // Validation for want input, title, pick-up times, address, and image upload
-        if(wantEditText.getText().toString().trim().isEmpty()){
-            wantEditText.setError("Required");
-            valid = false;
         }
         if (titleEditText.getText().toString().trim().isEmpty()) {
             titleEditText.setError("Required");
@@ -61,5 +59,8 @@ public class Post_exchange extends Post_base {
 
         return valid;
     }
+    // Add the donation post to Firebase
+
+//
 
 }
