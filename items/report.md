@@ -77,8 +77,9 @@ Note that the core criteria of contribution is based on `code contribution` (the
     - [Report Writing?] [Slides preparation?]*
     - [You are welcome to provide anything that you consider as a contribution to the project or team.] e.g., APK, setups, firebase* <br><br>
 
-2. **UID2, Name2**  I have xx% contribution, as follows: <br>
-  - ...
+2. **U7705128, Boxuan Lin**  I have 20% contribution, as follows: <br>
+  - **Code Contribution in the final App**
+  - 
 3. **U7663368, Vishakha Mathur** I have 20% contribution, as follows: <br>
   - **Code Contribution in the final App**
     - Login feature - class LoginActivity: [LoginActivity.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/LoginActivity.java).

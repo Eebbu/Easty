@@ -2,10 +2,18 @@ package com.example.eatsy;
 
 import android.app.Application;
 
+import com.example.eatsy.datamanagement.PostDataDownloader;
+import com.example.eatsy.datamanagement.UserDataDownloader;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.firestore.CollectionReference;
 
+/**
+ * Application entry class, responsible for initializing Firebase and downloading necessary user and post data.
+ * Called upon application creation, it sets up user and post data in the data manager.
+ */
+
 public class MyApplication extends Application {
+
 
 
     @Override
@@ -25,9 +33,6 @@ public class MyApplication extends Application {
                 .thenAccept(data ->  {
 
                     DataManager.getDataInstance().setUserHashMap(data); // store data to DataManager
-                    System.out.println("Downloaded Post Data:");
-                    data.forEach((key, value) -> System.out.println("Key: " + key + ", Value: " + value));
-
                 });
         // Download and handle post data
         postDownloader.downloadData(postsCollectionRef)
