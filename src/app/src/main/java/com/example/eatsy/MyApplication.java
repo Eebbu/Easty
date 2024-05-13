@@ -14,6 +14,8 @@ import com.google.firebase.firestore.CollectionReference;
  */
 
 public class MyApplication extends Application {
+    private UserDataDownloader userDataDownloader;
+    private PostDataDownloader  postDownloader;
 
 
 
@@ -23,26 +25,31 @@ public class MyApplication extends Application {
         FirebaseApp.initializeApp(this);
 
         CollectionReference usersCollectionRef = FireStoreHelper.getCollectionRef("users");
-        UserDataDownloader downloader = new UserDataDownloader();
+        userDataDownloader = new UserDataDownloader(this);
 
         // Get the posts collection reference
         CollectionReference postsCollectionRef = FireStoreHelper.getCollectionRef("posts");
-        PostDataDownloader postDownloader = new PostDataDownloader();
+        postDownloader = new PostDataDownloader(this);
 
         // Call the asynchronous method, and handle the returned CompletableFuture
-        downloader.downloadData(usersCollectionRef)
+        userDataDownloader.downloadData(usersCollectionRef)
                 .thenAccept(data ->  {
 
                     DataManager.getDataInstance().setUserHashMap(data); // store data to DataManager
+                    // Print the user data to verify contents
+                    System.out.println("Downloaded User Data:");
+                    data.forEach((key, value) -> System.out.println(key + " -> " + value));
                 });
         // Download and handle post data
         postDownloader.downloadData(postsCollectionRef)
                 .thenAccept(data -> { DataManager.getDataInstance().setPostHashMap(data); // Store to DataManager
+                    data.forEach((key, value) -> System.out.println(key + " -> " + value));
                     // Success: post data received
                 })
                 .exceptionally(ex -> {
                     // Handle the case of post data download failure
                     System.err.println("Post data download failed: " + ex.getMessage());
+
                     return null;
                 });
     }
