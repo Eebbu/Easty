@@ -146,12 +146,14 @@ On this page, user is asked to fill his credentials login the app.
 ### DashBoard Page
 On this page, a user can see all sorts of posts. It can also take you to profile page. The add 
 button opens 'Add page' where user can post something. It has a search icon brings the search page on click.
+<div align="center"> <img src="dashBoard.png" alt="DashBoard page"> 
+</div>
 
 
 ### Profile Page
 This page displays the user details such as user's name and password. It also allows the user to manage his profile picture and sign out from the app. 
 <div align="center">
-   <img src="profile.png" alt="Profile page">
+   <img src="profilePage.png" alt="Profile page">
 </div>
 
 ### Add page
@@ -383,9 +385,10 @@ Here is a partial (short) example for the subsection `Data Structures`:*
  When changes are required, such as modifying how listeners are set, these can be made in one place, especially setting of post pages are very similar.
 
 3. Singleton Design Pattern: 
-    * **Objective** : We implemented singleton design pattern in the LoginUser class because there is only one instance of LoginUser required. 
-    * **Code Locations**: defined in [Class LoginUser, method getInstance, info and error](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/LoginUser.java?ref_type=heads#L8-34).
-    * **Reasons** : This class is used for user information and error messages that can be helpful to debug and check errors.
+    * **Objective** : The main objective of using singleton pattern here is to make sure that class only has one instance and provides a global point of access to the instance.
+    * **Code Locations**: defined in [Class LoginUser, entire file](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/LoginUser.java?ref_type=heads#L8-34).
+    * **Reasons** : This class is used for user information and error messages that can be helpful to debug and check errors. Also, it can be used to test login feature since the same instance of LoginActivity can be resued 
+                     across different test cases. 
 <hr>
 
 4. **Adapter Pattern**
@@ -470,7 +473,10 @@ Data Profile(easy):
 
 
 ### Surprise Features
-1. Classes were given meaning names like LoginActivity, DashboardActivity, since earlier they were named as MainActivity 3 and MainActivity 4.
+1. On April 15, two activities were created MainActivity2(login feature) and MainActivity3(signup feature) https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/commit/f98af4945b0061f49a4ca2acbc6d33d979ff08a2. These names were a bit irrelevant to the
+   so, meaningful names like LoginActivity and RegisterActivity(later removed from the project) was given to them. Similarly, on April 17, MainActivity4 was created which was supposed to be the dashboard page but then it was changed to DashBoardActivity.
+   This refactoring enhanced relevancy of the names of their respective class. 
+   
 2. On April 22 and 27, three post pages were completed, as documented in Git commits SHA 1c750dd020486de45f2d71d651badedf155ed79c and 7ff755054cffd14a9f85094c56854b77540ebf31.
  The layout of these three posts was very similar, especially the donate and exchange pages, including nearly identical scenes, UI components and listeners.
  This resulted in a significant amount of code duplication. Subsequently, on May 1st, Git commit SHA ea0f48b72edbbfc472b0a74f6aa94d1ccebdc8ac added [Post_base.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/Post_base.java?ref_type=heads),
