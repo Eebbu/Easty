@@ -155,8 +155,10 @@ Post have three different type: donate, exchange and wanted. In the donate and e
 </div>
 
 Post pages share a common theme of promoting community sharing and exchange, and we use Firebase to manage data storage and retrieval effectively.
+
 4. Search page
-   On this page, users can search for any food they want and choose how to get the food (i.e. donate, wanted and exchange).
+   -
+     On this page, users can search for any food they want and choose how to get the food (i.e. donate, wanted and exchange).
    When the user types in the food they want and selects any option, our app will retrieve the relevant data from the firebase database and display it.
 插入search之后的page：搜索词为apple
    When the user types apple and selects the donate type, our app will pick up the post_type as donate from firebase, and apple's post will appear in the post_title.
