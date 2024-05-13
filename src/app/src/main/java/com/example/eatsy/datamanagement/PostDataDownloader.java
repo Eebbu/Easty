@@ -18,7 +18,7 @@ public class PostDataDownloader extends DataDownloader<Post> {
         snapshot.forEach(document -> {
             String postID = document.getId();
             String userID = document.getString("userID");
-            String userName = document.getString("userName");
+            String userName = document.getString("username");
             String postType = document.getString("postType");
             String postTitle = document.getString("postTitle");
             String postDescription = document.getString("postDescription");
