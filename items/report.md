@@ -131,14 +131,14 @@ EATSY is a platform where people can donate, exchange, ask for food ensuring res
 ### Main Page
 
 This is the main page that appears when we start the app. The button takes us to the lgoin page. 
-<div align="center"> <img src="mainPage.png" alt="Main page"> </div>
+<div align="center"> <img src="mainPage.png" alt="Main page" width="250px"> </div>
 
 ### Login Page
 
 On this page, user is asked to fill his credentials login the app. 
 
 <div align="center">
-<img src="loginPage.png" alt="Login Page"> 
+<img src="loginPage.png" alt="Login Page" width="250px"> 
 
 </div>
 
@@ -146,14 +146,14 @@ On this page, user is asked to fill his credentials login the app.
 ### DashBoard Page
 On this page, a user can see all sorts of posts. It can also take you to profile page. The add 
 button opens 'Add page' where user can post something. It has a search icon brings the search page on click.
-<div align="center"> <img src="dashBoard.png" alt="DashBoard page"> 
+<div align="center"> <img src="dashBoard.png" alt="DashBoard page" width="250px"> 
 </div>
 
 
 ### Profile Page
 This page displays the user details such as user's name and password. It also allows the user to manage his profile picture and sign out from the app. 
 <div align="center">
-   <img src="profilePage.png" alt="Profile page">
+   <img src="profilePage.png" alt="Profile page" width="250px">
 </div>
 
 ### Add page
