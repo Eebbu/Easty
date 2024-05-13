@@ -14,7 +14,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.eatsy.datamanagement.LocalJsonDataBase;
+import com.example.eatsy.datamanagement.DataManager;
 import com.example.eatsy.Post;
 import com.example.eatsy.PostAdapter;
 import com.example.eatsy.R;
@@ -56,8 +56,8 @@ public class DashboardActivity extends AppCompatActivity {
 
         //initialize the data.
         if (posts == null){
-            posts = LocalJsonDataBase.getPosts(getApplicationContext());
-            users = LocalJsonDataBase.getUsers(getApplicationContext());
+            posts = DataManager.getDataInstance().getPostHashMap();
+            users = DataManager.getDataInstance().getUserHashMap();
         }
         //decide which posts will show in the dashboard page.
         ArrayList<String> indexInStrings = new ArrayList<>(posts.keySet());

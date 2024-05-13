@@ -1,8 +1,6 @@
 package com.example.eatsy.datamanagement;
 
 import android.content.Context;
-
-import com.example.eatsy.ImportDataFromLocalJson;
 import com.example.eatsy.Post;
 import com.example.eatsy.userFT;
 import com.google.firebase.firestore.CollectionReference;
@@ -46,9 +44,9 @@ public abstract class DataDownloader<T> {
         try {
             HashMap<String, T> dataMap = null;
             if (typeParameterClass == Post.class) {
-                dataMap = (HashMap<String, T>) ImportDataFromLocalJson.read(context);
+                dataMap = (HashMap<String, T>) LocalJsonDataBase.read(context);
             } else if (typeParameterClass == userFT.class) {
-                dataMap = (HashMap<String, T>) ImportDataFromLocalJson.readUser(context);
+                dataMap = (HashMap<String, T>) LocalJsonDataBase.readUser(context);
             }
 
             if (dataMap != null) {

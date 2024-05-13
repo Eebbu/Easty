@@ -16,27 +16,6 @@ import java.lang.reflect.Type;
 import java.util.HashMap;
 
 public class LocalJsonDataBase {
-
-    static HashMap<String, Post> posts;
-    static HashMap<String, userFT> users;
-
-    public static HashMap<String, Post> getPosts(Context context){
-        if (posts == null){
-            posts = read(context);
-            return posts;
-        }else {
-            return posts;
-        }
-    }
-    public static HashMap<String, userFT> getUsers(Context context){
-        if (users == null){
-            users = readUser(context);
-            return users;
-        }else {
-            return users;
-        }
-    }
-
     public static HashMap<String, Post> read(Context context) {
 
         try {
