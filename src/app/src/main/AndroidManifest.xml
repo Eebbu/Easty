@@ -16,7 +16,7 @@
             android:theme="@style/Theme.Eatsy"
             android:screenOrientation="unspecified">
         <activity
-                android:name=".MapSelection"
+                android:name=".pages.MapSelection"
                 android:exported="false"/>
 
         <meta-data
@@ -24,7 +24,7 @@
                 android:value="AIzaSyCrZQZDCNIEjK8Sqi-bpHQ4BzsXFyUpQi0"/>
 
         <activity
-                android:name=".PostCard"
+                android:name=".pages.PostCard"
                 android:exported="false"/>
         <activity
                 android:name=".Search"
@@ -33,7 +33,7 @@
                 android:name=".pages.Post_wanted"
                 android:exported="false"/>
         <activity
-            android:name=".PostDetailActivity"
+            android:name=".pages.PostDetailActivity"
             android:exported="true"/>
         <activity
                 android:name=".pages.Post_donate"
@@ -42,11 +42,11 @@
                 android:name=".pages.Post_exchange"
                 android:exported="false"/>
         <activity
-                android:name=".ProfileActivity"
+                android:name=".pages.ProfileActivity"
                 android:exported="false"/>
 
         <activity
-                android:name=".DashboardActivity"
+                android:name=".pages.DashboardActivity"
                 android:exported="false"/>
         <activity
                 android:name=".pages.AddPage"
@@ -57,7 +57,7 @@
                 android:name=".pages.LoginActivity"
                 android:exported="false"/>
         <activity
-                android:name=".MainActivity"
+                android:name=".pages.MainActivity"
                 android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

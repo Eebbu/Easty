@@ -2,7 +2,6 @@ package com.example.eatsy.pages;
 
 import android.widget.Toast;
 
-import com.example.eatsy.Post_base;
 import com.example.eatsy.R;
 
 
@@ -59,8 +58,5 @@ public class Post_donate extends Post_base {
 
         return valid;
     }
-    // Add the donation post to Firebase
-
-//
 
 }

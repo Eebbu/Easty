@@ -1,4 +1,4 @@
-package com.example.eatsy;
+package com.example.eatsy.pages;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -15,9 +15,12 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.eatsy.pages.Post_donate;
-import com.example.eatsy.pages.Post_exchange;
-import com.example.eatsy.pages.Post_wanted;
+import com.example.eatsy.Factory_donate;
+import com.example.eatsy.Factory_exchange;
+import com.example.eatsy.Factory_wanted;
+import com.example.eatsy.Post;
+import com.example.eatsy.R;
+import com.example.eatsy.datamanagement.FireStoreHelper;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.appcheck.FirebaseAppCheck;
 import com.google.firebase.appcheck.playintegrity.PlayIntegrityAppCheckProviderFactory;

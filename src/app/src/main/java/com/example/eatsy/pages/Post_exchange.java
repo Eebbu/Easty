@@ -2,7 +2,6 @@ package com.example.eatsy.pages;
 
 import android.widget.Toast;
 
-import com.example.eatsy.Post_base;
 import com.example.eatsy.R;
 
 /**
