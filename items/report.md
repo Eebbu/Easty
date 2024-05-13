@@ -41,7 +41,7 @@ The key area(s) of responsibilities for each member
 |:---------|:---------------:|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | u7663368 | Vishakha Mathur | MainActivity, Login Activity, LoginUser (singleton pattern), Profile Activity and UI design(main page, login page, dashboard, profile page), uploading images on profile page from phone to firebase, singleton design pattern test |
 | u7727175 |  Jinyang Zeng   |                                                                                         GPS，choose location function, DataStream-Load data，show data in dashboard, and Load data from local json，Generate post data from user input|
-| u7777752 |     Lin Xi      |UI design (Search page and Search_detailed page), Tokenizer, Parser, Data Structure (Hashmap, AVLTree, Arraylist, Hashset, Trie), Data Fetching, Searching and filtering, Testing (Search), Design Patterns (Adapter, Observer) |
+| u7777752 |     Lin Xi      |                                                         UI design (Search page), Tokenizer, Parser, Data Structure (Hashmap, AVLTree, Arraylist), Data Fetching, Searching and filtering), Testing (Search), Design Patterns (Adapter, Observer) |
 | u7773880 |   Zihan Yuan    |                                                Add Activity, Post activity(post_donate, post_exchange, post_wanted), page redirection, two factory design patterns, Data Stream(get images from album and upload image to Firebase) |
 | u7705128 |   Boxuan Lin    |                                                                         Create 2600+ post instances and 2500 user accounts, storing all of the data in Firebase. Providing methods for downloading and updating data from Firebase. |
 
@@ -76,10 +76,6 @@ Note that the core criteria of contribution is based on `code contribution` (the
   - **Others**: (only if significant and significantly different from an "average contribution") 
     - [Report Writing?] [Slides preparation?]*
     - [You are welcome to provide anything that you consider as a contribution to the project or team.] e.g., APK, setups, firebase* <br><br>
-
-2. **U7705128, Boxuan Lin**  I have 20% contribution, as follows: <br>
-  - **Code Contribution in the final App**
-  - 
 3. **U7663368, Vishakha Mathur** I have 20% contribution, as follows: <br>
   - **Code Contribution in the final App**
     - Login feature - class LoginActivity: [LoginActivity.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/LoginActivity.java).
@@ -102,7 +98,15 @@ Note that the core criteria of contribution is based on `code contribution` (the
     **Code and App Design**
   - Singleton Design Pattern.
   - ScrollView, LinearLayout, Picasso, pictures and icons.
-
+5. **U7773880, Zihan Yuan**  I have 20% contribution, as follows: <br>
+- **Code Contribution in the final App**
+  - LoadShowData - class Post_base to upload and show images: [Post_base.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/Post_base.java?ref_type=heads)
+  - UI-Layout: most of the pages.
+  - UI-Test: class PostdonateUITest: [PostdonateUITest.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/androidTest/java/com/example/eatsy/PostdonateUITest.java?ref_type=heads),[PostexchangeUITest](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/androidTest/java/com/example/eatsy/PostexchangeUITest.java?ref_type=heads),[PostwantedUITest](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/androidTest/java/com/example/eatsy/PostwantedUITest.java?ref_type=heads).
+  - Design Pattern
+  - Other contribution: class Addpage: [Addpage.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/AddPage.java?ref_type=heads)
+- **Code and App Design**
+    - UI-design: 
 
 ## Application Description
 
