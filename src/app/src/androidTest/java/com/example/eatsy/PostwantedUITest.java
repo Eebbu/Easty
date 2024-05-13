@@ -25,6 +25,7 @@ import static org.junit.Assert.assertEquals;
 
 import android.content.Intent;
 
+import com.example.eatsy.pages.MapSelection;
 import com.example.eatsy.pages.Post_donate;
 import com.example.eatsy.pages.Post_wanted;
 

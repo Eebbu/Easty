@@ -18,11 +18,12 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 
 
 import static androidx.test.espresso.intent.Intents.intended;
-import static androidx.test.espresso.intent.matcher.IntentMatchers.hasAction;
 import static androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent;
 
 
 import com.example.eatsy.pages.AddPage;
+import com.example.eatsy.pages.DashboardActivity;
+import com.example.eatsy.pages.ProfileActivity;
 
 import org.junit.After;
 import org.junit.Before;

@@ -1,8 +1,9 @@
-package com.example.eatsy;
+package com.example.eatsy.datamanagement;
 
 import android.net.Uri;
 
-import com.example.eatsy.datamanagement.DataManager;
+import com.example.eatsy.Post;
+import com.example.eatsy.pages.DashboardActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
@@ -34,7 +35,7 @@ public class FireStoreHelper {
         return collectionRef;
     }
 
-    protected static void createAndPost(Post post){
+    public static void createAndPost(Post post){
         StorageReference ref = storageReference.child("user_post_img/" + UUID.randomUUID().toString());
         UploadTask uploadTask = ref.putFile(Uri.parse(post.getFilePath()));
 
@@ -76,13 +77,5 @@ public class FireStoreHelper {
             }).addOnFailureListener(e -> System.err.println("Error saving post data: " + e.getMessage()))
                 .addOnFailureListener(e -> System.err.println("Error getting file URL: " + e.getMessage()))
             .addOnFailureListener(e -> System.err.println("Error uploading file: " + e.getMessage()));
-        }
     }
-
-
-
-        //1.upload image and get download url;
-//        post.setImages(String downloadUrl);
-        //2.upload post with the url；
-
-
+}

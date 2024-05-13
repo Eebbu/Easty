@@ -1,4 +1,4 @@
-package com.example.eatsy;
+package com.example.eatsy.pages;
 
 
 import static com.example.eatsy.R.id.back_btn;
@@ -20,7 +20,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.eatsy.pages.LoginActivity;
+import com.example.eatsy.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;

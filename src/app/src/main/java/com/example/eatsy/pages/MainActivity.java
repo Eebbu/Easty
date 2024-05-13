@@ -1,4 +1,4 @@
-package com.example.eatsy;
+package com.example.eatsy.pages;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
-import com.example.eatsy.pages.LoginActivity;
+import com.example.eatsy.datamanagement.LocalJsonDataBase;
+import com.example.eatsy.R;
+import com.example.eatsy.StorageList;
 
 
 /** Functionality
@@ -30,14 +32,13 @@ public class MainActivity extends AppCompatActivity {
         //StorageList.initPostData();
 
         //local data
-        StorageList.mapList = ImportDataFromLocalJson.read(getApplicationContext());
+        StorageList.mapList = LocalJsonDataBase.read(getApplicationContext());
         StorageList.initLocalData();
 
         // Login page that takes us to the login page.
         logIn.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(intent);
-
         });
 
 

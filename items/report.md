@@ -319,20 +319,6 @@ The grammar used in our project is designed to parse text consisting of space-se
 - Balanced Search Operations: `AVLTree` maintains balance with rotations, providing O(log n) complexity for insertions, deletions, and searches.
 - Ordering: Maintains elements in a sorted order, which is beneficial for range queries and ordered data retrieval operations.
 
-**Design Pattern**
-
-Adapter Pattern
-Objective: Allows objects with incompatible interfaces to collaborate.
-Code Locations: Used in the ListDataAdapter class, which adapts a list of Post objects to be usable in a ListView which expects data in a specific format.
-Reasons:
-Interface Compatibility: Converts the interface of the List<Post> into the interface expected by the ListView, enabling seamless integration of complex data structures with UI components.
-Reusability: Allows the same Post data to be reused in different list-based UI components without modifying the underlying data structure or the components themselves.
-
-Builder Pattern
-Objective: Separates the construction of a complex object from its representation so that the same construction process can create different representations.
-Code Locations: Used in constructing complex Post objects, in scenarios where a Post object consists of various discrete parts that are assembled step-by-step.
-Reasons: Step-by-step Construction: Allows for constructing complex objects step-by-step, particularly useful when creating an object requires setting many attributes that could be optional.
-
 
 ### Data Structures
 
@@ -360,12 +346,7 @@ Here is a partial (short) example for the subsection `Data Structures`:*
 ### Design Patterns
 *[What design patterns did your team utilise? Where and why?]*
 
-1. *xxx Pattern*
-   * *Objective: used for storing xxxx for xxx feature.*
-   * *Code Locations: defined in [Class X, methods Z, Y](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and [class AnotherClass, lines l1-l2](url); processed using [dataStructureHandlerMethod](url) and ...
-   * *Reasons:*
-      * ...
-1. Factory – post 
+1. **Factory – post**
 
     * **Objective**: used for obtaining content from user input and convert it into a post class.
     
@@ -390,23 +371,18 @@ Here is a partial (short) example for the subsection `Data Structures`:*
     * **Reasons** : This class is used for user information and error messages that can be helpful to debug and check errors.
 <hr>
 
-### Parser
+4. **Adapter Pattern**
+- **Objective**: Allows objects with incompatible interfaces to collaborate.
+- **Code Locations**: Used in the ListDataAdapter class, which adapts a list of Post objects to be usable in a ListView which expects data in a specific format.[ListDataAdapter.java](url)
+- **Reasons**:
+- Interface Compatibility: Converts the interface of the List<Post> into the interface expected by the ListView, enabling seamless integration of complex data structures with UI components.
+- Reusability: Allows the same Post data to be reused in different list-based UI components without modifying the underlying data structure or the components themselves.
 
-### <u>Grammar(s)</u>
-*[How do you design the grammar? What are the advantages of your designs?]*
-*If there are several grammars, list them all under this section and what they relate to.*
-
-Production Rules:
-
-    <Non-Terminal> ::= <some output>
-    <Non-Terminal> ::= <some output>
-
-
-### <u>Tokenizers and Parsers</u>
-
-*[Where do you use tokenisers and parsers? How are they built? What are the advantages of the designs?]*
-
-<hr>
+5. **Builder Pattern**
+- **Objective**: Separates the construction of a complex object from its representation so that the same construction process can create different representations.
+- **Code Locations**: Used in constructing complex Post objects, in scenarios where a Post object consists of various discrete parts that are assembled step-by-step.[Post.java](url)
+- **Reasons**: 
+- Step-by-step Construction: Allows for constructing complex objects step-by-step, particularly useful when creating an object requires setting many attributes that could be optional.
 
 ### Others
 
