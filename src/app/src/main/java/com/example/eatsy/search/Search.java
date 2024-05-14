@@ -16,7 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.eatsy.Post;
 import com.example.eatsy.R;
-import com.example.eatsy.Trie;
+import com.example.eatsy.pages.DashboardActivity;
+import com.example.eatsy.search.Trie;
 
 import java.util.ArrayList;
 import java.util.Collections;
