@@ -74,4 +74,5 @@ dependencies {
     testImplementation ("org.mockito:mockito-core:3.11.2")
     androidTestImplementation("org.mockito:mockito-core:3.11.2")
     androidTestImplementation("org.mockito:mockito-android:3.12.4")
+    testImplementation ("org.mockito:mockito-inline:4.6.1")
 }

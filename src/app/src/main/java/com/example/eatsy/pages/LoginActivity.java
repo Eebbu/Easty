@@ -1,4 +1,4 @@
-package com.example.eatsy;
+package com.example.eatsy.pages;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
@@ -7,6 +7,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.eatsy.LoginUser;
+import com.example.eatsy.R;
 import com.google.firebase.auth.FirebaseAuth;
 
 
@@ -28,8 +30,10 @@ public class LoginActivity extends AppCompatActivity {
         username = findViewById(R.id.Email);
         password = findViewById(R.id.user_pass);
         firebaseAuth = FirebaseAuth.getInstance();
-        if (firebaseAuth.getCurrentUser() != null)
+        if (firebaseAuth.getCurrentUser() != null){
             startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
+            finish();
+        }
         loginBtn.setOnClickListener(v -> {
             String email = username.getText().toString().trim();
             String pswrd = password.getText().toString().trim();
@@ -58,20 +62,13 @@ public class LoginActivity extends AppCompatActivity {
                             Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
                             intent.putExtra("USERNAME", email);
                             startActivity(intent);
-                            startActivity(new Intent(getApplicationContext(), DashboardActivity.class));
+                            finish();
                         } else {
                             Toast.makeText(LoginActivity.this,
                             "Authentication failed", Toast.LENGTH_SHORT).show();
                             LoginUser.getInstance().error(LoginActivity.class, task.getException());
                         }
                     });
-
-
-
-
-        });}}
-
-
-
-
-
+        });
+    }
+}

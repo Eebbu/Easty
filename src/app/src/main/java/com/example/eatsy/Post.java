@@ -92,7 +92,10 @@ public class Post implements Serializable{
         this.quantity = quantity;
         this.pickUpTimes = pickUpTimes;
         this.Address = new Address(latitude,longitude);
-        this.images = new ArrayList<>(images);
+        if(images == null)
+            this.images = new ArrayList<>();
+        else
+            this.images = new ArrayList<>(images);
 
     }
 

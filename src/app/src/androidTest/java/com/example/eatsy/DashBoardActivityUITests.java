@@ -1,8 +1,8 @@
 package com.example.eatsy;
 
+import androidx.test.espresso.intent.Intents;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
-import androidx.test.espresso.Espresso;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -16,12 +16,35 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 
+
+import static androidx.test.espresso.intent.Intents.intended;
+import static androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent;
+
+
+import com.example.eatsy.pages.AddPage;
+import com.example.eatsy.pages.DashboardActivity;
+import com.example.eatsy.pages.ProfileActivity;
+
+import org.junit.After;
+import org.junit.Before;
+
 @RunWith(AndroidJUnit4.class)
 public class DashBoardActivityUITests {
 
     @Rule
     public ActivityScenarioRule<DashboardActivity> activityRule =
             new ActivityScenarioRule<>(DashboardActivity.class);
+
+    @Before
+    public void setup() {
+        Intents.init(); // Initialize Intents before each test
+    }
+
+    @After
+    public void tearDown() {
+        Intents.release(); // Release Intents after each test
+    }
+
 
     @Test
     public void ensureTextViewDisplays() {
@@ -31,17 +54,19 @@ public class DashBoardActivityUITests {
     }
 
     @Test
-    public void ensureProfileButtonWorks() {
-        // Scroll to the profile image, click it, and perhaps navigate to the profile page
+    public void testProfileButtonWorks() {
+
         onView(withId(R.id.profile)).perform(scrollTo(), click());
-        // Add assertions or further actions depending on the navigation result
+        intended(hasComponent(ProfileActivity.class.getName()));
+
     }
 
     @Test
-    public void ensureAddButtonWorks() {
-        // Check if add button is displayed and click it
+    public void testAddButtonWorks() {
+
         onView(withId(R.id.add_pg)).perform(scrollTo(), click());
-        // Add further assertions here
+        intended(hasComponent(AddPage.class.getName()));
+
     }
 
     @Test

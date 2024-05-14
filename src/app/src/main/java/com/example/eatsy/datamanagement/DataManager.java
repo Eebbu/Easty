@@ -1,6 +1,10 @@
-package com.example.eatsy;
+package com.example.eatsy.datamanagement;
 
-import java.util.concurrent.ConcurrentHashMap;
+import com.example.eatsy.Post;
+import com.example.eatsy.userFT;
+
+import java.util.HashMap;
+
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -11,8 +15,8 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class DataManager {
     private static final DataManager instance = new DataManager();
-    private ConcurrentHashMap<String, userFT> userHashMap = new ConcurrentHashMap<>();
-    private ConcurrentHashMap<String, Post> postHashMap = new ConcurrentHashMap<>();
+    private HashMap<String, userFT> userHashMap = new HashMap<>();
+    private HashMap<String, Post> postHashMap = new HashMap<>();
 
     //Make sure it has only one instance through a private constructor
     private DataManager() {
@@ -23,19 +27,19 @@ public class DataManager {
         return instance;
     }
 
-    public void setUserHashMap(ConcurrentHashMap<String, userFT> hashMap) {
+    public void setUserHashMap(HashMap<String, userFT> hashMap) {
         this.userHashMap = hashMap;
     }
 
-    public ConcurrentHashMap<String, userFT> getUserHashMap() {
+    public HashMap<String, userFT> getUserHashMap() {
         return userHashMap;
     }
 
-    public void setPostHashMap(ConcurrentHashMap<String, Post> hashMap) {
+    public void setPostHashMap(HashMap<String, Post> hashMap) {
         this.postHashMap = hashMap;
     }
 
-    public ConcurrentHashMap<String, Post> getPostHashMap() {
+    public HashMap<String, Post> getPostHashMap() {
         return postHashMap;
     }
 

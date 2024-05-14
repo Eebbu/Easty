@@ -26,6 +26,10 @@ import static org.junit.Assert.assertEquals;
 import android.content.Intent;
 
 import androidx.lifecycle.Lifecycle;
+
+import com.example.eatsy.pages.MapSelection;
+import com.example.eatsy.pages.Post_donate;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
