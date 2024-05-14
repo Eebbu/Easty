@@ -8,7 +8,7 @@ import android.widget.Button;
 
 import com.example.eatsy.datamanagement.LocalJsonDataBase;
 import com.example.eatsy.R;
-import com.example.eatsy.search.StorageList;
+import com.example.eatsy.searchengine.StorageList;
 
 
 /** Functionality

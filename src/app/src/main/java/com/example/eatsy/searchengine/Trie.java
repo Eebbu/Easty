@@ -1,4 +1,4 @@
-package com.example.eatsy.search;
+package com.example.eatsy.searchengine;
 
 /*
     A Trie class is defined to implement a Trie

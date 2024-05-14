@@ -9,8 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.eatsy.Post;
 import com.example.eatsy.R;
-import com.example.eatsy.search.Search;
-import com.example.eatsy.search.StorageList;
+import com.example.eatsy.searchengine.Search;
+import com.example.eatsy.searchengine.StorageList;
 import com.squareup.picasso.Picasso;
 /**
  * PostDetailActivity is an Android activity that displays detailed information about a specific post.
