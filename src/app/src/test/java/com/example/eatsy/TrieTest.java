@@ -1,52 +1,71 @@
-package com.example.eatsy;
+package com.example.eatsy.search;
 
-import org.junit.Before;
-import org.junit.Test;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
-import com.example.eatsy.search.Trie;
-
+/**
+ * Test class for the Trie data structure.
+ * Author： Lin Xi(u7777752)
+ */
 public class TrieTest {
     private Trie trie;
 
-    @Before
-    public void setUp() {
+    @BeforeEach
+    void setUp() {
         trie = new Trie();
     }
 
     @Test
-    public void testInsertAndSearchValidPrefix() {
-        trie.insert("hello");
-        assertTrue("Expected true because 'hello' is inserted and 'hel' is a prefix", trie.searchPrefix("hel"));
+    void testInsertAndSearchWord() {
+        // Test insertion and searching for a complete word
+        String word = "apple";
+        trie.insert(word);
+        // Directly searching for a word should return true if it was inserted
+        assertTrue(trie.searchPrefix("apple"), "The word 'apple' should be found.");
     }
 
     @Test
-    public void testSearchInvalidPrefix() {
-        trie.insert("hello");
-        assertFalse("Expected false because 'world' is not a prefix of any inserted word", trie.searchPrefix("world"));
+    void testSearchNonExistentWord() {
+        // Try to find a word that has not been inserted
+        assertFalse(trie.searchPrefix("banana"), "The word 'banana' should not be found.");
     }
 
     @Test
-    public void testSearchExactWordAsPrefix() {
-        trie.insert("hello");
-        assertTrue("Expected true because 'hello' is inserted and is an exact match", trie.searchPrefix("hello"));
+    void testPrefix() {
+        // Test searching for prefixes
+        trie.insert("apple");
+        trie.insert("app");
+        assertTrue(trie.searchPrefix("app"), "The prefix 'app' should be valid.");
+        assertFalse(trie.searchPrefix("apz"), "The prefix 'apz' should not be valid.");
     }
 
     @Test
-    public void testSearchBeyondWordLength() {
-        trie.insert("hello");
-        assertFalse("Expected false because there is no word 'helloooo' in the trie", trie.searchPrefix("helloooo"));
+    void testWordIsAlsoAPrefix() {
+        // Test case where a whole word is also a prefix to another word
+        trie.insert("apple");
+        trie.insert("app");
+        assertTrue(trie.searchPrefix("app"), "The prefix 'app' should be valid and is a complete word.");
+        assertTrue(trie.searchPrefix("apple"), "The word 'apple' should be found.");
     }
 
     @Test
-    public void testInsertAndSearchMultipleWords() {
-        trie.insert("hello");
-        trie.insert("helicopter");
-        trie.insert("help");
-        assertTrue("Expected true because 'hel' is a common prefix", trie.searchPrefix("hel"));
-        assertTrue("Expected true because 'hello' is an exact word", trie.searchPrefix("hello"));
-        assertTrue("Expected true because 'help' is an exact word", trie.searchPrefix("help"));
-        assertFalse("Expected false because 'heaven' is not inserted", trie.searchPrefix("heaven"));
+    void testEmptyString() {
+        // Testing edge cases with empty string
+        trie.insert("");
+        assertTrue(trie.searchPrefix(""), "Empty string should always be a valid prefix.");
+    }
+
+    @Test
+    void testPrefixAndCompleteWord() {
+        // Insert multiple words and test both as complete words and prefixes
+        String[] words = {"test", "tester", "testing", "testimony", "tested"};
+        for (String word : words) {
+            trie.insert(word);
+        }
+
+        assertTrue(trie.searchPrefix("test"), "The prefix 'test' should be valid.");
+        assertTrue(trie.searchPrefix("tester"), "'tester' should be found as a word.");
+        assertFalse(trie.searchPrefix("testify"), "'testify' should not be found.");
     }
 }
