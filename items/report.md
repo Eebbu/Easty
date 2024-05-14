@@ -40,10 +40,10 @@ The key area(s) of responsibilities for each member
 | UID      |      Name       |                                                                                                                                                                                                                                Role |
 |:---------|:---------------:|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | u7663368 | Vishakha Mathur | MainActivity, Login Activity, LoginUser (singleton pattern), Profile Activity and UI design(main page, login page, dashboard, profile page), uploading images on profile page from phone to firebase, singleton design pattern test |
-| u7727175 |  Jinyang Zeng    |                                                                                         GPS，choose location function, DataStream-Load data，show data in dashboard, and Load data from local json，Generate post data from user input |
-| u7777752 |     Lin Xi      |      UI design (Search page and Search_detailed page), Tokenizer, Parser, Data Structure (Hashmap, AVLTree, Arraylist, Hashset, Trie), Data Fetching, Searching and filtering, Testing (Search), Design Patterns (Adapter, Builder) |
-| u7773880 |   Zihan Yuan    |                        Add Activity, Post activity(post_donate, post_exchange, post_wanted), page redirection, two factory design patterns, Data Stream(get images from album and upload image to Firebase), UI layout and UI test. |
-| u7705128 |   Boxuan Lin     |                                                                         Create 2600+ post instances and 2500 user accounts, storing all of the data in Firebase. Providing methods for downloading and updating data from Firebase. |
+| u7727175 |  Jinyang Zeng    |GPS，choose location function, DataStream-Load data，show data in dashboard, and Load data from local json，Generate post data from user input|
+| u7777752 |     Lin Xi      |UI design (Search page and Search_detailed page), Tokenizer, Parser, Data Structure (Hashmap, AVLTree, Arraylist, Hashset, Trie), Data Fetching, Searching and filtering, Testing (Search), Design Patterns (Adapter, Builder) |
+| u7773880 |   Zihan Yuan    |Add Activity, Post activity(post_donate, post_exchange, post_wanted), page redirection, two factory design patterns, Data Stream(get images from album and upload image to Firebase) |
+| u7705128 |   Boxuan Lin     |Create 2600+ post instances and 2500 user accounts, storing all of the data in Firebase. Providing methods for downloading and updating data from Firebase. |
 
 
 ## Summary of Individual Contributions
@@ -285,54 +285,6 @@ The grammar used in our project is designed to parse text consisting of space-se
 
 **Scalability**: The parser uses recursive methods, making it scalable for extending the grammar without significantly altering the existing codebase. This is beneficial for maintaining and upgrading the system in the future.
 
-# Choice of data structures
-
-**HashMap**
-
-- Objective: Used for storing and quickly accessing `Post` objects by their IDs within the `StorageList` class.
-- Code Location: Defined in `StorageList` class. Utilized in methods such as `initPostData` and `initLocalData` to store and access `Post` instances.
-- Reasons:
-- Efficiency: `HashMap` offers O(1) time complexity for insertions and lookups, which is more efficient than an `ArrayList` for these operations.
-- Key-value Access: For features like updating or retrieving `Post` data, direct access via post IDs (keys) is essential, eliminating the need for indexing which is crucial for performance.
-
- **ArrayList**
-
-- Objective: Used for storing lists of `Post` objects in a dynamically resizing array format, suitable for ordered collection which also supports random access.
-- Code Locations: Utilized in `StorageList` and `Search` classes, particularly in methods like `initPostData` and `searchAll` for storing and managing collections of posts.
-- Reasons:
-- Random Access: Unlike `LinkedList`, `ArrayList` provides efficient random access to elements, which is beneficial where elements are frequently accessed by index.
-
-**HashSet**
-
-- Dynamics and Performance: Better performance in terms of memory as it stores items in a contiguous memory space and is generally faster in iterating over elements compared to `LinkedList`.
-- Objective: Used in the `Search` class to ensure uniqueness and efficient lookup for `Post` objects when performing search operations.
-- Code Locations: Used in the `searchByTest` method of the `Search` class to store unique results from keyword-based searches.
-- Reasons:
-- Uniqueness: Automatically prevents duplication of `Post` objects in search results.
-- Efficiency: Offers O(1) complexity for add and check operations, ideal for scenarios where the integrity of uniqueness is more critical than ordering.
-
-**AVLTree**
-
-- Objective: Utilized to maintain a balanced search tree of `Post` objects, ensuring efficient order operations and balanced tree properties for quick search and retrieval.
-- Code Locations: `StorageList` class uses `AVLTree` to manage posts in a sorted manner, particularly evident in the `buildTree` and `traverseTree` methods.
-- Reasons:
-- Balanced Search Operations: `AVLTree` maintains balance with rotations, providing O(log n) complexity for insertions, deletions, and searches.
-- Ordering: Maintains elements in a sorted order, which is beneficial for range queries and ordered data retrieval operations.
-
-**Design Pattern**
-
-Adapter Pattern
-Objective: Allows objects with incompatible interfaces to collaborate.
-Code Locations: Used in the ListDataAdapter class, which adapts a list of Post objects to be usable in a ListView which expects data in a specific format.
-Reasons:
-Interface Compatibility: Converts the interface of the List<Post> into the interface expected by the ListView, enabling seamless integration of complex data structures with UI components.
-Reusability: Allows the same Post data to be reused in different list-based UI components without modifying the underlying data structure or the components themselves.
-
-Builder Pattern
-Objective: Separates the construction of a complex object from its representation so that the same construction process can create different representations.
-Code Locations: Used in constructing complex Post objects, in scenarios where a Post object consists of various discrete parts that are assembled step-by-step.
-Reasons: Step-by-step Construction: Allows for constructing complex objects step-by-step, particularly useful when creating an object requires setting many attributes that could be optional.
-
 
 ### Data Structures
 
@@ -350,10 +302,37 @@ Here is a partial (short) example for the subsection `Data Structures`:*
       * *We don't need to access the item by index for xxx feature because...*
       * For the (part), the data ... (characteristics) ...
 
-2. AVL Tree
-   HashMap
-   ArrayList
-3. ...
+2. **HashMap**
+
+- Objective: Used for storing and quickly accessing `Post` objects by their IDs within the `StorageList` class.
+- Code Location: Defined in `StorageList` class. Utilized in methods such as `initPostData` and `initLocalData` to store and access `Post` instances.
+- Reasons:
+- Efficiency: `HashMap` offers O(1) time complexity for insertions and lookups, which is more efficient than an `ArrayList` for these operations.
+- Key-value Access: For features like updating or retrieving `Post` data, direct access via post IDs (keys) is essential, eliminating the need for indexing which is crucial for performance.
+
+3. **ArrayList**
+
+- Objective: Used for storing lists of `Post` objects in a dynamically resizing array format, suitable for ordered collection which also supports random access.
+- Code Locations: Utilized in `StorageList` and `Search` classes, particularly in methods like `initPostData` and `searchAll` for storing and managing collections of posts.
+- Reasons:
+- Random Access: Unlike `LinkedList`, `ArrayList` provides efficient random access to elements, which is beneficial where elements are frequently accessed by index.
+
+4. **HashSet**
+
+- Dynamics and Performance: Better performance in terms of memory as it stores items in a contiguous memory space and is generally faster in iterating over elements compared to `LinkedList`.
+- Objective: Used in the `Search` class to ensure uniqueness and efficient lookup for `Post` objects when performing search operations.
+- Code Locations: Used in the `searchByTest` method of the `Search` class to store unique results from keyword-based searches.
+- Reasons:
+- Uniqueness: Automatically prevents duplication of `Post` objects in search results.
+- Efficiency: Offers O(1) complexity for add and check operations, ideal for scenarios where the integrity of uniqueness is more critical than ordering.
+
+5. **AVLTree**
+
+- Objective: Utilized to maintain a balanced search tree of `Post` objects, ensuring efficient order operations and balanced tree properties for quick search and retrieval.
+- Code Locations: `StorageList` class uses `AVLTree` to manage posts in a sorted manner, particularly evident in the `buildTree` and `traverseTree` methods.
+- Reasons:
+- Balanced Search Operations: `AVLTree` maintains balance with rotations, providing O(log n) complexity for insertions, deletions, and searches.
+- Ordering: Maintains elements in a sorted order, which is beneficial for range queries and ordered data retrieval operations.
 
 <hr>
 
@@ -373,41 +352,24 @@ Here is a partial (short) example for the subsection `Data Structures`:*
     
     * **Reasons**: We have three types of posts: Donate, Exchange and Wanted. Each type has specific functionalities. The factory pattern can be used to create an interface for creating instances of these different posts and uploading these posts’ details. By using this, we simplify the way to handle post creation and uploading posts.
 2. Factory – render scene
+    
+3. Singleton Design Pattern
+    **Objective** : We implemented singleton design pattern in the LoginUser class because there is only one instance of LoginUser required. 
+    **Code Locations**: defined in [Class LoginUser, method getInstance, info and error](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/LoginUser.java?ref_type=heads#L8-34).
+    **Reasons** : This class is used for user information and error messages that can be helpful to debug and check errors.
 
-    * **Objective**: The main goal is to centralize common functionalities such as setting up views, validating inputs, set up listeners and configuring scenes across different types of posts. This centralization reduced code duplication and improved maintainability.
+4. Adapter Pattern<br>
+**Objective:** Allows objects with incompatible interfaces to collaborate.<br>
+**Code Locations:**
+- Used in the ListDataAdapter class, which adapts a list of Post objects to be usable in a ListView which expects data in a specific format.<br>
+**Reasons:** 
+- Interface Compatibility: Converts the interface of the List<Post> into the interface expected by the ListView, enabling seamless integration of complex data structures with UI components.
+- Reusability: Allows the same Post data to be reused in different list-based UI components without modifying the underlying data structure or the components themselves.
 
-    * **Code Locations**: Base class: [Post_base.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/Post_base.java)
-, and subclass: [Post_donate](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/Post_donate.java)
-   , [Post_exchange](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/Post_exchange.java)
-   , [Post_wanted](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/Post_wanted.java)  
-   
-    * **Reasons**:  By centralizing common functionalities in the base class, there is a significant reduction in code duplication across subclasses.
- When changes are required, such as modifying how listeners are set, these can be made in one place, especially setting of post pages are very similar.
-
-3. Singleton Design Pattern: 
-    * **Objective** : We implemented singleton design pattern in the LoginUser class because there is only one instance of LoginUser required. 
-    * **Code Locations**: defined in [Class LoginUser, method getInstance, info and error](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/LoginUser.java?ref_type=heads#L8-34).
-    * **Reasons** : This class is used for user information and error messages that can be helpful to debug and check errors.
-<hr>
-
-### Parser
-
-### <u>Grammar(s)</u>
-*[How do you design the grammar? What are the advantages of your designs?]*
-*If there are several grammars, list them all under this section and what they relate to.*
-
-Production Rules:
-
-    <Non-Terminal> ::= <some output>
-    <Non-Terminal> ::= <some output>
-
-
-### <u>Tokenizers and Parsers</u>
-
-*[Where do you use tokenisers and parsers? How are they built? What are the advantages of the designs?]*
-
-<hr>
-
+5. Builder Pattern<br>
+**Objective:** Separates the construction of a complex object from its representation so that the same construction process can create different representations.<br>
+**Code Locations:** Used in constructing complex Post objects, in scenarios where a Post object consists of various discrete parts that are assembled step-by-step.<br>
+**Reasons:** Step-by-step Construction: Allows for constructing complex objects step-by-step, particularly useful when creating an object requires setting many attributes that could be optional.<br>
 ### Others
 
 *[What other design decisions have you made which you feel are relevant? Feel free to separate these into their own subheadings.]*
@@ -429,11 +391,32 @@ Production Rules:
    * Code to the Data File [users_interaction.json](link-to-file), [search-queries.xml](link-to-file), ...
    * Link to the Firebase repo: ...
 
-3. [LoadShowData]
-   <br>
-4. [DataStream]
-   <br>
-5. [Search]
+3. [Search].(Medium) Created an activity for searching and filtering posts within the application, utilizing various data structures and methods to efficiently manage and display search results.
+   * Code:[class Search](url)
+   * Key Methods: onCreate, setCheckListener, setEditListener, searchData, searchAll, searchByTest
+   * Related Classes: StorageList, ListDataAdapter, AVLTree, AVLTreeNode, Trie, TrieNode
+
+**Description of Implementation**
+
+   * The Search activity is designed to process user input for searching and filtering posts based on categories like "Donate", "Need", and "Exchange". The functionality is extended by integrating Firebase Firestore to fetch real-time data, ensuring up-to-date information is always available.
+   * Main Features:
+   * Dynamic Filtering: Users can filter search results in real-time by selecting different categories through checkboxes. The application updates the displayed results immediately based on the selected criteria.
+   * Keyword Search: Includes an input field where users can type keywords. The application parses these inputs to filter posts containing relevant information. This feature uses a custom tokenizer and parser to handle the input strings efficiently.
+
+**Data Structure Usage**
+
+   * HashMap: Used to store and quickly retrieve posts by unique identifiers.
+   * ArrayList: Manages lists of posts for display and intermediate operations.
+   * HashSet: Ensures unique search results, preventing duplicate entries in the display.
+   * AVLTree: Maintains posts in a balanced manner to optimize search and retrieval operations based on sorted or ranked criteria.
+
+**Performance Considerations**
+
+   * The use of efficient data structures like HashMap and AVL Tree ensures that search operations are fast and responsive, even with a large dataset. The Singleton pattern in StorageList minimizes redundancy in data management, thereby improving memory usage and speed.
+
+**Security and Data Integrity**
+
+   * All interactions with Firebase are managed through secure authenticated sessions, ensuring that data retrieval and manipulation are protected against unauthorized access.This implementation not only fulfills the basic requirements of a search feature but also enhances user experience through quick responsiveness and accurate results. The modular approach in designing the Search class allows for easier maintenance and scalability, adapting to potential future enhancements like more complex search algorithms or additional filtering criteria.
 
 ### Custom Features
 Feature Category: Firebase Integration <br>
@@ -464,16 +447,51 @@ Feature Category: Greater Data Usage, Handling and Sophistication <br>
 <hr>
 
   
-[DataFiles] Boxuan Lin created a dataset with more than 2600 post data instances, covering all types of posts. All of the data was formatted in JSON and uploaded to Firestore for persistence.
+5. [DataFiles] Boxuan Lin created a dataset with more than 2600 post data instances, covering all types of posts. All of the data was formatted in JSON and uploaded to Firestore for persistence.
 
 
-[FB-Auth] (By Boxuan Lin) We use Firebase to implement the User Authentication/Authorisation of our app. User account data is stored on Google servers instead of locally, and is processed by Google, ensuring security.
-[FB-Persist] (By Boxuan Lin) We used Firebase’s Firestore, a real-time, scalable database that stores data in collections and documents. We use it to persist the post data and user’s profile data for a well synchronization function.  For big files like photos, we store them in Cloud Storage for Firebase for its high scalability and simplified file upload and download capabilities.
+6. [FB-Auth] (By Boxuan Lin) We use Firebase to implement the User Authentication/Authorisation of our app. User account data is stored on Google servers instead of locally, and is processed by Google, ensuring security.
+7. [FB-Persist] (By Boxuan Lin) We used Firebase’s Firestore, a real-time, scalable database that stores data in collections and documents. We use it to persist the post data and user’s profile data for a well synchronization function.  For big files like photos, we store them in Cloud Storage for Firebase for its high scalability and simplified file upload and download capabilities.
 Data Profile(easy):
       1. 
     2. It also gives the user an option to upload and change profile picture via media gallery to the firebase.
  3. There is sign out button that allows user to sign out from the app. 
 
+8. [Search-Invalid] (By Lin Xi)(Medium)
+
+      Handling Partially Valid and Invalid Search Queries
+Objective: Enhance the search functionality to handle both partially valid and invalid search queries effectively without causing the application to crash, while still providing meaningful search results based on valid parts of the query.
+
+      Subject: Partially valid and invalid search query handling.
+
+      Description: The search feature of the application is designed to robustly handle errors in user input, ensuring that the application remains stable and responsive even when faced with partially valid or invalid search queries. The feature aims to parse user inputs and extract usable information to return the best possible results.
+
+      What the feature entails:
+
+      Modifying the Tokenizer/Parser: The application's tokenizer and parser have been enhanced to more effectively identify and separate valid elements from invalid inputs. This allows the application to process and respond to mixed-quality queries by ignoring or flagging invalid tokens while utilizing valid tokens for search operations.
+
+      Error Handling Mechanisms: Implementations include try-catch blocks, input validation, and error logging to manage unexpected or malformed inputs gracefully.
+
+      Feedback to Users: When invalid inputs are detected, the application provides feedback to the user, suggesting corrections or clarifying what parts of the query were processed.
+
+      Feature Relevance: Tokenization and parsing are crucial for dissecting user input into manageable components that the system can understand and process, which is central to this feature.
+
+      Search-Filter: Sorting and Filtering Search Results
+Objective: Implement functionality to sort and filter the list of items returned from searches, utilizing suitable UI components to allow users to refine their search results dynamically.
+
+      Subject: Advanced sorting and filtering of search results.
+
+      Description: This feature allows users to sort and filter search results based on various criteria such as date, relevance, type, etc. The implementation includes UI components that users interact with, such as dropdowns, checkboxes, and sliders, to adjust the filtering parameters dynamically.
+
+      What the feature entails:
+
+      Dynamic UI Components: Implement dropdown menus for sorting (e.g., ascending, descending), checkboxes for filtering specific types of posts (e.g., donations, requests), and sliders for range selections (e.g., date ranges, quantities).
+
+      Backend Logic: Enhance the search mechanism to respond to these filters, sorting the internal data structures like ArrayLists and updating the display according to user preferences.
+
+      Live Updates: The search results update in real-time as users adjust the filters, providing an interactive and responsive user experience.
+
+      Feature Relevance: The ability to sort and filter enhances the usability of the search function, allowing users to more easily navigate large sets of data and find the items that best match their needs.
 
 
 ### Surprise Features
