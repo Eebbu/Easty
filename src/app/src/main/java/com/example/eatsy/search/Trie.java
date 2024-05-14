@@ -1,11 +1,12 @@
-package com.example.eatsy;
+package com.example.eatsy.search;
+
 /*
     A Trie class is defined to implement a Trie
     (dictionary tree) data structure,
     specifically used to efficiently manage and query string data.
     Author: Lin Xi(u7777752)
  */
-class Trie {
+public class Trie {
     TrieNode root;
     /*
         When initializing the Trie,

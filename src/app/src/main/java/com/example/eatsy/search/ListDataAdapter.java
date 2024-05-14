@@ -1,4 +1,4 @@
-package com.example.eatsy;
+package com.example.eatsy.search;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.eatsy.Post;
+import com.example.eatsy.R;
 import com.example.eatsy.pages.DashboardActivity;
 import com.example.eatsy.pages.PostCard;
 import com.squareup.picasso.Picasso;

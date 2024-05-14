@@ -1,4 +1,4 @@
-package com.example.eatsy;
+package com.example.eatsy.search;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,19 +14,18 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QuerySnapshot;
+import com.example.eatsy.Post;
+import com.example.eatsy.R;
+import com.example.eatsy.pages.DashboardActivity;
+import com.example.eatsy.search.Trie;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * This class handles search and filter functionalities within the application.
  * It processes user inputs for search terms and selected filter criteria, queries data accordingly,

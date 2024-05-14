@@ -5,6 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 
+import com.example.eatsy.search.TrieNode;
 
 
 public class TrieNodeTest {
