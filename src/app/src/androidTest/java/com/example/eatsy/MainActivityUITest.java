@@ -19,6 +19,10 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+/**
+ * This class tests the display of elements on main page and their functionality.
+ * @Author : Vishakha Mathur(u7663368)
+ */
 @RunWith(AndroidJUnit4.class)
 public class MainActivityUITest {
 
