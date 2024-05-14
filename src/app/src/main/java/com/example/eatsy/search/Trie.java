@@ -6,7 +6,7 @@ package com.example.eatsy.search;
     specifically used to efficiently manage and query string data.
     Author: Lin Xi(u7777752)
  */
-class Trie {
+public class Trie {
     TrieNode root;
     /*
         When initializing the Trie,
