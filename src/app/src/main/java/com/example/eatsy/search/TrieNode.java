@@ -6,8 +6,8 @@ package com.example.eatsy.search;
     Author: Lin Xi(u7777752)
  */
 public class TrieNode {
-    TrieNode[] children;
-    boolean isEndOfWord;
+    public TrieNode[] children;
+    public boolean isEndOfWord;
 
     public TrieNode() {
         children = new TrieNode[26]; // Assuming only lowercase English letters
