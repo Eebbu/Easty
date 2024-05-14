@@ -27,10 +27,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
-/*This class is for searching and filtering.
-        It is used to process user input,
-        search data,
-        and display search results on the interface.
+/**
+ * This class handles search and filter functionalities within the application.
+ * It processes user inputs for search terms and selected filter criteria, queries data accordingly,
+ * and updates the UI to display the search results.
+ * Author: Lin Xi(u7777752)
  */
 public class Search extends AppCompatActivity {
     private ListView mListVie;
@@ -38,11 +39,10 @@ public class Search extends AppCompatActivity {
     private Map<Integer,String> type = new HashMap<>();
 
     @Override
-/*
-    When the user clicks the back button
-    (go_back),
-    it ends the current activity
-    and returns to DashboardActivity
+/**
+ * This class handles search and filter functionalities within the application.
+ * It processes user inputs for search terms and selected filter criteria, queries data accordingly,
+ * and updates the UI to display the search results.
  */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,16 +58,10 @@ public class Search extends AppCompatActivity {
         searchAll();
     }
 
-/*
-    Three checkboxes (checkBox1, checkBox2, checkBox3) are provided,
-    allowing users to filter posts based on different types
-    (e.g. "Donate", "Need", "Exchange").
-    Based on the checkboxes selected by the user,
-    update a type map that stores the selected types
-    and call the searchData method to filter posts based on these types,
-    or call the searchAll method to display all posts if no checkboxes are selected.
-
- */
+/**
+     * Sets up listeners for three checkboxes, allowing users to filter posts based on types like "Donate", "Need", "Exchange".
+            * It updates the type map according to selections and performs searches based on these filters.
+     */
 
     protected void setCheckListener(){
         CheckBox checkBox1 = findViewById(R.id.checkBox1);
@@ -122,14 +116,9 @@ public class Search extends AppCompatActivity {
         checkBox3.setOnClickListener(checkBoxClickListener);
     }
 
-    /*
-        Through a text input box (editText),
-        the user can enter search keywords.
-        Text searches are handled via the setEditListener method,
-        which sanitizes the user input,
-        removes non-alphanumeric characters,
-        and splits the text by spaces to obtain an array of keywords.
-        Call the searchByTest method to search based on the keyword array.
+    /**
+     * Sets up a listener for the search input field. When the user submits a search,
+     * the input is processed to extract keywords, which are then used to filter posts.
      */
     protected void setEditListener(){
         EditText editText = findViewById(R.id.srch);
@@ -155,7 +144,14 @@ public class Search extends AppCompatActivity {
             }
         });
     }
-
+    /**
+     * Parses the input string into a syntax tree based on predefined grammar rules using a custom parser.
+     * This method tokenizes the input string, creates tokens for each word and space, and then attempts
+     * to parse these tokens into a structured syntax tree (AST).
+     *
+     * @param searchTest The input string from the search text box to be tokenized and parsed.
+     * @return A Node representing the root of the syntax tree if parsing is successful; otherwise, null if an error occurs.
+     */
     private Test.Node matchToken(String searchTest){
         List<Test.Token> tokens = new ArrayList<>();
         String[] s1 = searchTest.split(" ");
@@ -177,8 +173,8 @@ public class Search extends AppCompatActivity {
     }
 
 
-    /*
-        Filter posts based on the type selected by the user via checkbox.
+    /**
+     * Filters posts based on selected types from checkboxes.
      */
     private void searchData(){
         List<Post> resList = new ArrayList<>();
@@ -193,8 +189,8 @@ public class Search extends AppCompatActivity {
 
 
 
-    /*
-        Show all posts without any filters.
+    /**
+     * Displays all posts without any filters.
      */
     private void searchAll(){
         mListVie = findViewById(R.id.lv);
@@ -207,10 +203,9 @@ public class Search extends AppCompatActivity {
     }
 
 
-    /*
-        Search posts based on keywords entered by the user.
-        It uses a custom Trie data structure to match keyword prefixes
-        and counts the number of matching keywords in each post title for sorting and display.
+    /**
+     * Searches posts based on user-entered keywords in the search text box.
+     * @param keywords The search keywords to use for filtering posts.
      */
     private void searchByTest(String[] keywords) {
         Trie trie = new Trie();

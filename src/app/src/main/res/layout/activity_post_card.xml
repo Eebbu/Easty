@@ -148,16 +148,16 @@
                         app:layout_constraintTop_toTopOf="@+id/description_linear"/>
 
                 <TextView
-                        android:id="@+id/meetingAddress"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="0dp"
-                        android:layout_marginTop="0dp"
-                        android:text="@string/address_post"
+                    android:id="@+id/meetingAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="9dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+                    android:text="@string/address_post"
 
-                        android:textSize="18sp"
-                        app:layout_constraintStart_toStartOf="@+id/description_linear"
-                        app:layout_constraintTop_toTopOf="@+id/description_linear"/>
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="@+id/description_linear"
+                    app:layout_constraintTop_toTopOf="@+id/description_linear" />
 
                 <fragment
                         android:id="@+id/map"
