@@ -7,7 +7,9 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
+/**
+ * Author: Boxuan Lin(u7705128)
+ */
 public class UserDataDownloader extends DataDownloader<userFT> {
     /**
      * Constructor for UserDataDownloader that takes context and class type.

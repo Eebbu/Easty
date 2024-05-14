@@ -4,7 +4,11 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-
+/**
+ * userFT represents a user with basic information and a list of post IDs.
+ * This class implements Serializable for easy object serialization.
+ * Author: Boxuan Lin(u7705128), Lin Xi(u7777752) and Jinyang Zeng(u7727175)
+ */
 public class userFT  implements Serializable {
     @SerializedName("name")
     private String username;

@@ -34,7 +34,10 @@ public class DataManager {
     public HashMap<String, userFT> getUserHashMap() {
         return userHashMap;
     }
-
+    /**
+     * Retrieves the post HashMap.
+     * @return The post HashMap.
+     */
     public void setPostHashMap(HashMap<String, Post> hashMap) {
         this.postHashMap = hashMap;
     }

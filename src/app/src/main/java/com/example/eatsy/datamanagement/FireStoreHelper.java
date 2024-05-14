@@ -17,12 +17,19 @@ import com.google.firebase.storage.UploadTask;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
-
+/**
+ * FireStoreHelper is a utility class for interacting with Firebase Firestore and Firebase Storage.
+ * It includes methods for posting data and managing Firestore collections.
+ * Author: Boxuan Lin(u7705128) and Jinyang Zeng(u7727175)
+ */
 public class FireStoreHelper {
     private static final FirebaseFirestore db = FirebaseFirestore.getInstance();
     private static  CollectionReference collectionRef = db.collection("your_collection_name");
     static StorageReference storageReference = FirebaseStorage.getInstance().getReference();
 
+    /**
+     * Private constructor to prevent external instantiation.
+     */
     private FireStoreHelper() {
         // Private constructor to prevent external instantiation
     }
@@ -34,7 +41,10 @@ public class FireStoreHelper {
         }
         return collectionRef;
     }
-
+    /**
+     * Creates a new post and uploads the associated image to Firebase Storage.
+     * @param post The post to be created and uploaded.
+     */
     public static void createAndPost(Post post){
         StorageReference ref = storageReference.child("user_post_img/" + UUID.randomUUID().toString());
         UploadTask uploadTask = ref.putFile(Uri.parse(post.getFilePath()));
@@ -47,7 +57,10 @@ public class FireStoreHelper {
                     uploadPost(post);
                 }));
     }
-
+    /**
+     * Uploads the post data to Firestore.
+     * @param post The post data to be uploaded.
+     */
     private static void uploadPost(Post post){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 

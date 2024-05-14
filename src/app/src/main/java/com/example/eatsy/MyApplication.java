@@ -12,6 +12,7 @@ import com.google.firebase.firestore.CollectionReference;
 /**
  * Application entry class, responsible for initializing Firebase and downloading necessary user and post data.
  * Called upon application creation, it sets up user and post data in the data manager.
+ * @author  Boxuan Lin(u7705128)
  */
 
 public class MyApplication extends Application {

@@ -9,14 +9,31 @@ import com.google.firebase.firestore.Source;
 import java.util.HashMap;
 import java.util.concurrent.CompletableFuture;
 
+/**
+ * DataDownloader is an abstract class for downloading data from Firebase Firestore
+ * and local JSON files.
+ * @param <T> The type of data to download
+ */
 public abstract class DataDownloader<T> {
     private Context context; // Context to access local resources
     private Class<T> typeParameterClass; // Class type for JSON deserialization
+
+    /**
+     * Constructor
+     * @param context Context to access local resources
+     * @param typeParameterClass The class type for JSON deserialization
+     */
 
     public DataDownloader(Context context, Class<T> typeParameterClass) {
         this.context = context;
         this.typeParameterClass = typeParameterClass;
     }
+
+    /**
+     * Downloads data from the specified CollectionReference
+     * @param collectionRef Firestore collection reference
+     * @return A CompletableFuture containing a HashMap with the downloaded data
+     */
 
     public CompletableFuture<HashMap<String, T>> downloadData(CollectionReference collectionRef) {
         CompletableFuture<HashMap<String, T>> future = new CompletableFuture<>();
@@ -38,7 +55,19 @@ public abstract class DataDownloader<T> {
         return future;
     }
 
+    /**
+     * Abstract method to populate the HashMap from the QuerySnapshot
+     * @param snapshot Firestore query snapshot
+     * @param map HashMap to populate
+     */
+
     protected abstract void populateHashMapFromQuerySnapshot(QuerySnapshot snapshot, HashMap<String, T> map);
+
+
+    /**
+     * Reads data from the local JSON file
+     * @param future CompletableFuture to complete with the data
+     */
 
     private void readDataFromLocalJson(CompletableFuture<HashMap<String, T>> future) {
         try {

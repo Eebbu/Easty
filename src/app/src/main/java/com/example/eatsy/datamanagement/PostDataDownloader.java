@@ -10,7 +10,9 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.ArrayList;
-
+/**
+ * Author: Boxuan Lin(u7705128)
+ */
 public class PostDataDownloader extends DataDownloader<Post> {
     /**
      * Downloads post data from a specified FireStore collection and stores it in a ConcurrentHashMap.

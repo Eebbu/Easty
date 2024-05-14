@@ -13,7 +13,7 @@ import java.io.Serializable;
  * The Post class represents a post in our application.
  * This class includes details such as user identification, post type, and content descriptions,
  * which are essential for managing the posts in our APP.
- * @author Zihan Yuan(u7773880), Boxuan Lin(u7705128), Lin Xi(u7777752) and Jinyang Zeng()
+ * @author Boxuan Lin(u7705128), Zihan Yuan(u7773880), Lin Xi(u7777752) and Jinyang Zeng(u7727175)
  */
 
 public class Post implements Serializable{
