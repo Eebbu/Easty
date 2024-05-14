@@ -87,7 +87,9 @@ Note that the core criteria of contribution is based on `code contribution` (the
 
 2. **U7705128, Boxuan Lin**  I have 20% contribution, as follows: <br>
   - **Code Contribution in the final App**
-  - 
+    - Firebase Persistent(medium) - class [DataManager.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/datamanagement/DataManager.java?ref_type=heads), [FireStoreHelper.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/datamanagement/FireStoreHelper.java?ref_type=heads), [PostDataDownloader.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/datamanagement/PostDataDownloader.java?ref_type=heads), [UserDataDownloader.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/datamanagement/UserDataDownloader.java?ref_type=heads). <br>
+     - DataFiles(easy) Local storage: [posts.json](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/raw/posts.json?ref_type=heads), [users_without_password.json](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/raw/users_without_password.json?ref_type=heads).
+      - Singleton Design Pattern -  [DataManager.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/datamanagement/DataManager.java?ref_type=heads).
 3. **U7663368, Vishakha Mathur** I have 20% contribution, as follows: <br>
   - **Code Contribution in the final App**
     - Login feature - class LoginActivity: [LoginActivity.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/LoginActivity.java).
