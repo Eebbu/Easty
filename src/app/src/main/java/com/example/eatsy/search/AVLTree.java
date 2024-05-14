@@ -1,4 +1,4 @@
-package com.example.eatsy;
+package com.example.eatsy.search;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,5 +1,6 @@
-package com.example.eatsy;
+package com.example.eatsy.search;
 
+import com.example.eatsy.Post;
 import com.example.eatsy.datamanagement.FireStoreHelper;
 import com.google.firebase.firestore.CollectionReference;
 

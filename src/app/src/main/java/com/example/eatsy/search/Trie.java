@@ -1,4 +1,5 @@
-package com.example.eatsy;
+package com.example.eatsy.search;
+
 /*
     A Trie class is defined to implement a Trie
     (dictionary tree) data structure,

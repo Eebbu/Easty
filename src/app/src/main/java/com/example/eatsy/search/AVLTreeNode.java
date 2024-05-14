@@ -1,4 +1,4 @@
-package com.example.eatsy;
+package com.example.eatsy.search;
 /**
  * The AVLTreeNode class represents a node in an AVL tree.
  * Each node contains data and has a height attribute to help maintain the tree's balance.
