@@ -1,6 +1,8 @@
-package com.example.eatsy;
+package com.example.eatsy.pages;
 
 import android.widget.Toast;
+
+import com.example.eatsy.R;
 
 /**
  * Post of exchange page

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
@@ -15,9 +14,9 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.Eatsy"
-            >
+            android:screenOrientation="unspecified">
         <activity
-                android:name=".MapSelection"
+                android:name=".pages.MapSelection"
                 android:exported="false"/>
 
         <meta-data
@@ -25,40 +24,40 @@
                 android:value="AIzaSyCrZQZDCNIEjK8Sqi-bpHQ4BzsXFyUpQi0"/>
 
         <activity
-                android:name=".PostCard"
+                android:name=".pages.PostCard"
                 android:exported="false"/>
         <activity
                 android:name=".Search"
                 android:exported="true"/>
         <activity
-                android:name=".Post_wanted"
+                android:name=".pages.Post_wanted"
                 android:exported="false"/>
         <activity
-            android:name=".PostDetailActivity"
+            android:name=".pages.PostDetailActivity"
             android:exported="true"/>
         <activity
-                android:name=".Post_donate"
+                android:name=".pages.Post_donate"
                 android:exported="false"/>
         <activity
-                android:name=".Post_exchange"
+                android:name=".pages.Post_exchange"
                 android:exported="false"/>
         <activity
-                android:name=".ProfileActivity"
+                android:name=".pages.ProfileActivity"
                 android:exported="false"/>
 
         <activity
-                android:name=".DashboardActivity"
+                android:name=".pages.DashboardActivity"
                 android:exported="false"/>
         <activity
-                android:name=".AddPage"
+                android:name=".pages.AddPage"
                 android:exported="false"
                 android:theme="@style/TransparentActivity"/>
 
         <activity
-                android:name=".LoginActivity"
+                android:name=".pages.LoginActivity"
                 android:exported="false"/>
         <activity
-                android:name=".MainActivity"
+                android:name=".pages.MainActivity"
                 android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

@@ -1,4 +1,4 @@
-package com.example.eatsy;
+package com.example.eatsy.pages;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -10,6 +10,8 @@ import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.MotionEvent;
+
+import com.example.eatsy.R;
 
 /** Add page UI
  * @author Zihan Yuan(u7773880)

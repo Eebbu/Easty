@@ -1,34 +1,26 @@
-package com.example.eatsy;
+package com.example.eatsy.datamanagement;
 
-import com.google.firebase.firestore.CollectionReference;
+import android.content.Context;
+
+import com.example.eatsy.Post;
+import com.example.eatsy.datamanagement.DataDownloader;
+import com.example.eatsy.userFT;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CompletableFuture;
 import java.util.ArrayList;
 
-public class PostDataDownloader {
+public class PostDataDownloader extends DataDownloader<Post> {
     /**
      * Downloads post data from a specified FireStore collection and stores it in a ConcurrentHashMap.
      * Utilizes FireStore's automatic cache management to handle offline data loading when necessary.
      */
-    public CompletableFuture<ConcurrentHashMap<String, Post>> downloadData(CollectionReference postsCollectionRef) {
-        CompletableFuture<ConcurrentHashMap<String, Post>> future = new CompletableFuture<>();
-
-        postsCollectionRef.get().addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                ConcurrentHashMap<String, Post> postHashMap = new ConcurrentHashMap<>();
-                populateHashMapFromQuerySnapshot(task.getResult(), postHashMap);
-                future.complete(postHashMap);
-            } else {
-                future.completeExceptionally(task.getException());
-            }
-        });
-
-        return future;
+    public PostDataDownloader(Context context) {
+        super(context, Post.class);
     }
-
-    private void populateHashMapFromQuerySnapshot(QuerySnapshot snapshot, ConcurrentHashMap<String, Post> postHashMap) {
+    @Override
+    protected void populateHashMapFromQuerySnapshot(QuerySnapshot snapshot, HashMap<String, Post> postHashMap) {
         snapshot.forEach(document -> {
             String postID = document.getId();
             String userID = document.getString("userID");

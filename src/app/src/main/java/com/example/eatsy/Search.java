@@ -2,37 +2,32 @@ package com.example.eatsy;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QuerySnapshot;
+import com.example.eatsy.pages.DashboardActivity;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
+
 /*This class is for searching and filtering.
         It is used to process user input,
         search data,
         and display search results on the interface.
  */
-public class Search extends AppCompatActivity {
+public class
+Search extends AppCompatActivity {
     private ListView mListVie;
 
     private Map<Integer,String> type = new HashMap<>();
@@ -74,46 +69,40 @@ public class Search extends AppCompatActivity {
         CheckBox checkBox2 = findViewById(R.id.checkBox2);
         CheckBox checkBox3 = findViewById(R.id.checkBox3);
 
-        View.OnClickListener checkBoxClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                boolean isChecked1 = checkBox1.isChecked();
-                boolean isChecked2 = checkBox2.isChecked();
-                boolean isChecked3 = checkBox3.isChecked();
+        View.OnClickListener checkBoxClickListener = v -> {
+            boolean isChecked1 = checkBox1.isChecked();
+            boolean isChecked2 = checkBox2.isChecked();
+            boolean isChecked3 = checkBox3.isChecked();
 
-                String text1 = checkBox1.getText().toString();
-                String text2 = checkBox2.getText().toString();
-                String text3 = checkBox3.getText().toString();
 
-                // Handle the click event here and use isChecked and text to act accordingly
-                if (isChecked1) {
-                    // CheckBox 1 is selected
-                    type.put(1,"donate");
-                } else {
-                    // CheckBox 1 is cancelled
-                    type.remove(1);
-                }
+            // Handle the click event here and use isChecked and text to act accordingly
+            if (isChecked1) {
+                // CheckBox 1 is selected
+                type.put(1,"donate");
+            } else {
+                // CheckBox 1 is cancelled
+                type.remove(1);
+            }
 
-                if (isChecked2) {
-                    // CheckBox 2 is selected
-                    type.put(2,"wanted");
-                } else {
-                    // CheckBox 2 cancelled
-                    type.remove(2);
-                }
+            if (isChecked2) {
+                // CheckBox 2 is selected
+                type.put(2,"wanted");
+            } else {
+                // CheckBox 2 cancelled
+                type.remove(2);
+            }
 
-                if (isChecked3) {
-                    // CheckBox 3 is selected
-                    type.put(3,"exchange");
-                } else {
-                    // CheckBox 3 cancelled
-                    type.remove(3);
-                }
-                if(!type.isEmpty()){
-                    searchData();
-                }else{
-                    searchAll();
-                }
+            if (isChecked3) {
+                // CheckBox 3 is selected
+                type.put(3,"exchange");
+            } else {
+                // CheckBox 3 cancelled
+                type.remove(3);
+            }
+            if(!type.isEmpty()){
+                searchData();
+            }else{
+                searchAll();
             }
         };
         // Set the same click listener for each CheckBox
@@ -133,26 +122,23 @@ public class Search extends AppCompatActivity {
      */
     protected void setEditListener(){
         EditText editText = findViewById(R.id.srch);
-        editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    String searchText = editText.getText().toString().trim();
-                    if(searchText.isEmpty()){
-                        searchAll();
+        editText.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                String searchText = editText.getText().toString().trim();
+                if(searchText.isEmpty()){
+                    searchAll();
+                }else{
+                    Test.Node node = matchToken(searchText);
+                    if (node==null) {
+                        Toast.makeText(Search.this, "Please enter only English letters", Toast.LENGTH_SHORT).show();
                     }else{
-                        Test.Node node = matchToken(searchText);
-                        if (node==null) {
-                            Toast.makeText(Search.this, "Please enter only English letters", Toast.LENGTH_SHORT).show();
-                        }else{
-                            //searchText = searchText.replaceAll("[^a-zA-Z0-9\\s]", "");
-                            searchByTest(node.toArray().toArray(new String[0]));
-                        }
+                        //searchText = searchText.replaceAll("[^a-zA-Z0-9\\s]", "");
+                        searchByTest(node.toArray().toArray(new String[0]));
                     }
-                    return true;
                 }
-                return false;
+                return true;
             }
+            return false;
         });
     }
 
@@ -169,8 +155,7 @@ public class Search extends AppCompatActivity {
         Test.Parser parser = new Test.Parser(tokens);
         try {
 
-            Test.Node rootNode = parser.parseExp();
-            return rootNode;
+            return parser.parseExp();
         } catch (Test.IllegalProductionException e) {
             return null;
         }
@@ -248,14 +233,9 @@ public class Search extends AppCompatActivity {
         // Check if all queries have completed
         // Sort the results according to the number of occurrences
         ArrayList<Post> sortedResults = new ArrayList<>(allResults);
-        Collections.sort(sortedResults, (post1, post2) ->
-                resultCountMap.get(post2).compareTo(resultCountMap.get(post1))
-        );
+        sortedResults.sort((post1, post2) ->
+                resultCountMap.get(post2).compareTo(resultCountMap.get(post1)));
         mListVie = findViewById(R.id.lv);
         mListVie.setAdapter(new ListDataAdapter(Search.this, sortedResults));
     }
-
-
 }
-
-

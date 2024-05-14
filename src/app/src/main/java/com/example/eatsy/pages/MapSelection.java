@@ -1,4 +1,4 @@
-package com.example.eatsy;
+package com.example.eatsy.pages;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.widget.*;
 
 
+import com.example.eatsy.R;
 import com.google.android.gms.maps.*;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -28,18 +29,20 @@ public class MapSelection extends AppCompatActivity implements OnMapReadyCallbac
     private GoogleMap mMap;
     private double selectedLatitude;
     private double selectedLongitude;
+
+    //initialize the map to canberra.
     private static final LatLng CANBERRA = new LatLng(-35.282001, 149.128998);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_map_selection);
+        setContentView(com.example.eatsy.R.layout.activity_map_selection);
 
-        ImageButton go_back = findViewById(R.id.leftArrowButton);
+        ImageButton go_back = findViewById(com.example.eatsy.R.id.leftArrowButton);
         go_back.setOnClickListener(v -> finish());
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
+                .findFragmentById(com.example.eatsy.R.id.map);
         assert mapFragment != null;
         mapFragment.getMapAsync(this);
 
@@ -62,10 +65,12 @@ public class MapSelection extends AppCompatActivity implements OnMapReadyCallbac
         });
     }
 
+
+    //return address, latitude and longitude to who calling this function.
     private void getAddress(double latitude, double longitude) {
         Geocoder geocoder = new Geocoder(this, Locale.getDefault());
         try {
-            List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 5);
+            List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 10);
             if (addresses != null && addresses.size() > 0) {
                 Set<String> addressSet = new HashSet<>();
                 for (Address address : addresses) {
