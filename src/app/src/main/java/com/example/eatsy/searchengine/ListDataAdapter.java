@@ -1,4 +1,4 @@
-package com.example.eatsy.search;
+package com.example.eatsy.searchengine;
 
 import android.content.Context;
 import android.content.Intent;

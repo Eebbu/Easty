@@ -1,4 +1,4 @@
-package com.example.eatsy.search;
+package com.example.eatsy.searchengine;
 /*
     To support the implementation of trie, we define this class.
     The Trie data structure can build a vocabulary character by character,

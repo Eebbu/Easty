@@ -1,4 +1,4 @@
-package com.example.eatsy.search;
+package com.example.eatsy.searchengine;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

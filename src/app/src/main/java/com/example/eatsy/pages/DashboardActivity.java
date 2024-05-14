@@ -18,7 +18,7 @@ import com.example.eatsy.datamanagement.DataManager;
 import com.example.eatsy.Post;
 import com.example.eatsy.PostAdapter;
 import com.example.eatsy.R;
-import com.example.eatsy.search.Search;
+import com.example.eatsy.searchengine.Search;
 import com.example.eatsy.userFT;
 
 import java.util.ArrayList;

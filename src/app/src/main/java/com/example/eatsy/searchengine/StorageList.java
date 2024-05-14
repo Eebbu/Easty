@@ -1,4 +1,4 @@
-package com.example.eatsy.search;
+package com.example.eatsy.searchengine;
 
 import com.example.eatsy.Post;
 import com.example.eatsy.datamanagement.FireStoreHelper;

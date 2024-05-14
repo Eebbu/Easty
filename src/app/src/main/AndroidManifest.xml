@@ -27,7 +27,7 @@
                 android:name=".pages.PostCard"
                 android:exported="false"/>
         <activity
-                android:name=".search.Search"
+                android:name=".searchengine.Search"
                 android:exported="true"/>
         <activity
                 android:name=".pages.Post_wanted"

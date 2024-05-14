@@ -1,4 +1,4 @@
-package com.example.eatsy.search;
+package com.example.eatsy.searchengine;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,7 +17,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.eatsy.Post;
 import com.example.eatsy.R;
 import com.example.eatsy.pages.DashboardActivity;
-import com.example.eatsy.search.Trie;
 
 import java.util.ArrayList;
 import java.util.Collections;
