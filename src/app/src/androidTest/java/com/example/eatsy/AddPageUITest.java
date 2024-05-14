@@ -31,6 +31,11 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+/**
+ * This class tests the display of elements on Add page activity and their functionality.
+ * @Author : Vishakha Mathur(u7663368)
+ */
+
 @RunWith(AndroidJUnit4.class)
 public class AddPageUITest {
 
@@ -64,12 +69,15 @@ public class AddPageUITest {
     }
 
 
+    // This method tests whether textview donateCard takes us to the Post_donate class.
     @Test
     public void testClickOnDonateCard() {
         onView(withId(R.id.donateCard)).perform(click());
         intended(hasComponent(Post_donate.class.getName()));
 
     }
+
+    // This method tests whether textview exchangeCard takes us to the Post_exchange class.
 
     @Test
     public void testClickOnExchangeCard() {
@@ -78,6 +86,7 @@ public class AddPageUITest {
 
     }
 
+    // This method tests whether textview wantedCard takes us to the Post_wanted class.
     @Test
     public void testClickOnWantedCard() {
         onView(withId(R.id.wantedCard)).perform(click());
