@@ -2,42 +2,47 @@ package com.example.eatsy;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.eatsy.pages.DashboardActivity;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-
-/*This class is for searching and filtering.
-        It is used to process user input,
-        search data,
-        and display search results on the interface.
+import java.util.concurrent.atomic.AtomicInteger;
+/**
+ * This class handles search and filter functionalities within the application.
+ * It processes user inputs for search terms and selected filter criteria, queries data accordingly,
+ * and updates the UI to display the search results.
+ * Author: Lin Xi(u7777752)
  */
-public class
-Search extends AppCompatActivity {
+public class Search extends AppCompatActivity {
     private ListView mListVie;
 
     private Map<Integer,String> type = new HashMap<>();
 
     @Override
-/*
-    When the user clicks the back button
-    (go_back),
-    it ends the current activity
-    and returns to DashboardActivity
+/**
+ * This class handles search and filter functionalities within the application.
+ * It processes user inputs for search terms and selected filter criteria, queries data accordingly,
+ * and updates the UI to display the search results.
  */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,56 +58,56 @@ Search extends AppCompatActivity {
         searchAll();
     }
 
-/*
-    Three checkboxes (checkBox1, checkBox2, checkBox3) are provided,
-    allowing users to filter posts based on different types
-    (e.g. "Donate", "Need", "Exchange").
-    Based on the checkboxes selected by the user,
-    update a type map that stores the selected types
-    and call the searchData method to filter posts based on these types,
-    or call the searchAll method to display all posts if no checkboxes are selected.
-
- */
+/**
+     * Sets up listeners for three checkboxes, allowing users to filter posts based on types like "Donate", "Need", "Exchange".
+            * It updates the type map according to selections and performs searches based on these filters.
+     */
 
     protected void setCheckListener(){
         CheckBox checkBox1 = findViewById(R.id.checkBox1);
         CheckBox checkBox2 = findViewById(R.id.checkBox2);
         CheckBox checkBox3 = findViewById(R.id.checkBox3);
 
-        View.OnClickListener checkBoxClickListener = v -> {
-            boolean isChecked1 = checkBox1.isChecked();
-            boolean isChecked2 = checkBox2.isChecked();
-            boolean isChecked3 = checkBox3.isChecked();
+        View.OnClickListener checkBoxClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean isChecked1 = checkBox1.isChecked();
+                boolean isChecked2 = checkBox2.isChecked();
+                boolean isChecked3 = checkBox3.isChecked();
 
+                String text1 = checkBox1.getText().toString();
+                String text2 = checkBox2.getText().toString();
+                String text3 = checkBox3.getText().toString();
 
-            // Handle the click event here and use isChecked and text to act accordingly
-            if (isChecked1) {
-                // CheckBox 1 is selected
-                type.put(1,"donate");
-            } else {
-                // CheckBox 1 is cancelled
-                type.remove(1);
-            }
+                // Handle the click event here and use isChecked and text to act accordingly
+                if (isChecked1) {
+                    // CheckBox 1 is selected
+                    type.put(1,"donate");
+                } else {
+                    // CheckBox 1 is cancelled
+                    type.remove(1);
+                }
 
-            if (isChecked2) {
-                // CheckBox 2 is selected
-                type.put(2,"wanted");
-            } else {
-                // CheckBox 2 cancelled
-                type.remove(2);
-            }
+                if (isChecked2) {
+                    // CheckBox 2 is selected
+                    type.put(2,"wanted");
+                } else {
+                    // CheckBox 2 cancelled
+                    type.remove(2);
+                }
 
-            if (isChecked3) {
-                // CheckBox 3 is selected
-                type.put(3,"exchange");
-            } else {
-                // CheckBox 3 cancelled
-                type.remove(3);
-            }
-            if(!type.isEmpty()){
-                searchData();
-            }else{
-                searchAll();
+                if (isChecked3) {
+                    // CheckBox 3 is selected
+                    type.put(3,"exchange");
+                } else {
+                    // CheckBox 3 cancelled
+                    type.remove(3);
+                }
+                if(!type.isEmpty()){
+                    searchData();
+                }else{
+                    searchAll();
+                }
             }
         };
         // Set the same click listener for each CheckBox
@@ -111,37 +116,42 @@ Search extends AppCompatActivity {
         checkBox3.setOnClickListener(checkBoxClickListener);
     }
 
-    /*
-        Through a text input box (editText),
-        the user can enter search keywords.
-        Text searches are handled via the setEditListener method,
-        which sanitizes the user input,
-        removes non-alphanumeric characters,
-        and splits the text by spaces to obtain an array of keywords.
-        Call the searchByTest method to search based on the keyword array.
+    /**
+     * Sets up a listener for the search input field. When the user submits a search,
+     * the input is processed to extract keywords, which are then used to filter posts.
      */
     protected void setEditListener(){
         EditText editText = findViewById(R.id.srch);
-        editText.setOnEditorActionListener((v, actionId, event) -> {
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                String searchText = editText.getText().toString().trim();
-                if(searchText.isEmpty()){
-                    searchAll();
-                }else{
-                    Test.Node node = matchToken(searchText);
-                    if (node==null) {
-                        Toast.makeText(Search.this, "Please enter only English letters", Toast.LENGTH_SHORT).show();
+        editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    String searchText = editText.getText().toString().trim();
+                    if(searchText.isEmpty()){
+                        searchAll();
                     }else{
-                        //searchText = searchText.replaceAll("[^a-zA-Z0-9\\s]", "");
-                        searchByTest(node.toArray().toArray(new String[0]));
+                        Test.Node node = matchToken(searchText);
+                        if (node==null) {
+                            Toast.makeText(Search.this, "Please enter only English letters", Toast.LENGTH_SHORT).show();
+                        }else{
+                            //searchText = searchText.replaceAll("[^a-zA-Z0-9\\s]", "");
+                            searchByTest(node.toArray().toArray(new String[0]));
+                        }
                     }
+                    return true;
                 }
-                return true;
+                return false;
             }
-            return false;
         });
     }
-
+    /**
+     * Parses the input string into a syntax tree based on predefined grammar rules using a custom parser.
+     * This method tokenizes the input string, creates tokens for each word and space, and then attempts
+     * to parse these tokens into a structured syntax tree (AST).
+     *
+     * @param searchTest The input string from the search text box to be tokenized and parsed.
+     * @return A Node representing the root of the syntax tree if parsing is successful; otherwise, null if an error occurs.
+     */
     private Test.Node matchToken(String searchTest){
         List<Test.Token> tokens = new ArrayList<>();
         String[] s1 = searchTest.split(" ");
@@ -155,15 +165,16 @@ Search extends AppCompatActivity {
         Test.Parser parser = new Test.Parser(tokens);
         try {
 
-            return parser.parseExp();
+            Test.Node rootNode = parser.parseExp();
+            return rootNode;
         } catch (Test.IllegalProductionException e) {
             return null;
         }
     }
 
 
-    /*
-        Filter posts based on the type selected by the user via checkbox.
+    /**
+     * Filters posts based on selected types from checkboxes.
      */
     private void searchData(){
         List<Post> resList = new ArrayList<>();
@@ -178,8 +189,8 @@ Search extends AppCompatActivity {
 
 
 
-    /*
-        Show all posts without any filters.
+    /**
+     * Displays all posts without any filters.
      */
     private void searchAll(){
         mListVie = findViewById(R.id.lv);
@@ -192,10 +203,9 @@ Search extends AppCompatActivity {
     }
 
 
-    /*
-        Search posts based on keywords entered by the user.
-        It uses a custom Trie data structure to match keyword prefixes
-        and counts the number of matching keywords in each post title for sorting and display.
+    /**
+     * Searches posts based on user-entered keywords in the search text box.
+     * @param keywords The search keywords to use for filtering posts.
      */
     private void searchByTest(String[] keywords) {
         Trie trie = new Trie();
@@ -233,9 +243,14 @@ Search extends AppCompatActivity {
         // Check if all queries have completed
         // Sort the results according to the number of occurrences
         ArrayList<Post> sortedResults = new ArrayList<>(allResults);
-        sortedResults.sort((post1, post2) ->
-                resultCountMap.get(post2).compareTo(resultCountMap.get(post1)));
+        Collections.sort(sortedResults, (post1, post2) ->
+                resultCountMap.get(post2).compareTo(resultCountMap.get(post1))
+        );
         mListVie = findViewById(R.id.lv);
         mListVie.setAdapter(new ListDataAdapter(Search.this, sortedResults));
     }
+
+
 }
+
+
