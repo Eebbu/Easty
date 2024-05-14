@@ -130,7 +130,7 @@ EATSY is a platform where people can donate, exchange, ask for food ensuring res
 
 ### Main Page
 
-This is the main page that appears when we start the app. The button takes us to the lgoin page. 
+This is the main page that appears when we start the app. The button takes us to the login page. 
 <div align="center"> <img src="mainPage.png" alt="Main page" width="250px"> </div>
 
 ### Login Page
