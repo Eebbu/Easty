@@ -78,12 +78,12 @@ Note that the core criteria of contribution is based on `code contribution` (the
     - [You are welcome to provide anything that you consider as a contribution to the project or team.] e.g., APK, setups, firebase* <br><br>
 1. **U7777752, Lin Xi** I have 20% contribution, as follows:<br>
 **Code Contribution in the final App**
-   - Search feature(medium) - class Search:[Search.java](url) 
-   - Search filter(easy) - class Search:[Search.java](url) - class activity_search:[activity_search.xml](url)
-   - Data fetching - class StorageList:[StorageList.java](url)
-   - Store data in AVLTree - class AVLTree:[AVLTree.java](url) - class AVLTreeNode:[AVLTreeNode.java](url)
-   - Adapter pattern - class ListDataAdapter:[ListDataAdapter.java](url)
-   - Display data - class PostDetailActivity:[PostDetailActivity.java](url) -class activity_post_detail:[activity_post_detail.aml](url) 
+   - Search feature(medium) - class Search:[Search.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/searchengine/Search.java?ref_type=heads) 
+   - Search filter(easy) - class Search:[Search.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/searchengine/Search.java?ref_type=heads) - class activity_search:[activity_search.xml](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/layout/activity_search.xml?ref_type=heads)
+   - Data fetching - class StorageList:[StorageList.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/searchengine/StorageList.java?ref_type=heads)
+   - Store data in AVLTree - class AVLTree:[AVLTree.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/searchengine/AVLTree.java?ref_type=heads) - class AVLTreeNode:[AVLTreeNode.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/searchengine/AVLTreeNode.java?ref_type=heads)
+   - Adapter pattern - class ListDataAdapter:[ListDataAdapter.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/searchengine/ListDataAdapter.java?ref_type=heads)
+   - Display data - class PostDetailActivity:[PostDetailActivity.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/PostDetailActivity.java?ref_type=heads) -class activity_post_detail:[activity_post_detail.xml](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/layout/activity_post_detail.xml?ref_type=heads) 
 
 2. **U7705128, Boxuan Lin**  I have 20% contribution, as follows: <br>
   - **Code Contribution in the final App**
