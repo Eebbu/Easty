@@ -33,9 +33,6 @@
                 android:name=".pages.Post_wanted"
                 android:exported="false"/>
         <activity
-            android:name=".pages.PostDetailActivity"
-            android:exported="true"/>
-        <activity
                 android:name=".pages.Post_donate"
                 android:exported="false"/>
         <activity
