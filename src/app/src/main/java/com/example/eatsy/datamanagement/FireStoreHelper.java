@@ -64,11 +64,14 @@ public class FireStoreHelper {
     private static void uploadPost(Post post){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
+
         String userEmail = user.getEmail(); // Get current user's email address
         String newPostId = DataManager.generateTimestampBasedId(); // Generate ID based on timestamp
 
+
+
         Map<String, Object> postMap = new HashMap<>();
-        postMap.put("userName", DashboardActivity.users.get(userEmail));
+        postMap.put("userName", DashboardActivity.users.get(userEmail).getUsername());
         postMap.put("userID", userEmail);
         postMap.put("postType", post.getPostType());
         postMap.put("postTitle", post.getPostTitle());
