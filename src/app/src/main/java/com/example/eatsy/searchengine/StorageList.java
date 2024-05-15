@@ -40,7 +40,7 @@ public class StorageList {
                 task.getResult().forEach(document -> {
                     String id = document.getId();
                     String userID = document.getString("userID");
-                    String userName = document.getString("userName");
+                    String userName = document.getString("username");
                     String postType = document.getString("postType");
                     String postTitle = document.getString("postTitle");
                     String postDescription = document.getString("postDescription");
@@ -49,7 +49,7 @@ public class StorageList {
                     String latitude = document.getString("latitude");
                     String longitude = document.getString("longitude");
                     ArrayList<String> images = (ArrayList<String>) document.get("images");
-                    Post post = new Post(id,userID, userName, postType, postTitle, postDescription, quantity, pickUpTimes, latitude, longitude, images);
+                    Post post = new Post(userID, userName, postType, postTitle, postDescription, quantity, pickUpTimes, latitude, longitude, images);
                     resList.add(post);
                     mapList.put(id,post);
                 });

@@ -8,6 +8,8 @@ import com.example.eatsy.datamanagement.PostDataDownloader;
 import com.example.eatsy.datamanagement.UserDataDownloader;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreSettings;
 
 /**
  * Application entry class, responsible for initializing Firebase and downloading necessary user and post data.
@@ -26,35 +28,39 @@ public class MyApplication extends Application {
         super.onCreate();
         FirebaseApp.initializeApp(this);
 
+
+
         CollectionReference usersCollectionRef = FireStoreHelper.getCollectionRef("users");
-        userDataDownloader = new UserDataDownloader(this);
+    userDataDownloader = new UserDataDownloader(this);
 
-        // Get the posts collection reference
-        CollectionReference postsCollectionRef = FireStoreHelper.getCollectionRef("posts");
-        postDownloader = new PostDataDownloader(this);
+    // Get the posts collection reference
+    CollectionReference postsCollectionRef = FireStoreHelper.getCollectionRef("posts");
+    postDownloader = new PostDataDownloader(this);
 
-        // Call the asynchronous method, and handle the returned CompletableFuture
+    // Call the asynchronous method, and handle the returned CompletableFuture
         userDataDownloader.downloadData(usersCollectionRef)
-                .thenAccept(data ->  {
+            .thenAccept(data ->  {
 
-                    DataManager.getDataInstance().setUserHashMap(data); // store data to DataManager
-                    // Print the user data to verify contents
-                    System.out.println("Downloaded User Data:");
-                    data.forEach((key, value) -> System.out.println(key + " -> " + value));
-                });
-        // Download and handle post data
+        DataManager.getDataInstance().setUserHashMap(data); // store data to DataManager
+        // Print the user data to verify contents
+        System.out.println("Downloaded User Data:");
+        data.forEach((key, value) -> System.out.println(key + " -> " + value));
+    });
+    // Download and handle post data
         postDownloader.downloadData(postsCollectionRef)
-                .thenAccept(data -> { DataManager.getDataInstance().setPostHashMap(data); // Store to DataManager
-                    data.forEach((key, value) -> System.out.println(key + " -> " + value));
-                    // Success: post data received
-                })
-                .exceptionally(ex -> {
-                    // Handle the case of post data download failure
-                    System.err.println("Post data download failed: " + ex.getMessage());
+            .thenAccept(data -> {
+                System.out.println("Downloaded Post Data:");
+                DataManager.getDataInstance().setPostHashMap(data); // Store to DataManager
+        data.forEach((key, value) -> System.out.println(key + " -> " + value));
+        // Success: post data received
+    })
+            .exceptionally(ex -> {
+        // Handle the case of post data download failure
+        System.err.println("Post data download failed: " + ex.getMessage());
 
-                    return null;
-                });
-    }
+        return null;
+    });
+}
 
 
 

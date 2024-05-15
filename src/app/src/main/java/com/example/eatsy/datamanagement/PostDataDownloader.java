@@ -25,17 +25,18 @@ public class PostDataDownloader extends DataDownloader<Post> {
     protected void populateHashMapFromQuerySnapshot(QuerySnapshot snapshot, HashMap<String, Post> postHashMap) {
         snapshot.forEach(document -> {
             String postID = document.getId();
-            String userID = document.getString("userID");
-            String userName = document.getString("userName");
-            String postType = document.getString("postType");
-            String postTitle = document.getString("postTitle");
-            String postDescription = document.getString("postDescription");
-            String quantity = document.getString("quantity");
-            String pickUpTimes = document.getString("pickUpTimes");
-            String latitude = document.getString("latitude");
-            String longitude = document.getString("longitude");
-            ArrayList<String> images = (ArrayList<String>) document.get("images");
-            Post post = new Post(userID, userName, postType, postTitle, postDescription, quantity, pickUpTimes, latitude, longitude, images);
+            String userID = document.contains("userID") ? document.getString("userID") : "";
+            String userName = document.contains("userName") ? document.getString("userName") : "";
+            String postType = document.contains("postType") ? document.getString("postType") : "";
+            String postTitle = document.contains("postTitle") ? document.getString("postTitle") : "";
+            String postDescription = document.contains("postDescription") ? document.getString("postDescription") : "";
+            String quantity = document.contains("quantity") ? document.getString("quantity") : "";
+            String pickUpTimes = document.contains("pickUpTimes") ? document.getString("pickUpTimes") : "";
+            String latitude = document.contains("latitude") ? document.getString("latitude") : "";
+            String longitude = document.contains("longitude") ? document.getString("longitude") : "";
+            ArrayList<String> images = document.contains("images") ? (ArrayList<String>) document.get("images") : new ArrayList<>();
+
+            Post post = new Post(postID, userID, userName, postType, postTitle, postDescription, quantity, pickUpTimes, latitude, longitude, images);
             postHashMap.put(postID, post);
         });
     }
