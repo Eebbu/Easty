@@ -26,10 +26,9 @@ import java.util.List;
 import java.util.Locale;
 /**
  * Functionalities
- * 1) An activity to show selected post from dashboard.(Jinyang Zeng)
+ * 1) An activity to show post deatails from dashboard, search page.(Jinyang Zeng)
  * @author Jinyang Zeng(7727175)
  */
-
 public class PostCard extends AppCompatActivity implements OnMapReadyCallback {
     private LatLng selectedLocation;
 
@@ -42,15 +41,18 @@ public class PostCard extends AppCompatActivity implements OnMapReadyCallback {
         ImageButton go_back = findViewById(R.id.leftArrowButton);
         go_back.setOnClickListener(v -> finish());
 
+
         Post clickedPost = (Post) getIntent().getSerializableExtra("clickedPost");
         double latitude;
         double longitude;
         if (clickedPost.getLatitude()==null){
+            //default value center of Canberra;
             latitude = -35.2809;
         }else {
             latitude = Double.parseDouble(clickedPost.getLatitude());
         }
         if (clickedPost.getLongitude()==null){
+            //default value center of Canberra;
             longitude = 149.1300;
         }else {
             longitude = Double.parseDouble(clickedPost.getLongitude());

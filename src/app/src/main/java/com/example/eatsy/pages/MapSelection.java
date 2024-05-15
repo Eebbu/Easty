@@ -56,6 +56,8 @@ public class MapSelection extends AppCompatActivity implements OnMapReadyCallbac
         mMap.getUiSettings().setZoomGesturesEnabled(false);
         mMap.getUiSettings().setZoomControlsEnabled(true);
 
+
+        //make a maker to show where the user selected.
         mMap.setOnMapClickListener(latLng -> {
             mMap.clear();
             mMap.addMarker(new MarkerOptions().position(latLng).title("Selected Location"));

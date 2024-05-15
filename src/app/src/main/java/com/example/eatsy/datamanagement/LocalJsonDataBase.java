@@ -14,7 +14,11 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.util.HashMap;
-
+/**
+ * Functionalities
+ * 1) A function to load data when the database is offline.(Jinyang Zeng)
+ * @author Jinyang Zeng(7727175)
+ */
 public class LocalJsonDataBase {
     public static HashMap<String, Post> read(Context context) {
 
@@ -39,7 +43,6 @@ public class LocalJsonDataBase {
     }
 
     public static HashMap<String, userFT> readUser(Context context) {
-        System.out.println("new reader lists is created.");
 
         try {
             InputStream inputStream = context.getResources().openRawResource(R.raw.users_without_password);

@@ -40,7 +40,7 @@ The key area(s) of responsibilities for each member
 | UID      |      Name       |                                                                                                                                                                                                                                Role |
 |:---------|:---------------:|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
 | u7663368 | Vishakha Mathur | MainActivity, Login Activity, LoginUser (singleton pattern), Profile Activity and UI design(main page, login page, dashboard, profile page), uploading images on profile page from phone to firebase, singleton design pattern test |
-| u7727175 |  Jinyang Zeng    |GPS，choose location function, DataStream-Load data，show data in dashboard, and Load data from local json，Generate post data from user input|
+| u7727175 |  Jinyang Zeng    |DataStream, MapSelection activity(GPS) and its UI design, Load show data in dashboard and detailed post page，postcard activity and its UI design，Generate post data from user input |
 | u7777752 |     Lin Xi      |UI design (Search page and Search_detailed page), Tokenizer, Parser, Data Structure (Hashmap, AVLTree, Arraylist, Hashset, Trie), Data Fetching, Searching and filtering, Testing (Search), Design Patterns (Adapter, Builder) |
 | u7773880 |   Zihan Yuan    |Add Activity, Post activity(post_donate, post_exchange, post_wanted), page redirection, two factory design patterns, Data Stream(get images from album and upload image to Firebase) |
 | u7705128 |   Boxuan Lin     |Create 2600+ post instances and 2500 user accounts, storing all of the data in Firebase. Providing methods for downloading and updating data from Firebase. |
@@ -91,7 +91,9 @@ Note that the core criteria of contribution is based on `code contribution` (the
     - Firebase Persistent(medium) - class [DataManager.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/datamanagement/DataManager.java?ref_type=heads), [FireStoreHelper.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/datamanagement/FireStoreHelper.java?ref_type=heads), [PostDataDownloader.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/datamanagement/PostDataDownloader.java?ref_type=heads), [UserDataDownloader.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/datamanagement/UserDataDownloader.java?ref_type=heads). <br>
      - DataFiles(easy) Local storage: [posts.json](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/raw/posts.json?ref_type=heads), [users_without_password.json](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/raw/users_without_password.json?ref_type=heads).
       - Singleton Design Pattern -  [DataManager.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/datamanagement/DataManager.java?ref_type=heads).
-3. **U7663368, Vishakha Mathur** I have 20% contribution, as follows: <br>
+
+      
+3.**U7663368, Vishakha Mathur** I have 20% contribution, as follows: <br>
   - **Code Contribution in the final App**
     - Login feature - class LoginActivity: [LoginActivity.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/LoginActivity.java).
     - Data Profile(displaying user details, uploading images to the firebase) - class ProfileAcitvity: [ProfileActivity.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/ProfileActivity.java).
@@ -111,14 +113,20 @@ Note that the core criteria of contribution is based on `code contribution` (the
 
 4. **U7727175, Jinyang Zeng**  I have 20% contribution, as follows: <br>
 - **Code Contribution in the final App**
-  - Data Stream feature - class DashboardActivity: [DashboardActivity.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/DashboardActivity.java), class PostAdapter: [PostAdapter.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/PostAdapter.java), function [addPostToFirbase()](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/post_base.java?ref_type=heads#L48-115)
-  - GPS feature - class postCard: [postCard.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/postCard.java), class MapSelection:[MapSelection.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/MapSelection.java)
-  - Other contribution: [ImportDataFromLocalJson.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/ImportDataFromLocalJson.java),  [Dashboard.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/DashboardActivity.java) 
-  - UI design of [activity_map_selection.xml](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/layout/activity_map_selection.xml), [activity_post_card.xml](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/layout/activity_post_card.xml), [item_post.xml](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/layout/item_post.xml)
-  - 
-    **Code and App Design**
-  - Singleton Design Pattern.
-  - ScrollView, LinearLayout, Picasso, pictures and icons.
+    - Data Stream feature - function simulateDataStream: [simulateDataStream()](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/DashboardActivity.java#L121-145)
+    - Load Show Data - class PostCard: [PostCard.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/PostCard.java)
+,class DashboardActivity:[DashboardActivity.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/DashboardActivity.java)
+,class PostAdapter: [PostAdapter.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/PostAdapter.java)
+    - GPS feature - class MapSelection: [MapSelection.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/MapSelection.java)
+, class PostCard: [PostCard.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/PostCard.java#L45-62)
+    - Other contribution: [LocalJsonDataBase class](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/datamanagement/LocalJsonDataBase.java)
+,[Post_base class](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/Post_base.java#L53-116): addPostToFirebase()
+,[FireStoreHelper class](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/datamanagement/FireStoreHelper.java#L38-49): createAndPost(Post post)
+,[combined PostFT and Post class](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/commit/b2f746ff6fd9f0a8d18f10b270be4494d815aa3b)
+    - UI design of [activity_map_selection.xml](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/layout/activity_map_selection.xml)
+, [activity_post_card.xml](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/layout/activity_post_card.xml)
+, [item_post.xml](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/layout/item_post.xml)
+
 5. **U7773880, Zihan Yuan**  I have 20% contribution, as follows: <br>
 - **Code Contribution in the final App**
   - LoadShowData - class Post_base to upload and show images: [Post_base.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/Post_base.java?ref_type=heads)

@@ -52,13 +52,10 @@ public abstract class Post_base extends AppCompatActivity {
     // Request codes for intents
     private static final int PICK_IMAGE_REQUEST = 1;
     private static final int PICK_MAP_REQUEST = 2;
-    // Abstract methods to be implemented by child classes for post submission and validation
+    // Methods to create post in app and prepare the Post object to be uploaded to firebase.
     protected Post addPostToFirebase(){
-
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String userName = DashboardActivity.users.get(user.getEmail()).getUsername();
-
-        //post type?
 
         //post_title
         String postTitle = titleEditText.getText().toString().trim();
@@ -79,10 +76,9 @@ public abstract class Post_base extends AppCompatActivity {
             quantity = radioButton.getText().toString();
         }
 
-
         String latitude = selectedLatitude;
         String longitude = selectedLongitude;
-
+        //create post in app. And prepare Post object for Data uploading.
         if (this.getClass() == Post_wanted.class){
             Factory_wanted post = new Factory_wanted(userName,postTitle,description,quantity,latitude,longitude);
             DashboardActivity.postsToShow.add(0,post);
@@ -90,13 +86,11 @@ public abstract class Post_base extends AppCompatActivity {
             return post;
         }
 
-
+        //additional fields for donate and exchange posts.
         String pick_up_times = "";
         if (null != pickupTimeEditText) {
             pick_up_times = pickupTimeEditText.getText().toString().trim();
         }
-
-
         String image = filePath.toString();
 
         if (this.getClass() == Post_donate.class) {
@@ -107,7 +101,7 @@ public abstract class Post_base extends AppCompatActivity {
             return post;
         }
 
-
+        //additional fields for exchange posts.
         String wantInExchange;
         wantInExchange = wantEditText.getText().toString().trim();
 
@@ -211,8 +205,6 @@ public abstract class Post_base extends AppCompatActivity {
                 selectedLongitude = String.valueOf(selectedPoint[1]);
                 String selectedAddress = data.getStringExtra("selectedAddress");
                 addressText.setText(selectedAddress);
-
-
             }
         }
     }

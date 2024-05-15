@@ -15,9 +15,9 @@ import java.util.List;
 /**
  * Functionalities
  * 1) adapter to show poster(Jinyang Zeng)
+ * 2) function of listening the click action and lead to post detailed page.
  * @author Jinyang Zeng(7727175)
  */
-
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder> {
 
     private final List<Post> posts;
