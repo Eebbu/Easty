@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.ArrayList;
 /**
- * Author: Boxuan Lin(u7705128)
+ * @author : Boxuan Lin(u7705128)
  */
 public class PostDataDownloader extends DataDownloader<Post> {
     /**

@@ -8,7 +8,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.HashMap;
 /**
- * Author: Boxuan Lin(u7705128)
+ * @author : Boxuan Lin(u7705128)
  */
 public class UserDataDownloader extends DataDownloader<userFT> {
     /**

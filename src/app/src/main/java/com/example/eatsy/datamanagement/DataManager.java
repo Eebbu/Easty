@@ -11,7 +11,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * This class implements a singleton pattern for
  * managing and storing the mapping relationship
  * between user (userFT) and post (Post) data
- * Author: Boxuan Lin(u7705128), Lin Xi(u7777752) and Jinyang Zeng(u7727175)
+ * @author : Boxuan Lin(u7705128), Lin Xi(u7777752) and Jinyang Zeng(u7727175)
  */
 public class DataManager {
     private static final DataManager instance = new DataManager();

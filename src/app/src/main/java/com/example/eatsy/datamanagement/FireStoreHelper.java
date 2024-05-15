@@ -20,7 +20,7 @@ import java.util.UUID;
 /**
  * FireStoreHelper is a utility class for interacting with Firebase Firestore and Firebase Storage.
  * It includes methods for posting data and managing Firestore collections.
- * Author: Boxuan Lin(u7705128) and Jinyang Zeng(u7727175)
+ * @author : Boxuan Lin(u7705128) and Jinyang Zeng(u7727175)
  */
 public class FireStoreHelper {
     private static final FirebaseFirestore db = FirebaseFirestore.getInstance();

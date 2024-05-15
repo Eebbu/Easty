@@ -12,6 +12,7 @@ import java.util.concurrent.CompletableFuture;
 /**
  * DataDownloader is an abstract class for downloading data from Firebase Firestore
  * and local JSON files.
+ * @author : Boxuan Lin(u7705128)
  * @param <T> The type of data to download
  */
 public abstract class DataDownloader<T> {
