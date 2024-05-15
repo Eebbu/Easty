@@ -30,6 +30,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.io.IOException;
+/**
+ * @Author : Zihan Yuan(u7773880) Jinyang Zeng(7727175)
+ */
 
 // Protected UI components accessible by child classes
 public abstract class Post_base extends AppCompatActivity {

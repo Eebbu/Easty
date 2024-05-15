@@ -34,6 +34,10 @@ import static org.hamcrest.Matchers.equalTo;
 import com.example.eatsy.pages.MapSelection;
 import com.example.eatsy.pages.Post_donate;
 import com.example.eatsy.pages.Post_exchange;
+/**
+ * Testing the UI of Post activity.
+ * @Author : Zihan Yuan(u7773880)
+ */
 
 @RunWith(AndroidJUnit4.class)
 @LargeTest

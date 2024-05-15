@@ -11,6 +11,10 @@ import org.junit.runner.RunWith;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 import org.robolectric.RobolectricTestRunner;
+/**
+ * Testing the factory design pattern.
+ * @Author : Zihan Yuan(u7773880)
+ */
 
 public class FactoryTest {
     @Test

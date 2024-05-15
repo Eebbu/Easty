@@ -35,6 +35,10 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+/**
+ * Testing the UI of Post activity.
+ * @Author : Zihan Yuan(u7773880)
+ */
 
 @RunWith(AndroidJUnit4.class)
 @LargeTest
