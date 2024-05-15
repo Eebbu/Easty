@@ -262,6 +262,55 @@ When we click on any post under the search term, we can see the specific content
     they will have an idea of where to get this food from. 
 
 *List all the use cases in text descriptions or create use case diagrams. Please refer to https://www.visual-paradigm.com/guide/uml-unified-modeling-language/what-is-use-case-diagram/ for use case diagram.*
+* Following is the list of use cases of our application;
+* Actor: User
+* * Our actor will be the user since he/she will be interacting with the app in order to donate, exchange or get food. 
+
+* Use Case 1: Login
+* * The user can log into the app. 
+* * Precondition: The user must have his/her account registered.
+* * PostCondition: Once, the user is logged in, he/she is taken to dashboard page. 
+
+* Use Case 2: View Posts
+* * The user can have a look and go through the posts on dashboard.
+* * Precondition: The user should be on dashboard.
+* * PostCondition: Variety of posts can be viewed belonging to different category.
+
+* Use Case 3: Search
+* * The search catches the eye balls of the user. 
+* *  Precondition: The user should be on the dashboard.
+* * PostCondition: The user can search different food items based on the searched words.
+
+* Use Case 4: Filter
+* * The user can filter posts on the search page. 
+* * * Precondition: The user has to be on the search page.
+* * * PostCondition: The user has to click on the category which he/she wants so search for. Later, posts only for those categories are shown.
+      If a users want that food item, there is a GPS system(address of who posted) on the post page that people can follow to get the food.
+       
+
+* Use Case 5: Add Post
+* * The user can post his/her food item by clicking 'Add' button on the dashboard.
+    On clicking the 'Add' button, the user is redirected to a different page 'AddPage', that has three options, Donate, Exchange and Wanted. 
+
+* * * Precondition: The user has to be dashboard page.
+* * * * For donate: The user has to click 'Donate' text on the AddPage and enter all the details about his food such as 
+        name, quantity, location where it can be picked from and so on and  then finally post it. 
+* * * * For exchange: The user has to click 'Exchange' text on the AddPage and enter all the details about his food such as
+        name, quantity, location where it can be picked from and so on and  then finally post it.
+* * * * For wanted: The user has to click 'Wanted' text on the AddPage and enter all the details about his food such as
+        name, quantity, location where it can be picked from and so on and  then finally post it.
+* * * PostCondition: The user can view his/her posts with the other posts on dashboard page or can find it through the search bar.
+
+* Use Case 6: Profile Page
+* * The users can maintain their profile page that shows their username and email. They also have option to upload their profile page.
+* * * Precondition: The user has to be on the dashboard page, there is profile button on it that redirects to the profile page.
+* * * Postcondition: The user can see the updated profile picture. 
+
+* Use Case 7: Sign Out
+* * Users can log out by clicking the sign out button on the profile.
+* * * Precondition: The user has to be on the profile page.
+* * * PostCondition: The user is redirected back to the login page and stops all the activities running behind.
+
 
 <hr> 
 
