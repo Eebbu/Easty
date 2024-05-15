@@ -143,7 +143,6 @@ Note that the core criteria of contribution is based on `code contribution` (the
 
 *[What is your application, what does it do? Include photos or diagrams if necessary]*
 
-*Here is a pet specific application example*
 EATSY is a platform where people can donate, exchange, ask for food ensuring responsible consumption and support the people who are in need. It focuses on the UN sustainable goal of zero hunger and responsible consumption and production.
 
 ### Main Page
@@ -255,10 +254,14 @@ When we click on any post under the search term, we can see the specific content
 * *Users can learn the traffic conditions*
 * ...
 
-*Target Users: Those who want to find some good restaurants*
+*Target Users:*
 
-* *Users can find nearby restaurants and the application can give recommendations*
-* ...
+* The people who want to actively contribute or participate in removing hunger and promote responsible food consumption.
+* * Users can use search feature to filter the category of item they want. 
+* * Users can post food item in any of the three categories(donate, exchange, wanted).
+* * Users can maintain their account details, changes their profile picture and sign out from the app on profile page.
+* * Users can see the location(GPS system) of the people who posted. This will allow them to find something that is close to their place or 
+    they will have an idea of where to get this food from. 
 
 *List all the use cases in text descriptions or create use case diagrams. Please refer to https://www.visual-paradigm.com/guide/uml-unified-modeling-language/what-is-use-case-diagram/ for use case diagram.*
 
