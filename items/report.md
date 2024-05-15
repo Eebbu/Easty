@@ -80,6 +80,7 @@ Note that the core criteria of contribution is based on `code contribution` (the
 **Code Contribution in the final App**
    - Search feature(medium) - class Search:[Search.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/searchengine/Search.java?ref_type=heads) 
    - Search filter(easy) - class Search:[Search.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/searchengine/Search.java?ref_type=heads) - class activity_search:[activity_search.xml](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/layout/activity_search.xml?ref_type=heads)
+   - Search Invalid(medium) - class Search:[Search.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/searchengine/Search.java?ref_type=heads)
    - Data fetching - class StorageList:[StorageList.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/searchengine/StorageList.java?ref_type=heads)
    - Store data in AVLTree - class AVLTree:[AVLTree.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/searchengine/AVLTree.java?ref_type=heads) - class AVLTreeNode:[AVLTreeNode.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/searchengine/AVLTreeNode.java?ref_type=heads)
    - Adapter pattern - class ListDataAdapter:[ListDataAdapter.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/searchengine/ListDataAdapter.java?ref_type=heads)
@@ -509,8 +510,8 @@ Objective: Enhance the search functionality to handle both partially valid and i
       Feedback to Users: When invalid inputs are detected, the application provides feedback to the user, suggesting corrections or clarifying what parts of the query were processed.
 
       Feature Relevance: Tokenization and parsing are crucial for dissecting user input into manageable components that the system can understand and process, which is central to this feature.
-
-      Search-Filter: Sorting and Filtering Search Results
+      Code:[Search.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/searchengine/Search.java?ref_type=heads)
+9. [Search-Filter](By Lin Xi)(Medium): Sorting and Filtering Search Results
 Objective: Implement functionality to sort and filter the list of items returned from searches, utilizing suitable UI components to allow users to refine their search results dynamically.
 
       Subject: Advanced sorting and filtering of search results.
@@ -526,7 +527,7 @@ Objective: Implement functionality to sort and filter the list of items returned
       Live Updates: The search results update in real-time as users adjust the filters, providing an interactive and responsive user experience.
 
       Feature Relevance: The ability to sort and filter enhances the usability of the search function, allowing users to more easily navigate large sets of data and find the items that best match their needs.
-
+      Code:[Search.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/searchengine/Search.java?ref_type=heads)
 
 ### Surprise Features
 1. Classes were given meaning names like LoginActivity, DashboardActivity, since earlier they were named as MainActivity 3 and MainActivity 4.
