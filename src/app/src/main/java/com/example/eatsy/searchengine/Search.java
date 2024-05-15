@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.widget.Adapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -13,10 +14,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.eatsy.Post;
+import com.example.eatsy.PostAdapter;
 import com.example.eatsy.R;
 import com.example.eatsy.pages.DashboardActivity;
+import com.example.eatsy.pages.PostCard;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -32,7 +37,9 @@ import java.util.Map;
  * Author: Lin Xi(u7777752)
  */
 public class Search extends AppCompatActivity {
-    private ListView mListVie;
+    private RecyclerView recyclerView;
+    private List<Post> postsToShow;
+    private PostAdapter adapter;
 
     private Map<Integer,String> type = new HashMap<>();
 
@@ -45,12 +52,21 @@ public class Search extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+
         ImageButton go_back = findViewById(R.id.leftArrowButton);
         go_back.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
             startActivity(intent);
             finish();
         });
+
+        recyclerView = findViewById(R.id.recyclerView);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
+
+
+
         setCheckListener();
         setEditListener();
         searchAll();
@@ -181,8 +197,16 @@ public class Search extends AppCompatActivity {
                 resList.add(document);
             }
         });
-        mListVie = findViewById(R.id.lv);
-        mListVie.setAdapter(new ListDataAdapter(Search.this, resList));
+        postsToShow = resList;
+        adapter = new PostAdapter(postsToShow);
+        recyclerView.setAdapter(adapter);
+
+        adapter.setOnItemClickListener(position -> {
+            Post clickedPost = postsToShow.get(position);
+            Intent intent = new Intent(Search.this, PostCard.class);
+            intent.putExtra("clickedPost",clickedPost);
+            startActivity(intent);
+        });
     }
 
 
@@ -191,13 +215,22 @@ public class Search extends AppCompatActivity {
      * Displays all posts without any filters.
      */
     private void searchAll(){
-        mListVie = findViewById(R.id.lv);
         List<Post> list = new ArrayList<>();
         List<AVLTreeNode> avlTreeNodes = StorageList.avlTree.traverseTree();
         for (AVLTreeNode avlTreeNode : avlTreeNodes) {
             list.add((Post)avlTreeNode.data);
         }
-        mListVie.setAdapter(new ListDataAdapter(Search.this,list));
+
+        postsToShow = list;
+        adapter = new PostAdapter(postsToShow);
+        recyclerView.setAdapter(adapter);
+
+        adapter.setOnItemClickListener(position -> {
+            Post clickedPost = postsToShow.get(position);
+            Intent intent = new Intent(Search.this, PostCard.class);
+            intent.putExtra("clickedPost",clickedPost);
+            startActivity(intent);
+        });
     }
 
 
@@ -244,8 +277,18 @@ public class Search extends AppCompatActivity {
         Collections.sort(sortedResults, (post1, post2) ->
                 resultCountMap.get(post2).compareTo(resultCountMap.get(post1))
         );
-        mListVie = findViewById(R.id.lv);
-        mListVie.setAdapter(new ListDataAdapter(Search.this, sortedResults));
+        postsToShow = sortedResults;
+
+        adapter = new PostAdapter(postsToShow);
+        recyclerView.setAdapter(adapter);
+
+        adapter.setOnItemClickListener(position -> {
+            Post clickedPost = postsToShow.get(position);
+            Intent intent = new Intent(Search.this, PostCard.class);
+            intent.putExtra("clickedPost",clickedPost);
+            startActivity(intent);
+        });
+
     }
 
 

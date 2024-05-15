@@ -116,8 +116,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         // This back button help us to get back to dashboard.
         backButton.setOnClickListener(v -> {
-            Intent intent = new Intent(ProfileActivity.this, DashboardActivity.class);
-            startActivity(intent);
+            finish();
         });
 
         // This button helps the user to set or change his/her profile picture by opening a media folder.
