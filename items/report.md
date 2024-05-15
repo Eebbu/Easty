@@ -390,12 +390,11 @@ Here is a partial (short) example for the subsection `Data Structures`:*
  When changes are required, such as modifying how listeners are set, these can be made in one place, especially setting of post pages are very similar.
     
 3. Singleton Design Pattern: 
-    **Objective** : We implemented singleton design pattern in the LoginUser class because there is only one instance of LoginUser required. 
-    **Code Locations**: defined in [Class LoginUser, method getInstance, info and error](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/LoginUser.java?ref_type=heads#L8-34).
-    **Reasons** : This class is used for user information and error messages that can be helpful to debug and check errors.
-    * **Objective** : We implemented singleton design pattern in the LoginUser class because there is only one instance of LoginUser required. 
+   
+    * **Objective** : We implemented singleton design pattern in the LoginUser class because there is only one instance of LoginUser required.
+    This design pattern makes sure that class has only one instance and provides a global access to that instance. 
     * **Code Locations**: defined in [Class LoginUser, method getInstance, info and error](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/LoginUser.java?ref_type=heads#L8-34).
-    * **Reasons** : This class is used for user information and error messages that can be helpful to debug and check errors.
+    * **Reasons** : This class is used for user information and error messages that can be helpful to debug and check errors. It manages the components that require single point of access or control. 
 
 
 4. Adapter Pattern<br>
