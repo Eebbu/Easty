@@ -237,22 +237,20 @@ When we click on any post under the search term, we can see the specific content
 
 *[Provide use cases and examples of people using your application. Who are the target users of your application? How do the users use your application?]*
 
-*Here is a pet training application example*
 
-*Molly wants to inquiry about her cat, McPurr's recent troublesome behaviour*
-1. *Molly notices that McPurr has been hostile since...*
-2. *She makes a post about... with the tag...*
-3. *Lachlan, a vet, writes a reply to Molly's post...*
-4. ...
-5. *Molly gives Lachlan's reply a 'tick' response*
 
-*Here is a map navigation application example*
+* John has a dozen of bananas, they are over ripe and going to get spoilt after two days. But he will not be able finish them on his own within two days.
+  So, he is thinking of donating them rather than throwing away. 
+* He heard about EATSY application and downloaded it but never used it before. He plans to use it this time. He logs in and starts the best user to donate his food.
+* Upon login, he is taken to the dashboard page, where he sees several posts of people donating, exchanging and wanting different food items.
+* He uses the search filter to find the people in wanted category, who is looking for bananas, especially those who are nearby (using GPS). 
+* Then, he finds the 'Add' button on the bottom view of the dashboard, he clicked it and saw 
+  three categories(donate, exchange and wanted) to post. He clicks on 'Donate' and is taken to the donate page where he is asked to put some details about his food item such as 
+  quantity, description, location where people can get it from and so on. He successfully generates a post in the donate category and can even see it on the dashboard page. 
+* He can also manage his account on profile page that has username, email and profile picture displayed. He can also change profile picture and click a sign out button to log out from the application.
 
-*Targets Users: Drivers*
 
-* *Users can use it to navigate in order to reach the destinations.*
-* *Users can learn the traffic conditions*
-* ...
+
 
 *Target Users:*
 
