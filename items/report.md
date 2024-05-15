@@ -98,7 +98,7 @@ Note that the core criteria of contribution is based on `code contribution` (the
     - Other contribution: [MainActivity class](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/MainActivity.java?ref_type=heads), [DashboardActivity class](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/DashboardActivity.java?ref_type=heads),
       UI design of [activity_main.xml](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/layout/activity_main.xml), [activity_login.xml](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/layout/activity_login.xml),
       [activity_dashboard.xml](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/layout/activity_dashboard.xml), [activity_profile.xml](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/layout/activity_dashboard.xml).
-    - UI Testing: - UI Testing: [MainActivityUITest.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/androidTest/java/com/example/eatsy/MainActivityUITest.java?ref_type=heads),
+    - UI Testing: [MainActivityUITest.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/androidTest/java/com/example/eatsy/MainActivityUITest.java?ref_type=heads),
       [LoginActivityUITest.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/androidTest/java/com/example/eatsy/LoginActivityUITest.java?ref_type=heads),
       [DashBoardActivityUITests.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/androidTest/java/com/example/eatsy/DashBoardActivityUITests.java?ref_type=heads),
       [AddPageUITest.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/androidTest/java/com/example/eatsy/AddPageUITest.java?ref_type=heads),
@@ -472,9 +472,13 @@ Here is a partial (short) example for the subsection `Data Structures`:*
 
 ### Basic Features
 1. [LogIn]. 	Created an activity for login feature and used firebase authentication to help user log in. (easy)
-   * Code: [Class LoginActivity, methods X, Y](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/LoginActivity.java#L25-85) and Class LoginUser
+   * Code: [Class LoginActivity,](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/LoginActivity.java#L25-85) and Class LoginUser
    * Implemented a singlton design pattern in LoginUser java class to ensure that only one instance of LoginUser required.<br>
-   * Description of your implementation: ... <br>
+   * Description of your implementation: We extracted current user from firebase. We connected all the credentials with xml resources. If the user clicks 
+     on the login button, then we check by using 'signInWithEmailAndPassword' method from firebase whether the entered data is correct. If it's correct, the user is redirected to the DashBoardActivtiy
+     and a toast message is generated i.e; "Login successful". Otherwise, the user remains on the login page and toast message says, "Authentication failed". 
+   
+   <br>
 
 2. [DataFiles]. Description  ... ... (...)
    * Code to the Data File [users_interaction.json](link-to-file), [search-queries.xml](link-to-file), ...
@@ -513,9 +517,12 @@ Feature Category: Firebase Integration <br>
    * Code: [Class X, entire file](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and Class Y, ...
    * [Class B](../src/path/to/class/file.java#L30-85): methods A, B, C, lines of code: 30 to 85
    * Description of your implementation: ... <br>
-2. [Data-Profile] Created a ProfileActivity that displays name and email addresses of the user(easy).
+2. [Data-Profile] Created a ProfileActivity that displays name, email addresses profile picture of the user. It also has a signout button.(easy)
    * Code: [Class ProfileActivity, methods onActivityResult(), uploadImageToFirebase(), showing userdetails](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blame/main/src/app/src/main/java/com/example/eatsy/ProfileActivity.java?ref_type=heads#L47-220).
-   * Description of the code.
+   * Description of the code: The Json file users_without_password.json stores all the user details. This file was later read, serialized and 
+     the user data is stores in terms of hashmap where is email is the key. So, email was obtained from firebase and using that as the key, we got username(value) and data was displayed.
+     For profile picture, we used onclickListener for a button that opens gallery upon clicking. Then, we used a method, onActivityResult that passes uri of the image in the data and then it is replaced with the image icon.
+     Then we uploaded the image to the firebase. 
 
 Feature Category: Search-related features <br>
 
@@ -584,7 +591,8 @@ Objective: Implement functionality to sort and filter the list of items returned
 
 
 ### Surprise Features
-1. Classes were given meaning names like LoginActivity, DashboardActivity, since earlier they were named as MainActivity 3 and MainActivity 4.
+1. On April 15, MainActivity2(for login) and MainActivity3(for register) were created, https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/commit/f98af4945b0061f49a4ca2acbc6d33d979ff08a2, which were later changed to LoginActivity and RegisterActivity respectively.
+   On April 17, MainActivity4(dashboard) was created and its name was changed to DashBoardActivity, https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/commit/662671f382bf528651adb1e24d2254c0706f9e2e. By removing this code smell, we gave meaningful names to the activities and enhances the understandability and readability of the code.  
 2. On April 22 and 27, three post pages were completed, as documented in Git commits SHA 1c750dd020486de45f2d71d651badedf155ed79c and 7ff755054cffd14a9f85094c56854b77540ebf31.
  The layout of these three posts was very similar, especially the donate and exchange pages, including nearly identical scenes, UI components and listeners.
  This resulted in a significant amount of code duplication. Subsequently, on May 1st, Git commit SHA ea0f48b72edbbfc472b0a74f6aa94d1ccebdc8ac added [Post_base.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/Post_base.java?ref_type=heads),

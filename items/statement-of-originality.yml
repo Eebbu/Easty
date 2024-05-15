@@ -41,9 +41,14 @@ code:
 # add as many "url+licence+comment" entries as necessary
 # (or remove it altogether if you haven't used any external assets)
 assets:
-  # NOTE: "Bliss" is just here as an example, you SHOULD REMOVE IT
-  - comment: "_Bliss_ by Charles O'Rear"
-    url: https://en.wikipedia.org/wiki/Bliss_(image)
+
+  - comment: Referenced  UI Testing
+    url: https://www.geeksforgeeks.org/ui-testing-with-espresso-in-android-studio/
+    licence: fair use
+
+
+  - comment: Referenced uploading profile picture
+    url: https://www.youtube.com/watch?v=qANyvTysn04&list=PLlGT4GXi8_8dDK5Y3KCxuKAPpil9V49rN&index=9
     licence: fair use
 
 

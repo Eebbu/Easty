@@ -120,7 +120,7 @@ public class ProfileActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        // This button helps the user to set ot change his/her profile picture.
+        // This button helps the user to set or change his/her profile picture by opening a media folder.
         profileChange.setOnClickListener(v -> {
             Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
            startActivityForResult(galleryIntent, 1000);
