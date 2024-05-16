@@ -141,7 +141,7 @@ public class DashboardActivity extends AppCompatActivity {
 
                     postsToShow.add(0, post);
                     adapter.notifyDataSetChanged();
-                    showToast();
+                    //showToast();
 
                     //random the fresh time to simulate the post update.
                     int nextRefreshTime = new Random().nextInt(5) + 10;

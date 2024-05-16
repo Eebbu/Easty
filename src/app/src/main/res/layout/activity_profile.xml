@@ -100,7 +100,7 @@
             android:id="@+id/credentials_name"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:gravity="center_vertical|center_horizontal"
+            android:layout_marginLeft="20dp"
             android:orientation="horizontal">
 
             <TextView
@@ -109,7 +109,6 @@
                 android:layout_height="wrap_content"
 
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="-40dp"
 
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:text="@string/nameOnProfile"
@@ -126,7 +125,8 @@
                 android:layout_height="wrap_content"
 
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="50dp"
+                android:layout_marginLeft="30dp"
+                app:layout_constraintStart_toEndOf = "@+id/nameOfperson"
                 android:text="@string/nameToDisplay"
                 android:textColor="@color/black"
                 android:textSize="17sp"
@@ -140,25 +140,15 @@
             android:id="@+id/credentials_email"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:gravity="center_vertical|center_horizontal"
+            android:layout_marginLeft="20dp"
             android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="22dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-
-                app:srcCompat="@drawable/envelope" />
 
             <TextView
                 android:id="@+id/emailOfperson"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
-
-                android:layout_marginLeft="3dp"
-
+                android:drawableLeft="@drawable/envelope"
                 android:text="@string/emailOnProfile"
                 android:textColor="@color/black"
                 android:textSize="17sp"
@@ -172,7 +162,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/emailToDisplay"
-                android:layout_marginLeft="50dp"
+                android:layout_marginLeft="30dp"
 
                 android:textColor="@color/black"
                 android:textSize="17sp"/>
