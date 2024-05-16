@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.eatsy.Post;
 import com.example.eatsy.PostAdapter;
 import com.example.eatsy.R;
+import com.example.eatsy.datamanagement.LocalJsonDataBase;
 import com.example.eatsy.pages.DashboardActivity;
 import com.example.eatsy.pages.PostCard;
 
@@ -44,6 +45,8 @@ public class Search extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 

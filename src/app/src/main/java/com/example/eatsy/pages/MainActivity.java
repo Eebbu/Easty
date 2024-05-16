@@ -28,12 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        //init post data firebase
-        //StorageList.initPostData();
 
-        //local data
-        StorageList.mapList = LocalJsonDataBase.read(getApplicationContext());
-        StorageList.initLocalData();
 
         // Login page that takes us to the login page.
         logIn.setOnClickListener(v -> {

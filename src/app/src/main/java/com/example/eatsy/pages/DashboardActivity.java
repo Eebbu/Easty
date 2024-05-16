@@ -20,7 +20,9 @@ import com.example.eatsy.datamanagement.DataManager;
 import com.example.eatsy.Post;
 import com.example.eatsy.PostAdapter;
 import com.example.eatsy.R;
+import com.example.eatsy.datamanagement.LocalJsonDataBase;
 import com.example.eatsy.searchengine.Search;
+import com.example.eatsy.searchengine.StorageList;
 import com.example.eatsy.userFT;
 
 import java.util.ArrayList;
@@ -62,6 +64,12 @@ public class DashboardActivity extends AppCompatActivity {
                 throw new RuntimeException(e);
             }
         }
+        //init post data firebase
+        //StorageList.initPostData();
+
+        //local data
+        StorageList.mapList = DataManager.getDataInstance().getPostHashMap();
+        StorageList.initLocalData();
 
         //initialize the data.
         if (posts == null){
