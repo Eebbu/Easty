@@ -18,6 +18,7 @@ import com.google.firebase.firestore.FirebaseFirestoreSettings;
  */
 
 public class MyApplication extends Application {
+    public static boolean fileDownloaded = false;
     private UserDataDownloader userDataDownloader;
     private PostDataDownloader  postDownloader;
 
@@ -62,6 +63,7 @@ public class MyApplication extends Application {
 
         return null;
     });
+        fileDownloaded = true;
 }
 
 

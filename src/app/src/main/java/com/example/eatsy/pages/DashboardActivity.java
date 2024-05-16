@@ -14,6 +14,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.eatsy.MyApplication;
 import com.example.eatsy.datamanagement.DataDownloader;
 import com.example.eatsy.datamanagement.DataManager;
 import com.example.eatsy.Post;
@@ -54,7 +55,7 @@ public class DashboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-        while(DataDownloader.fileDownloaded = false){
+        while(MyApplication.fileDownloaded = false){
             try {
                 Thread.sleep(200);
             } catch (InterruptedException e) {
