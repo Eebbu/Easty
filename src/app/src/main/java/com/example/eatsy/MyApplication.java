@@ -38,30 +38,34 @@ public class MyApplication extends Application {
     CollectionReference postsCollectionRef = FireStoreHelper.getCollectionRef("posts");
     postDownloader = new PostDataDownloader(this);
 
-    // Call the asynchronous method, and handle the returned CompletableFuture
+
+        // Start the asynchronous process
         userDataDownloader.downloadData(usersCollectionRef)
-            .thenAccept(data ->  {
+                .thenCompose(userData -> {
+                    // Store user data to DataManager
+                    DataManager.getDataInstance().setUserHashMap(userData);
+                    // Print the user data to verify contents
+                    System.out.println("Downloaded User Data:");
+                    userData.forEach((key, value) -> System.out.println(key + " -> " + value));
 
-        DataManager.getDataInstance().setUserHashMap(data); // store data to DataManager
-        // Print the user data to verify contents
-        System.out.println("Downloaded User Data:");
-        data.forEach((key, value) -> System.out.println(key + " -> " + value));
+                    // Proceed to download post data
+                    return postDownloader.downloadData(postsCollectionRef);
+                })
+                .thenAccept(postData -> {
+                    // Store post data to DataManager
+                    DataManager.getDataInstance().setPostHashMap(postData);
+                    System.out.println("Downloaded Post Data:");
+                    postData.forEach((key, value) -> System.out.println(key + " -> " + value));
 
-    });
-    // Download and handle post data
-        postDownloader.downloadData(postsCollectionRef)
-            .thenAccept(data -> {
-                System.out.println("Downloaded Post Data:");
-                DataManager.getDataInstance().setPostHashMap(data); // Store to DataManager
-        data.forEach((key, value) -> System.out.println(key + " -> " + value));
-        // Success: post data received
-    })
-            .exceptionally(ex -> {
-        // Handle the case of post data download failure
-        System.err.println("Post data download failed: " + ex.getMessage());
-
-        return null;
-    });
+                    // Success: both user and post data received
+                    fileDownloaded = true;
+                })
+                .exceptionally(ex -> {
+                    // Handle any errors that occurred during the download process
+                    System.err.println("Data download failed: " + ex.getMessage());
+                    return null;
+                });
+    }
 }
-}
+
 
