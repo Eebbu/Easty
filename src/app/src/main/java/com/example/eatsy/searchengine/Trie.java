@@ -58,7 +58,6 @@ public class Trie {
     public boolean searchPrefix(String prefix) {
         TrieNode current = root;
         for (char ch : prefix.toCharArray()) {
-            System.out.println(ch);
             int index = ch - 'a';
             if(index==136){
                 System.out.println(1);
