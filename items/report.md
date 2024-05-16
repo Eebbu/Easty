@@ -47,35 +47,6 @@ The key area(s) of responsibilities for each member
 
 
 ## Summary of Individual Contributions
-
-Specific details of individual contribution of each member to the project.
-
-Each team member is responsible for writing **their own subsection**.
-
-A generic summary will not be acceptable and may result in a significant lose of marks.
-
-*[Summarise the contributions made by each member to the project, e.g. code implementation, code design, UI design, report writing, etc.]*
-
-*[Code Implementation. Which features did you implement? Which classes or methods was each member involved in? Provide an approximate proportion in pecentage of the contribution of each member to the whole code implementation, e.g. 30%.]*
-
-*you should ALSO provide links to the specified classes and/or functions*
-Note that the core criteria of contribution is based on `code contribution` (the technical developing of the App).
-
-*Here is an example: (Note that you should remove the entire section (e.g. "others") if it is not applicable)*
-
-1. **UID1, Name1**  I have 30% contribution, as follows: <br>
-  - **Code Contribution in the final App**
-    - Feature A1, A2, A3 - class Dummy: [Dummy.java](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java)
-    - XYZ Design Pattern -  class AnotherClass: [functionOne()](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43), [function2()](the-URL)
-    - ... (any other contribution in the code, including UI and data files) ... [Student class](../src/path/to/class/Student.java), ..., etc.*, [LanguageTranslator class](../src/path/to/class/LanguageTranslator.java): function1(), function2(), ... <br><br>
-
-  - **Code and App Design** 
-    - [What design patterns, data structures, did the involved member propose?]*
-    - [UI Design. Specify what design did the involved member propose? What tools were used for the design?]* <br><br>
-
-  - **Others**: (only if significant and significantly different from an "average contribution") 
-    - [Report Writing?] [Slides preparation?]*
-    - [You are welcome to provide anything that you consider as a contribution to the project or team.] e.g., APK, setups, firebase* <br><br>
 1. **U7777752, Lin Xi** I have 20% contribution, as follows:<br>
 **Code Contribution in the final App**
    - Search feature(medium) - class Search:[Search.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/searchengine/Search.java?ref_type=heads) 
@@ -129,11 +100,11 @@ Note that the core criteria of contribution is based on `code contribution` (the
 
 5. **U7773880, Zihan Yuan**  I have 20% contribution, as follows: <br>
 - **Code Contribution in the final App**
-  - LoadShowData - class Post_base to upload and show images: [Post_base.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/Post_base.java?ref_type=heads)
+  - LoadShowData - class Post_base to upload and show images: [Post_base.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/Post_base.java?ref_type=heads)
   - UI-Layout: modify most of the pages to incorporate layout adjustments in the UI components for portrait and landscape
     layout variants, as well as different screen sizes.
   - UI-Test: [PostdonateUITest.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/androidTest/java/com/example/eatsy/PostdonateUITest.java?ref_type=heads), [PostexchangeUITest](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/androidTest/java/com/example/eatsy/PostexchangeUITest.java?ref_type=heads), [PostwantedUITest](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/androidTest/java/com/example/eatsy/PostwantedUITest.java?ref_type=heads).
-  - Design Pattern: factory design patter: [Post_base.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/Post_base.java), 
+  - Design Pattern: factory design patter: [Post_base.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/Post_base.java), 
 [Factory_donate.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/Factory_donate.java)
 , [Factory_exchange.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/Factory_exchange.java)
 , [Factory_wanted.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/Factory_wanted.java)
@@ -149,8 +120,6 @@ Note that the core criteria of contribution is based on `code contribution` (the
     - UI-design: I designed a transparent add page for user to post, and three types of Post page. All of the icons come from [Icons8](https://icons8.com/).
 
 ## Application Description
-
-*[What is your application, what does it do? Include photos or diagrams if necessary]*
 
 EATSY is a platform where people can donate, exchange, ask for food ensuring responsible consumption and support the people who are in need. It focuses on the UN sustainable goal of zero hunger and responsible consumption and production.
 
@@ -244,10 +213,6 @@ When we click on any post under the search term, we can see the specific content
   
 ### Application Use Cases and or Examples
 
-*[Provide use cases and examples of people using your application. Who are the target users of your application? How do the users use your application?]*
-
-
-
 * John has a dozen of bananas, they are over ripe and going to get spoilt after two days. But he will not be able finish them on his own within two days.
   So, he is thinking of donating them rather than throwing away. 
 * He heard about EATSY application and downloaded it but never used it before. He plans to use it this time. He logs in and starts the best user to donate his food.
@@ -259,8 +224,6 @@ When we click on any post under the search term, we can see the specific content
 * He can also manage his account on profile page that has username, email and profile picture displayed. He can also change profile picture and click a sign out button to log out from the application.
 
 
-
-
 *Target Users:*
 
 * The people who want to actively contribute or participate in removing hunger and promote responsible food consumption.
@@ -270,8 +233,7 @@ When we click on any post under the search term, we can see the specific content
 * * Users can see the location(GPS system) of the people who posted. This will allow them to find something that is close to their place or 
     they will have an idea of where to get this food from. 
 
-*List all the use cases in text descriptions or create use case diagrams. Please refer to https://www.visual-paradigm.com/guide/uml-unified-modeling-language/what-is-use-case-diagram/ for use case diagram.*
-* Following is the list of use cases of our application;
+*Following is the list of use cases of our application*
 * Actor: User
 * * Our actor will be the user since he/she will be interacting with the app in order to donate, exchange or get food. 
 
@@ -330,18 +292,6 @@ When we click on any post under the search term, we can see the specific content
 
 ## Code Design and Decisions
 
-This is an important section of your report and should include all technical decisions made. Well-written justifications will increase your marks for both the report as well as for the relevant parts (e.g., data structure). This includes, for example,
-
-- Details about the parser (describe the formal grammar and language used)
-
-- Decisions made (e.g., explain why you chose one or another data structure, why you used a specific data model, etc.)
-
-- Details about the design patterns used (where in the code, justification of the choice, etc)
-
-*Please give clear and concise descriptions for each subsections of this part. It would be better to list all the concrete items for each subsection and give no more than `5` concise, crucial reasons of your design.
-
-<hr>
-
 ### **Tokenizer and parser**
 
 ### **Parser**
@@ -384,21 +334,9 @@ The grammar used in our project is designed to parse text consisting of space-se
 
 ### Data Structures
 
-*[What data structures did your team utilise? Where and why?]*
-
-Here is a partial (short) example for the subsection `Data Structures`:*
 
 *I used the following data structures in my project:*
-
-1. *LinkedList*
-   * *Objective: used for storing xxxx for xxx feature.*
-   * *Code Locations: defined in [Class X, methods Z, Y](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and [class AnotherClass, lines l1-l2](url); processed using [dataStructureHandlerMethod](url) and ...
-   * *Reasons:*
-      * *It is more efficient than Arraylist for insertion with a time complexity O(1)*
-      * *We don't need to access the item by index for xxx feature because...*
-      * For the (part), the data ... (characteristics) ...
-
-2. **HashMap**
+1. **HashMap**
 
 - Objective: Used for storing and quickly accessing `Post` objects by their IDs within the `StorageList` class.
 - Code Location: Defined in `StorageList` class. Utilized in methods such as `initPostData` and `initLocalData` to store and access `Post` instances.
@@ -406,14 +344,14 @@ Here is a partial (short) example for the subsection `Data Structures`:*
 - Efficiency: `HashMap` offers O(1) time complexity for insertions and lookups, which is more efficient than an `ArrayList` for these operations.
 - Key-value Access: For features like updating or retrieving `Post` data, direct access via post IDs (keys) is essential, eliminating the need for indexing which is crucial for performance.
 
-3. **ArrayList**
+2. **ArrayList**
 
 - Objective: Used for storing lists of `Post` objects in a dynamically resizing array format, suitable for ordered collection which also supports random access.
 - Code Locations: Utilized in `StorageList` and `Search` classes, particularly in methods like `initPostData` and `searchAll` for storing and managing collections of posts.
 - Reasons:
 - Random Access: Unlike `LinkedList`, `ArrayList` provides efficient random access to elements, which is beneficial where elements are frequently accessed by index.
 
-4. **HashSet**
+3. **HashSet**
 
 - Dynamics and Performance: Better performance in terms of memory as it stores items in a contiguous memory space and is generally faster in iterating over elements compared to `LinkedList`.
 - Objective: Used in the `Search` class to ensure uniqueness and efficient lookup for `Post` objects when performing search operations.
@@ -422,7 +360,7 @@ Here is a partial (short) example for the subsection `Data Structures`:*
 - Uniqueness: Automatically prevents duplication of `Post` objects in search results.
 - Efficiency: Offers O(1) complexity for add and check operations, ideal for scenarios where the integrity of uniqueness is more critical than ordering.
 
-5. **AVLTree**
+4. **AVLTree**
 
 - Objective: Utilized to maintain a balanced search tree of `Post` objects, ensuring efficient order operations and balanced tree properties for quick search and retrieval.
 - Code Locations: `StorageList` class uses `AVLTree` to manage posts in a sorted manner, particularly evident in the `buildTree` and `traverseTree` methods.
@@ -441,7 +379,7 @@ Here is a partial (short) example for the subsection `Data Structures`:*
 2. Factory – render scene
     * **Objective**: The main goal is to centralize common functionalities such as setting up views, validating inputs, set up listeners and configuring scenes across different types of posts. This centralization reduced code duplication and improved maintainability.
 
-    * **Code Locations**: Base class: [Post_base.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/Post_base.java)
+    * **Code Locations**: Base class: [Post_base.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/Post_base.java)
 , and subclass: [Post_donate](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/Post_donate.java)
    , [Post_exchange](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/Post_exchange.java)
    , [Post_wanted](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/Post_wanted.java)  <br>
@@ -459,21 +397,16 @@ Here is a partial (short) example for the subsection `Data Structures`:*
 4. Adapter Pattern<br>
 **Objective:** Allows objects with incompatible interfaces to collaborate.<br>
 **Code Locations:**
-- Used in the ListDataAdapter class, which adapts a list of Post objects to be usable in a ListView which expects data in a specific format.<br>
-**Reasons:** 
-- Interface Compatibility: Converts the interface of the List<Post> into the interface expected by the ListView, enabling seamless integration of complex data structures with UI components.
-- Reusability: Allows the same Post data to be reused in different list-based UI components without modifying the underlying data structure or the components themselves.
+   - Used in the ListDataAdapter class, which adapts a list of Post objects to be usable in a ListView which expects data in a specific format.<br>
+   
+    **Reasons:** 
+     - Interface Compatibility: Converts the interface of the List<Post> into the interface expected by the ListView, enabling seamless integration of complex data structures with UI components.
+     - Reusability: Allows the same Post data to be reused in different list-based UI components without modifying the underlying data structure or the components themselves.
 
 5. Builder Pattern<br>
 **Objective:** Separates the construction of a complex object from its representation so that the same construction process can create different representations.<br>
 **Code Locations:** Used in constructing complex Post objects, in scenarios where a Post object consists of various discrete parts that are assembled step-by-step.<br>
 **Reasons:** Step-by-step Construction: Allows for constructing complex objects step-by-step, particularly useful when creating an object requires setting many attributes that could be optional.<br>
-### Others
-
-*[What other design decisions have you made which you feel are relevant? Feel free to separate these into their own subheadings.]*
-
-<br>
-<hr>
 
 ## Implemented Features
 *[What features have you implemented? where, how, and why?]* <br>
@@ -498,7 +431,7 @@ Here is a partial (short) example for the subsection `Data Structures`:*
    * Key Methods: onCreate, setCheckListener, setEditListener, searchData, searchAll, searchByTest
    * Related Classes: StorageList, ListDataAdapter, AVLTree, AVLTreeNode, Trie, TrieNode
 
-**Description of Implementation**
+    **Description of Implementation**
 
    * The Search activity is designed to process user input for searching and filtering posts based on categories like "Donate", "Need", and "Exchange". The functionality is extended by integrating Firebase Firestore to fetch real-time data, ensuring up-to-date information is always available.
    * Main Features:
@@ -549,7 +482,6 @@ Each test corresponds to different aspects of the app, such as adding pages, man
 These tests are designed for enhancing usability, and ensuring user experiences across pages.
 
 Feature Category: Greater Data Usage, Handling and Sophistication <br>
-<hr>
 
   
 5. [DataFiles] Boxuan Lin created a dataset with more than 2600 post data instances, covering all types of posts. All of the data was formatted in JSON and uploaded to Firestore for persistence.
@@ -613,26 +545,13 @@ which integrates the methods in these pages into a single base class. This refac
  (1) On May 1st, we adopted a more modern callback mechanism, CompletableFuture, with methods like thenAccept and exceptionally in [MyApplication.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/commit/68a504693906148dbf87f88deeb6b40d58cc7dc0#732a56e6a329c71bac172a37e853851bbf6ecd9d) and [UserDataDownloader.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/commit/68a504693906148dbf87f88deeb6b40d58cc7dc0#5692e99c4b400838bbf272d772f961894c071c5e). The exceptionally method provided a structured way to handle exceptions directly in the promise chain. For example, if the task was successful, we completed the future with userHashMap; otherwise, we handled errors inside the method with future.completeExceptionally(task.getException()). This approach allowed for further improvements and eliminated the need to define a separate callback interface. In MyApplication, using methods like thenAccept enabled us to handle the results of asynchronous operations coherently.   <br>
 (2) After continuous refactoring, by May 14th, almost all code smells were resolved. Class abstraction and functional decoupling were well-executed, and an option to read JSON was added for offline scenarios. (See [UserDataDownloader.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/commit/b9f38475eedc1fb9bae0ed4e30179fda3849933b#f22789495740ae703f554a767f864e8b85d7ce4a) and [DataDownloader.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/commit/b9f38475eedc1fb9bae0ed4e30179fda3849933b#9e60553f9053ed958b1caabf65ebc7d9ed519376)). <br>
 
-
-
-
-4.
-
+   
 - <br> <hr>
 
 
 ## Summary of Known Errors and Bugs
 
-*[Where are the known errors and bugs? What consequences might they lead to?]*
-*List all the known errors and bugs here. If we find bugs/errors that your team does not know of, it shows that your testing is not thorough.*
-
-*Here is an example:*
-
 1. *Bug 1:*
-   - *A space bar (' ') in the sign in email will crash the application.*
-   - ...
-
-2. *Bug 2:*
    - Error encountered in all pages containing the method 'FirebaseAuth.getInstance().getCurrentUser().getEmail()' during UI tests. This issue arises because the 'getCurrentUser()' method returns null when pages are run individually in testing.
 Despite I attempted to resolve this using Mockito and Mockito-inline, the problem persists.
      <br> <hr>
@@ -672,7 +591,7 @@ Despite I attempted to resolve this using Mockito and Mockito-inline, the proble
      - Visibility and changes of UI components. 
      - Intent firing and activity lifecycle management. 
      - Input validations and response actions.
-<br> <hr>
+     <br> <hr>
 
 
 ## Team Management
