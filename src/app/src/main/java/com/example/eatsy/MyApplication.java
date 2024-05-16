@@ -38,8 +38,8 @@ public class MyApplication extends Application {
                     // Store post data to DataManager
                     DataManager.getDataInstance().setPostHashMap(postData);
                     // Print the post data to verify contents
-                    System.out.println("Downloaded Post Data:");
-                    postData.forEach((key, value) -> System.out.println(key + " -> " + value));
+//                    System.out.println("Downloaded Post Data:");
+//                    postData.forEach((key, value) -> System.out.println(key + " -> " + value));
                 });
 
         CompletableFuture<Void> userDataFuture = postDataFuture.thenCompose(v -> userDataDownloader.downloadData(usersCollectionRef))
@@ -47,8 +47,8 @@ public class MyApplication extends Application {
                     // Store user data to DataManager
                     DataManager.getDataInstance().setUserHashMap(userData);
                     // Print the user data to verify contents
-                    System.out.println("Downloaded User Data:");
-                    userData.forEach((key, value) -> System.out.println(key + " -> " + value));
+//                    System.out.println("Downloaded User Data:");
+//                    userData.forEach((key, value) -> System.out.println(key + " -> " + value));
                 });
 
         // Ensure both post and user data are downloaded before setting fileDownloaded to true
