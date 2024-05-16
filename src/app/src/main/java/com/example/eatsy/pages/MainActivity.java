@@ -34,14 +34,28 @@ public class MainActivity extends AppCompatActivity {
 
         // Login page that takes us to the login page.
         logIn.setOnClickListener(v -> {
+            // avoid repeat start dashboard.
+            logIn.setEnabled(false);
 
-            if (MyApplication.fileDownloaded){
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
-            }else {
-                Toast.makeText(this, "Data initialising", Toast.LENGTH_SHORT).show();
-            }
+            new Thread(() -> {
+                // wait till data initialised.
+                while (!MyApplication.fileDownloaded) {
+                    Toast.makeText(this, "Data initializing", Toast.LENGTH_SHORT).show();
+                    try {
+                        Thread.sleep(200); // wait 200 ms
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
 
+                // start Activity
+                runOnUiThread(() -> {
+                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                });
+
+                logIn.setEnabled(true);
+            }).start();
         });
 
 
