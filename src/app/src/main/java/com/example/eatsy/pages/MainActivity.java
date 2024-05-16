@@ -29,23 +29,29 @@ public class MainActivity extends AppCompatActivity {
         Button logIn = findViewById(R.id.start);
 
 
-
-
-
-        // Login page that takes us to the login page.
         logIn.setOnClickListener(v -> {
+            logIn.setEnabled(false);
+            // show toast for user
+            Toast.makeText(this, "Data initialising", Toast.LENGTH_SHORT).show();
 
-            if (MyApplication.fileDownloaded){
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
-            }else {
-                Toast.makeText(this, "Data initialising", Toast.LENGTH_SHORT).show();
-            }
+            // Thread to monitor the dataDownload
+            new Thread(() -> {
+                while (!MyApplication.fileDownloaded) {
+                    try {
+                        Thread.sleep(200);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
 
+                // turn to Dashboard.
+                runOnUiThread(() -> {
+                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                });
+            }).start();
         });
-
-
     }
-
 
 }
