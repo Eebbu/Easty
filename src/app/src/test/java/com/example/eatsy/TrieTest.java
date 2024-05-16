@@ -1,71 +1,87 @@
-package com.example.eatsy.searchengine;
+package com.example.eatsy;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import com.example.eatsy.searchengine.Trie;
+import org.junit.Before;
+import org.junit.Test;
 
-/**
- * Test class for the Trie data structure.
- * Author： Lin Xi(u7777752)
- */
+import static org.junit.Assert.*;
+
 public class TrieTest {
     private Trie trie;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         trie = new Trie();
     }
 
     @Test
-    void testInsertAndSearchWord() {
-        // Test insertion and searching for a complete word
-        String word = "apple";
-        trie.insert(word);
-        // Directly searching for a word should return true if it was inserted
-        assertTrue(trie.searchPrefix("apple"), "The word 'apple' should be found.");
+    public void testInsertSingleWord() {
+        trie.insert("apple");
+        assertTrue(trie.searchPrefix("apple"));
     }
 
     @Test
-    void testSearchNonExistentWord() {
-        // Try to find a word that has not been inserted
-        assertFalse(trie.searchPrefix("banana"), "The word 'banana' should not be found.");
-    }
-
-    @Test
-    void testPrefix() {
-        // Test searching for prefixes
+    public void testInsertMultipleWords() {
         trie.insert("apple");
         trie.insert("app");
-        assertTrue(trie.searchPrefix("app"), "The prefix 'app' should be valid.");
-        assertFalse(trie.searchPrefix("apz"), "The prefix 'apz' should not be valid.");
+        trie.insert("apricot");
+
+        assertTrue(trie.searchPrefix("apple"));
+        assertTrue(trie.searchPrefix("app"));
+        assertTrue(trie.searchPrefix("apricot"));
+        assertFalse(trie.searchPrefix("banana"));
     }
 
     @Test
-    void testWordIsAlsoAPrefix() {
-        // Test case where a whole word is also a prefix to another word
+    public void testSearchPrefix() {
         trie.insert("apple");
         trie.insert("app");
-        assertTrue(trie.searchPrefix("app"), "The prefix 'app' should be valid and is a complete word.");
-        assertTrue(trie.searchPrefix("apple"), "The word 'apple' should be found.");
+        trie.insert("application");
+
+        assertTrue(trie.searchPrefix("app"));
+        assertFalse(trie.searchPrefix("appl"));
     }
 
     @Test
-    void testEmptyString() {
-        // Testing edge cases with empty string
+    public void testSearchNonExistentPrefix() {
+        trie.insert("apple");
+
+        assertFalse(trie.searchPrefix("banana"));
+        assertFalse(trie.searchPrefix("appl"));
+    }
+
+    @Test
+    public void testInsertAndSearchEmptyString() {
         trie.insert("");
-        assertTrue(trie.searchPrefix(""), "Empty string should always be a valid prefix.");
+        assertTrue(trie.searchPrefix(""));
     }
 
     @Test
-    void testPrefixAndCompleteWord() {
-        // Insert multiple words and test both as complete words and prefixes
-        String[] words = {"test", "tester", "testing", "testimony", "tested"};
-        for (String word : words) {
-            trie.insert(word);
-        }
+    public void testInsertAndSearchSingleCharacter() {
+        trie.insert("a");
+        assertTrue(trie.searchPrefix("a"));
+        assertFalse(trie.searchPrefix("b"));
+    }
 
-        assertTrue(trie.searchPrefix("test"), "The prefix 'test' should be valid.");
-        assertTrue(trie.searchPrefix("tester"), "'tester' should be found as a word.");
-        assertFalse(trie.searchPrefix("testify"), "'testify' should not be found.");
+    @Test
+    public void testInsertAndSearchOverlappingWords() {
+        trie.insert("apple");
+        trie.insert("app");
+
+        assertTrue(trie.searchPrefix("apple"));
+        assertTrue(trie.searchPrefix("app"));
+        assertFalse(trie.searchPrefix("appl"));
+    }
+
+    @Test
+    public void testInsertAndSearchWithCommonPrefix() {
+        trie.insert("apple");
+        trie.insert("applet");
+        trie.insert("application");
+
+        assertTrue(trie.searchPrefix("apple"));
+        assertTrue(trie.searchPrefix("applet"));
+        assertTrue(trie.searchPrefix("application"));
+        assertFalse(trie.searchPrefix("appli"));
     }
 }
