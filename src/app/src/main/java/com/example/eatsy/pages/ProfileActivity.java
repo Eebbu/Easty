@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -23,6 +24,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.eatsy.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -88,16 +90,18 @@ public class ProfileActivity extends AppCompatActivity {
 
         // Displaying user data such as name and email on the profile page.
 
-        if (user != null) {
+
+
+
             String emailOfPerson = FirebaseAuth.getInstance().getCurrentUser().getEmail();
             System.out.println("this user's email is" + emailOfPerson);
-            // Fetching the email from firebase and username from the hashmap using email as the key of the current user.
+           //  Fetching the email from firebase and username from the hashmap using email as the key of the current user.
             String nameOfPerson = DashboardActivity.users.get(emailOfPerson).getUsername();
             System.out.println("this user's name is" + nameOfPerson);
             user_Name.setText(nameOfPerson);
             user_Email.setText(emailOfPerson);
 
-        }
+       // }
 
 
 
