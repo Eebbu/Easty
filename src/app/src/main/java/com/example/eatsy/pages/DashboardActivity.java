@@ -57,15 +57,6 @@ public class DashboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-        while(MyApplication.fileDownloaded = false){
-            try {
-                Thread.sleep(200);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        //init post data firebase
-        //StorageList.initPostData();
 
         //local data
         StorageList.mapList = DataManager.getDataInstance().getPostHashMap();

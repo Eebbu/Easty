@@ -173,21 +173,21 @@ public class Post implements Serializable{
     @NonNull
     @Override
     public String toString() {
-        System.out.println("userid= " + userID);
-        System.out.println("username= " + userName);
-        System.out.println("post_type= " + postType);
-        System.out.println("post_title= " + postTitle);
-        System.out.println("post_description= " + postDescription);
-        System.out.println("quantity= " + quantity);
-        System.out.println("pick_up_times= " + pickUpTimes);
-        System.out.println("latitude= " + Address.latitude);
-        System.out.println("longitude= " + Address.longitude);
-        if (images.size() == 0){
-            System.out.println("images = ");
-        }else{
-            System.out.println("images= " + images.get(0));
-        }
-        System.out.println("wantInExchange= " + wantInExchange);
+//        System.out.println("userid= " + userID);
+//        System.out.println("username= " + userName);
+//        System.out.println("post_type= " + postType);
+//        System.out.println("post_title= " + postTitle);
+//        System.out.println("post_description= " + postDescription);
+//        System.out.println("quantity= " + quantity);
+//        System.out.println("pick_up_times= " + pickUpTimes);
+//        System.out.println("latitude= " + Address.latitude);
+//        System.out.println("longitude= " + Address.longitude);
+//        if (images.size() == 0){
+//            System.out.println("images = ");
+//        }else{
+//            System.out.println("images= " + images.get(0));
+//        }
+//        System.out.println("wantInExchange= " + wantInExchange);
         return super.toString();
     }
 }

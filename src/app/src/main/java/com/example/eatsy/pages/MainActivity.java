@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
+import com.example.eatsy.MyApplication;
 import com.example.eatsy.datamanagement.LocalJsonDataBase;
 import com.example.eatsy.R;
 import com.example.eatsy.searchengine.StorageList;
@@ -32,6 +33,13 @@ public class MainActivity extends AppCompatActivity {
 
         // Login page that takes us to the login page.
         logIn.setOnClickListener(v -> {
+            while(MyApplication.fileDownloaded = false){
+                try {
+                    Thread.sleep(200);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(intent);
         });
