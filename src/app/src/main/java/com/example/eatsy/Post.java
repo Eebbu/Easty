@@ -176,7 +176,7 @@ public class Post implements Serializable{
 //        System.out.println("userid= " + userID);
 //        System.out.println("username= " + userName);
 //        System.out.println("post_type= " + postType);
-//        System.out.println("post_title= " + postTitle);
+      System.out.println("post_title= " + postTitle);
 //        System.out.println("post_description= " + postDescription);
 //        System.out.println("quantity= " + quantity);
 //        System.out.println("pick_up_times= " + pickUpTimes);
