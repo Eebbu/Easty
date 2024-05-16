@@ -1,67 +1,94 @@
-package com.example.eatsy.searchengine;
+package com.example.eatsy;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import com.example.eatsy.searchengine.AVLTree;
+import com.example.eatsy.searchengine.AVLTreeNode;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.List;
 
-/**
- * Test class for AVLTree.
- * It tests the insertion balance, tree structure integrity, and traversal correctness.
- */
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
+
 public class AVLTreeTest {
     private AVLTree avlTree;
 
-    /**
-     * Setup method executed before each test method.
-     * It initializes a new instance of AVLTree.
-     */
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         avlTree = new AVLTree();
     }
 
-    /**
-     * Tests if the traversal of an empty tree returns an empty list.
-     */
     @Test
-    void testEmptyTree() {
-        // Verify that traversing an empty tree should return an empty list
-        assertTrue(avlTree.traverseTree().isEmpty(), "Traversing an empty tree should return an empty list.");
-    }
-
-    /**
-     * Tests insertions into the AVL tree and checks if the tree remains balanced.
-     */
-    @Test
-    void testInsertionsAndBalance() {
-        // Insert elements and check the balance of the tree
-        avlTree.buildTree(new Integer[]{20, 15, 25, 10, 18, 17});
+    public void testBuildTree() {
+        Object[] objects = {3, 2, 1, 4, 5, 6, 7, 16, 15, 14, 13, 12, 11, 10, 8, 9};
+        avlTree.buildTree(objects);
         List<AVLTreeNode> nodeList = avlTree.traverseTree();
-        assertNotNull(nodeList, "Node list should not be null after insertions.");
-        assertFalse(nodeList.isEmpty(), "Node list should not be empty after insertions.");
-        assertEquals(6, nodeList.size(), "Node list should contain exactly 6 elements.");
 
-        // Verify tree balance
-        AVLTreeNode root = avlTree.root;
-        assertEquals(15, root.data, "Root should be 15 after rotations to balance the tree.");
-        assertNotNull(root.left, "Root should have a left child.");
-        assertNotNull(root.right, "Root should have a right child.");
-        assertEquals(10, root.left.data, "Left child of root should be 10.");
-        assertEquals(20, root.right.data, "Right child of root should be 20.");
+        // Check the size of the tree
+        assertEquals(objects.length, nodeList.size());
+
+        // Check if the tree is balanced
+        for (AVLTreeNode node : nodeList) {
+            int balance = avlTree.getBalance(node);
+            assertTrue(balance >= -1 && balance <= 1);
+        }
     }
 
-    /**
-     * Tests the structure of the tree after specific insertions.
-     */
     @Test
-    void testTreeStructure() {
-        // Test the structure of the tree
-        avlTree.buildTree(new Integer[]{30, 20, 40, 10, 25, 35, 50});
-        AVLTreeNode root = avlTree.root;
-        assertEquals(30, root.data, "Root of the tree should be 30.");
-        assertEquals(20, root.left.data, "Left child of root should be 20.");
-        assertEquals(40, root.right.data, "Right child of root should be 40.");
+    public void testInsert() {
+        avlTree.buildTree(new Object[]{10, 20, 30, 40, 50, 25});
+        List<AVLTreeNode> nodeList = avlTree.traverseTree();
+
+        // Check the size of the tree
+        assertEquals(6, nodeList.size());
+
+        // Check if the tree is balanced
+        for (AVLTreeNode node : nodeList) {
+            int balance = avlTree.getBalance(node);
+            assertTrue(balance >= -1 && balance <= 1);
+        }
+    }
+
+    @Test
+    public void testRightRotate() {
+        AVLTreeNode root = new AVLTreeNode(30);
+        root.left = new AVLTreeNode(20);
+        root.left.left = new AVLTreeNode(10);
+
+        AVLTreeNode newRoot = avlTree.rightRotate(root);
+
+        assertEquals(20, newRoot.data);
+        assertEquals(10, newRoot.left.data);
+        assertEquals(30, newRoot.right.data);
+    }
+
+    @Test
+    public void testLeftRotate() {
+        AVLTreeNode root = new AVLTreeNode(10);
+        root.right = new AVLTreeNode(20);
+        root.right.right = new AVLTreeNode(30);
+
+        AVLTreeNode newRoot = avlTree.leftRotate(root);
+
+        assertEquals(20, newRoot.data);
+        assertEquals(10, newRoot.left.data);
+        assertEquals(30, newRoot.right.data);
+    }
+
+    @Test
+    public void testTraverseTree() {
+        Object[] objects = {10, 20, 30, 40, 50, 25};
+        avlTree.buildTree(objects);
+        List<AVLTreeNode> nodeList = avlTree.traverseTree();
+
+        // Check the in-order traversal of the tree
+        assertEquals(6, nodeList.size());
+        assertEquals(10, nodeList.get(0).data);
+        assertEquals(20, nodeList.get(1).data);
+        assertEquals(25, nodeList.get(2).data);
+        assertEquals(30, nodeList.get(3).data);
+        assertEquals(40, nodeList.get(4).data);
+        assertEquals(50, nodeList.get(5).data);
     }
 }
+

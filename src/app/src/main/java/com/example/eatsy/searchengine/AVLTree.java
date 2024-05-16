@@ -97,7 +97,7 @@ public class AVLTree {
      * @param node The node.
      * @return The balance factor of the node.
      */
-    private int getBalance(AVLTreeNode node) {
+    public int getBalance(AVLTreeNode node) {
         if (node == null) {
             return 0;
         }
@@ -108,7 +108,7 @@ public class AVLTree {
      * @param y The node to rotate.
      * @return The new root after the rotation.
      */
-    private AVLTreeNode rightRotate(AVLTreeNode y) {
+    public AVLTreeNode rightRotate(AVLTreeNode y) {
         AVLTreeNode x = y.left;
         AVLTreeNode T2 = x.right;
 
@@ -125,7 +125,7 @@ public class AVLTree {
      * @param x The node to rotate.
      * @return The new root after the rotation.
      */
-    private AVLTreeNode leftRotate(AVLTreeNode x) {
+    public AVLTreeNode leftRotate(AVLTreeNode x) {
         AVLTreeNode y = x.right;
         AVLTreeNode T2 = y.left;
 

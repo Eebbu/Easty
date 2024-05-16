@@ -1,49 +1,69 @@
-package com.example.eatsy.searchengine;
+package com.example.eatsy;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
-/**
- * Test class for TrieNode.
- * It ensures that TrieNode instances initialize correctly
- * and that their children array and isEndOfWord flag behave as expected.
- */
+import com.example.eatsy.searchengine.TrieNode;
+import org.junit.Before;
+import org.junit.Test;
+
 public class TrieNodeTest {
-    private TrieNode node;
+    private TrieNode trieNode;
 
-    @BeforeEach
-    void setUp() {
-        node = new TrieNode();
+    @Before
+    public void setUp() {
+        trieNode = new TrieNode();
     }
 
     @Test
-    void testInitialChildrenAreNull() {
-        // Ensure all children are initially null
-        for (int i = 0; i < node.children.length; i++) {
-            assertNull(node.children[i], "Child at index " + i + " should initially be null.");
+    public void testInitialization() {
+        // Ensure that the TrieNode is initialized correctly
+        assertNotNull(trieNode.children);
+        assertEquals(26, trieNode.children.length);
+        for (TrieNode child : trieNode.children) {
+            assertNull(child);
+        }
+        assertFalse(trieNode.isEndOfWord);
+    }
+
+    @Test
+    public void testSetEndOfWord() {
+        // Set the end of word flag and check
+        trieNode.isEndOfWord = true;
+        assertTrue(trieNode.isEndOfWord);
+    }
+
+    @Test
+    public void testAddChild() {
+        // Add a child node and check if it is correctly added
+        char ch = 'a';
+        int index = ch - 'a';
+        trieNode.children[index] = new TrieNode();
+        assertNotNull(trieNode.children[index]);
+        assertFalse(trieNode.children[index].isEndOfWord);
+    }
+
+    @Test
+    public void testAddMultipleChildren() {
+        // Add multiple children and check if they are correctly added
+        char[] chars = {'a', 'b', 'c'};
+        for (char ch : chars) {
+            int index = ch - 'a';
+            trieNode.children[index] = new TrieNode();
+        }
+        for (char ch : chars) {
+            int index = ch - 'a';
+            assertNotNull(trieNode.children[index]);
+            assertFalse(trieNode.children[index].isEndOfWord);
         }
     }
 
     @Test
-    void testInitialIsEndOfWord() {
-        // The isEndOfWord should initially be false
-        assertFalse(node.isEndOfWord, "isEndOfWord should initially be false.");
-    }
-
-    @Test
-    void testSettingChildren() {
-        // Test setting a child node
-        TrieNode child = new TrieNode();
-        node.children[0] = child;
-        assertNotNull(node.children[0], "Child at index 0 should not be null after setting.");
-        assertSame(child, node.children[0], "Child at index 0 should be the same object as assigned.");
-    }
-
-    @Test
-    void testSettingIsEndOfWord() {
-        // Test setting the isEndOfWord flag
-        node.isEndOfWord = true;
-        assertTrue(node.isEndOfWord, "isEndOfWord should be true after setting.");
+    public void testChildNodeEndOfWord() {
+        // Add a child node and set its end of word flag
+        char ch = 'a';
+        int index = ch - 'a';
+        trieNode.children[index] = new TrieNode();
+        trieNode.children[index].isEndOfWord = true;
+        assertTrue(trieNode.children[index].isEndOfWord);
     }
 }

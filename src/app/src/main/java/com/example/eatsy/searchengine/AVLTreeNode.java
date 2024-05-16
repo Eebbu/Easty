@@ -6,10 +6,10 @@ package com.example.eatsy.searchengine;
  * Author: Lin Xi(u7777752)
  */
 public class AVLTreeNode {
-    Object data;
-    int height;
-    AVLTreeNode left;
-    AVLTreeNode right;
+    public Object data;
+    public int height;
+    public AVLTreeNode left;
+    public AVLTreeNode right;
 
     public AVLTreeNode(Object data) {
         this.data = data;
