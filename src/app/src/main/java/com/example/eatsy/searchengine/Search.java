@@ -158,7 +158,7 @@ public class Search extends AppCompatActivity {
             if (node == null) {
                 Toast.makeText(Search.this, "Please enter only English letters", Toast.LENGTH_SHORT).show();
             } else {
-                searchByTest(node.toArray().toArray(new String[0]));
+                searchByText(node.toArray().toArray(new String[0]));
             }
         }
     }
@@ -194,7 +194,7 @@ public class Search extends AppCompatActivity {
      */
     private void searchData() {
         List<Post> resList = new ArrayList<>();
-        StorageList.postList.forEach(document -> {
+        postsToShow.forEach(document -> {
             if (!this.type.isEmpty() && this.type.containsValue(document.getPostType())) {
                 resList.add(document);
             }
@@ -237,7 +237,7 @@ public class Search extends AppCompatActivity {
      * Searches posts based on user-entered keywords in the search text box.
      * @param keywords The search keywords to use for filtering posts.
      */
-    private void searchByTest(String[] keywords) {
+    private void searchByText(String[] keywords) {
         Trie trie = new Trie();
         HashSet<Post> allResults = new HashSet<>();
         HashMap<Post, Integer> resultCountMap = new HashMap<>();
