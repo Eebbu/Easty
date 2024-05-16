@@ -16,7 +16,7 @@ import java.util.concurrent.CompletableFuture;
  * @param <T> The type of data to download
  */
 public abstract class DataDownloader<T> {
-    public static boolean fileDownloaded = false;
+
     private Context context; // Context to access local resources
     private Class<T> typeParameterClass; // Class type for JSON deserialization
 
@@ -53,7 +53,7 @@ public abstract class DataDownloader<T> {
                 });
 
 
-        fileDownloaded = true;
+
 
 
         return future;

@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -24,6 +25,8 @@ import com.squareup.picasso.Picasso;
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
+
 /**
  * Functionalities
  * 1) An activity to show post deatails from dashboard, search page.(Jinyang Zeng)
@@ -85,6 +88,14 @@ public class PostCard extends AppCompatActivity implements OnMapReadyCallback {
                 Address address = addresses.get(0);
                 addressLine = address.getAddressLine(0); // Get address
                 // Display address in the related map
+        }
+
+        TextView wantInExchange = findViewById(R.id.want_in_exchange);
+        if (clickedPost.getWantInExchange() != null && !Objects.equals(clickedPost.getWantInExchange(), "")){
+            wantInExchange.setText("I want " + clickedPost.getWantInExchange());
+            wantInExchange.setVisibility(View.VISIBLE);
+        }else{
+            wantInExchange.setVisibility(View.GONE);
         }
 
 

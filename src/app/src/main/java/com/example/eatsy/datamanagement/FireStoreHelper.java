@@ -46,6 +46,10 @@ public class FireStoreHelper {
      * @param post The post to be created and uploaded.
      */
     public static void createAndPost(Post post){
+        if (post.getImages().isEmpty()){
+            uploadPost(post);
+            return;
+        }
         StorageReference ref = storageReference.child("user_post_img/" + UUID.randomUUID().toString());
         UploadTask uploadTask = ref.putFile(Uri.parse(post.getFilePath()));
 

@@ -139,7 +139,7 @@ public class Post implements Serializable{
         return this.Address.longitude;
     }
 
-    public ArrayList<String> getImages() {
+    public ArrayList<String>getImages() {
         return new ArrayList<>(images);
     }
 

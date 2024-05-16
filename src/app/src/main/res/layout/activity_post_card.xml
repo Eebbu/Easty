@@ -138,6 +138,18 @@
                         app:layout_constraintTop_toTopOf="@+id/description_linear"/>
 
                 <TextView
+                    android:id="@+id/want_in_exchange"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/want_something"
+
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="@+id/description_linear"
+                    app:layout_constraintTop_toTopOf="@+id/description"/>
+
+                <TextView
                         android:id="@+id/remainAndMeetTime"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -146,8 +158,8 @@
                         android:text="@string/remain_time"
 
                         android:textSize="18sp"
-                        app:layout_constraintStart_toStartOf="@+id/description_linear"
-                        app:layout_constraintTop_toTopOf="@+id/description"/>
+                        app:layout_constraintStart_toStartOf="@+id/want_in_exchange"
+                        app:layout_constraintTop_toTopOf="@+id/want_in_exchange"/>
 
                 <TextView
                     android:id="@+id/meetingAddress"
