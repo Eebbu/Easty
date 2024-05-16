@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.eatsy.MyApplication;
 import com.example.eatsy.datamanagement.LocalJsonDataBase;
@@ -33,15 +34,14 @@ public class MainActivity extends AppCompatActivity {
 
         // Login page that takes us to the login page.
         logIn.setOnClickListener(v -> {
-            while(MyApplication.fileDownloaded = false){
-                try {
-                    Thread.sleep(200);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
+
+            if (MyApplication.fileDownloaded){
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }else {
+                Toast.makeText(this, "Data initialising", Toast.LENGTH_SHORT).show();
             }
-            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-            startActivity(intent);
+
         });
 
 
