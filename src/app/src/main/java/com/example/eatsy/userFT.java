@@ -68,4 +68,17 @@ public class userFT  implements Serializable {
     public void setPostID(ArrayList<String> postID) {
         this.postID = postID;
     }
+
+
+
+    @Override
+    public String toString() {
+        return "userFT{" +
+                "username='" + username + '\'' +
+                ", userID='" + userID + '\'' +
+                ", email='" + email + '\'' +
+                ", photoURL='" + photoURL + '\'' +
+                ", postID=" + postID +
+                '}';
+    }
 }

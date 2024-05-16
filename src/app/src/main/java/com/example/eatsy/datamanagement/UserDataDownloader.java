@@ -31,6 +31,7 @@ public class UserDataDownloader extends DataDownloader<userFT> {
             String photoURL = document.getString("photo_url");
             ArrayList<String> postId = document.contains("postid") ? (ArrayList<String>) document.get("postid") : new ArrayList<>();
             userFT user = new userFT(username, email,email, photoURL, postId);
+
             userHashMap.put(email, user);
         });
     }

@@ -90,8 +90,10 @@ public class ProfileActivity extends AppCompatActivity {
 
         if (user != null) {
             String emailOfPerson = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+            System.out.println("this user's email is" + emailOfPerson);
             // Fetching the email from firebase and username from the hashmap using email as the key of the current user.
             String nameOfPerson = DashboardActivity.users.get(emailOfPerson).getUsername();
+            System.out.println("this user's name is" + nameOfPerson);
             user_Name.setText(nameOfPerson);
             user_Email.setText(emailOfPerson);
 

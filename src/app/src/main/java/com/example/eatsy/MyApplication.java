@@ -45,6 +45,8 @@ public class MyApplication extends Application {
         // Print the user data to verify contents
         System.out.println("Downloaded User Data:");
         data.forEach((key, value) -> System.out.println(key + " -> " + value));
+
+
     });
     // Download and handle post data
         postDownloader.downloadData(postsCollectionRef)
