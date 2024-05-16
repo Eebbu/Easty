@@ -15,7 +15,7 @@ android {
     defaultConfig {
         applicationId = "com.example.eatsy"
         minSdk = 31
-        targetSdk = 32
+        targetSdk = 33
         versionCode = 1
         versionName = "1.0"
 

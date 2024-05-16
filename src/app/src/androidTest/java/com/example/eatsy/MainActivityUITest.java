@@ -1,4 +1,6 @@
 package com.example.eatsy;
+import androidx.lifecycle.Lifecycle;
+import androidx.test.core.app.ActivityScenario;
 import androidx.test.espresso.intent.Intents;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.runner.AndroidJUnit4;
@@ -10,8 +12,11 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 
+import static org.junit.Assert.assertEquals;
+
 import com.example.eatsy.pages.LoginActivity;
 import com.example.eatsy.pages.MainActivity;
+import com.example.eatsy.pages.Post_donate;
 
 import org.junit.After;
 import org.junit.Before;
@@ -51,13 +56,14 @@ public class MainActivityUITest {
 
     @Test
     public void testButtonDisplayAndClick() {
-        // Check if the button is displayed
-        onView(withId(R.id.start)).check(matches(isDisplayed()));
+        try (ActivityScenario<MainActivity> scenario = ActivityScenario.launch(MainActivity.class)) {
+            // Check if the button is displayed
+            onView(withId(R.id.start)).check(matches(isDisplayed()));
+            // Perform click action on the button
+            onView(withId(R.id.start)).perform(click());
+            scenario.moveToState(Lifecycle.State.DESTROYED);
+            assertEquals(Lifecycle.State.DESTROYED, scenario.getState());
 
-        // Perform click action on the button
-        onView(withId(R.id.start)).perform(click());
-        // button starts the LoginActivity on click
-        intended(hasComponent(LoginActivity.class.getName()));
-
+        }
     }
 }

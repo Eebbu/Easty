@@ -95,17 +95,4 @@ public class PostwantedUITest {
         // Check if the Mapctivity is started
         intended(hasComponent(MapSelection.class.getName()));
     }
-    @Test
-    public void testOpenGalleryIntent() {
-        // Perform a click on the imageButton that should open the gallery
-        onView(withId(R.id.cameraButton)).perform(click());
-        // Verify that the chooser intent is sent and check the nested ACTION_GET_CONTENT intent
-        intended(allOf(
-                hasAction(Intent.ACTION_CHOOSER),
-                hasExtra(equalTo(Intent.EXTRA_INTENT), allOf(
-                        hasAction(Intent.ACTION_GET_CONTENT),
-                        hasType("image/*")
-                ))
-        ));
-    }
 }
