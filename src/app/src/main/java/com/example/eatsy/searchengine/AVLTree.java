@@ -1,5 +1,7 @@
 package com.example.eatsy.searchengine;
 
+import com.example.eatsy.Post;
+
 import java.util.ArrayList;
 import java.util.List;
 /**
@@ -74,12 +76,16 @@ public class AVLTree {
      * @return Negative if obj1 is less than obj2, positive if obj1 is greater than obj2, 0 if equal.
      */
     private int compare(Object obj1, Object obj2) {
-        // Custom comparison logic based on your requirements
-        // Return a negative value if obj1 is less than obj2,
-        // a positive value if obj1 is greater than obj2,
-        // or 0 if obj1 is equal to obj2.
-        // You need to implement this according to the type of objects you are storing.
-        return 0;
+        if (obj1 instanceof Post && obj2 instanceof Post) {
+            // 如果两个对象都是 Post 类型，则调用其 compareTo 方法进行比较
+            return ((Post) obj1).compareTo((Post) obj2);
+        } else if (obj1 instanceof Integer && obj2 instanceof Integer) {
+            // 如果两个对象都是 Integer 类型，则直接比较大小
+            return Integer.compare((Integer) obj1, (Integer) obj2);
+        } else {
+            // 其他类型的对象无法比较，返回 0 或者抛出异常，具体取决于你的需求
+            return 0; // 或者 throw new IllegalArgumentException("Objects are not comparable");
+        }
     }
     /**
      * Retrieves the height of a given node.

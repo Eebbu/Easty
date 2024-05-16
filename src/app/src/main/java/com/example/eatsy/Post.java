@@ -42,6 +42,10 @@ public class Post implements Serializable{
     private String wantInExchange;
     private String filePath;
 
+    public int compareTo(Post o) {
+        return this.postTitle.compareTo(o.postTitle);
+    }
+
     public static class Address implements Serializable {
         @SerializedName("latitude")
         private String latitude;
