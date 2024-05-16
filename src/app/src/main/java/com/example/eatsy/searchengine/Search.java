@@ -45,27 +45,32 @@ public class Search extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
         ImageButton go_back = findViewById(R.id.leftArrowButton);
-        go_back.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
-            startActivity(intent);
-            finish();
-        });
+        go_back.setOnClickListener(v -> finish());
 
-        recyclerView = findViewById(R.id.recyclerView);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerView.setLayoutManager(layoutManager);
+
 
         setCheckListener();
         setEditListener();
         setSearchButtonListener(); // Set listener for the search button
         searchAll();
+
+        recyclerView = findViewById(R.id.recyclerView);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
+        adapter = new PostAdapter(postsToShow);
+        recyclerView.setAdapter(adapter);
+
+        adapter.setOnItemClickListener(position -> {
+            Post clickedPost = postsToShow.get(position);
+            Intent intent = new Intent(Search.this, PostCard.class);
+            intent.putExtra("clickedPost", clickedPost);
+            startActivity(intent);
+        });
     }
 
     /**
@@ -196,22 +201,26 @@ public class Search extends AppCompatActivity {
      * Filters posts based on selected types from checkboxes.
      */
     private void searchData() {
-        List<Post> resList = new ArrayList<>();
-        postsToShow.forEach(document -> {
-            if (!this.type.isEmpty() && this.type.containsValue(document.getPostType())) {
-                resList.add(document);
-            }
-        });
-        postsToShow = resList;
+        if (!this.type.isEmpty()){
+            List<Post> resList = new ArrayList<>();
+            postsToShow.forEach(document -> {
+                if (this.type.containsValue(document.getPostType())) {
+                    resList.add(document);
+                }
+            });
+            postsToShow = resList;
+        }
         adapter = new PostAdapter(postsToShow);
         recyclerView.setAdapter(adapter);
-
         adapter.setOnItemClickListener(position -> {
             Post clickedPost = postsToShow.get(position);
             Intent intent = new Intent(Search.this, PostCard.class);
             intent.putExtra("clickedPost", clickedPost);
             startActivity(intent);
         });
+
+
+
     }
 
     /**
@@ -223,17 +232,7 @@ public class Search extends AppCompatActivity {
         for (AVLTreeNode avlTreeNode : avlTreeNodes) {
             list.add((Post) avlTreeNode.data);
         }
-
         postsToShow = list;
-        adapter = new PostAdapter(postsToShow);
-        recyclerView.setAdapter(adapter);
-
-        adapter.setOnItemClickListener(position -> {
-            Post clickedPost = postsToShow.get(position);
-            Intent intent = new Intent(Search.this, PostCard.class);
-            intent.putExtra("clickedPost", clickedPost);
-            startActivity(intent);
-        });
     }
 
     /**
@@ -270,16 +269,8 @@ public class Search extends AppCompatActivity {
         Collections.sort(sortedResults, (post1, post2) ->
                 resultCountMap.get(post2).compareTo(resultCountMap.get(post1))
         );
+
         postsToShow = sortedResults;
-
-        adapter = new PostAdapter(postsToShow);
-        recyclerView.setAdapter(adapter);
-
-        adapter.setOnItemClickListener(position -> {
-            Post clickedPost = postsToShow.get(position);
-            Intent intent = new Intent(Search.this, PostCard.class);
-            intent.putExtra("clickedPost", clickedPost);
-            startActivity(intent);
-        });
+        searchData();
     }
 }

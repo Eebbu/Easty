@@ -47,7 +47,6 @@ public class MyApplication extends Application {
         System.out.println("Downloaded User Data:");
         data.forEach((key, value) -> System.out.println(key + " -> " + value));
 
-
     });
     // Download and handle post data
         postDownloader.downloadData(postsCollectionRef)
@@ -63,10 +62,6 @@ public class MyApplication extends Application {
 
         return null;
     });
-        fileDownloaded = true;
 }
-
-
-
-    }
+}
 
