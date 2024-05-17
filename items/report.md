@@ -189,7 +189,7 @@ When the user types in the food they want and selects any option, our app will r
 2. Search results for apple
 
 <div align="center">
-    <img src="search_apple.jpg" alt="search results for **apple**">
+    <img src="search_apple.png" alt="search results for **apple**">
 </div>
 
 When the user types apple and selects the donate type, our app will pick up the post_type as donate from firebase, and apple's post will appear in the post_title. Search results are not affected even if the user mixes upper and lower case.
