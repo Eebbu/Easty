@@ -1,18 +1,4 @@
-# [G15 - Team Name] Report
-
-The following is a report template to help your team successfully provide all the details necessary for your report in a structured and organised manner. Please give a straightforward and concise report that best demonstrates your project. Note that a good report will give a better impression of your project to the reviewers.
-
-Note that you should have removed ALL TEMPLATE/INSTRUCTION textes in your submission (like the current sentence), otherwise it hampers the professionality in your documentation.
-
-*Here are some tips to write a good report:*
-
-* `Bullet points` are allowed and strongly encouraged for this report. Try to summarise and list the highlights of your project (rather than give long paragraphs).*
-
-* *Try to create `diagrams` for parts that could greatly benefit from it.*
-
-* *Try to make your report `well structured`, which is easier for the reviewers to capture the necessary information.*
-
-*We give instructions enclosed in square brackets [...] and examples for each sections to demonstrate what are expected for your project report. Note that they only provide part of the skeleton and your description should be more content-rich. Quick references about markdown by [CommonMark](https://commonmark.org/help/)*
+# [G15 - Good Food, Good Life] Report
 
 ## Table of Contents
 
@@ -189,7 +175,8 @@ Post have three different type: donate, exchange and wanted.
 
 Post pages share a common theme of promoting community sharing and exchange, and we use Firebase to manage data storage and retrieval effectively.
 
-4. Search page
+### Search page
+1. Search page
 
 <div align="center">
     <img src="searchpage.png" alt="search page">
@@ -199,7 +186,7 @@ On this page, users can search for any food they want and choose how to get the 
 When the user types in the food they want and selects any option, our app will retrieve the relevant data from the firebase database and display it.
 When the user types in the food they want and selects any option, our app will retrieve the relevant data from the firebase database and display it.
 
-5. Search results for apple
+2. Search results for apple
 
 <div align="center">
     <img src="search_apple.png" alt="search results for **apple**">
@@ -211,7 +198,7 @@ When the user types apple and selects the donate type, our app will pick up the 
     <img src="search_apple_case.png" alt="search results for **APple**">
 </div>
 
-6. Search results for butter chicken
+3. Search results for butter chicken
 
  <div align="center">
     <img src="search_butter_chicken.png" alt="search results for **butter chicken**">
@@ -219,7 +206,7 @@ When the user types apple and selects the donate type, our app will pick up the 
 
 When the user types butter chicken, our app will search butter chicken in our database and the results will appear.
 
-7. Search results for I want to share some apples
+4. Search results for I want to share some apples
 
 <div align="center">
     <img src="search_sentence.png" alt="search results for **I want to share some apples**">
