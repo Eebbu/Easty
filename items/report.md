@@ -1,4 +1,4 @@
-# [G15 - Team Name] Report
+# [G15 - Good Food, Good Life] Report
 
 ## Table of Contents
 
