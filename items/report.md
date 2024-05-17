@@ -533,7 +533,10 @@ Objective: Implement functionality to sort and filter the list of items returned
 
 ### Surprise Features
 1. On April 15, MainActivity2(for login) and MainActivity3(for register) were created, https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/commit/f98af4945b0061f49a4ca2acbc6d33d979ff08a2, which were later changed to LoginActivity and RegisterActivity respectively.
-   On April 17, MainActivity4(dashboard) was created and its name was changed to DashBoardActivity, https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/commit/662671f382bf528651adb1e24d2254c0706f9e2e. By removing this code smell, we gave meaningful names to the activities and enhances the understandability and readability of the code.  
+   On April 17, MainActivity4(dashboard) was created and its name was changed to DashBoardActivity, https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/commit/662671f382bf528651adb1e24d2254c0706f9e2e. 
+   Earlier, the names were non-descriptive and didn't give the idea of the purpose of these activities. There was a lack of 
+   clarity especially when the project was growing further. Thus, by refactoring their names, they became more descriptive. They convey the purpose of each activity like LoginActivity allows the user to login.
+   DashBoardActivity manages dashboard interface. The codebase becomes easier to navigate. Also, giving meaningful names is a fundamental thing to write a clean code, enhance readability and success of the project. 
 2. On April 22 and 27, three post pages were completed, as documented in Git commits SHA 1c750dd020486de45f2d71d651badedf155ed79c and 7ff755054cffd14a9f85094c56854b77540ebf31.
  The layout of these three posts was very similar, especially the donate and exchange pages, including nearly identical scenes, UI components and listeners.
  This resulted in a significant amount of code duplication. Subsequently, on May 1st, Git commit SHA ea0f48b72edbbfc472b0a74f6aa94d1ccebdc8ac added [Post_base.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/Post_base.java?ref_type=heads),
@@ -583,9 +586,14 @@ Despite I attempted to resolve this using Mockito and Mockito-inline, the proble
    - Types of tests created and descriptions: The tests primarily focus on object construction correctness, ensuring that the factory methods create objects based on input parameters.
 4. Tests for UI design(Post pages)
    - Code: [PostdonateUITest.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/androidTest/java/com/example/eatsy/PostdonateUITest.java?ref_type=heads),
-[PostexchangeUITest.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/androidTest/java/com/example/eatsy/PostexchangeUITest.java?ref_type=heads) and 
-[PostwantedUITest.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/androidTest/java/com/example/eatsy/PostwantedUITest.java?ref_type=heads)
-   - Number of test cases: 18
+[PostexchangeUITest.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/androidTest/java/com/example/eatsy/PostexchangeUITest.java?ref_type=heads), 
+[PostwantedUITest.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/androidTest/java/com/example/eatsy/PostwantedUITest.java?ref_type=heads),
+   [AddPageUITest.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/androidTest/java/com/example/eatsy/AddPageUITest.java?ref_type=heads),
+   [DashBoardActivityUITests.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/androidTest/java/com/example/eatsy/DashBoardActivityUITests.java?ref_type=heads),
+   [LoginActivityUITest.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/androidTest/java/com/example/eatsy/LoginActivityUITest.java?ref_type=heads),
+   [MainActivityUITest.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/androidTest/java/com/example/eatsy/MainActivityUITest.java?ref_type=heads) and
+   [MapSelectionUITest.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/androidTest/java/com/example/eatsy/MapSelectionUITest.java?ref_type=heads).
+   - Number of test cases: 30
    - Code coverage: Tests interactions with UI components
    - Types of tests created and descriptions: 
      - Visibility and changes of UI components. 
