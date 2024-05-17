@@ -421,7 +421,14 @@ The grammar used in our project is designed to parse text consisting of space-se
    * Code to the Data File [posts.json](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/raw/posts.json?ref_type=heads), [users_without_password.json](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/raw/users_without_password.json?ref_type=heads)
    * Link to the Firebase repo: https://console.firebase.google.com/u/1/project/comp2100gp-554f2/overview
    <br>
-3. [Search].(Medium) Created an activity for searching and filtering posts within the application, utilizing various data structures and methods to efficiently manage and display search results.
+3. [LoadShowData].(easy) Load data and show in dashboard and postCard.
+   * Code: [PostCard.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/PostCard.java), class DashboardActivity:[DashboardActivity.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/DashboardActivity.java), class PostAdapter: [PostAdapter.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/PostAdapter.java)
+     <br>
+4. [DataStream].(easy) simulate the data update in dashboard.
+    * Code: function simulateDataStream: [simulateDataStream()](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/DashboardActivity.java#L121-145)
+    * Description of your implementation: Implement a method that accept a post list. And update the dashboard every 10~15 sencond.
+    <br>
+5. [Search].(Medium) Created an activity for searching and filtering posts within the application, utilizing various data structures and methods to efficiently manage and display search results.
    * Code:[class Search](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/searchengine/Search.java)
    * Key Methods: onCreate, setCheckListener, setEditListener, searchData, searchAll, searchByTest
    * Related Classes: StorageList, ListDataAdapter, AVLTree, AVLTreeNode, Trie, TrieNode
