@@ -331,7 +331,6 @@ The grammar used in our project is designed to parse text consisting of space-se
 **Construction**: 
 
 - **Tokenizer**: It is implemented using simple string operations. The input string is split using the space character as a delimiter, generating an array of words which are then individually wrapped as **Token**
-
 - **Parser**: The parser is implemented as a recursive descent parser. It starts by creating a node for the first token and then recursively processes the following tokens to build the tree. The recursive nature of the parser allows it to easily handle nested or sequential structures typical in language constructs.
 
 **Advantages of the designs**:
@@ -339,8 +338,7 @@ The grammar used in our project is designed to parse text consisting of space-se
 - **Efficiency**: The tokenizer is efficient as it leverages built-in string methods which are optimized for performance.
 - **Flexibility**: The parser is designed to be flexible and can be easily adjusted or extended to support more complex grammatical structures if needed.
 - **Modularity**: The separation of tokenizing and parsing functions enhances modularity. This makes the code easier to manage and test, as each component can be developed and debuged independently.
-
-**Scalability**: The parser uses recursive methods, making it scalable for extending the grammar without significantly altering the existing codebase. This is beneficial for maintaining and upgrading the system in the future.
+- **Scalability**: The parser uses recursive methods, making it scalable for extending the grammar without significantly altering the existing codebase. This is beneficial for maintaining and upgrading the system in the future.
 
 
 ### Data Structures
@@ -411,55 +409,54 @@ The grammar used in our project is designed to parse text consisting of space-se
 
 5. Builder Pattern<br>
    * **Objective:** Separates the construction of a complex object from its representation so that the same construction process can create different representations.<br>
-   * **Code Locations:** 
-   - Used in constructing complex Post objects, in scenarios where a Post object consists of various discrete parts that are assembled step-by-step.<br>
-   **Reasons:** 
+   * **Code Locations:** Used in constructing complex Post objects, in scenarios where a Post object consists of various discrete parts that are assembled step-by-step.<br>
+   * **Reasons:** 
    - Step-by-step Construction: Allows for constructing complex objects step-by-step, particularly useful when creating an object requires setting many attributes that could be optional.<br>
 
 ## Implemented Features
 
 ### Basic Features
-1. [LogIn]. 	Created an activity for login feature and used firebase authentication to help user log in. (easy)
+1. [LogIn].(easy) 	Created an activity for login feature and used firebase authentication to help user log in.
    * Code: [Class LoginActivity,](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/LoginActivity.java?ref_type=heads#L25-74) and Class LoginUser
    * Implemented a singlton design pattern in LoginUser java class to ensure that only one instance of LoginUser required.<br>
    * Description of your implementation: We extracted current user from firebase. We connected all the credentials with xml resources. If the user clicks 
      on the login button, then we check by using 'signInWithEmailAndPassword' method from firebase whether the entered data is correct. If it's correct, the user is redirected to the DashBoardActivtiy
      and a toast message is generated i.e; "Login successful". Otherwise, the user remains on the login page and toast message says, "Authentication failed". 
    <br>
-2. [DataFiles]. Description  ... ... (...)
+2. [DataFiles](easy). Description  ... ... (...)
    * Code to the Data File [users_interaction.json](link-to-file), [search-queries.xml](link-to-file), ...
    * Link to the Firebase repo: ...
    <br>
 3. [Search].(Medium) Created an activity for searching and filtering posts within the application, utilizing various data structures and methods to efficiently manage and display search results.
-   * Code:[class Search](url)
+   * Code:[class Search](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/searchengine/Search.java)
    * Key Methods: onCreate, setCheckListener, setEditListener, searchData, searchAll, searchByTest
    * Related Classes: StorageList, ListDataAdapter, AVLTree, AVLTreeNode, Trie, TrieNode
 
-    **Description of Implementation**
+   Description of Implementation
 
    * The Search activity is designed to process user input for searching and filtering posts based on categories like "Donate", "Need", and "Exchange". The functionality is extended by integrating Firebase Firestore to fetch real-time data, ensuring up-to-date information is always available.
    * Main Features:
    * Dynamic Filtering: Users can filter search results in real-time by selecting different categories through checkboxes. The application updates the displayed results immediately based on the selected criteria.
    * Keyword Search: Includes an input field where users can type keywords. The application parses these inputs to filter posts containing relevant information. This feature uses a custom tokenizer and parser to handle the input strings efficiently.
 
-**Data Structure Usage**
+   Data Structure Usage
 
    * HashMap: Used to store and quickly retrieve posts by unique identifiers.
    * ArrayList: Manages lists of posts for display and intermediate operations.
    * HashSet: Ensures unique search results, preventing duplicate entries in the display.
    * AVLTree: Maintains posts in a balanced manner to optimize search and retrieval operations based on sorted or ranked criteria.
 
-**Performance Considerations**
+   Performance Considerations
 
    * The use of efficient data structures like HashMap and AVL Tree ensures that search operations are fast and responsive, even with a large dataset. The Singleton pattern in StorageList minimizes redundancy in data management, thereby improving memory usage and speed.
 
-**Security and Data Integrity**
+   Security and Data Integrity
 
    * All interactions with Firebase are managed through secure authenticated sessions, ensuring that data retrieval and manipulation are protected against unauthorized access.This implementation not only fulfills the basic requirements of a search feature but also enhances user experience through quick responsiveness and accurate results. The modular approach in designing the Search class allows for easier maintenance and scalability, adapting to potential future enhancements like more complex search algorithms or additional filtering criteria.
 
 ### Custom Features
 Feature Category: Firebase Integration <br>
-1. [Data-Profile] Created a ProfileActivity that displays name, email addresses profile picture of the user. It also has a signout button.(easy)
+1. [Data-Profile](easy) Created a ProfileActivity that displays name, email addresses profile picture of the user. It also has a signout button.
    * Code: [Class ProfileActivity, methods onActivityResult(), uploadImageToFirebase(), showing userdetails](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/ProfileActivity.java?ref_type=heads).
    * Description of the code: The Json file users_without_password.json stores all the user details. This file was later read, serialized and 
      the user data is stores in terms of hashmap where is email is the key. So, email was obtained from firebase and using that as the key, we got username(value) and data was displayed.
@@ -467,29 +464,26 @@ Feature Category: Firebase Integration <br>
      Then we uploaded the image to the firebase. 
 
 Feature Category: Search-related features <br>
-2. [UI-Layout] Incorporate suitable layout adjustments in the UI components for portrait and landscape
-   layout variants, as well as different screen sizes. (easy)
+2. [UI-Layout](easy) Incorporate suitable layout adjustments in the UI components for portrait and landscape
+   layout variants, as well as different screen sizes.
     * Code: [all of xml files](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/tree/main/src/app/src/main/res/layout?ref_type=heads)
     * Description of your implementation: set appropriate constraints to all components to fit for portrait and landscape
       layout variants, and different screen sizes<br>
-3. [UI-Test] Complete UI tests using espresso (not covered in lectures/labs) of reasonable quality and
-   coverage of the App. (hard)
+3. [UI-Test](hard) Complete UI tests using espresso (not covered in lectures/labs) of reasonable quality and
+   coverage of the App.
     * Code: [all of UI Test files](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/tree/main/src/app/src/androidTest/java/com/example/eatsy?ref_type=heads)
     * Description of your implementation: UI tests are implemented using Espresso and JUnit to ensure functionality and user across various activities. 
    Each test corresponds to different aspects of the app, such as adding pages, managing dashboards, user authentication and posts. 
    These tests are designed for enhancing usability, and ensuring user experiences across pages.
    
 Feature Category: Greater Data Usage, Handling and Sophistication <br>
-4. [DataFiles] Boxuan Lin created a dataset with more than 2600 post data instances, covering all types of posts. All of the data was formatted in JSON and uploaded to Firestore for persistence.
 
-5. [FB-Auth] (By Boxuan Lin) We use Firebase to implement the User Authentication/Authorisation of our app. User account data is stored on Google servers instead of locally, and is processed by Google, ensuring security.
+4. [FB-Auth](easy)We use Firebase to implement the User Authentication/Authorisation of our app. User account data is stored on Google servers instead of locally, and is processed by Google, ensuring security.
 
-6. [FB-Persist] (By Boxuan Lin) We used Firebase’s Firestore, a real-time, scalable database that stores data in collections and documents. We use it to persist the post data and user’s profile data for a well synchronization function.  For big files like photos, we store them in Cloud Storage for Firebase for its high scalability and simplified file upload and download capabilities.
-Data Profile(easy):
-    1. It also gives the user an option to upload and change profile picture via media gallery to the firebase.
- 2. There is sign out button that allows user to sign out from the app. 
+5. [FB-Persist](medium) We used Firebase’s Firestore, a real-time, scalable database that stores data in collections and documents. We use it to persist the post data and user’s profile data for a well synchronization function.  For big files like photos, we store them in Cloud Storage for Firebase for its high scalability and simplified file upload and download capabilities.
+6. Data Profile(easy) It also gives the user an option to upload and change profile picture via media gallery to the firebase. There is sign out button that allows user to sign out from the app. 
 
-8. [Search-Invalid] (By Lin Xi)(Medium)
+8. [Search-Invalid](Medium)
    Handling Partially Valid and Invalid Search Queries
    Objective: Enhance the search functionality to handle both partially valid and invalid search queries effectively without causing the application to crash, while still providing meaningful search results based on valid parts of the query.
 
@@ -508,7 +502,7 @@ Data Profile(easy):
       Feature Relevance: Tokenization and parsing are crucial for dissecting user input into manageable components that the system can understand and process, which is central to this feature.
       Code:[Search.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/searchengine/Search.java?ref_type=heads)
 
-9. [Search-Filter](By Lin Xi)(Medium): Sorting and Filtering Search Results
+9. [Search-Filter](easy): Sorting and Filtering Search Results
    Objective: Implement functionality to sort and filter the list of items returned from searches, utilizing suitable UI components to allow users to refine their search results dynamically.
 
    Subject: Advanced sorting and filtering of search results.
