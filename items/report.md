@@ -179,7 +179,7 @@ Post pages share a common theme of promoting community sharing and exchange, and
 1. Search page
 
 <div align="center">
-    <img src="searchpage.png" alt="search page">
+    <img src="searchpage.jpg" alt="search page">
 </div>
 
 On this page, users can search for any food they want and choose how to get the food (i.e. donate, wanted and exchange).
