@@ -406,8 +406,8 @@ The grammar used in our project is designed to parse text consisting of space-se
 
 
 4. Adapter Pattern<br>
-**Objective:** Allows objects with incompatible interfaces to collaborate.<br>
-**Code Locations:**
+   **Objective:** Allows objects with incompatible interfaces to collaborate.<br>
+   **Code Locations:**
    - Used in the ListDataAdapter class, which adapts a list of Post objects to be usable in a ListView which expects data in a specific format.<br>
    
     **Reasons:** 
@@ -415,13 +415,13 @@ The grammar used in our project is designed to parse text consisting of space-se
      - Reusability: Allows the same Post data to be reused in different list-based UI components without modifying the underlying data structure or the components themselves.
 
 5. Builder Pattern<br>
-**Objective:** Separates the construction of a complex object from its representation so that the same construction process can create different representations.<br>
-**Code Locations:** Used in constructing complex Post objects, in scenarios where a Post object consists of various discrete parts that are assembled step-by-step.<br>
-**Reasons:** Step-by-step Construction: Allows for constructing complex objects step-by-step, particularly useful when creating an object requires setting many attributes that could be optional.<br>
+   **Objective:** Separates the construction of a complex object from its representation so that the same construction process can create different representations.<br>
+   **Code Locations:** 
+   - Used in constructing complex Post objects, in scenarios where a Post object consists of various discrete parts that are assembled step-by-step.<br>
+   **Reasons:** 
+   - Step-by-step Construction: Allows for constructing complex objects step-by-step, particularly useful when creating an object requires setting many attributes that could be optional.<br>
 
 ## Implemented Features
-*[What features have you implemented? where, how, and why?]* <br>
-*List all features you have completed in their separate categories with their featureId. THe features must be one of the basic/custom features, or an approved feature from Voice Four Feature.*
 
 ### Basic Features
 1. [LogIn]. 	Created an activity for login feature and used firebase authentication to help user log in. (easy)
@@ -466,11 +466,7 @@ The grammar used in our project is designed to parse text consisting of space-se
 
 ### Custom Features
 Feature Category: Firebase Integration <br>
-1. [FB-Auth] Description of the feature (easy)
-   * Code: [Class X, entire file](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and Class Y, ...
-   * [Class B](../src/path/to/class/file.java#L30-85): methods A, B, C, lines of code: 30 to 85
-   * Description of your implementation: ... <br>
-2. [Data-Profile] Created a ProfileActivity that displays name, email addresses profile picture of the user. It also has a signout button.(easy)
+1. [Data-Profile] Created a ProfileActivity that displays name, email addresses profile picture of the user. It also has a signout button.(easy)
    * Code: [Class ProfileActivity, methods onActivityResult(), uploadImageToFirebase(), showing userdetails](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/ProfileActivity.java?ref_type=heads).
    * Description of the code: The Json file users_without_password.json stores all the user details. This file was later read, serialized and 
      the user data is stores in terms of hashmap where is email is the key. So, email was obtained from firebase and using that as the key, we got username(value) and data was displayed.
@@ -478,28 +474,24 @@ Feature Category: Firebase Integration <br>
      Then we uploaded the image to the firebase. 
 
 Feature Category: Search-related features <br>
-
-Feature Category: UI Design and Testing <br>
-3. [UI-Layout] Incorporate suitable layout adjustments in the UI components for portrait and landscape
+2. [UI-Layout] Incorporate suitable layout adjustments in the UI components for portrait and landscape
    layout variants, as well as different screen sizes. (easy)
     * Code: [all of xml files](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/tree/main/src/app/src/main/res/layout?ref_type=heads)
     * Description of your implementation: set appropriate constraints to all components to fit for portrait and landscape
-      layout variants, and different screen sizes
-4. [UI-Test] Complete UI tests using espresso (not covered in lectures/labs) of reasonable quality and
+      layout variants, and different screen sizes<br>
+3. [UI-Test] Complete UI tests using espresso (not covered in lectures/labs) of reasonable quality and
    coverage of the App. (hard)
     * Code: [all of UI Test files](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/tree/main/src/app/src/androidTest/java/com/example/eatsy?ref_type=heads)
     * Description of your implementation: UI tests are implemented using Espresso and JUnit to ensure functionality and user across various activities. 
-Each test corresponds to different aspects of the app, such as adding pages, managing dashboards, user authentication and posts. 
-These tests are designed for enhancing usability, and ensuring user experiences across pages.
-
+   Each test corresponds to different aspects of the app, such as adding pages, managing dashboards, user authentication and posts. 
+   These tests are designed for enhancing usability, and ensuring user experiences across pages.
+   
 Feature Category: Greater Data Usage, Handling and Sophistication <br>
+4. [DataFiles] Boxuan Lin created a dataset with more than 2600 post data instances, covering all types of posts. All of the data was formatted in JSON and uploaded to Firestore for persistence.
 
-  
-5. [DataFiles] Boxuan Lin created a dataset with more than 2600 post data instances, covering all types of posts. All of the data was formatted in JSON and uploaded to Firestore for persistence.
+5. [FB-Auth] (By Boxuan Lin) We use Firebase to implement the User Authentication/Authorisation of our app. User account data is stored on Google servers instead of locally, and is processed by Google, ensuring security.
 
-
-6. [FB-Auth] (By Boxuan Lin) We use Firebase to implement the User Authentication/Authorisation of our app. User account data is stored on Google servers instead of locally, and is processed by Google, ensuring security.
-7. [FB-Persist] (By Boxuan Lin) We used Firebase’s Firestore, a real-time, scalable database that stores data in collections and documents. We use it to persist the post data and user’s profile data for a well synchronization function.  For big files like photos, we store them in Cloud Storage for Firebase for its high scalability and simplified file upload and download capabilities.
+6. [FB-Persist] (By Boxuan Lin) We used Firebase’s Firestore, a real-time, scalable database that stores data in collections and documents. We use it to persist the post data and user’s profile data for a well synchronization function.  For big files like photos, we store them in Cloud Storage for Firebase for its high scalability and simplified file upload and download capabilities.
 Data Profile(easy):
       1. 
     2. It also gives the user an option to upload and change profile picture via media gallery to the firebase.
@@ -524,6 +516,7 @@ Objective: Enhance the search functionality to handle both partially valid and i
 
       Feature Relevance: Tokenization and parsing are crucial for dissecting user input into manageable components that the system can understand and process, which is central to this feature.
       Code:[Search.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/searchengine/Search.java?ref_type=heads)
+
 9. [Search-Filter](By Lin Xi)(Medium): Sorting and Filtering Search Results
 Objective: Implement functionality to sort and filter the list of items returned from searches, utilizing suitable UI components to allow users to refine their search results dynamically.
 
@@ -568,7 +561,10 @@ which integrates the methods in these pages into a single base class. This refac
 1. *Bug 1:*
    - Error encountered in all pages containing the method 'FirebaseAuth.getInstance().getCurrentUser().getEmail()' during UI tests. This issue arises because the 'getCurrentUser()' method returns null when pages are run individually in testing.
 Despite I attempted to resolve this using Mockito and Mockito-inline, the problem persists.
-     <br> <hr>
+     <br> 
+2. *Bug 2:*
+   - When users log out and then log in, our app will crash once. After the crash and then opening the app, our functions are still normal. The reason for the crash is that the user should have jumped back to the original page after logging out of the account, but due to the incorrect setting of the judgment conditions, the user jumped back to the login page. We only discovered this bug the day after submitting the code. If we had discovered it earlier, we could have solved it.
+   <br><hr>
 
 
 ## Testing Summary
