@@ -298,7 +298,7 @@ When we click on any post under the search term, we can see the specific content
 
 ### Application UML
 
-![img_4.png](uml_draft.png)
+![img_4.png](uml.png)
 <hr>
 
 ## Code Design and Decisions
