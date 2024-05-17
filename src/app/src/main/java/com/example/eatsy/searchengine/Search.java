@@ -51,26 +51,19 @@ public class Search extends AppCompatActivity {
         ImageButton go_back = findViewById(R.id.leftArrowButton);
         go_back.setOnClickListener(v -> finish());
 
-
+        recyclerView = findViewById(R.id.recyclerView);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
 
         setCheckListener();
         setEditListener();
         setSearchButtonListener(); // Set listener for the search button
         searchAll();
 
-        recyclerView = findViewById(R.id.recyclerView);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerView.setLayoutManager(layoutManager);
-        adapter = new PostAdapter(postsToShow);
-        recyclerView.setAdapter(adapter);
 
-        adapter.setOnItemClickListener(position -> {
-            Post clickedPost = postsToShow.get(position);
-            Intent intent = new Intent(Search.this, PostCard.class);
-            intent.putExtra("clickedPost", clickedPost);
-            startActivity(intent);
-        });
+
+
     }
 
     /**
@@ -82,36 +75,33 @@ public class Search extends AppCompatActivity {
         CheckBox checkBox2 = findViewById(R.id.checkBox2);
         CheckBox checkBox3 = findViewById(R.id.checkBox3);
 
-        View.OnClickListener checkBoxClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                boolean isChecked1 = checkBox1.isChecked();
-                boolean isChecked2 = checkBox2.isChecked();
-                boolean isChecked3 = checkBox3.isChecked();
+        View.OnClickListener checkBoxClickListener = v -> {
+            boolean isChecked1 = checkBox1.isChecked();
+            boolean isChecked2 = checkBox2.isChecked();
+            boolean isChecked3 = checkBox3.isChecked();
 
-                if (isChecked1) {
-                    type.put(1, "donate");
-                } else {
-                    type.remove(1);
-                }
+            if (isChecked1) {
+                type.put(1, "donate");
+            } else {
+                type.remove(1);
+            }
 
-                if (isChecked2) {
-                    type.put(2, "wanted");
-                } else {
-                    type.remove(2);
-                }
+            if (isChecked2) {
+                type.put(2, "wanted");
+            } else {
+                type.remove(2);
+            }
 
-                if (isChecked3) {
-                    type.put(3, "exchange");
-                } else {
-                    type.remove(3);
-                }
+            if (isChecked3) {
+                type.put(3, "exchange");
+            } else {
+                type.remove(3);
+            }
 
-                if (!type.isEmpty()) {
-                    searchData();
-                } else {
-                    searchAll();
-                }
+            if (!type.isEmpty()) {
+                searchData();
+            } else {
+                searchAll();
             }
         };
 
@@ -233,6 +223,15 @@ public class Search extends AppCompatActivity {
             list.add((Post) avlTreeNode.data);
         }
         postsToShow = list;
+        adapter = new PostAdapter(postsToShow);
+        recyclerView.setAdapter(adapter);
+
+        adapter.setOnItemClickListener(position -> {
+            Post clickedPost = postsToShow.get(position);
+            Intent intent = new Intent(Search.this, PostCard.class);
+            intent.putExtra("clickedPost", clickedPost);
+            startActivity(intent);
+        });
     }
 
     /**

@@ -73,18 +73,10 @@ The key area(s) of responsibilities for each member
 4. **U7727175, Jinyang Zeng**  I have 20% contribution, as follows: <br>
 - **Code Contribution in the final App**
     - Data Stream feature - function simulateDataStream: [simulateDataStream()](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/DashboardActivity.java#L121-145)
-    - Load Show Data - class PostCard: [PostCard.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/PostCard.java)
-,class DashboardActivity:[DashboardActivity.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/DashboardActivity.java)
-,class PostAdapter: [PostAdapter.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/PostAdapter.java)
-    - GPS feature - class MapSelection: [MapSelection.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/MapSelection.java)
-, class PostCard: [PostCard.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/PostCard.java#L45-62)
-    - Other contribution: [LocalJsonDataBase class](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/datamanagement/LocalJsonDataBase.java)
-,[Post_base class](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/Post_base.java#L53-116): addPostToFirebase()
-,[FireStoreHelper class](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/datamanagement/FireStoreHelper.java#L38-49): createAndPost(Post post)
-,[combined PostFT and Post class](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/commit/b2f746ff6fd9f0a8d18f10b270be4494d815aa3b)
-    - UI design of [activity_map_selection.xml](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/layout/activity_map_selection.xml)
-, [activity_post_card.xml](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/layout/activity_post_card.xml)
-, [item_post.xml](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/layout/item_post.xml)
+    - Load Show Data - class PostCard: [PostCard.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/PostCard.java), class DashboardActivity:[DashboardActivity.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/DashboardActivity.java), class PostAdapter: [PostAdapter.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/PostAdapter.java)
+    - GPS feature - class MapSelection: [MapSelection.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/MapSelection.java), class PostCard: [PostCard.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/PostCard.java#L45-62)
+    - Other contribution: [LocalJsonDataBase class](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/datamanagement/LocalJsonDataBase.java), [Post_base class](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/Post_base.java#L53-116): addPostToFirebase(), [FireStoreHelper class](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/datamanagement/FireStoreHelper.java#L38-49): createAndPost(Post post), [combined PostFT and Post class](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/commit/b2f746ff6fd9f0a8d18f10b270be4494d815aa3b)
+    - UI design of [activity_map_selection.xml](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/layout/activity_map_selection.xml), [activity_post_card.xml](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/layout/activity_post_card.xml), [item_post.xml](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/layout/item_post.xml)
 
 5. **U7773880, Zihan Yuan**  I have 20% contribution, as follows: <br>
 - **Code Contribution in the final App**
@@ -240,60 +232,60 @@ When we click on any post under the search term, we can see the specific content
 *Target Users:*
 
 * The people who want to actively contribute or participate in removing hunger and promote responsible food consumption.
-* * Users can use search feature to filter the category of item they want. 
-* * Users can post food item in any of the three categories(donate, exchange, wanted).
-* * Users can maintain their account details, changes their profile picture and sign out from the app on profile page.
-* * Users can see the location(GPS system) of the people who posted. This will allow them to find something that is close to their place or 
+  - Users can use search feature to filter the category of item they want. 
+  - Users can post food item in any of the three categories(donate, exchange, wanted).
+  - Users can maintain their account details, changes their profile picture and sign out from the app on profile page.
+  - Users can see the location(GPS system) of the people who posted. This will allow them to find something that is close to their place or 
     they will have an idea of where to get this food from. 
 
 *Following is the list of use cases of our application*
-* Actor: User
-* * Our actor will be the user since he/she will be interacting with the app in order to donate, exchange or get food. 
+- Actor: User
+    -  Our actor will be the user since he/she will be interacting with the app in order to donate, exchange or get food. 
 
 * Use Case 1: Login
-* * The user can log into the app. 
-* * Precondition: The user must have his/her account registered.
-* * PostCondition: Once, the user is logged in, he/she is taken to dashboard page. 
+    - The user can log into the app. 
+  - Precondition: The user must have his/her account registered.
+  - PostCondition: Once, the user is logged in, he/she is taken to dashboard page. 
 
 * Use Case 2: View Posts
-* * The user can have a look and go through the posts on dashboard.
-* * Precondition: The user should be on dashboard.
-* * PostCondition: Variety of posts can be viewed belonging to different category.
+    -  The user can have a look and go through the posts on dashboard.
+  - Precondition: The user should be on dashboard.
+  - PostCondition: Variety of posts can be viewed belonging to different category.
 
 * Use Case 3: Search
-* * The search catches the eye balls of the user. 
-* *  Precondition: The user should be on the dashboard.
-* * PostCondition: The user can search different food items based on the searched words.
+    - The search catches the eye balls of the user. 
+  - Precondition: The user should be on the dashboard.
+  - PostCondition: The user can search different food items based on the searched words.
 
 * Use Case 4: Filter
-* * The user can filter posts on the search page. 
-* * * Precondition: The user has to be on the search page.
-* * * PostCondition: The user has to click on the category which he/she wants so search for. Later, posts only for those categories are shown.
-      If a users want that food item, there is a GPS system(address of who posted) on the post page that people can follow to get the food.
+    - The user can filter posts on the search page. 
+      - Precondition: The user has to be on the search page.
+      -  PostCondition: The user has to click on the category which he/she wants so search for. Later, posts only for those categories are shown.
+          If a users want that food item, there is a GPS system(address of who posted) on the post page that people can follow to get the food.
        
 
 * Use Case 5: Add Post
-* * The user can post his/her food item by clicking 'Add' button on the dashboard.
+    - The user can post his/her food item by clicking 'Add' button on the dashboard.
     On clicking the 'Add' button, the user is redirected to a different page 'AddPage', that has three options, Donate, Exchange and Wanted. 
 
-* * * Precondition: The user has to be dashboard page.
-* * * * For donate: The user has to click 'Donate' text on the AddPage and enter all the details about his food such as 
-        name, quantity, location where it can be picked from and so on and  then finally post it. 
-* * * * For exchange: The user has to click 'Exchange' text on the AddPage and enter all the details about his food such as
-        name, quantity, location where it can be picked from and so on and  then finally post it.
-* * * * For wanted: The user has to click 'Wanted' text on the AddPage and enter all the details about his food such as
-        name, quantity, location where it can be picked from and so on and  then finally post it.
-* * * PostCondition: The user can view his/her posts with the other posts on dashboard page or can find it through the search bar.
+      -  Precondition: The user has to be dashboard page.
+        - For donate: The user has to click 'Donate' text on the AddPage and enter all the details about his food such as 
+              name, quantity, location where it can be picked from and so on and  then finally post it. 
+        - For exchange: The user has to click 'Exchange' text on the AddPage and enter all the details about his food such as
+          name, quantity, location where it can be picked from and so on and  then finally post it.
+        - For wanted: The user has to click 'Wanted' text on the AddPage and enter all the details about his food such as
+          name, quantity, location where it can be picked from and so on and  then finally post it.
+      - PostCondition: The user can view his/her posts with the other posts on dashboard page or can find it through the search bar.
 
 * Use Case 6: Profile Page
-* * The users can maintain their profile page that shows their username and email. They also have option to upload their profile page.
-* * * Precondition: The user has to be on the dashboard page, there is profile button on it that redirects to the profile page.
-* * * Postcondition: The user can see the updated profile picture. 
+    - The users can maintain their profile page that shows their username and email. They also have option to upload their profile page.
+      -  Precondition: The user has to be on the dashboard page, there is profile button on it that redirects to the profile page.
+      - Postcondition: The user can see the updated profile picture. 
 
 * Use Case 7: Sign Out
-* * Users can log out by clicking the sign out button on the profile.
-* * * Precondition: The user has to be on the profile page.
-* * * PostCondition: The user is redirected back to the login page and stops all the activities running behind.
+    - Users can log out by clicking the sign out button on the profile.
+      - Precondition: The user has to be on the profile page.
+      - PostCondition: The user is redirected back to the login page and stops all the activities running behind.
 
 
 <hr> 
@@ -429,7 +421,14 @@ The grammar used in our project is designed to parse text consisting of space-se
    * Code to the Data File [posts.json](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/raw/posts.json?ref_type=heads), [users_without_password.json](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/raw/users_without_password.json?ref_type=heads)
    * Link to the Firebase repo: https://console.firebase.google.com/u/1/project/comp2100gp-554f2/overview
    <br>
-3. [Search].(Medium) Created an activity for searching and filtering posts within the application, utilizing various data structures and methods to efficiently manage and display search results.
+3. [LoadShowData].(easy) Load data and show in dashboard and postCard.
+   * Code: [PostCard.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/PostCard.java), class DashboardActivity:[DashboardActivity.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/DashboardActivity.java), class PostAdapter: [PostAdapter.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/PostAdapter.java)
+     <br>
+4. [DataStream].(easy) simulate the data update in dashboard.
+    * Code: function simulateDataStream: [simulateDataStream()](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/DashboardActivity.java#L121-145)
+    * Description of your implementation: Implement a method that accept a post list. And update the dashboard every 10~15 sencond.
+    <br>
+5. [Search].(Medium) Created an activity for searching and filtering posts within the application, utilizing various data structures and methods to efficiently manage and display search results.
    * Code:[class Search](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/searchengine/Search.java)
    * Key Methods: onCreate, setCheckListener, setEditListener, searchData, searchAll, searchByTest
    * Related Classes: StorageList, ListDataAdapter, AVLTree, AVLTreeNode, Trie, TrieNode

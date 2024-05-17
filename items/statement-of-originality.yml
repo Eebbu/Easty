@@ -23,19 +23,10 @@ declaration: >-
   own work, with the following exceptions:
   
 
-# add as many "name+comment" entries as necessary
-# (or remove it altogether if you haven't collaborated with anyone outside your group)
-collaboration:
-  - name:
-    comment: >-
+
   
 
-# add as many "url+licence+comment" entries as necessary
-# (or remove it altogether if you haven't used any external code)
-code:
-  - comment:
-    url:
-    licence:
+
 
 
 # add as many "url+licence+comment" entries as necessary
@@ -58,14 +49,10 @@ assets:
       [ ] with Gen AI tools (e.g., ChatGPT, Co-Pilot).
       [ ] using online resources (e.g., Stackoverflow, blogs)
 
-2. If not completed by yourself only, how did the use of Gen AI tools (and which ones), contribute to completing this assignment?
-  - Tool(s): <tools used here>
-  
-3. How did they contribute to the completion of this assignment?
-  - <your answer here>
+
 
 4. How long did it take to complete this assignment (approximately, in hours)?
-  - <your answer here> hours
+  - 100+ hours
 
 
 
