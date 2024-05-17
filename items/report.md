@@ -1,4 +1,4 @@
-# [G15 - Team Name] Report
+# [G15 - Good Food, Good Life] Report
 
 ## Table of Contents
 
@@ -14,7 +14,7 @@
 10. [Conflict Resolution Protocol](#conflict-resolution-protocol)
 
 ## Administrative
-- Firebase Repository Link: <insert-link-to-firebase-repository>
+- Firebase Repository Link: https://console.firebase.google.com/u/1/project/comp2100gp-554f2/overview<insert-link-to-firebase-repository>
    - Confirm: I have already added comp21006442@gmail.com as a Developer to the Firebase project prior to due date.
 - Two user accounts for markers' access are usable on the app's APK (do not change the username and password unless there are exceptional circumstances. Note that they are not real e-mail addresses in use):
    - Username: comp2100@anu.edu.au	Password: comp2100
@@ -28,8 +28,8 @@ The key area(s) of responsibilities for each member
 | u7663368 | Vishakha Mathur | MainActivity, Login Activity, LoginUser (singleton pattern), Profile Activity and UI design(main page, login page, dashboard, profile page), uploading images on profile page from phone to firebase, singleton design pattern test |
 | u7727175 |  Jinyang Zeng    |DataStream, MapSelection activity(GPS) and its UI design, Load show data in dashboard and detailed post page，postcard activity and its UI design，Generate post data from user input |
 | u7777752 |     Lin Xi      |UI design (Search page and Search_detailed page), Tokenizer, Parser, Data Structure (Hashmap, AVLTree, Arraylist, Hashset, Trie), Data Fetching, Searching and filtering, Testing (Search), Design Patterns (Adapter, Builder) |
-| u7773880 |   Zihan Yuan    |Add Activity, Post activity(post_donate, post_exchange, post_wanted), page redirection, two factory design patterns, Data Stream(get images from album and upload image to Firebase) |
-| u7705128 |   Boxuan Lin     |Create 2600+ post instances and 2500 user accounts, storing all of the data in Firebase. Providing methods for downloading and updating data from Firebase. |
+| u7773880 |   Zihan Yuan    |Add Activity, Post activity(post_donate, post_exchange, post_wanted), page redirection, two factory design patterns, Data Stream(get images from album and upload image to Firebase), UI layout and UI test. |
+| u7705128 |   Boxuan Lin     |Create 2600+ post instances and 2500 user accounts, storing all of the data in Firebase. Providing methods for downloading and updating data from Firebase. Setting Firebase authentication for the login function.|
 
 
 ## Summary of Individual Contributions
@@ -45,9 +45,11 @@ The key area(s) of responsibilities for each member
 
 2. **U7705128, Boxuan Lin**  I have 20% contribution, as follows: <br>
   - **Code Contribution in the final App**
-    - Firebase Persistent(medium) - class [DataManager.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/datamanagement/DataManager.java?ref_type=heads), [FireStoreHelper.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/datamanagement/FireStoreHelper.java?ref_type=heads), [PostDataDownloader.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/datamanagement/PostDataDownloader.java?ref_type=heads), [UserDataDownloader.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/datamanagement/UserDataDownloader.java?ref_type=heads). <br>
+    - Firebase Authentication(easy) - [link](https://console.firebase.google.com/u/1/project/comp2100gp-554f2/authentication/users)
+    - Firebase Persistent(medium) - class [DataManager.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/datamanagement/DataDownloader.java?ref_type=heads), [FireStoreHelper.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/datamanagement/FireStoreHelper.java?ref_type=heads), [PostDataDownloader.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/datamanagement/PostDataDownloader.java?ref_type=heads), [UserDataDownloader.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/datamanagement/UserDataDownloader.java?ref_type=heads). <br>
      - DataFiles(easy) Local storage: [posts.json](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/raw/posts.json?ref_type=heads), [users_without_password.json](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/raw/users_without_password.json?ref_type=heads).
-      - Singleton Design Pattern -  [DataManager.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/datamanagement/DataManager.java?ref_type=heads).
+     -Other contribution: Creating posts and users data instances class. [Post.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/Post.java?ref_type=heads) and [userFT.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/userFT.java?ref_type=heads)
+      - Singleton Design Pattern -  [DataManager.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/datamanagement/DataDownloader.java?ref_type=heads).
 
       
 3.**U7663368, Vishakha Mathur** I have 20% contribution, as follows: <br>
@@ -167,25 +169,50 @@ Post have three different type: donate, exchange and wanted.
 
 Post pages share a common theme of promoting community sharing and exchange, and we use Firebase to manage data storage and retrieval effectively.
 
-4.插入search page:
+### Search page
+1. Search page
+
+<div align="center">
+    <img src="searchpage.png" alt="search page" width="313" height="700">
+</div>
 
 On this page, users can search for any food they want and choose how to get the food (i.e. donate, wanted and exchange).
 When the user types in the food they want and selects any option, our app will retrieve the relevant data from the firebase database and display it.
 When the user types in the food they want and selects any option, our app will retrieve the relevant data from the firebase database and display it.
 
-插入search之后的page：apple
+2. Search results for apple
 
-When the user types apple and selects the donate type, our app will pick up the post_type as donate from firebase, and apple's post will appear in the post_title.
+<div align="center">
+    <img src="search_apple.png" alt="search results for **apple**" width="313" height="700">
+</div>
 
-插入search之后的page:butter chicken
+When the user types apple and selects the donate type, our app will pick up the post_type as donate from firebase, and apple's post will appear in the post_title. Search results are not affected even if the user mixes upper and lower case.
 
-When the user types apple and selects the exchange and donate types, our app will pick up the post_type as donate and exchange from firebase, and the post_title of butter chicken will appear.
+<div align="center">
+    <img src="search_apple_case.png" alt="search results for **APple**" width="313" height="700">
+</div>
 
-插入search之后的page：I want a banana
+3. Search results for butter chicken
 
-When the user types want and selects the wanted type, our app will pick up the post_type as wanted from firebase, and the post I or want or a or banana will appear in the post_title.
+ <div align="center">
+    <img src="search_butter_chicken.png" alt="search results for **butter chicken**" width="313" height="700">
+</div>
 
-5.插入点进详情页的page：
+When the user types butter chicken, our app will search butter chicken in our database and the results will appear.
+
+4. Search results for I want to share some apples
+
+<div align="center">
+    <img src="search_sentence.png" alt="search results for **I want to share some apples**" width="313" height="700">
+</div>
+
+When the user types **I want to share some apples**, our app will pick up the posts which I or want or a or banana will appear in the post_title.
+
+5. Search detailed page
+
+<div align="center">
+    <img src="search_detailed.png" alt="search detailed page" width="313" height="700">
+</div>
 
 When we click on any post under the search term, we can see the specific content of the post.
   
@@ -298,7 +325,6 @@ The grammar used in our project is designed to parse text consisting of space-se
 **Construction**: 
 
 - **Tokenizer**: It is implemented using simple string operations. The input string is split using the space character as a delimiter, generating an array of words which are then individually wrapped as **Token**
-
 - **Parser**: The parser is implemented as a recursive descent parser. It starts by creating a node for the first token and then recursively processes the following tokens to build the tree. The recursive nature of the parser allows it to easily handle nested or sequential structures typical in language constructs.
 
 **Advantages of the designs**:
@@ -306,8 +332,7 @@ The grammar used in our project is designed to parse text consisting of space-se
 - **Efficiency**: The tokenizer is efficient as it leverages built-in string methods which are optimized for performance.
 - **Flexibility**: The parser is designed to be flexible and can be easily adjusted or extended to support more complex grammatical structures if needed.
 - **Modularity**: The separation of tokenizing and parsing functions enhances modularity. This makes the code easier to manage and test, as each component can be developed and debuged independently.
-
-**Scalability**: The parser uses recursive methods, making it scalable for extending the grammar without significantly altering the existing codebase. This is beneficial for maintaining and upgrading the system in the future.
+- **Scalability**: The parser uses recursive methods, making it scalable for extending the grammar without significantly altering the existing codebase. This is beneficial for maintaining and upgrading the system in the future.
 
 
 ### Data Structures
@@ -350,13 +375,12 @@ The grammar used in our project is designed to parse text consisting of space-se
 
 ### Design Patterns
 1. Factory – post <br>
-     **Objective**: used for obtaining content from user input and convert it into a post class.<br>
-     **Code Locations**: defined in [Class Post](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/Post.java?ref_type=heads),[Class factory_donate](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/post_donate.java?ref_type=heads),[Class factory_exchange](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/factory_exchange.java?ref_type=heads) and [Class factory_wanted](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/factory_wanted.java?ref_type=heads).<br>
-      **Reasons**: We have three types of posts: Donate, Exchange and Wanted. Each type has specific functionalities. The factory pattern can be used to create an interface for creating instances of these different posts and uploading these posts’ details. By using this, we simplify the way to handle post creation and uploading posts.
+   * **Objective**: used for obtaining content from user input and convert it into a post class.<br>
+   * **Code Locations**: defined in [Class Post](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/Post.java?ref_type=heads),[Class factory_donate](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/post_donate.java?ref_type=heads),[Class factory_exchange](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/factory_exchange.java?ref_type=heads) and [Class factory_wanted](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/factory_wanted.java?ref_type=heads).<br>
+   * **Reasons**: We have three types of posts: Donate, Exchange and Wanted. Each type has specific functionalities. The factory pattern can be used to create an interface for creating instances of these different posts and uploading these posts’ details. By using this, we simplify the way to handle post creation and uploading posts.
 
-2. Factory – render scene
-    * **Objective**: The main goal is to centralize common functionalities such as setting up views, validating inputs, set up listeners and configuring scenes across different types of posts. This centralization reduced code duplication and improved maintainability.
-
+2. Factory – render scene<br>
+    * **Objective**: The main goal is to centralize common functionalities such as setting up views, validating inputs, set up listeners and configuring scenes across different types of posts. This centralization reduced code duplication and improved maintainability.<br>
     * **Code Locations**: Base class: [Post_base.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/Post_base.java)
 , and subclass: [Post_donate](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/Post_donate.java)
    , [Post_exchange](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/Post_exchange.java)
@@ -364,80 +388,69 @@ The grammar used in our project is designed to parse text consisting of space-se
    * **Reasons**:  By centralizing common functionalities in the base class, there is a significant reduction in code duplication across subclasses.
  When changes are required, such as modifying how listeners are set, these can be made in one place, especially setting of post pages are very similar.
     
-3. Singleton Design Pattern: 
-   
+3. Singleton Design Pattern<br>
     * **Objective** : We implemented singleton design pattern in the LoginUser class because there is only one instance of LoginUser required.
-    This design pattern makes sure that class has only one instance and provides a global access to that instance. 
-    * **Code Locations**: defined in [Class LoginUser, method getInstance, info and error](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/LoginUser.java?ref_type=heads).
+    This design pattern makes sure that class has only one instance and provides a global access to that instance. <br>
+    * **Code Locations**: defined in [Class LoginUser, method getInstance, info and error](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/LoginUser.java?ref_type=heads).<br>
     * **Reasons** : This class is used for user information and error messages that can be helpful to debug and check errors. It manages the components that require single point of access or control. 
 
-
 4. Adapter Pattern<br>
-**Objective:** Allows objects with incompatible interfaces to collaborate.<br>
-**Code Locations:**
-   - Used in the ListDataAdapter class, which adapts a list of Post objects to be usable in a ListView which expects data in a specific format.<br>
-   
-    **Reasons:** 
-     - Interface Compatibility: Converts the interface of the List<Post> into the interface expected by the ListView, enabling seamless integration of complex data structures with UI components.
+   * **Objective:** Allows objects with incompatible interfaces to collaborate.<br>
+   * **Code Locations:** Used in the ListDataAdapter class, which adapts a list of Post objects to be usable in a ListView which expects data in a specific format.<br>
+   * **Reasons:** 
+     - Interface Compatibility: Converts the interface of the List<Post> into the interface expected by the ListView, enabling seamless integration of complex data structures with UI components.<br>
      - Reusability: Allows the same Post data to be reused in different list-based UI components without modifying the underlying data structure or the components themselves.
 
 5. Builder Pattern<br>
-**Objective:** Separates the construction of a complex object from its representation so that the same construction process can create different representations.<br>
-**Code Locations:** Used in constructing complex Post objects, in scenarios where a Post object consists of various discrete parts that are assembled step-by-step.<br>
-**Reasons:** Step-by-step Construction: Allows for constructing complex objects step-by-step, particularly useful when creating an object requires setting many attributes that could be optional.<br>
+   * **Objective:** Separates the construction of a complex object from its representation so that the same construction process can create different representations.<br>
+   * **Code Locations:** Used in constructing complex Post objects, in scenarios where a Post object consists of various discrete parts that are assembled step-by-step.<br>
+   * **Reasons:** 
+   - Step-by-step Construction: Allows for constructing complex objects step-by-step, particularly useful when creating an object requires setting many attributes that could be optional.<br>
 
 ## Implemented Features
-*[What features have you implemented? where, how, and why?]* <br>
-*List all features you have completed in their separate categories with their featureId. THe features must be one of the basic/custom features, or an approved feature from Voice Four Feature.*
 
 ### Basic Features
-1. [LogIn]. 	Created an activity for login feature and used firebase authentication to help user log in. (easy)
+1. [LogIn].(easy) 	Created an activity for login feature and used firebase authentication to help user log in.
    * Code: [Class LoginActivity,](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/LoginActivity.java?ref_type=heads#L25-74) and Class LoginUser
    * Implemented a singlton design pattern in LoginUser java class to ensure that only one instance of LoginUser required.<br>
    * Description of your implementation: We extracted current user from firebase. We connected all the credentials with xml resources. If the user clicks 
      on the login button, then we check by using 'signInWithEmailAndPassword' method from firebase whether the entered data is correct. If it's correct, the user is redirected to the DashBoardActivtiy
      and a toast message is generated i.e; "Login successful". Otherwise, the user remains on the login page and toast message says, "Authentication failed". 
-   
    <br>
-
-2. [DataFiles]. Description  ... ... (...)
-   * Code to the Data File [users_interaction.json](link-to-file), [search-queries.xml](link-to-file), ...
-   * Link to the Firebase repo: ...
-
+2. [DataFiles].(easy) For this part, there are over 2,500 users and 2,600 posts, all stored in Firestore. The local JSON file is an older copy used for localized offline loading under extreme network conditions.
+   * Code to the Data File [posts.json](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/raw/posts.json?ref_type=heads), [users_without_password.json](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/raw/users_without_password.json?ref_type=heads)
+   * Link to the Firebase repo: https://console.firebase.google.com/u/1/project/comp2100gp-554f2/overview
+   <br>
 3. [Search].(Medium) Created an activity for searching and filtering posts within the application, utilizing various data structures and methods to efficiently manage and display search results.
-   * Code:[class Search](url)
+   * Code:[class Search](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/searchengine/Search.java)
    * Key Methods: onCreate, setCheckListener, setEditListener, searchData, searchAll, searchByTest
    * Related Classes: StorageList, ListDataAdapter, AVLTree, AVLTreeNode, Trie, TrieNode
 
-    **Description of Implementation**
+   Description of Implementation
 
    * The Search activity is designed to process user input for searching and filtering posts based on categories like "Donate", "Need", and "Exchange". The functionality is extended by integrating Firebase Firestore to fetch real-time data, ensuring up-to-date information is always available.
    * Main Features:
    * Dynamic Filtering: Users can filter search results in real-time by selecting different categories through checkboxes. The application updates the displayed results immediately based on the selected criteria.
    * Keyword Search: Includes an input field where users can type keywords. The application parses these inputs to filter posts containing relevant information. This feature uses a custom tokenizer and parser to handle the input strings efficiently.
 
-**Data Structure Usage**
+   Data Structure Usage
 
    * HashMap: Used to store and quickly retrieve posts by unique identifiers.
    * ArrayList: Manages lists of posts for display and intermediate operations.
    * HashSet: Ensures unique search results, preventing duplicate entries in the display.
    * AVLTree: Maintains posts in a balanced manner to optimize search and retrieval operations based on sorted or ranked criteria.
 
-**Performance Considerations**
+   Performance Considerations
 
    * The use of efficient data structures like HashMap and AVL Tree ensures that search operations are fast and responsive, even with a large dataset. The Singleton pattern in StorageList minimizes redundancy in data management, thereby improving memory usage and speed.
 
-**Security and Data Integrity**
+   Security and Data Integrity
 
    * All interactions with Firebase are managed through secure authenticated sessions, ensuring that data retrieval and manipulation are protected against unauthorized access.This implementation not only fulfills the basic requirements of a search feature but also enhances user experience through quick responsiveness and accurate results. The modular approach in designing the Search class allows for easier maintenance and scalability, adapting to potential future enhancements like more complex search algorithms or additional filtering criteria.
 
 ### Custom Features
 Feature Category: Firebase Integration <br>
-1. [FB-Auth] Description of the feature (easy)
-   * Code: [Class X, entire file](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and Class Y, ...
-   * [Class B](../src/path/to/class/file.java#L30-85): methods A, B, C, lines of code: 30 to 85
-   * Description of your implementation: ... <br>
-2. [Data-Profile] Created a ProfileActivity that displays name, email addresses profile picture of the user. It also has a signout button.(easy)
+1. [Data-Profile] (easy) Created a ProfileActivity that displays name, email addresses profile picture of the user. It also has a signout button.
    * Code: [Class ProfileActivity, methods onActivityResult(), uploadImageToFirebase(), showing userdetails](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/ProfileActivity.java?ref_type=heads).
    * Description of the code: The Json file users_without_password.json stores all the user details. This file was later read, serialized and 
      the user data is stores in terms of hashmap where is email is the key. So, email was obtained from firebase and using that as the key, we got username(value) and data was displayed.
@@ -446,36 +459,31 @@ Feature Category: Firebase Integration <br>
 
 Feature Category: Search-related features <br>
 
-Feature Category: UI Design and Testing <br>
-3. [UI-Layout] Incorporate suitable layout adjustments in the UI components for portrait and landscape
-   layout variants, as well as different screen sizes. (easy)
+2. [UI-Layout] (easy) Incorporate suitable layout adjustments in the UI components for portrait and landscape layout variants, as well as different screen sizes.<br>
     * Code: [all of xml files](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/tree/main/src/app/src/main/res/layout?ref_type=heads)
-    * Description of your implementation: set appropriate constraints to all components to fit for portrait and landscape
-      layout variants, and different screen sizes
-4. [UI-Test] Complete UI tests using espresso (not covered in lectures/labs) of reasonable quality and
-   coverage of the App. (hard)
-    * Code: [all of UI Test files](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/tree/main/src/app/src/androidTest/java/com/example/eatsy?ref_type=heads)
-    * Description of your implementation: UI tests are implemented using Espresso and JUnit to ensure functionality and user across various activities. 
-Each test corresponds to different aspects of the app, such as adding pages, managing dashboards, user authentication and posts. 
-These tests are designed for enhancing usability, and ensuring user experiences across pages.
+    * Description of your implementation: set appropriate constraints to all components to fit for portrait and landscape layout variants, and different screen sizes
 
+3. [UI-Test] (hard) Complete UI tests using espresso (not covered in lectures/labs) of reasonable quality and coverage of the App.
+    * Code: [all of UI Test files](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/tree/main/src/app/src/androidTest/java/com/example/eatsy?ref_type=heads)<br>
+    * Description of your implementation: UI tests are implemented using Espresso and JUnit to ensure functionality and user across various activities. <br>
+      Each test corresponds to different aspects of the app, such as adding pages, managing dashboards, user authentication and posts. These tests are designed for enhancing usability, and ensuring user experiences across pages.
+   
 Feature Category: Greater Data Usage, Handling and Sophistication <br>
 
-  
-5. [DataFiles] Boxuan Lin created a dataset with more than 2600 post data instances, covering all types of posts. All of the data was formatted in JSON and uploaded to Firestore for persistence.
+4. [FB-Auth] (easy)<br>
+   * Link: [FB-Auth](https://console.firebase.google.com/u/1/project/comp2100gp-554f2/authentication/users)
+   * We use Firebase to implement the User Authentication/Authorisation of our app. User account data is stored on Google servers instead of locally, and is processed by Google, ensuring security.
 
-
-6. [FB-Auth] (By Boxuan Lin) We use Firebase to implement the User Authentication/Authorisation of our app. User account data is stored on Google servers instead of locally, and is processed by Google, ensuring security.
-7. [FB-Persist] (By Boxuan Lin) We used Firebase’s Firestore, a real-time, scalable database that stores data in collections and documents. We use it to persist the post data and user’s profile data for a well synchronization function.  For big files like photos, we store them in Cloud Storage for Firebase for its high scalability and simplified file upload and download capabilities.
-Data Profile(easy):
-      1. 
-    2. It also gives the user an option to upload and change profile picture via media gallery to the firebase.
- 3. There is sign out button that allows user to sign out from the app. 
-
-8. [Search-Invalid] (By Lin Xi)(Medium)
-
-      Handling Partially Valid and Invalid Search Queries
-Objective: Enhance the search functionality to handle both partially valid and invalid search queries effectively without causing the application to crash, while still providing meaningful search results based on valid parts of the query.
+5. [FB-Persist] (medium) <br>
+   * Link : [Cloud_Storage](https://console.firebase.google.com/u/1/project/comp2100gp-554f2/storage/comp2100gp-554f2.appspot.com/files) , [Firestore](https://console.firebase.google.com/u/1/project/comp2100gp-554f2/firestore/databases/-default-/data/~2Fposts~2F0)
+   * Code : [DataManager.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/datamanagement/DataDownloader.java?ref_type=heads), [FireStoreHelper.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/datamanagement/FireStoreHelper.java?ref_type=heads), [PostDataDownloader.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/datamanagement/PostDataDownloader.java?ref_type=heads), [UserDataDownloader.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/datamanagement/UserDataDownloader.java?ref_type=heads).
+   * We used Firebase’s Firestore, a real-time, scalable database that stores data in collections and documents. We use it to persist the post data and user’s profile data for a well synchronization function.  
+   * For big files like photos, we store them in Cloud Storage for Firebase for its high scalability and simplified file upload and download capabilities.<br>
+6. Data Profile(easy) <br>
+   * It also gives the user an option to upload and change profile picture via media gallery to the firebase. There is sign out button that allows user to sign out from the app. <br>
+7. [Search-Invalid] (Medium)<br>
+   Handling Partially Valid and Invalid Search Queries
+   Objective: Enhance the search functionality to handle both partially valid and invalid search queries effectively without causing the application to crash, while still providing meaningful search results based on valid parts of the query.
 
       Subject: Partially valid and invalid search query handling.
 
@@ -490,28 +498,34 @@ Objective: Enhance the search functionality to handle both partially valid and i
       Feedback to Users: When invalid inputs are detected, the application provides feedback to the user, suggesting corrections or clarifying what parts of the query were processed.
 
       Feature Relevance: Tokenization and parsing are crucial for dissecting user input into manageable components that the system can understand and process, which is central to this feature.
+      
       Code:[Search.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/searchengine/Search.java?ref_type=heads)
-9. [Search-Filter](By Lin Xi)(Medium): Sorting and Filtering Search Results
-Objective: Implement functionality to sort and filter the list of items returned from searches, utilizing suitable UI components to allow users to refine their search results dynamically.
 
-      Subject: Advanced sorting and filtering of search results.
+8. [Search-Filter](easy): Sorting and Filtering Search Results
+   Objective: Implement functionality to sort and filter the list of items returned from searches, utilizing suitable UI components to allow users to refine their search results dynamically.
 
-      Description: This feature allows users to sort and filter search results based on various criteria such as date, relevance, type, etc. The implementation includes UI components that users interact with, such as dropdowns, checkboxes, and sliders, to adjust the filtering parameters dynamically.
+   Subject: Advanced sorting and filtering of search results.
 
-      What the feature entails:
+   Description: This feature allows users to sort and filter search results based on various criteria such as date, relevance, type, etc. The implementation includes UI components that users interact with, such as dropdowns, checkboxes, and sliders, to adjust the filtering parameters dynamically.
 
-      Dynamic UI Components: Implement dropdown menus for sorting (e.g., ascending, descending), checkboxes for filtering specific types of posts (e.g., donations, requests), and sliders for range selections (e.g., date ranges, quantities).
+   What the feature entails:
 
-      Backend Logic: Enhance the search mechanism to respond to these filters, sorting the internal data structures like ArrayLists and updating the display according to user preferences.
+   Dynamic UI Components: Implement dropdown menus for sorting (e.g., ascending, descending), checkboxes for filtering specific types of posts (e.g., donations, requests), and sliders for range selections (e.g., date ranges, quantities).
 
-      Live Updates: The search results update in real-time as users adjust the filters, providing an interactive and responsive user experience.
+   Backend Logic: Enhance the search mechanism to respond to these filters, sorting the internal data structures like ArrayLists and updating the display according to user preferences.
 
-      Feature Relevance: The ability to sort and filter enhances the usability of the search function, allowing users to more easily navigate large sets of data and find the items that best match their needs.
-      Code:[Search.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/searchengine/Search.java?ref_type=heads)
+   Live Updates: The search results update in real-time as users adjust the filters, providing an interactive and responsive user experience.
+
+   Feature Relevance: The ability to sort and filter enhances the usability of the search function, allowing users to more easily navigate large sets of data and find the items that best match their needs.
+
+   Code:[Search.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/searchengine/Search.java?ref_type=heads)
 
 ### Surprise Features
 1. On April 15, MainActivity2(for login) and MainActivity3(for register) were created, https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/commit/f98af4945b0061f49a4ca2acbc6d33d979ff08a2, which were later changed to LoginActivity and RegisterActivity respectively.
-   On April 17, MainActivity4(dashboard) was created and its name was changed to DashBoardActivity, https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/commit/662671f382bf528651adb1e24d2254c0706f9e2e. By removing this code smell, we gave meaningful names to the activities and enhances the understandability and readability of the code.  
+   On April 17, MainActivity4(dashboard) was created and its name was changed to DashBoardActivity, https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/commit/662671f382bf528651adb1e24d2254c0706f9e2e. 
+   Earlier, the names were non-descriptive and didn't give the idea of the purpose of these activities. There was a lack of 
+   clarity especially when the project was growing further. Thus, by refactoring their names, they became more descriptive. They convey the purpose of each activity like LoginActivity allows the user to login.
+   DashBoardActivity manages dashboard interface. The codebase becomes easier to navigate. Also, giving meaningful names is a fundamental thing to write a clean code, enhance readability and success of the project. 
 2. On April 22 and 27, three post pages were completed, as documented in Git commits SHA 1c750dd020486de45f2d71d651badedf155ed79c and 7ff755054cffd14a9f85094c56854b77540ebf31.
  The layout of these three posts was very similar, especially the donate and exchange pages, including nearly identical scenes, UI components and listeners.
  This resulted in a significant amount of code duplication. Subsequently, on May 1st, Git commit SHA ea0f48b72edbbfc472b0a74f6aa94d1ccebdc8ac added [Post_base.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/Post_base.java?ref_type=heads),
@@ -532,7 +546,10 @@ which integrates the methods in these pages into a single base class. This refac
 1. *Bug 1:*
    - Error encountered in all pages containing the method 'FirebaseAuth.getInstance().getCurrentUser().getEmail()' during UI tests. This issue arises because the 'getCurrentUser()' method returns null when pages are run individually in testing.
 Despite I attempted to resolve this using Mockito and Mockito-inline, the problem persists.
-     <br> <hr>
+     <br> 
+2. *Bug 2:*
+   - When users log out and then log in, our app will crash once. After the crash and then opening the app, our functions are still normal. The reason for the crash is that the user should have jumped back to the original page after logging out of the account, but due to the incorrect setting of the judgment conditions, the user jumped back to the login page. We only discovered this bug the day after submitting the code. If we had discovered it earlier, we could have solved it.
+   <br><hr>
 
 
 ## Testing Summary
@@ -542,33 +559,65 @@ Despite I attempted to resolve this using Mockito and Mockito-inline, the proble
 
 *Here is an example:*
 
-1. Tests for Search
-   - Code: [TokenizerTest Class, entire file](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java) for the [Tokenizer Class, entire file](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43)
-   - *Number of test cases: ...*
-   - *Code coverage: ...*
-   - *Types of tests created and descriptions: ...*
+1. Tests for AVLTreeTestNode
+   - Code: [AVLTreeTestNode Class, entire file](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/test/java/com/example/eatsy/AVLTreeNodeTest.java) for the [AVLTreeNode Class, entire file](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/searchengine/AVLTreeNode.java)
+   - Number of test cases: 6
+   - Code coverage: AVLTreeNode
+   - Types of tests created and descriptions: This test is to verify the correctness of the creation of AVLTreeNode
 
-2. Tests for Singleton Design Pattern 
+2. Tests for AVLTree
+   - Code: [AVLTreeTest Class, entire file](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/test/java/com/example/eatsy/AVLTreeTest.java) for the [AVLTree Class, entire file](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/searchengine/AVLTree.java)
+   - Number of test cases: 5
+   - Code coverage: AVLTree
+   - Types of tests created and descriptions: This test is to verify the correctness of the creation of AVLTree
+
+3. Tests for TrieNode
+   - Code: [TrieNodeTest Class, entire file](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/test/java/com/example/eatsy/TrieNodeTest.java) for the [TrieNode Class, entire file](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/searchengine/TrieNode.java)
+   - Number of test cases: 5
+   - Code coverage: TrieNode
+   - Types of tests created and descriptions: This test is to verify the correctness of the creation of TrieNode
+
+4. Tests for Trie
+   - Code: [TrieTest Class, entire file](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/test/java/com/example/eatsy/TrieTest.java) for the [Trie Class, entire file](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/searchengine/Trie.java)
+   - Number of test cases: 8
+   - Code coverage: Trie
+   - Types of tests created and descriptions: This test is to verify the correctness of the creation of Trie
+
+5. Tests for Singleton Design Pattern 
    - Code: [SingletonTest Class, entire file](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/test/java/com/example/eatsy/SingletonTest.java?ref_type=heads#L14-55).
-   - *Number of test cases: 3*
+   - Number of test cases: 3
    - Code coverage: Login feature of the app.
    - Test for same instance, 
 
-3. Tests for factory design pattern
+6. Tests for factory design pattern
    - Code: [FactoryTest.java, entire file](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/test/java/com/example/eatsy/FactoryTest.java?ref_type=heads).
    - Number of test cases: 2
    - Code coverage: Coverage of all possible paths and conditions in the factory methods
    - Types of tests created and descriptions: The tests primarily focus on object construction correctness, ensuring that the factory methods create objects based on input parameters.
-4. Tests for UI design(Post pages)
+7. Tests for UI design(Post pages)
    - Code: [PostdonateUITest.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/androidTest/java/com/example/eatsy/PostdonateUITest.java?ref_type=heads),
-[PostexchangeUITest.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/androidTest/java/com/example/eatsy/PostexchangeUITest.java?ref_type=heads) and 
-[PostwantedUITest.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/androidTest/java/com/example/eatsy/PostwantedUITest.java?ref_type=heads)
-   - Number of test cases: 18
+[PostexchangeUITest.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/androidTest/java/com/example/eatsy/PostexchangeUITest.java?ref_type=heads), 
+[PostwantedUITest.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/androidTest/java/com/example/eatsy/PostwantedUITest.java?ref_type=heads),
+   [AddPageUITest.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/androidTest/java/com/example/eatsy/AddPageUITest.java?ref_type=heads),
+   [DashBoardActivityUITests.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/androidTest/java/com/example/eatsy/DashBoardActivityUITests.java?ref_type=heads),
+   [LoginActivityUITest.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/androidTest/java/com/example/eatsy/LoginActivityUITest.java?ref_type=heads),
+   [MainActivityUITest.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/androidTest/java/com/example/eatsy/MainActivityUITest.java?ref_type=heads) and
+   [MapSelectionUITest.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/androidTest/java/com/example/eatsy/MapSelectionUITest.java?ref_type=heads).
+   - Number of test cases: 30
    - Code coverage: Tests interactions with UI components
    - Types of tests created and descriptions: 
      - Visibility and changes of UI components. 
      - Intent firing and activity lifecycle management. 
-     - Input validations and response actions.
+     - Input validations and response actions. 
+8. Tests for DataManager
+   - Code: [DataManagerTest.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/test/java/com/example/eatsy/DataManagerTest.java?ref_type=heads)
+   - Number of test cases: 2
+   - Code coverage: DataManager class
+   - Types of tests created and descriptions: 
+     - Singleton Pattern Test: Verifies that DataManager follows the singleton pattern.
+     - Timestamp-Based ID Generation Test: Ensures generateTimestampBasedId() produces non-null and unique IDs.
+
+
      <br> <hr>
 
 
