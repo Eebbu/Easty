@@ -14,7 +14,7 @@
 10. [Conflict Resolution Protocol](#conflict-resolution-protocol)
 
 ## Administrative
-- Firebase Repository Link: <insert-link-to-firebase-repository>
+- Firebase Repository Link: https://console.firebase.google.com/u/1/project/comp2100gp-554f2/overview<insert-link-to-firebase-repository>
    - Confirm: I have already added comp21006442@gmail.com as a Developer to the Firebase project prior to due date.
 - Two user accounts for markers' access are usable on the app's APK (do not change the username and password unless there are exceptional circumstances. Note that they are not real e-mail addresses in use):
    - Username: comp2100@anu.edu.au	Password: comp2100
