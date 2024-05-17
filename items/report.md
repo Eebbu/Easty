@@ -464,26 +464,27 @@ Feature Category: Firebase Integration <br>
      Then we uploaded the image to the firebase. 
 
 Feature Category: Search-related features <br>
-2. [UI-Layout](easy) Incorporate suitable layout adjustments in the UI components for portrait and landscape
-   layout variants, as well as different screen sizes.
+
+2. [UI-Layout](easy) Incorporate suitable layout adjustments in the UI components for portrait and landscape layout variants, as well as different screen sizes.<br>
     * Code: [all of xml files](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/tree/main/src/app/src/main/res/layout?ref_type=heads)
-    * Description of your implementation: set appropriate constraints to all components to fit for portrait and landscape
-      layout variants, and different screen sizes<br>
-3. [UI-Test](hard) Complete UI tests using espresso (not covered in lectures/labs) of reasonable quality and
-   coverage of the App.
-    * Code: [all of UI Test files](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/tree/main/src/app/src/androidTest/java/com/example/eatsy?ref_type=heads)
-    * Description of your implementation: UI tests are implemented using Espresso and JUnit to ensure functionality and user across various activities. 
-   Each test corresponds to different aspects of the app, such as adding pages, managing dashboards, user authentication and posts. 
-   These tests are designed for enhancing usability, and ensuring user experiences across pages.
+    * Description of your implementation: set appropriate constraints to all components to fit for portrait and landscape layout variants, and different screen sizes
+
+3. [UI-Test](hard) Complete UI tests using espresso (not covered in lectures/labs) of reasonable quality and coverage of the App.
+    * Code: [all of UI Test files](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/tree/main/src/app/src/androidTest/java/com/example/eatsy?ref_type=heads)<br>
+    * Description of your implementation: UI tests are implemented using Espresso and JUnit to ensure functionality and user across various activities. <br>
+      Each test corresponds to different aspects of the app, such as adding pages, managing dashboards, user authentication and posts. These tests are designed for enhancing usability, and ensuring user experiences across pages.
    
 Feature Category: Greater Data Usage, Handling and Sophistication <br>
 
-4. [FB-Auth](easy)We use Firebase to implement the User Authentication/Authorisation of our app. User account data is stored on Google servers instead of locally, and is processed by Google, ensuring security.
+4. [FB-Auth](easy)<br>
+   * We use Firebase to implement the User Authentication/Authorisation of our app. User account data is stored on Google servers instead of locally, and is processed by Google, ensuring security.
 
-5. [FB-Persist](medium) We used Firebase’s Firestore, a real-time, scalable database that stores data in collections and documents. We use it to persist the post data and user’s profile data for a well synchronization function.  For big files like photos, we store them in Cloud Storage for Firebase for its high scalability and simplified file upload and download capabilities.
-6. Data Profile(easy) It also gives the user an option to upload and change profile picture via media gallery to the firebase. There is sign out button that allows user to sign out from the app. 
-
-8. [Search-Invalid](Medium)
+5. [FB-Persist](medium) <br>
+   * We used Firebase’s Firestore, a real-time, scalable database that stores data in collections and documents. We use it to persist the post data and user’s profile data for a well synchronization function.  
+   * For big files like photos, we store them in Cloud Storage for Firebase for its high scalability and simplified file upload and download capabilities.<br>
+6. Data Profile(easy) <br>
+   * It also gives the user an option to upload and change profile picture via media gallery to the firebase. There is sign out button that allows user to sign out from the app. <br>
+7. [Search-Invalid](Medium)<br>
    Handling Partially Valid and Invalid Search Queries
    Objective: Enhance the search functionality to handle both partially valid and invalid search queries effectively without causing the application to crash, while still providing meaningful search results based on valid parts of the query.
 
@@ -502,7 +503,7 @@ Feature Category: Greater Data Usage, Handling and Sophistication <br>
       Feature Relevance: Tokenization and parsing are crucial for dissecting user input into manageable components that the system can understand and process, which is central to this feature.
       Code:[Search.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/searchengine/Search.java?ref_type=heads)
 
-9. [Search-Filter](easy): Sorting and Filtering Search Results
+8. [Search-Filter](easy): Sorting and Filtering Search Results
    Objective: Implement functionality to sort and filter the list of items returned from searches, utilizing suitable UI components to allow users to refine their search results dynamically.
 
    Subject: Advanced sorting and filtering of search results.
