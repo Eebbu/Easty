@@ -195,13 +195,13 @@ When the user types in the food they want and selects any option, our app will r
 When the user types apple and selects the donate type, our app will pick up the post_type as donate from firebase, and apple's post will appear in the post_title. Search results are not affected even if the user mixes upper and lower case.
 
 <div align="center">
-    <img src="search_apple_case.jpg" alt="search results for **APple**">
+    <img src="search_apple_case.png" alt="search results for **APple**">
 </div>
 
 3. Search results for butter chicken
 
  <div align="center">
-    <img src="search_butter_chicken.jpg" alt="search results for **butter chicken**">
+    <img src="search_butter_chicken.png" alt="search results for **butter chicken**">
 </div>
 
 When the user types butter chicken, our app will search butter chicken in our database and the results will appear.
@@ -209,7 +209,7 @@ When the user types butter chicken, our app will search butter chicken in our da
 4. Search results for I want to share some apples
 
 <div align="center">
-    <img src="search_sentence.jpg" alt="search results for **I want to share some apples**">
+    <img src="search_sentence.png" alt="search results for **I want to share some apples**">
 </div>
 
 When the user types **I want to share some apples**, our app will pick up the posts which I or want or a or banana will appear in the post_title.
@@ -217,7 +217,7 @@ When the user types **I want to share some apples**, our app will pick up the po
 5. Search detailed page
 
 <div align="center">
-    <img src="search_detailed.jpg" alt="search detailed page">
+    <img src="search_detailed.png" alt="search detailed page">
 </div>
 
 When we click on any post under the search term, we can see the specific content of the post.
