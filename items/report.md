@@ -456,7 +456,7 @@ The grammar used in our project is designed to parse text consisting of space-se
 
 ### Custom Features
 Feature Category: Firebase Integration <br>
-1. [Data-Profile](easy) Created a ProfileActivity that displays name, email addresses profile picture of the user. It also has a signout button.
+1. [Data-Profile] (easy) Created a ProfileActivity that displays name, email addresses profile picture of the user. It also has a signout button.
    * Code: [Class ProfileActivity, methods onActivityResult(), uploadImageToFirebase(), showing userdetails](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/pages/ProfileActivity.java?ref_type=heads).
    * Description of the code: The Json file users_without_password.json stores all the user details. This file was later read, serialized and 
      the user data is stores in terms of hashmap where is email is the key. So, email was obtained from firebase and using that as the key, we got username(value) and data was displayed.
@@ -465,26 +465,26 @@ Feature Category: Firebase Integration <br>
 
 Feature Category: Search-related features <br>
 
-2. [UI-Layout](easy) Incorporate suitable layout adjustments in the UI components for portrait and landscape layout variants, as well as different screen sizes.<br>
+2. [UI-Layout] (easy) Incorporate suitable layout adjustments in the UI components for portrait and landscape layout variants, as well as different screen sizes.<br>
     * Code: [all of xml files](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/tree/main/src/app/src/main/res/layout?ref_type=heads)
     * Description of your implementation: set appropriate constraints to all components to fit for portrait and landscape layout variants, and different screen sizes
 
-3. [UI-Test](hard) Complete UI tests using espresso (not covered in lectures/labs) of reasonable quality and coverage of the App.
+3. [UI-Test] (hard) Complete UI tests using espresso (not covered in lectures/labs) of reasonable quality and coverage of the App.
     * Code: [all of UI Test files](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/tree/main/src/app/src/androidTest/java/com/example/eatsy?ref_type=heads)<br>
     * Description of your implementation: UI tests are implemented using Espresso and JUnit to ensure functionality and user across various activities. <br>
       Each test corresponds to different aspects of the app, such as adding pages, managing dashboards, user authentication and posts. These tests are designed for enhancing usability, and ensuring user experiences across pages.
    
 Feature Category: Greater Data Usage, Handling and Sophistication <br>
 
-4. [FB-Auth](easy)<br>
+4. [FB-Auth] (easy)<br>
    * We use Firebase to implement the User Authentication/Authorisation of our app. User account data is stored on Google servers instead of locally, and is processed by Google, ensuring security.
 
-5. [FB-Persist](medium) <br>
+5. [FB-Persist] (medium) <br>
    * We used Firebase’s Firestore, a real-time, scalable database that stores data in collections and documents. We use it to persist the post data and user’s profile data for a well synchronization function.  
    * For big files like photos, we store them in Cloud Storage for Firebase for its high scalability and simplified file upload and download capabilities.<br>
 6. Data Profile(easy) <br>
    * It also gives the user an option to upload and change profile picture via media gallery to the firebase. There is sign out button that allows user to sign out from the app. <br>
-7. [Search-Invalid](Medium)<br>
+7. [Search-Invalid] (Medium)<br>
    Handling Partially Valid and Invalid Search Queries
    Objective: Enhance the search functionality to handle both partially valid and invalid search queries effectively without causing the application to crash, while still providing meaningful search results based on valid parts of the query.
 
@@ -501,6 +501,7 @@ Feature Category: Greater Data Usage, Handling and Sophistication <br>
       Feedback to Users: When invalid inputs are detected, the application provides feedback to the user, suggesting corrections or clarifying what parts of the query were processed.
 
       Feature Relevance: Tokenization and parsing are crucial for dissecting user input into manageable components that the system can understand and process, which is central to this feature.
+      
       Code:[Search.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/searchengine/Search.java?ref_type=heads)
 
 8. [Search-Filter](easy): Sorting and Filtering Search Results
