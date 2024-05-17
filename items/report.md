@@ -562,42 +562,42 @@ Despite I attempted to resolve this using Mockito and Mockito-inline, the proble
 
 *Here is an example:*
 
-1. Tests for Search
+1. Tests for AVLTreeTestNode
    - Code: [AVLTreeTestNode Class, entire file](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/test/java/com/example/eatsy/AVLTreeNodeTest.java) for the [AVLTreeNode Class, entire file](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/searchengine/AVLTreeNode.java)
    - Number of test cases: 6
    - Code coverage: AVLTreeNode
    - Types of tests created and descriptions: This test is to verify the correctness of the creation of AVLTreeNode
 
+2. Tests for AVLTree
    - Code: [AVLTreeTest Class, entire file](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/test/java/com/example/eatsy/AVLTreeTest.java) for the [AVLTree Class, entire file](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/searchengine/AVLTree.java)
    - Number of test cases: 5
    - Code coverage: AVLTree
    - Types of tests created and descriptions: This test is to verify the correctness of the creation of AVLTree
 
+3. Tests for TrieNode
    - Code: [TrieNodeTest Class, entire file](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/test/java/com/example/eatsy/TrieNodeTest.java) for the [TrieNode Class, entire file](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/searchengine/TrieNode.java)
    - Number of test cases: 5
    - Code coverage: TrieNode
    - Types of tests created and descriptions: This test is to verify the correctness of the creation of TrieNode
 
+4. Tests for Trie
    - Code: [TrieTest Class, entire file](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/test/java/com/example/eatsy/TrieTest.java) for the [Trie Class, entire file](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/searchengine/Trie.java)
    - Number of test cases: 8
    - Code coverage: Trie
    - Types of tests created and descriptions: This test is to verify the correctness of the creation of Trie
 
-
-
-
-2. Tests for Singleton Design Pattern 
+5. Tests for Singleton Design Pattern 
    - Code: [SingletonTest Class, entire file](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/test/java/com/example/eatsy/SingletonTest.java?ref_type=heads#L14-55).
-   - *Number of test cases: 3*
+   - Number of test cases: 3
    - Code coverage: Login feature of the app.
    - Test for same instance, 
 
-3. Tests for factory design pattern
+6. Tests for factory design pattern
    - Code: [FactoryTest.java, entire file](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/test/java/com/example/eatsy/FactoryTest.java?ref_type=heads).
    - Number of test cases: 2
    - Code coverage: Coverage of all possible paths and conditions in the factory methods
    - Types of tests created and descriptions: The tests primarily focus on object construction correctness, ensuring that the factory methods create objects based on input parameters.
-4. Tests for UI design(Post pages)
+7. Tests for UI design(Post pages)
    - Code: [PostdonateUITest.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/androidTest/java/com/example/eatsy/PostdonateUITest.java?ref_type=heads),
 [PostexchangeUITest.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/androidTest/java/com/example/eatsy/PostexchangeUITest.java?ref_type=heads), 
 [PostwantedUITest.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/androidTest/java/com/example/eatsy/PostwantedUITest.java?ref_type=heads),
