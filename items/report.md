@@ -189,25 +189,49 @@ Post have three different type: donate, exchange and wanted.
 
 Post pages share a common theme of promoting community sharing and exchange, and we use Firebase to manage data storage and retrieval effectively.
 
-4.插入search page:
+4. Search page
+
+<div align="center">
+    <img src="searchpage.png" alt="search page">
+</div>
 
 On this page, users can search for any food they want and choose how to get the food (i.e. donate, wanted and exchange).
 When the user types in the food they want and selects any option, our app will retrieve the relevant data from the firebase database and display it.
 When the user types in the food they want and selects any option, our app will retrieve the relevant data from the firebase database and display it.
 
-插入search之后的page：apple
+5. Search results for apple
 
-When the user types apple and selects the donate type, our app will pick up the post_type as donate from firebase, and apple's post will appear in the post_title.
+<div align="center">
+    <img src="search_apple.png" alt="search results for **apple**">
+</div>
 
-插入search之后的page:butter chicken
+When the user types apple and selects the donate type, our app will pick up the post_type as donate from firebase, and apple's post will appear in the post_title. Search results are not affected even if the user mixes upper and lower case.
 
-When the user types apple and selects the exchange and donate types, our app will pick up the post_type as donate and exchange from firebase, and the post_title of butter chicken will appear.
+<div align="center">
+    <img src="search_apple_case.png" alt="search results for **APple**">
+</div>
 
-插入search之后的page：I want a banana
+6. Search results for butter chicken
 
-When the user types want and selects the wanted type, our app will pick up the post_type as wanted from firebase, and the post I or want or a or banana will appear in the post_title.
+ <div align="center">
+    <img src="search_butter_chicken.png" alt="search results for **butter chicken**">
+</div>
 
-5.插入点进详情页的page：
+When the user types butter chicken, our app will search butter chicken in our database and the results will appear.
+
+7. Search results for I want to share some apples
+
+<div align="center">
+    <img src="search_sentence.png" alt="search results for **I want to share some apples**">
+</div>
+
+When the user types **I want to share some apples**, our app will pick up the posts which I or want or a or banana will appear in the post_title.
+
+5. Search detailed page
+
+<div align="center">
+    <img src="search_detailed.png" alt="search detailed page">
+</div>
 
 When we click on any post under the search term, we can see the specific content of the post.
   
