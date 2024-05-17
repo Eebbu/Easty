@@ -37,18 +37,14 @@ public class MyApplication extends Application {
                 .thenAccept(postData -> {
                     // Store post data to DataManager
                     DataManager.getDataInstance().setPostHashMap(postData);
-                    // Print the post data to verify contents
-//                    System.out.println("Downloaded Post Data:");
-//                    postData.forEach((key, value) -> System.out.println(key + " -> " + value));
+
                 });
 
         CompletableFuture<Void> userDataFuture = postDataFuture.thenCompose(v -> userDataDownloader.downloadData(usersCollectionRef))
                 .thenAccept(userData -> {
                     // Store user data to DataManager
                     DataManager.getDataInstance().setUserHashMap(userData);
-                    // Print the user data to verify contents
-//                    System.out.println("Downloaded User Data:");
-//                    userData.forEach((key, value) -> System.out.println(key + " -> " + value));
+
                 });
 
         // Ensure both post and user data are downloaded before setting fileDownloaded to true
@@ -56,7 +52,6 @@ public class MyApplication extends Application {
                 .thenRun(() -> {
                     // Success: both user and post data received
                     fileDownloaded = true;
-                    System.out.println("加载成功啦！");
                 })
                 .exceptionally(ex -> {
                     // Handle any errors that occurred during the download process
