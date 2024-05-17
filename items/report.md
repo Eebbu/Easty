@@ -29,7 +29,7 @@ The key area(s) of responsibilities for each member
 | u7727175 |  Jinyang Zeng    |DataStream, MapSelection activity(GPS) and its UI design, Load show data in dashboard and detailed post page，postcard activity and its UI design，Generate post data from user input |
 | u7777752 |     Lin Xi      |UI design (Search page and Search_detailed page), Tokenizer, Parser, Data Structure (Hashmap, AVLTree, Arraylist, Hashset, Trie), Data Fetching, Searching and filtering, Testing (Search), Design Patterns (Adapter, Builder) |
 | u7773880 |   Zihan Yuan    |Add Activity, Post activity(post_donate, post_exchange, post_wanted), page redirection, two factory design patterns, Data Stream(get images from album and upload image to Firebase), UI layout and UI test. |
-| u7705128 |   Boxuan Lin     |Create 2600+ post instances and 2500 user accounts, storing all of the data in Firebase. Providing methods for downloading and updating data from Firebase. |
+| u7705128 |   Boxuan Lin     |Create 2600+ post instances and 2500 user accounts, storing all of the data in Firebase. Providing methods for downloading and updating data from Firebase. Setting Firebase authentication for the login function.|
 
 
 ## Summary of Individual Contributions
@@ -45,9 +45,11 @@ The key area(s) of responsibilities for each member
 
 2. **U7705128, Boxuan Lin**  I have 20% contribution, as follows: <br>
   - **Code Contribution in the final App**
-    - Firebase Persistent(medium) - class [DataManager.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/datamanagement/DataManager.java?ref_type=heads), [FireStoreHelper.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/datamanagement/FireStoreHelper.java?ref_type=heads), [PostDataDownloader.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/datamanagement/PostDataDownloader.java?ref_type=heads), [UserDataDownloader.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/datamanagement/UserDataDownloader.java?ref_type=heads). <br>
+    - Firebase Authentication(easy) - [link](https://console.firebase.google.com/u/1/project/comp2100gp-554f2/authentication/users)
+    - Firebase Persistent(medium) - class [DataManager.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/datamanagement/DataDownloader.java?ref_type=heads), [FireStoreHelper.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/datamanagement/FireStoreHelper.java?ref_type=heads), [PostDataDownloader.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/datamanagement/PostDataDownloader.java?ref_type=heads), [UserDataDownloader.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/datamanagement/UserDataDownloader.java?ref_type=heads). <br>
      - DataFiles(easy) Local storage: [posts.json](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/raw/posts.json?ref_type=heads), [users_without_password.json](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/raw/users_without_password.json?ref_type=heads).
-      - Singleton Design Pattern -  [DataManager.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/datamanagement/DataManager.java?ref_type=heads).
+     -Other contribution: Creating posts and users data instances class. [Post.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/Post.java?ref_type=heads) and [userFT.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/userFT.java?ref_type=heads)
+      - Singleton Design Pattern -  [DataManager.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/datamanagement/DataDownloader.java?ref_type=heads).
 
       
 3.**U7663368, Vishakha Mathur** I have 20% contribution, as follows: <br>
@@ -423,9 +425,9 @@ The grammar used in our project is designed to parse text consisting of space-se
      on the login button, then we check by using 'signInWithEmailAndPassword' method from firebase whether the entered data is correct. If it's correct, the user is redirected to the DashBoardActivtiy
      and a toast message is generated i.e; "Login successful". Otherwise, the user remains on the login page and toast message says, "Authentication failed". 
    <br>
-2. [DataFiles](easy). Description  ... ... (...)
-   * Code to the Data File [users_interaction.json](link-to-file), [search-queries.xml](link-to-file), ...
-   * Link to the Firebase repo: ...
+2. [DataFiles].(easy) For this part, there are over 2,500 users and 2,600 posts, all stored in Firestore. The local JSON file is an older copy used for localized offline loading under extreme network conditions.
+   * Code to the Data File [posts.json](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/raw/posts.json?ref_type=heads), [users_without_password.json](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/res/raw/users_without_password.json?ref_type=heads)
+   * Link to the Firebase repo: https://console.firebase.google.com/u/1/project/comp2100gp-554f2/overview
    <br>
 3. [Search].(Medium) Created an activity for searching and filtering posts within the application, utilizing various data structures and methods to efficiently manage and display search results.
    * Code:[class Search](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/searchengine/Search.java)
@@ -477,9 +479,12 @@ Feature Category: Search-related features <br>
 Feature Category: Greater Data Usage, Handling and Sophistication <br>
 
 4. [FB-Auth] (easy)<br>
+   * Link: [FB-Auth](https://console.firebase.google.com/u/1/project/comp2100gp-554f2/authentication/users)
    * We use Firebase to implement the User Authentication/Authorisation of our app. User account data is stored on Google servers instead of locally, and is processed by Google, ensuring security.
 
 5. [FB-Persist] (medium) <br>
+   * Link : [Cloud_Storage](https://console.firebase.google.com/u/1/project/comp2100gp-554f2/storage/comp2100gp-554f2.appspot.com/files) , [Firestore](https://console.firebase.google.com/u/1/project/comp2100gp-554f2/firestore/databases/-default-/data/~2Fposts~2F0)
+   * Code : [DataManager.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/datamanagement/DataDownloader.java?ref_type=heads), [FireStoreHelper.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/datamanagement/FireStoreHelper.java?ref_type=heads), [PostDataDownloader.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/datamanagement/PostDataDownloader.java?ref_type=heads), [UserDataDownloader.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/main/java/com/example/eatsy/datamanagement/UserDataDownloader.java?ref_type=heads).
    * We used Firebase’s Firestore, a real-time, scalable database that stores data in collections and documents. We use it to persist the post data and user’s profile data for a well synchronization function.  
    * For big files like photos, we store them in Cloud Storage for Firebase for its high scalability and simplified file upload and download capabilities.<br>
 6. Data Profile(easy) <br>
@@ -611,7 +616,16 @@ Despite I attempted to resolve this using Mockito and Mockito-inline, the proble
    - Types of tests created and descriptions: 
      - Visibility and changes of UI components. 
      - Intent firing and activity lifecycle management. 
-     - Input validations and response actions.
+     - Input validations and response actions. 
+8. Tests for DataManager
+   - Code: [DataManagerTest.java](https://gitlab.cecs.anu.edu.au/u7705128/gp-24s1/-/blob/main/src/app/src/test/java/com/example/eatsy/DataManagerTest.java?ref_type=heads)
+   - Number of test cases: 2
+   - Code coverage: DataManager class
+   - Types of tests created and descriptions: 
+     - Singleton Pattern Test: Verifies that DataManager follows the singleton pattern.
+     - Timestamp-Based ID Generation Test: Ensures generateTimestampBasedId() produces non-null and unique IDs.
+
+
      <br> <hr>
 
 
