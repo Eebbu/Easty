@@ -4,3 +4,5 @@ consumption and support the people who are in need.
   
 It focuses on the UN sustainable goal of zero hunger and responsible consumption and
 production.
+  
+Check [report.md](items/report.md) for details.
